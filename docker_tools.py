@@ -43,7 +43,9 @@ def install_compose():
                              stdout=subprocess.PIPE, universal_newlines=True)
 
 
-def create_compose_file():
+def create_compose_file(path_list=[]):
+    volume_list = ['      - ./'+path+':/opt/'+path for path in path_list]
+    addons_volumes = '\n'.join(volume_list)
     compose = """version: '2'
 services:
   web:
@@ -55,6 +57,7 @@ services:
     command: odoo -d odoo
     volumes:
       - ./odoo.conf:/etc/odoo/odoo.conf
+{addons_volumes}
   db:
     image: postgres:10
     environment:
@@ -62,12 +65,14 @@ services:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
 """
-
+    compose = compose.format(addons_volumes=addons_volumes)
     f = open("docker-compose.yml", "w+")
     f.write(compose)
     f.close()
 
 
 def start_compose():
+    process = subprocess.run(['docker-compose', 'down'],
+                             stdout=subprocess.PIPE, universal_newlines=True)
     process = subprocess.run(['docker-compose', 'up', '-d'],
                              stdout=subprocess.PIPE, universal_newlines=True)

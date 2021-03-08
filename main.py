@@ -26,6 +26,7 @@ def open_odoo_firefox(url):
 
 
 def init(name, pull=False):
+    odoo_version = '14.0'
 
     if not dt.docker_exists():
         if local_user != 'root':
@@ -40,19 +41,33 @@ def init(name, pull=False):
     client = docker.from_env()
     try:
         if pull:
-            client.images.pull('odoo:14.0')
+            client.images.pull('odoo:%s' % odoo_version)
     except Exception as e:
         print(e)
         pass
 
-    oconf.create_odoo_conf_file()
+    git_addons_repositories = ['https://github.com/myrrkel/odoo_book_publisher_addons.git',
+                               'https://github.com/myrrkel/odoo_addons_community.git']
+    addon_dirs = []
+    for repo in git_addons_repositories:
+        addon_dir = repo.split('/')[-1].split('.')[0]
+        addon_dirs.append(addon_dir)
+        if os.path.isdir(addon_dir):
+            process = subprocess.run(['git', 'pull', '--rebase'], cwd='./'+addon_dir,
+                             stdout=subprocess.PIPE, universal_newlines=True)
+        else:
+            process = subprocess.run(['git', 'clone', repo],
+                             stdout=subprocess.PIPE, universal_newlines=True)
 
-    dt.create_compose_file()
+
+    oconf.create_odoo_conf_file(addon_dirs)
+
+    dt.create_compose_file(addon_dirs)
     dt.start_compose()
     ip = get_odoo_ip(client)
     url = "%s:%s" % (ip, "8069")
 
-    orpc = odoo_rpc.OdooRpc(ip, "8069", "odoo", "admin", "admin")
+    #orpc = odoo_rpc.OdooRpc(ip, "8069", "odoo", "admin", "admin")
     #orpc.create_user('Michel', 'admin')
 
     open_odoo_firefox(url)
