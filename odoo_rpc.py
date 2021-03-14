@@ -3,6 +3,7 @@ import random
 import urllib.request
 import time
 
+
 class OdooRpc:
 
     def __init__(self, host, port, db, user, password):
