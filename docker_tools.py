@@ -54,8 +54,11 @@ services:
       - db
     ports:
       - "8069:8069"
+    expose:
+      - 8069
     command: odoo -d odoo
     volumes:
+      - odoo_data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
 {addons_volumes}
   db:
@@ -64,6 +67,19 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
+    ports:
+      - '5432:5432'
+
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+volumes:
+  odoo_data:
+  postgresql_data:
+networks:
+  default:
+    external:
+      name: odoo_one_default
+
 """
     compose = compose.format(addons_volumes=addons_volumes)
     f = open("docker-compose.yml", "w+")
@@ -72,7 +88,13 @@ services:
 
 
 def start_compose():
+    create_network()
     process = subprocess.run(['docker-compose', 'down'],
                              stdout=subprocess.PIPE, universal_newlines=True)
     process = subprocess.run(['docker-compose', 'up', '-d'],
+                             stdout=subprocess.PIPE, universal_newlines=True)
+
+
+def create_network():
+    process = subprocess.run(['docker', 'network', 'create', 'odoo_one_default', '--subnet=172.19.0.0/16'],
                              stdout=subprocess.PIPE, universal_newlines=True)

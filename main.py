@@ -4,6 +4,7 @@ import docker
 import docker_tools as dt
 import odoo_conf as oconf
 import odoo_rpc
+import odoorpc
 
 
 local_user = os.environ.get("USER")
@@ -67,8 +68,7 @@ def init(name, pull=False):
     ip = get_odoo_ip(client)
     url = "%s:%s" % (ip, "8069")
 
-    #orpc = odoo_rpc.OdooRpc(ip, "8069", "odoo", "admin", "admin")
-    #orpc.create_user('Michel', 'admin')
+    orpc = odoo_rpc.OdooRpc(ip, "8069", "odoo", "admin", "admin")
 
     open_odoo_firefox(url)
 
