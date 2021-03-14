@@ -3,9 +3,14 @@ import json
 import time
 import subprocess
 import os
+import re
 
 FILE_NAME = 'github_modules'
 
+
+def strip_comments(code):
+    code = str(code)
+    return re.sub(r'(?m)^ *#.*\n?', '', code)
 
 def get_json_file_name(name, version):
     return version and "%s_%s.json" % (name, version.replace('.0', '')) or "%s.json" % name
@@ -80,8 +85,14 @@ class GithubModules:
         manifest_file = [d for d in files if d.type == 'file' and d.name == '__manifest__.py']
         if manifest_file:
             try:
-                module_dict = {'name': module.name, 'manifest': str(manifest_file[0].decoded_content),
-                               'files': [f.name for f in files]}
+                manifest = eval(strip_comments(manifest_file[0].decoded_content.decode('UTF-8')))
+                module_dict = {'name': module.name,
+                               'display_name': manifest.get('name', ''),
+                               'summary': manifest.get('summary', ''),
+                               'version': manifest.get('version', ''),
+                               'author': manifest.get('author', ''),
+                               'category': manifest.get('category', ''),
+                               }
                 return module_dict
             except RateLimitExceededException:
                 self.wait_for_rate_limit()
@@ -122,39 +133,10 @@ class GithubModules:
 
             oca_modules_dict[github_user] = {'repositories': repositories}
 
-                #
-                # try:
-                #     self.wait_for_rate_limit()
-                #     dirs = [d for d in self.get_dir_contents(repo, '.', ref=branch_ref) if d.type == 'dir' and d.name != 'setup']
-                #     if dirs:
-                #         repo_dict = {'name': repo.name, 'description': repo.description, 'html_url': repo.html_url,
-                #                      'default_branch': repo.default_branch, 'modules': {}}
-                #         oca_modules_dict[github_user]['repositories'][repo.name] = repo_dict
-                #         print('"%s";"%s";"%s";"%s"' % (
-                #             repo.name, repo.description, repo.html_url, repo.default_branch))
-                #         for sub_dir in dirs:
-                #             files = self.get_dir_contents(repo, './%s' % sub_dir.name, ref=branch_ref)
-                #             manifest_file = [d for d in files if d.type == 'file' and d.name == '__manifest__.py']
-                #             if manifest_file:
-                #                 module = {'name': sub_dir.name, 'manifest': str(manifest_file[0].decoded_content),
-                #                           'files': [f.name for f in files]}
-                #                 oca_modules_dict[github_user]['repositories'][repo.name]['modules'][sub_dir.name] = module
-                #                 print(sub_dir.name)
-                #
-                #         if not oca_modules_dict[github_user]['repositories'][repo.name]['modules']:
-                #             oca_modules_dict[github_user]['repositories'].pop(repo.name)
-                # except GithubException as e:
-                #     if 'No commit found for the ref' not in e.data.get('message', False):
-                #         print(e)
-                # except RateLimitExceededException as e:
-                #
-                # except Exception as e:
-                #     print(e)
-
         write_json_file(FILE_NAME, version, oca_modules_dict)
 
     def generate_all_json_file(self):
-        versions = ['12.0', '13.0', '14.0']
+        versions = ['11.0', '12.0', '13.0', '14.0']
         for version in versions:
             self.generate_json_file(version)
 
