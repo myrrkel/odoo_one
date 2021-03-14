@@ -183,6 +183,6 @@ class GithubModules:
 
 
 if __name__ == '__main__':
-    g = GithubModules("a7df816ac8000e4907527bc22c75836e54e2af85")
+    g = GithubModules("")
 
     g.generate_all_json_file()
