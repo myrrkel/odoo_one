@@ -8,12 +8,11 @@ services:
       - "8069:8069"
     expose:
       - 8069
-    command: odoo -d odoo
+    command: odoo 
     volumes:
       - odoo_data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
-      - ./odoo_book_publisher_addons:/opt/odoo_book_publisher_addons
-      - ./odoo_addons_community:/opt/odoo_addons_community
+
   db:
     image: postgres:10
     environment:

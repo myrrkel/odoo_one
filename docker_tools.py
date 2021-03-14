@@ -43,20 +43,23 @@ def install_compose():
                              stdout=subprocess.PIPE, universal_newlines=True)
 
 
-def create_compose_file(path_list=[]):
+def create_compose_file(path_list=None, version='14.0', cmd_params=""):
+
+    if path_list is None:
+        path_list = []
     volume_list = ['      - ./'+path+':/opt/'+path for path in path_list]
     addons_volumes = '\n'.join(volume_list)
     compose = """version: '2'
 services:
   web:
-    image: odoo:14.0
+    image: odoo:{version}
     depends_on:
       - db
     ports:
       - "8069:8069"
     expose:
       - 8069
-    command: odoo -d odoo
+    command: odoo {cmd_params}
     volumes:
       - odoo_data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
@@ -72,6 +75,7 @@ services:
 
     volumes:
       - postgresql_data:/var/lib/postgresql/data
+      
 volumes:
   odoo_data:
   postgresql_data:
@@ -81,7 +85,11 @@ networks:
       name: odoo_one_default
 
 """
-    compose = compose.format(addons_volumes=addons_volumes)
+    compose = compose.format(addons_volumes=addons_volumes,
+                             version=version,
+                             simple_version=version.replace('.0', ''),
+                             cmd_params=cmd_params,
+                             )
     f = open("docker-compose.yml", "w+")
     f.write(compose)
     f.close()

@@ -5,9 +5,14 @@ import docker_tools as dt
 import odoo_conf as oconf
 import odoo_rpc
 import odoorpc
+from github_modules import GithubModules
 
 
 local_user = os.environ.get("USER")
+
+ODOO_VERSION = '14.0'
+VERSION = ODOO_VERSION.replace('.0', '')
+ODOO_DB = "odoo_%s" % VERSION
 
 
 def start_sudo():
@@ -15,19 +20,25 @@ def start_sudo():
 
 
 def get_odoo_ip(client):
-    containers = client.containers.list(filters={'ancestor': 'odoo:14.0'})
+    containers = client.containers.list(filters={'ancestor': 'odoo:%s' % ODOO_VERSION})
     for container in containers:
         ip = container.attrs['NetworkSettings']['Networks']['odoo_one_default']['Gateway']
         return ip
 
 
+def odoo_database_exists(client):
+    containers = client.containers.list(filters={'ancestor': 'postgres:10'})
+    for container in containers:
+        cmd_res = container.exec_run('psql -U odoo -tAc "SELECT 1 FROM pg_database WHERE datname=\'%s\'" template1' % ODOO_DB)
+        return bool(cmd_res.output)
+
+
 def open_odoo_firefox(url):
-    process = subprocess.call(['firefox', url],
-                                 stdout=subprocess.PIPE, universal_newlines=True)
+    process = subprocess.call(['firefox',  url],
+                              stdout=subprocess.PIPE, universal_newlines=True)
 
 
 def init(name, pull=False):
-    odoo_version = '14.0'
 
     if not dt.docker_exists():
         if local_user != 'root':
@@ -42,34 +53,30 @@ def init(name, pull=False):
     client = docker.from_env()
     try:
         if pull:
-            client.images.pull('odoo:%s' % odoo_version)
+            client.images.pull('odoo:%s' % ODOO_VERSION)
     except Exception as e:
         print(e)
         pass
 
-    git_addons_repositories = ['https://github.com/myrrkel/odoo_book_publisher_addons.git',
-                               'https://github.com/myrrkel/odoo_addons_community.git']
+    gh_modules = GithubModules()
+    gh_modules.load(VERSION)
+
     addon_dirs = []
-    for repo in git_addons_repositories:
-        addon_dir = repo.split('/')[-1].split('.')[0]
-        addon_dirs.append(addon_dir)
-        if os.path.isdir(addon_dir):
-            process = subprocess.run(['git', 'pull', '--rebase'], cwd='./'+addon_dir,
-                             stdout=subprocess.PIPE, universal_newlines=True)
-        else:
-            process = subprocess.run(['git', 'clone', repo],
-                             stdout=subprocess.PIPE, universal_newlines=True)
-
-
     oconf.create_odoo_conf_file(addon_dirs)
 
-    dt.create_compose_file(addon_dirs)
+    dt.create_compose_file(addon_dirs, version=ODOO_VERSION, cmd_params='')
+
     dt.start_compose()
+    if not odoo_database_exists(client):
+        dt.create_compose_file(addon_dirs, version=ODOO_VERSION, cmd_params='-d %s -i base' % ODOO_DB)
+        dt.start_compose()
+
+
     ip = get_odoo_ip(client)
-    url = "%s:%s" % (ip, "8069")
+    url = "%s:%s/web?db=%s" % (ip, 8069, ODOO_DB)
 
-    orpc = odoo_rpc.OdooRpc(ip, "8069", "odoo", "admin", "admin")
-
+    orpc = odoo_rpc.OdooRpc(ip, "8069", "odoo_%s" % VERSION, "admin", "admin")
+    admin = orpc.read('res.users', 1)
     open_odoo_firefox(url)
 
 
