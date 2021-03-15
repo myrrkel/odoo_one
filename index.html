@@ -7,8 +7,8 @@
 
 
     function loadJSON(callback) {   
-
-        $.getJSON("demo_ajax_json.js", function(result){
+        file = "https://github.com/myrrkel/odoo_one/raw/master/data/github_modules_12.json"
+        $.getJSON(file, function(result){
             $.each(result, function(i, field){
               $("div").append(field + " ");
           });
