@@ -1,1 +1,76 @@
-<h1>Available modules</h1>
+<html>
+<head>
+  <title>jQuery Function</title>
+  <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script type="text/javascript">
+
+
+    function loadJSON(callback) {   
+
+        $.getJSON("demo_ajax_json.js", function(result){
+            $.each(result, function(i, field){
+              $("div").append(field + " ");
+          });
+        });
+    }
+
+    function addHeaders(table, keys) {
+      var row = table.insertRow();
+      for( var i = 0; i < keys.length; i++ ) {
+        var cell = row.insertCell();
+        cell.appendChild(document.createTextNode(keys[i]));
+    }
+}
+
+function showTable(users) {
+    for( var i = 0; i < users.length; i++ ) {
+        var user = users[i];
+        var table = document.createElement('table');
+        for( var i = 0; i < user.repositories.length; i++ ) {
+
+          var repository = repositories[i];
+          if(i === 0 ) {
+            addHeaders(table, Object.keys(repository));
+        }
+        var row = table.insertRow();
+        Object.keys(repository).forEach(function(k) {
+            console.log(k);
+            var cell = row.insertCell();
+            cell.appendChild(document.createTextNode(repository[k]));
+        })
+    }
+    document.getElementById('container').appendChild(table);
+}
+}
+
+
+
+function init() {
+   loadJSON(function(response) {
+  // Parse JSON string into object
+  var actual_JSON = JSON.parse(response);
+  showTable(actual_JSON);
+});
+}
+
+
+$().ready(function() {
+    loadJSON();
+});
+
+
+</script>
+
+</head>
+<body>
+    <h1>Available modules</h1>
+
+
+    <div id="container"></div>
+</body>
+</html>
+
+
+
+
