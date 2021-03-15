@@ -6,14 +6,17 @@ import os
 import re
 
 FILE_NAME = 'github_modules'
+DATA_DIR = './data/'
 
 
 def strip_comments(code):
     code = str(code)
     return re.sub(r'(?m)^ *#.*\n?', '', code)
 
+
 def get_json_file_name(name, version):
-    return version and "%s_%s.json" % (name, version.replace('.0', '')) or "%s.json" % name
+    file_name = version and "%s_%s.json" % (name, version.replace('.0', '')) or "%s.json" % name
+    return DATA_DIR + file_name
 
 
 def load_json(name, version):
@@ -136,7 +139,7 @@ class GithubModules:
         write_json_file(FILE_NAME, version, oca_modules_dict)
 
     def generate_all_json_file(self):
-        versions = ['11.0', '12.0', '13.0', '14.0']
+        versions = ['10.0', '11.0', '12.0', '13.0', '14.0']
         for version in versions:
             self.generate_json_file(version)
 
@@ -153,15 +156,15 @@ class GithubModules:
     def git_clone(self, html_url, github_user_path):
         repo_name = html_url.split('/')[-1].split('.')[0]
         if not os.path.isdir(repo_name):
-            process = subprocess.run(['git', 'clone', html_url], cwd='./'+github_user_path,
-                             stdout=subprocess.PIPE, universal_newlines=True)
+            process = subprocess.run(['git', 'clone', html_url], cwd='./' + github_user_path,
+                                     stdout=subprocess.PIPE, universal_newlines=True)
 
     def git_pull(self, html_url, github_user_path):
         repo_name = html_url.split('/')[-1].split('.')[0]
         repo_path = '/'.join(github_user_path, repo_name)
         if os.path.isdir(repo_name):
-            process = subprocess.run(['git', 'pull', '--rebase'], cwd='./'+repo_path,
-                             stdout=subprocess.PIPE, universal_newlines=True)
+            process = subprocess.run(['git', 'pull', '--rebase'], cwd='./' + repo_path,
+                                     stdout=subprocess.PIPE, universal_newlines=True)
 
 
 if __name__ == '__main__':

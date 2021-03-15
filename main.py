@@ -9,7 +9,6 @@ from github_modules import GithubModules
 
 
 local_user = os.environ.get("USER")
-
 ODOO_VERSION = '14.0'
 VERSION = ODOO_VERSION.replace('.0', '')
 ODOO_DB = "odoo_%s" % VERSION

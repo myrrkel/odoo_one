@@ -1,0 +1,14 @@
+[
+    {
+        "github_user": "myrrkel",
+        "name": "odoo_book_publisher_addons"
+    },
+    {
+        "github_user": "myrrkel",
+        "name": "odoo_addons_community"
+    },
+    {
+        "github_user": "OCA",
+        "name": "web"
+    }
+]
