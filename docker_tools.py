@@ -43,8 +43,14 @@ def install_compose():
                              stdout=subprocess.PIPE, universal_newlines=True)
 
 
-def create_compose_file(path_list=None, version='14.0', cmd_params=""):
+def create_compose_file(path_list=None, version='14', cmd_params=""):
 
+    if int(version) >= 10:
+        cmd = 'odoo'
+    elif int(version) == 8:
+        cmd = 'odoo.py'
+    else:
+        cmd = 'openerp-server'
     if path_list is None:
         path_list = []
     volume_list = ['      - ./'+path+':/opt/'+path for path in path_list]
@@ -52,17 +58,18 @@ def create_compose_file(path_list=None, version='14.0', cmd_params=""):
     compose = """version: '2'
 services:
   web:
-    image: odoo:{version}
+    image: odoo:{version}.0
     depends_on:
       - db
     ports:
       - "8069:8069"
     expose:
       - 8069
-    command: odoo {cmd_params}
+    command: {cmd} {cmd_params}
     volumes:
-      - odoo_data:/var/lib/odoo
+      - odoo_data{version}:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
+      - odoo-db-socket:/var/run/postgresql # For Odoo 8.0 only
 {addons_volumes}
   db:
     image: postgres:10
@@ -75,10 +82,12 @@ services:
 
     volumes:
       - postgresql_data:/var/lib/postgresql/data
+      - odoo-db-socket:/var/run/postgresql # For Odoo 8.0 only
       
 volumes:
-  odoo_data:
+  odoo_data{version}:
   postgresql_data:
+  odoo-db-socket:  # For Odoo 8 only
 networks:
   default:
     external:
@@ -87,7 +96,7 @@ networks:
 """
     compose = compose.format(addons_volumes=addons_volumes,
                              version=version,
-                             simple_version=version.replace('.0', ''),
+                             cmd=cmd,
                              cmd_params=cmd_params,
                              )
     f = open("docker-compose.yml", "w+")

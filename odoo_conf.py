@@ -1,5 +1,9 @@
-def create_odoo_conf_file(path_list=[]):
-    default_path_list = ["/usr/lib/python3/dist-packages/odoo/addons"]
+def create_odoo_conf_file(version, path_list=[]):
+
+    if int(version) >= 11:
+        default_path_list = ["/usr/lib/python3/dist-packages/odoo/addons"]
+    else:
+        default_path_list = ["/usr/lib/python2.7/dist-packages/odoo/addons"]
     path_list = ['/opt/' + path for path in path_list]
     path_list = default_path_list + path_list
 

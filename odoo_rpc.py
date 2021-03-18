@@ -6,8 +6,9 @@ import time
 
 class OdooRpc:
 
-    def __init__(self, host, port, db, user, password):
+    def __init__(self, host, port, db, user, password, version):
 
+        self.version = version
         self.host = host
         self.port = port
         self.db = db
@@ -39,7 +40,12 @@ class OdooRpc:
     def call(self, url, service, method, *args):
         return self.json_rpc(url, "call", {"service": service, "method": method, "args": args})
 
-    def call_odoo(self, model, function, args):
+    def call_no_arg(self, url, service, method, *args):
+        return self.json_rpc(url, "call", {"service": service, "method": method})
+
+    def call_odoo(self, model, function, args=None):
+        if args is None:
+            return self.call(self.url, "object", "execute", self.db, self.uid, self.password, model, function)
         return self.call(self.url, "object", "execute", self.db, self.uid, self.password, model, function, args)
 
     def read(self, model, rec_id):
@@ -47,6 +53,13 @@ class OdooRpc:
 
     def create_user(self, user_name, password):
         self.call_odoo('res.users', 'create', {'name': user_name, 'login': user_name, 'password': password})
+
+    def update_addons_list(self):
+        if int(self.version) >= 13:
+            self.call_odoo('ir.module.module', 'update_list')
+        else:
+            self.call_odoo('ir.module.module', 'update_list', [])
+
 
     def wait_for_odoo(self):
         error = ''

@@ -46,8 +46,10 @@ def write_repositories(version, repositories):
 
 class GithubModules:
     version = ""
+    odoo_version = ""
     github_modules = {}
     repositories = {}
+    addons_path_list = []
 
     def __init__(self, access_token=""):
 
@@ -55,11 +57,12 @@ class GithubModules:
         # For a higher rate limit, provide an access_token:
         # https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
-    def load(self, version):
-        self.version = version
+    def load(self, odoo_version):
+        self.version = odoo_version.replace('.0', '')
+        self.odoo_version = odoo_version
         self.github_modules = load_github_modules(self.version)
         self.repositories = load_repositories(self.version)
-        self.clone_github_repositories()
+        self.clone_github_repositories(self.odoo_version)
 
     def check_github_rate_limit(self):
         rate_limit = self.github.get_rate_limit()
@@ -143,25 +146,43 @@ class GithubModules:
         for version in versions:
             self.generate_json_file(version)
 
-    def clone_github_repositories(self):
+    def clone_github_repositories(self, version):
         if not os.path.isdir('github_addons'):
             os.mkdir('github_addons')
         for repo in self.repositories:
             github_user_path = 'github_addons/%s' % repo['github_user']
             if not os.path.isdir(github_user_path):
                 os.mkdir(github_user_path)
-            repo_dict = self.github_modules[repo['github_user']]['repositories'][repo['name']]
-            self.git_clone(repo_dict['html_url'], github_user_path)
+            if repo.get('url', False):
+                url = repo['url']
+            else:
+                try:
+                    repo_dict = self.github_modules[repo['github_user']]['repositories'][repo['name']]
+                    url = repo_dict['html_url']
+                except Exception as e:
+                    continue
 
-    def git_clone(self, html_url, github_user_path):
-        repo_name = html_url.split('/')[-1].split('.')[0]
-        if not os.path.isdir(repo_name):
-            process = subprocess.run(['git', 'clone', html_url], cwd='./' + github_user_path,
+            repo_name = url.split('/')[-1].split('.')[0]
+            self.git_clone(url, github_user_path, repo_name)
+            self.git_checkout(github_user_path, repo_name, version)
+            self.addons_path_list.append(github_user_path + "/" + repo_name)
+
+    def git_clone(self, url, github_user_path, repo_name):
+        path = github_user_path + "/" + repo_name
+        if not os.path.isdir(path):
+            process = subprocess.run(['git', 'clone', url], cwd='./' + github_user_path,
+                                     stdout=subprocess.PIPE, universal_newlines=True)
+
+
+    def git_checkout(self, github_user_path, repo_name, version):
+        path = github_user_path + "/" + repo_name
+        if os.path.isdir(path):
+            process = subprocess.run(['git', 'checkout', version], cwd='./' + path,
                                      stdout=subprocess.PIPE, universal_newlines=True)
 
     def git_pull(self, html_url, github_user_path):
         repo_name = html_url.split('/')[-1].split('.')[0]
-        repo_path = '/'.join(github_user_path, repo_name)
+        repo_path = '/'.join(github_user_path, repo_name, repo_name)
         if os.path.isdir(repo_name):
             process = subprocess.run(['git', 'pull', '--rebase'], cwd='./' + repo_path,
                                      stdout=subprocess.PIPE, universal_newlines=True)

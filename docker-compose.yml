@@ -8,11 +8,12 @@ services:
       - "8069:8069"
     expose:
       - 8069
-    command: odoo 
+    command: odoo -d %s
     volumes:
-      - odoo_data:/var/lib/odoo
+      - odoo_data14:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
-
+      - odoo-db-socket:/var/run/postgresql # For Odoo 8.0 only
+      - ./extra_addons:/opt/extra_addons
   db:
     image: postgres:10
     environment:
@@ -24,9 +25,12 @@ services:
 
     volumes:
       - postgresql_data:/var/lib/postgresql/data
+      - odoo-db-socket:/var/run/postgresql # For Odoo 8.0 only
+      
 volumes:
-  odoo_data:
+  odoo_data14:
   postgresql_data:
+  odoo-db-socket:  # For Odoo 8 only
 networks:
   default:
     external:
