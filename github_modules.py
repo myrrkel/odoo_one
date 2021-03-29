@@ -50,6 +50,7 @@ class GithubModules:
     github_modules = {}
     repositories = {}
     addons_path_list = []
+    github_users = ['OCA', 'myrrkel']
 
     def __init__(self, access_token=""):
 
@@ -88,7 +89,11 @@ class GithubModules:
 
     def get_module_dict(self, repo, branch_ref, module):
         files = self.get_dir_contents(repo, './%s' % module.name, ref=branch_ref)
-        manifest_file = [d for d in files if d.type == 'file' and d.name == '__manifest__.py']
+        if branch_ref in ['8.0', '9.0']:
+            manifest_name = '__openerp__.py'
+        else:
+            manifest_name = '__manifest__.py'
+        manifest_file = [d for d in files if d.type == 'file' and d.name == manifest_name]
         if manifest_file:
             try:
                 manifest = eval(strip_comments(manifest_file[0].decoded_content.decode('UTF-8')))
@@ -121,18 +126,32 @@ class GithubModules:
             return repo_dict
         return {}
 
+    def get_repository_module_list(self, repo, branch_ref):
+        modules = []
+        dirs = [d for d in self.get_dir_contents(repo, '.', ref=branch_ref) if d.type == 'dir' and d.name != 'setup']
+        if dirs:
+            for sub_dir in dirs:
+                module_dict = self.get_module_dict(repo, branch_ref, sub_dir)
+                modules.append(module_dict)
+        return modules
+
+    def generate_mini_json_file(self, version=""):
+        branch_ref = version or ""
+        oca_modules_list = []
+        for github_user in self.github_users:
+            self.wait_for_rate_limit()
+            for repo in self.github.get_user(github_user).get_repos():
+                oca_modules_list.extend(self.get_repository_module_list(repo, branch_ref))
+        write_json_file('mini_%s' % FILE_NAME, version, oca_modules_list)
+
     def generate_json_file(self, version=""):
         branch_ref = version or ""
         oca_modules_dict = {}
-        github_users = ['OCA', 'myrrkel']
-        for github_user in github_users:
-            repositories = {}
 
+        for github_user in self.github_users:
+            repositories = {}
             self.wait_for_rate_limit()
             for repo in self.github.get_user(github_user).get_repos():
-                if repo.name.startswith('l10n') and repo.name != 'l10n-france':
-                    continue
-
                 repository_dict = self.get_repository_dict(repo, branch_ref)
                 if repository_dict:
                     repositories[repo.name] = repository_dict
@@ -142,7 +161,7 @@ class GithubModules:
         write_json_file(FILE_NAME, version, oca_modules_dict)
 
     def generate_all_json_file(self):
-        versions = ['10.0', '11.0', '12.0', '13.0', '14.0']
+        versions = ['8.0', '9.0', '10.0', '11.0', '12.0', '13.0', '14.0']
         for version in versions:
             self.generate_json_file(version)
 
@@ -189,6 +208,10 @@ class GithubModules:
 
 
 if __name__ == '__main__':
-    g = GithubModules("")
-
-    g.generate_all_json_file()
+    import sys
+    if len(sys.argv) > 1:
+        credential = sys.argv[1]
+        g = GithubModules(credential)
+        versions = ['8.0', '9.0']
+        for v in versions:
+            g.generate_json_file(v)
