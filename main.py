@@ -11,6 +11,7 @@ from github_modules import GithubModules
 local_user = os.environ.get("USER")
 ODOO_VERSION = '14.0'
 VERSION = ODOO_VERSION.replace('.0', '')
+ENTERPRISE_PATH = '../enterprise'
 ODOO_DB = "odoo_%s" % VERSION
 
 
@@ -69,15 +70,16 @@ def init(name, pull=False):
 
     addons_path_list = gh_modules.addons_path_list
     addons_path_list.append('extra_addons')
-    oconf.create_odoo_conf_file(VERSION, addons_path_list)
+    oconf.create_odoo_conf_file(VERSION, addons_path_list, enterprise=ENTERPRISE_PATH is not False)
 
-    dt.create_compose_file(addons_path_list, version=VERSION, cmd_params='-d %s')
+    dt.create_compose_file(addons_path_list, version=VERSION, cmd_params='-d %s', enterprise_path=ENTERPRISE_PATH)
 
     dt.start_compose()
     if not odoo_database_exists(client):
         if int(VERSION) <= 8:
             create_empty_database(client)
-        dt.create_compose_file(addons_path_list, version=VERSION, cmd_params='-d %s -i base' %ODOO_DB)
+        dt.create_compose_file(addons_path_list, version=VERSION, cmd_params='-d %s -i base' % ODOO_DB,
+                               enterprise_path=ENTERPRISE_PATH)
         dt.start_compose()
 
 

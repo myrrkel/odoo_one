@@ -43,7 +43,7 @@ def install_compose():
                              stdout=subprocess.PIPE, universal_newlines=True)
 
 
-def create_compose_file(path_list=None, version='14', cmd_params=""):
+def create_compose_file(path_list=None, version='14', cmd_params="", enterprise_path=""):
 
     if int(version) >= 10:
         cmd = 'odoo'
@@ -54,6 +54,8 @@ def create_compose_file(path_list=None, version='14', cmd_params=""):
     if path_list is None:
         path_list = []
     volume_list = ['      - ./'+path+':/opt/'+path for path in path_list]
+    if enterprise_path:
+        volume_list.append('      - '+enterprise_path+':/opt/enterprise')
     addons_volumes = '\n'.join(volume_list)
     compose = """version: '2'
 services:
