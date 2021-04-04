@@ -1,3 +1,3 @@
-from . import main
+from . import odoo_one
 
-main.init('Odoo One')
+odoo_one.main()

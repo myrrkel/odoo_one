@@ -3,6 +3,58 @@ import shutil
 import subprocess
 
 
+class DockerManager(object):
+
+    def __init__(self, version=14, odoo_db='odoo_14'):
+        self.version = version
+        self.odoo_version = '%s.0' % version
+        self.odoo_db = odoo_db
+        self.client = docker.from_env()
+
+    def get_odoo_ip(self):
+        containers = self.get_odoo_containers()
+        for container in containers:
+            ip = container.attrs['NetworkSettings']['Networks']['odoo_one_default']['Gateway']
+            return ip
+
+    def odoo_database_exists(self):
+        containers = self.get_postgres_containers()
+        for container in containers:
+            cmd = 'psql -U odoo -tAc "SELECT 1 FROM pg_database WHERE datname=\'%s\'" template1'
+            cmd_res = container.exec_run(cmd % self.odoo_db)
+            return bool(cmd_res.output)
+
+    def create_empty_database(self):
+        containers = self.get_postgres_containers()
+        for container in containers:
+            cmd_res = container.exec_run('createdb -h 127.0.0.1 -U odoo \'%s\'' % self.odoo_db)
+            return bool(cmd_res.output)
+
+    def get_containers(self, ancestor):
+        return self.client.containers.list(filters={'ancestor': ancestor})
+
+    def get_postgres_containers(self):
+        return self.get_containers('postgres:10')
+
+    def get_odoo_containers(self):
+        return self.get_containers('odoo:%s' % self.odoo_version)
+
+    def stop_odoo_containers(self):
+        containers = self.get_odoo_containers()
+        for container in containers:
+            container.stop()
+
+    def restart_postgres(self):
+        for container in self.get_postgres_containers():
+            container.restart()
+
+    def pull_images(self):
+        try:
+            self.client.images.pull('odoo:%s' % self.odoo_version)
+        except Exception as e:
+            print(e)
+            pass
+
 def docker_exists():
     docker_path = shutil.which("docker")
     return docker_path is not None
@@ -108,11 +160,14 @@ networks:
 
 def start_compose():
     create_network()
-    process = subprocess.run(['docker-compose', 'down'],
-                             stdout=subprocess.PIPE, universal_newlines=True)
     process = subprocess.run(['docker-compose', 'up', '-d'],
                              stdout=subprocess.PIPE, universal_newlines=True)
 
+def stop_compose():
+    process = subprocess.run(['docker-compose', 'down'],
+                             stdout=subprocess.PIPE, universal_newlines=True)
+    if process:
+        print('stop')
 
 def create_network():
     process = subprocess.run(['docker', 'network', 'create', 'odoo_one_default', '--subnet=172.19.0.0/16'],

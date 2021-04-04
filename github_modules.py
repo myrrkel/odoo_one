@@ -199,6 +199,10 @@ class GithubModules:
             process = subprocess.run(['git', 'checkout', version], cwd='./' + path,
                                      stdout=subprocess.PIPE, universal_newlines=True)
 
+    def git_checkout_enterprise(self, version, enterprise_path):
+        process = subprocess.run(['git', 'checkout', version], cwd='./' + enterprise_path,
+                                 stdout=subprocess.PIPE, universal_newlines=True)
+
     def git_pull(self, html_url, github_user_path):
         repo_name = html_url.split('/')[-1].split('.')[0]
         repo_path = '/'.join(github_user_path, repo_name, repo_name)
