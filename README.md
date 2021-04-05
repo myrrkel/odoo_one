@@ -1,3 +1,6 @@
-# odoo_one
+# Odoo One
 
-Odoo on your PC with Docker
+The easiest way to start Odoo on your own PC.
+
+
+
