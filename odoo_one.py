@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 import main_window
 import logging
 import getopt
 import sys
 from PyQt5 import QtWidgets
-
-
 
 root_logger = logging.getLogger()
 root_logger.setLevel("INFO")
@@ -18,6 +15,7 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 root_logger.addHandler(handler)
 logger = logging.getLogger(__name__)
+
 
 def main():
     try:
@@ -51,19 +49,6 @@ def main():
     # tr = translators(app)
     # localeLanguage = QtCore.QLocale.system().name()
     # tr.installTranslators(localeLanguage)
-
-    # Load & Set the DarkStyleSheet
-    if style_name:
-        logger.info("Available system styles: %s", QtWidgets.QStyleFactory.keys())
-        try:
-            q_style = QtWidgets.QStyleFactory.create(style_name)
-            app.setStyle(q_style)
-        except Exception as e:
-            logger.error(e)
-    # else:
-    #     logger.info("Loading DarkStyleSheet...")
-    #     app.setStyleSheet(darkStyle.darkStyle.load_stylesheet_pyqt5())
-
 
 
     logger.info('Showing main window...')

@@ -1,7 +1,7 @@
 import docker
 import shutil
 import subprocess
-
+import io
 
 class DockerManager(object):
 
@@ -158,10 +158,15 @@ networks:
     f.close()
 
 
+def restart_docker():
+    process = subprocess.Popen(['service', 'docker', 'restart'],
+                             stdout=subprocess.PIPE, shell=False)
+
 def start_compose():
+
     create_network()
     process = subprocess.run(['docker-compose', 'up', '-d'],
-                             stdout=subprocess.PIPE, universal_newlines=True)
+                             stdout=subprocess.PIPE, shell=False)
 
 def stop_compose():
     process = subprocess.run(['docker-compose', 'down'],

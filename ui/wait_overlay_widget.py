@@ -11,12 +11,13 @@ from PyQt5.QtWidgets import *
 class WaitOverlay(QWidget):
     timer = 0
 
-    def __init__(self, parent=None, nb_dots=15, circle_size=30, color=None, background_opacity=40, hide_on_click=False):
+    def __init__(self, parent=None, nb_dots=15, dot_size=10, circle_size=30, color=None, opacity=40, hide_on_click=False):
 
         QWidget.__init__(self, parent)
         self.counter = 0
         self.parent = parent
         self.nb_dots = nb_dots
+        self.dot_size = dot_size
         self.circle_size = circle_size
         self.hide_on_click = hide_on_click
 
@@ -28,7 +29,7 @@ class WaitOverlay(QWidget):
         self.colorLight = self.color.lighter(150)
         self.colorLight.setAlpha(200)
 
-        self.background_opacity = background_opacity
+        self.opacity = opacity
 
         palette = QPalette(self.palette())
         palette.setColor(palette.Background, Qt.transparent)
@@ -39,8 +40,9 @@ class WaitOverlay(QWidget):
         painter.begin(self)
         painter.setRenderHint(QPainter.Antialiasing)
 
-        painter.fillRect(event.rect(), QBrush(QColor(255, 255, 255, self.background_opacity)))
+        painter.fillRect(event.rect(), QBrush(QColor(255, 255, 255, self.opacity)))
         painter.setPen(QPen(Qt.NoPen))
+        margin = 20
 
         for i in range(self.nb_dots):
             if self.counter % self.nb_dots == i:
@@ -49,9 +51,9 @@ class WaitOverlay(QWidget):
                 painter.setBrush(QBrush(self.colorLight))
 
             painter.drawEllipse(
-                int((self.width() - 0) / 2 + self.circle_size * math.cos(2 * math.pi * i / self.nb_dots) - 5),
-                int((self.height() - 0) / 2 + self.circle_size * math.sin(2 * math.pi * i / self.nb_dots) - 5),
-                10, 10)
+                int(self.circle_size + 30 + self.circle_size * math.cos(2 * math.pi * i / self.nb_dots) - self.dot_size/2),
+                int(self.circle_size + 23 + self.circle_size * math.sin(2 * math.pi * i / self.nb_dots) - self.dot_size/2),
+                self.dot_size, self.dot_size)
 
         painter.end()
 
