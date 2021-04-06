@@ -5,6 +5,7 @@ from PyQt5.QtGui import QImage, QPalette, QBrush
 from ui import ui_main_window, wait_overlay_widget
 import odoo_starter
 import svg_icon
+import dialog_addons
 import sys
 import time
 
@@ -43,6 +44,7 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
 
     def __init__(self):
         super().__init__()
+        self.widget_dialog_addons = dialog_addons.DialogAddons()
 
     def setupUi(self, main_window):
         super(Ui_MainWindow, self).setupUi(main_window)
@@ -76,8 +78,13 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         self.line_edit_enterprise_path.setText(settings.get_setting('ENTERPRISE_PATH'))
 
         self.push_button_start.setIcon(svg_icon.get_svg_icon("/ui/img/play.svg"))
+        self.push_addons.setIcon(svg_icon.get_svg_icon("/ui/img/store.svg"))
+        self.push_update_all.setIcon(svg_icon.get_svg_icon("/ui/img/refresh.svg"))
+        self.push_tools.setIcon(svg_icon.get_svg_icon("/ui/img/tools.svg"))
+        self.push_logs.setIcon(svg_icon.get_svg_icon("/ui/img/bug.svg"))
 
         self.push_logs.clicked.connect(self.show_logs)
+        self.push_addons.clicked.connect(self.show_dialog_addons)
 
     def retranslateUi(self, main_window):
         super(Ui_MainWindow, self).retranslateUi(main_window)
@@ -95,6 +102,9 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
 
     def show_logs(self):
         self.text_log.show()
+
+    def show_dialog_addons(self):
+        self.widget_dialog_addons.show()
 
 
 class MainWindow(QMainWindow):

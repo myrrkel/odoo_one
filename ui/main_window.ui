@@ -1831,7 +1831,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QPushButton" name="push_modules">
+        <widget class="QPushButton" name="push_addons">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -1957,7 +1957,7 @@
           </palette>
          </property>
          <property name="text">
-          <string>Modules</string>
+          <string>Community Addons</string>
          </property>
         </widget>
        </item>
