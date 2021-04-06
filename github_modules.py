@@ -7,7 +7,7 @@ import re
 
 FILE_NAME = 'github_modules'
 DATA_DIR = './data/'
-
+ALL_VERSIONS = ['8.0', '9.0', '10.0', '11.0', '12.0', '13.0', '14.0']
 
 def strip_comments(code):
     code = str(code)
@@ -42,6 +42,26 @@ def write_json_file(name, version, vals):
 
 def write_repositories(version, repositories):
     write_json_file('repositories', version, repositories)
+
+
+def generate_all_github_modules_file():
+    modules = []
+    for v in ALL_VERSIONS:
+        users = load_github_modules(v)
+        for user in users:
+            for repo in users[user]['repositories']:
+                for module_name in users[user]['repositories'][repo]['modules']:
+                    module = users[user]['repositories'][repo]['modules'][module_name]
+                    module_founds = [m for m in modules if m['name'] == module_name]
+                    if module_founds:
+                        module_founds[0]['versions'].append(v)
+                    else:
+                        module['versions'] = [v]
+                        module.pop('version')
+                        module['repository'] = repo
+                        modules.append(module)
+
+    write_json_file('github_modules', 'all', modules)
 
 
 class GithubModules:
@@ -161,8 +181,7 @@ class GithubModules:
         write_json_file(FILE_NAME, version, oca_modules_dict)
 
     def generate_all_json_file(self):
-        versions = ['8.0', '9.0', '10.0', '11.0', '12.0', '13.0', '14.0']
-        for version in versions:
+        for version in ALL_VERSIONS:
             self.generate_json_file(version)
 
     def clone_github_repositories(self, version):
@@ -212,6 +231,8 @@ class GithubModules:
 
 
 if __name__ == '__main__':
+    # generate_all_github_modules_file()
+
     import sys
     if len(sys.argv) > 1:
         credential = sys.argv[1]
