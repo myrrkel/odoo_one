@@ -1,20 +1,20 @@
 version: '2'
 services:
   web:
-    image: odoo:12.0
+    image: odoo:14.0
     depends_on:
       - db
     ports:
       - "8069:8069"
     expose:
       - 8069
-    command: odoo -d odoo_12
+    command: odoo -d odoo_14_ee
     volumes:
-      - odoo_data12:/var/lib/odoo
+      - odoo_data14:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf
       - odoo-db-socket:/var/run/postgresql # For Odoo 8.0 only
-      - ./github_addons/OCA/web:/opt/github_addons/OCA/web
       - ./extra_addons:/opt/extra_addons
+      - ../enterprise:/opt/enterprise
   db:
     image: postgres:10
     environment:
@@ -29,7 +29,7 @@ services:
       - odoo-db-socket:/var/run/postgresql # For Odoo 8.0 only
       
 volumes:
-  odoo_data12:
+  odoo_data14:
   postgresql_data:
   odoo-db-socket:  # For Odoo 8 only
 networks:

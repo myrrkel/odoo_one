@@ -1108,7 +1108,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="label_version">
            <property name="palette">
             <palette>
              <active>

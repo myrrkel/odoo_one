@@ -50,13 +50,46 @@ def main():
     # localeLanguage = QtCore.QLocale.system().name()
     # tr.installTranslators(localeLanguage)
 
-
-    logger.info('Showing main window...')
     ui_main = main_window.MainWindow()
     ui_main.setupUi()
     ui_main.show()
 
-    logger.info("Go!")
+    stylesheet = """
+    
+        MainWindow,DialogAddons {
+            background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0944206 rgba(153, 102, 139, 255), stop:0.896996 rgba(83, 63, 79, 255));
+        }
+        QPushButton,QComboBox {
+            background-color: rgba(178, 146, 169, 255);
+            color: rgba(135, 90, 123, 255);
+            height: 20;
+        }
+
+        QHeaderView {
+            background-color: rgba(178, 146, 169, 255);
+            color: rgba(83, 63, 79, 255);
+        }
+        
+        
+        QTableWidget {
+            background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0944206 rgba(153, 102, 139, 255), stop:0.896996 rgba(83, 63, 79, 255));
+        }
+        
+        QLabel#label_version {
+            color: white;
+        }
+        
+        
+        QLineEdit {
+            background-color: rgba(178, 146, 169, 255);
+            color: rgba(98, 73, 91, 255);
+            height: 20;
+        }
+
+        
+    """
+    app.setStyleSheet(stylesheet)
+
     app.exec()
 
 
