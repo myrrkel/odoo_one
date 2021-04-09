@@ -2093,6 +2093,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="push_openugrade">
+         <property name="text">
+          <string>OpenUpgrade</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="push_logs">
          <property name="minimumSize">
           <size>

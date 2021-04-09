@@ -82,6 +82,7 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         self.push_update_all.setIcon(svg_icon.get_svg_icon("/ui/img/refresh.svg"))
         self.push_tools.setIcon(svg_icon.get_svg_icon("/ui/img/tools.svg"))
         self.push_logs.setIcon(svg_icon.get_svg_icon("/ui/img/bug.svg"))
+        self.push_openugrade.setIcon(svg_icon.get_svg_icon("/ui/img/upgrade.svg"))
 
         self.push_logs.clicked.connect(self.show_logs)
         self.push_addons.clicked.connect(self.show_dialog_addons)
