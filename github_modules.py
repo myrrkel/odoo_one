@@ -59,6 +59,7 @@ def generate_all_github_modules_file():
                         module['versions'] = [v]
                         module.pop('version')
                         module['repository'] = repo
+                        module['user'] = user
                         modules.append(module)
 
     write_json_file('github_modules', 'all', modules)
@@ -231,12 +232,12 @@ class GithubModules:
 
 
 if __name__ == '__main__':
-    # generate_all_github_modules_file()
+    generate_all_github_modules_file()
 
-    import sys
-    if len(sys.argv) > 1:
-        credential = sys.argv[1]
-        g = GithubModules(credential)
-        versions = ['8.0', '9.0']
-        for v in versions:
-            g.generate_json_file(v)
+    # import sys
+    # if len(sys.argv) > 1:
+    #     credential = sys.argv[1]
+    #     g = GithubModules(credential)
+    #     versions = ['8.0', '9.0']
+    #     for v in versions:
+    #         g.generate_json_file(v)
