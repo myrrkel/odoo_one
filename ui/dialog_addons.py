@@ -74,4 +74,10 @@ class DialogAddons(QtWidgets.QDialog):
             ui_title_addon_widget.label_addon_name.setText(addon.name)
             self.ui.table_addons.setCellWidget(i, 0, title_addon_widget)
 
+
+
+            summary_item = QtWidgets.QTableWidgetItem(addon.author)
+            summary_item.setFlags(summary_item.flags() ^ QtCore.Qt.ItemIsEditable)
+            self.ui.table_addons.setItem(i, 2, summary_item)
+
         self.ui.table_addons.resizeColumnsToContents()
