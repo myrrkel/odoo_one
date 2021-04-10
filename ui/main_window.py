@@ -1,13 +1,10 @@
 
 import settings
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QImage, QPalette, QBrush
-from ui import ui_main_window, wait_overlay_widget
+from ui.designer import wait_overlay_widget, ui_main_window
 import odoo_starter
 import svg_icon
-import dialog_addons
-import sys
-import time
+from ui import dialog_addons
 
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtCore import QThread

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import main_window
+from ui import main_window
 import logging
 import getopt
 import sys

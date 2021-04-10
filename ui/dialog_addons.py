@@ -1,18 +1,8 @@
-
-import settings
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QImage, QPalette, QBrush
-from ui import ui_dialog_addons
-from ui import ui_addon_title_table_item
-import odoo_starter
+from PyQt5 import QtCore, QtWidgets
+from ui.designer import ui_addon_title_table_item, ui_dialog_addons
 import svg_icon
-import sys
-import time
 import addons_lib
 
-from PyQt5.QtCore import pyqtSignal
-from PyQt5.QtCore import QThread
-from PyQt5.QtWidgets import QMainWindow
 import logging
 
 logger = logging.getLogger(__name__)
