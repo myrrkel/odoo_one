@@ -238,6 +238,6 @@ if __name__ == '__main__':
     # if len(sys.argv) > 1:
     #     credential = sys.argv[1]
     #     g = GithubModules(credential)
-    #     versions = ['8.0', '9.0']
+    #     versions = ['14.0', '13.0', '12.0']
     #     for v in versions:
     #         g.generate_json_file(v)
