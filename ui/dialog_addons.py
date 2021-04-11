@@ -38,6 +38,8 @@ class DialogAddons(QtWidgets.QDialog):
     def __init__(self):
         super().__init__()
         self.addons = []
+        self.categories = []
+        self.users = []
         self.current_version_addons = []
         self.ui = ui_dialog_addons.Ui_DialogAddons()
         self.ui.setupUi(self)
@@ -47,13 +49,15 @@ class DialogAddons(QtWidgets.QDialog):
         if not self.addons:
             lib_addons = addons_lib.AddonsLib()
             self.addons = lib_addons.addons
+            self.categories = lib_addons.categories
+            self.users = lib_addons.users
             self.show_addons_count()
             self.current_version_changed()
+            self.init_combo_categories()
+            self.init_combo_users()
         super(DialogAddons, self).show()
 
-
     def setupUi(self):
-
         self.ui.push_button_search.setIcon(svg_icon.get_svg_icon("/ui/img/search.svg"))
         self.ui.push_button_search.setText('')
         self.ui.push_button_search.setMaximumWidth(self.ui.push_button_search.height())
@@ -68,6 +72,14 @@ class DialogAddons(QtWidgets.QDialog):
 
     def retranslateUi(self, dialog):
         super(DialogAddons, self).retranslateUi(dialog)
+
+    def init_combo_categories(self):
+        for category in self.categories:
+            self.ui.combo_category.addItem(category, category)
+
+    def init_combo_users(self):
+        for user in self.users:
+            self.ui.combo_user.addItem(user, user)
 
     def init_combo_addons_version(self):
         self.ui.combo_addons_version.addItem('All', 'all')
@@ -103,6 +115,14 @@ class DialogAddons(QtWidgets.QDialog):
         if search_string:
             words = search_string.lower().split(' ')
             addons = [a for a in addons if a.search_words(words)]
+
+        category = self.ui.combo_category.currentData()
+        if category:
+            addons = [a for a in addons if category in a.categories]
+
+        user = self.ui.combo_user.currentData()
+        if user:
+            addons = [a for a in addons if user == a.user]
 
         self.show_results_count(len(addons))
         self.ui.table_addons.setRowCount(0)
