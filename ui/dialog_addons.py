@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QSizePolicy
 from ui.designer import ui_addon_title_table_item, ui_dialog_addons
+from ui import versions_widget
 import svg_icon
 import addons_lib
 
@@ -10,27 +11,6 @@ import logging
 logger = logging.getLogger(__name__)
 _translate = QtCore.QCoreApplication.translate
 LAST_VERSION = 14
-
-
-# class StartOdooThread(QThread):
-#
-#     done = pyqtSignal(int, name='done')
-#     stdout_signal = pyqtSignal(str, name='stdout')
-#
-#     def __init__(self, parent=None, version=14, enterprise_path=""):
-#         super().__init__(parent)
-#         self.version = version
-#         self.enterprise_path = enterprise_path
-#
-#     def run(self):
-#         try:
-#             starter = odoo_starter.OdooStarter(self.version, self.enterprise_path, self.stdout_signal)
-#             starter.init('PyCharm')
-#         except Exception as e:
-#             logger.error(e)
-#             raise e
-#         self.done.emit(1)
-#         self.quit()
 
 
 class DialogAddons(QtWidgets.QDialog):
@@ -59,6 +39,9 @@ class DialogAddons(QtWidgets.QDialog):
 
     def setupUi(self):
         self.ui.push_button_search.setIcon(svg_icon.get_svg_icon("/ui/img/search.svg"))
+        self.ui.label_icon.setPixmap(svg_icon.get_scaled_svg("/ui/img/store.svg",
+                                                             self.ui.label_icon.size(),
+                                                             color=svg_icon.purple_dark))
         self.ui.push_button_search.setText('')
         self.ui.push_button_search.setMaximumWidth(self.ui.push_button_search.height())
         self.setWindowFlags(Qt.Window)
@@ -129,14 +112,14 @@ class DialogAddons(QtWidgets.QDialog):
 
         for i, addon in enumerate(addons):
             self.ui.table_addons.insertRow(i)
-            self.ui.table_addons.setRowHeight(i, 30)
+            self.ui.table_addons.setRowHeight(i, 40)
             self.ui.table_addons.setColumnWidth(0, 300)
             self.ui.table_addons.setColumnWidth(1, 400)
 
             header = self.ui.table_addons.horizontalHeader()
             header.setSectionResizeMode(0, QtWidgets.QHeaderView.Interactive)
             header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
-            header.setSectionResizeMode(2, QtWidgets.QHeaderView.Fixed)
+            header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
             header.setSectionResizeMode(3, QtWidgets.QHeaderView.Fixed)
 
             title_addon_widget = QtWidgets.QWidget()
@@ -147,6 +130,7 @@ class DialogAddons(QtWidgets.QDialog):
             self.ui.table_addons.setCellWidget(i, 0, title_addon_widget)
 
             summary_widget = QtWidgets.QLabel()
+            summary_widget.setObjectName("AddonSummary")
             summary_widget.setText(addon.summary)
             size_policy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             size_policy.setHorizontalStretch(100)
@@ -157,4 +141,6 @@ class DialogAddons(QtWidgets.QDialog):
             summary_widget.setWordWrap(True)
             self.ui.table_addons.setCellWidget(i, 1, summary_widget)
 
+            versions = versions_widget.VersionsWidget(versions=addon.versions)
+            self.ui.table_addons.setCellWidget(i, 2, versions)
         self.ui.table_addons.show()

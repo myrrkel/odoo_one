@@ -24,3 +24,9 @@ def get_colored_svg(file_name, color_to_replace='black', color=purple):
     return svg
 
 
+def get_scaled_svg(file_name, size, color_to_replace='black', color=purple):
+    svg = get_colored_svg(file_name, color_to_replace, color)
+    return svg.scaled(size,
+                      Qt.KeepAspectRatio,
+                      Qt.SmoothTransformation)
+

@@ -70,13 +70,35 @@ def main():
             color: rgba(83, 63, 79, 255);
         }
         
-        
         QTableWidget {
-            background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0944206 rgba(153, 102, 139, 255), stop:0.896996 rgba(83, 63, 79, 255));
+            background-color: rgb(132, 92, 122);
+            gridline-color: rgb(83, 63, 79);
         }
-        
+                        
         QLabel#label_version {
             color: white;
+        }
+        
+        QLabel#label_addon_name {
+            color: rgba(0, 0, 0, 160);
+            margin: 2px;
+        }        
+        QLabel#label_addon_display_name {
+            color: rgba(255, 255, 255, 160);
+            margin: 2px;
+            font-weight: bold;
+        }        
+        QLabel#AddonSummary {
+            color: rgba(0, 0, 0, 160);
+            margin: 2px;
+        }
+        
+        VersionLabel {
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgba(83, 63, 79, 255);
+            border-radius: 8px;
+            background-color: rgba(153, 102, 139, 255);
         }
         
         
