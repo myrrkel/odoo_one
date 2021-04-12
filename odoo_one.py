@@ -6,6 +6,7 @@ import logging
 import getopt
 import sys
 from PyQt5 import QtWidgets
+from PyQt5.QtCore import QFile
 
 root_logger = logging.getLogger()
 root_logger.setLevel("INFO")
@@ -19,22 +20,16 @@ logger = logging.getLogger(__name__)
 
 def main():
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hdp:s:", ["help", "debug", "db-path=", "style="])
+        opts, args = getopt.getopt(sys.argv[1:], "hd", ["help", "debug"])
     except getopt.GetoptError as e:
         logger.error(e)
         print_help()
         sys.exit(2)
 
-    db_path = ''
-    style_name = ''
     for opt, arg in opts:
         if opt in ("-d", "--debug"):
             root_logger.setLevel("DEBUG")
             logger.debug("Debug mode ON")
-        elif opt in ("-p", "--db-path"):
-            db_path = arg
-        elif opt in ("-s", "--style"):
-            style_name = arg
         elif opt in ("-h", "--help"):
             print_help()
             sys.exit()
@@ -54,68 +49,12 @@ def main():
     ui_main.setupUi()
     ui_main.show()
 
-    stylesheet = """
-    
-        MainWindow,DialogAddons {
-            background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0944206 rgba(153, 102, 139, 255), stop:0.896996 rgba(83, 63, 79, 255));
-        }
-        QPushButton,QComboBox {
-            background-color: rgba(178, 146, 169, 255);
-            color: rgba(135, 90, 123, 255);
-            height: 20;
-        }
-
-        QHeaderView {
-            background-color: rgba(178, 146, 169, 255);
-            color: rgba(83, 63, 79, 255);
-        }
-        
-        QTableWidget {
-            background-color: rgb(132, 92, 122);
-            gridline-color: rgb(83, 63, 79);
-        }
-                        
-        QLabel#label_version {
-            color: white;
-        }
-        
-        QLabel#label_addon_name {
-            color: rgba(0, 0, 0, 160);
-            margin: 2px;
-        }        
-        QLabel#label_addon_display_name {
-            color: rgba(255, 255, 255, 160);
-            margin: 2px;
-            font-weight: bold;
-        }        
-        QLabel#AddonSummary {
-            color: rgba(0, 0, 0, 160);
-            margin: 2px;
-        }
-        
-        VersionLabel {
-            border-width: 1px;
-            border-style: solid;
-            border-color: rgba(83, 63, 79, 255);
-            border-radius: 8px;
-            background-color: rgba(153, 102, 139, 255);
-        }
-        
-        
-        QLineEdit {
-            background-color: rgba(178, 146, 169, 255);
-            color: rgba(98, 73, 91, 255);
-            height: 20;
-        }
-
-        
-    """
+    stylesheet_file = QFile("ui/stylesheet.qss")
+    stylesheet_file.open(QFile.ReadOnly)
+    stylesheet = str(stylesheet_file.readAll(), 'utf-8')
     app.setStyleSheet(stylesheet)
 
     app.exec()
-
-
-
     sys.exit()
 
 
@@ -128,8 +67,6 @@ def print_help():
 
     Parameters:
         -d, --debug:       Enable debug mode
-        -s, --style:       Set Qt Style (Windows, Fusion...)
-        -p, --db-path:     Set the database file path (~/.local/share/pyzik/data/pyzik.db)
         -h, --help:        Display help
         
     '''

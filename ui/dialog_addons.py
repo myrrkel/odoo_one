@@ -97,7 +97,7 @@ class DialogAddons(QtWidgets.QDialog):
 
         addons = self.current_version_addons
         if search_string:
-            words = search_string.lower().split(' ')
+            words = search_string.lower().replace('_', ' ').split(' ')
             addons = [a for a in addons if a.search_words(words)]
 
         category = self.ui.combo_category.currentData()
