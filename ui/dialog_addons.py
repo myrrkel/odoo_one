@@ -31,10 +31,11 @@ class DialogAddons(QtWidgets.QDialog):
             self.addons = lib_addons.addons
             self.categories = lib_addons.categories
             self.users = lib_addons.users
-            self.show_addons_count()
             self.current_version_changed()
-            self.init_combo_categories()
-            self.init_combo_users()
+
+        self.show_addons_count()
+        self.init_combo_categories()
+        self.init_combo_users()
         super(DialogAddons, self).show()
 
     def setupUi(self):
