@@ -5,6 +5,7 @@ from ui.designer import ui_addon_title_table_item, ui_dialog_addons
 from ui import versions_widget
 import svg_icon
 import addons_lib
+import github_modules
 
 import logging
 
@@ -14,6 +15,8 @@ LAST_VERSION = 14
 
 
 class DialogAddons(QtWidgets.QDialog):
+    lib_addons = addons_lib.AddonsLib()
+    gh_modules = github_modules.GithubModules()
 
     def __init__(self):
         super().__init__()
@@ -25,12 +28,12 @@ class DialogAddons(QtWidgets.QDialog):
         self.ui.setupUi(self)
         self.setupUi()
 
+
     def show(self):
         if not self.addons:
-            lib_addons = addons_lib.AddonsLib()
-            self.addons = lib_addons.addons
-            self.categories = lib_addons.categories
-            self.users = lib_addons.users
+            self.addons = self.lib_addons.addons
+            self.categories = self.lib_addons.categories
+            self.users = self.lib_addons.users
             self.current_version_changed()
 
         self.show_addons_count()
@@ -82,7 +85,9 @@ class DialogAddons(QtWidgets.QDialog):
         self.show_addons(self.ui.line_edit_search.text())
 
     def current_version_changed(self):
-        self.compute_current_version_addons(self.ui.combo_addons_version.currentData())
+        version = self.ui.combo_addons_version.currentData()
+        self.gh_modules.set_version(version)
+        self.compute_current_version_addons(version)
         self.search()
 
     def compute_current_version_addons(self, version_filter='all'):
@@ -144,4 +149,14 @@ class DialogAddons(QtWidgets.QDialog):
 
             versions = versions_widget.VersionsWidget(versions=addon.versions)
             self.ui.table_addons.setCellWidget(i, 2, versions)
+
+            install_button = QtWidgets.QPushButton('Install')
+            install_button.addon = addon
+            install_button.clicked.connect(self.install_addon)
+            self.ui.table_addons.setCellWidget(i, 3, install_button)
         self.ui.table_addons.show()
+
+
+    def install_addon(self):
+        addon = self.ui.table_addons.focusWidget().addon
+        self.gh_modules.add_addon_db_settings(addon.name, addon.user, addon.repository)

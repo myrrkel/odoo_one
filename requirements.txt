@@ -2,3 +2,4 @@ docker
 OdooRPC
 PyGithub
 PyQt5
+appdirs

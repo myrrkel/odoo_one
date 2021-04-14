@@ -9,6 +9,8 @@ from github_modules import GithubModules
 
 
 class OdooStarter(object):
+    gh_modules = GithubModules()
+
     def __init__(self, version=14, enterprise_path="", stdout_signal=None):
         self.version = version
         self.enterprise_path = enterprise_path
@@ -43,13 +45,12 @@ class OdooStarter(object):
         if pull:
             self.docker_manager.pull_images()
 
-        gh_modules = GithubModules()
-        gh_modules.load(self.odoo_version)
+        self.gh_modules.load(self.odoo_version)
         if self.enterprise_path:
-            gh_modules.git_checkout_enterprise(self.odoo_version, self.enterprise_path)
+            self.gh_modules.git_checkout_enterprise(self.odoo_version, self.enterprise_path)
 
         # addons_path_list = []
-        addons_path_list = gh_modules.addons_path_list
+        addons_path_list = self.gh_modules.addons_path_list
         addons_path_list.append('extra_addons')
         dt.stop_compose()
         oconf.create_odoo_conf_file(self.version, addons_path_list, enterprise=self.enterprise_path != '')
@@ -72,6 +73,7 @@ class OdooStarter(object):
         orpc = odoo_rpc.OdooRpc(ip, "8069", self.odoo_db, "admin", "admin", self.version)
         admin = orpc.read('res.users', 1)
         orpc.update_addons_list()
+        orpc.install_addon(self.gh_modules.addons[0])
         self.open_odoo_firefox(url)
 
 

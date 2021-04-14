@@ -16,6 +16,7 @@ class OdooRpc:
         self.password = password
         self.uid = False
         self.url = "http://%s:%s/jsonrpc" % (self.host, self.port)
+        self.addons = []
 
         self.wait_for_odoo()
 
@@ -46,7 +47,7 @@ class OdooRpc:
     def call_odoo(self, model, function, args=None):
         if args is None:
             return self.call(self.url, "object", "execute", self.db, self.uid, self.password, model, function)
-        return self.call(self.url, "object", "execute", self.db, self.uid, self.password, model, function, args)
+        return self.call(self.url, "object", "execute", self.db, self.uid, self.password, model, function, *args)
 
     def read(self, model, rec_id):
         return self.call_odoo(model, 'read', [rec_id])
@@ -60,6 +61,20 @@ class OdooRpc:
         else:
             self.call_odoo('ir.module.module', 'update_list', [])
 
+        addons_states = self.call_odoo('ir.module.module', 'search_read', [[('name', '!=', False)], ['name', 'state'], 0, 0, "name"])
+        self.addons = {addon['name']: {'state': addon['state'], 'id': addon['id']} for addon in addons_states}
+
+    def install_addon(self, addon_name):
+        if addon_name:
+            addon = self.addons[addon_name]
+            if addon.get('state', False) == 'installed':
+                return
+            self.call_odoo('ir.module.module', 'button_immediate_install', [addon.get('id')])
+
+    def upgrade_addon(self, addon_name):
+        if addon_name:
+            addon = self.addons[addon_name]
+            self.call_odoo('ir.module.module', 'button_immediate_upgrade', [addon.get('id')])
 
     def wait_for_odoo(self):
         error = ''

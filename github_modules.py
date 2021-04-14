@@ -1,4 +1,5 @@
 from github import Github, GithubException, RateLimitExceededException
+import settings
 import json
 import time
 import subprocess
@@ -68,10 +69,12 @@ def generate_all_github_modules_file():
 class GithubModules:
     version = ""
     odoo_version = ""
-    github_modules = {}
+    github_modules = []
     repositories = {}
+    addons = []
     addons_path_list = []
     github_users = ['OCA', 'myrrkel']
+    db_settings = {'modules': []}
 
     def __init__(self, access_token=""):
 
@@ -79,12 +82,44 @@ class GithubModules:
         # For a higher rate limit, provide an access_token:
         # https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
+    def set_version(self, odoo_version):
+        self.version = str(odoo_version).replace('.0', '')
+        self.odoo_version = '%s.0' % self.version
+
     def load(self, odoo_version):
-        self.version = odoo_version.replace('.0', '')
-        self.odoo_version = odoo_version
+        self.addons = []
+        self.set_version(odoo_version)
         self.github_modules = load_github_modules(self.version)
-        self.repositories = load_repositories(self.version)
+        self.load_database_settings()
+        self._compute_addons_repositories()
+
         self.clone_github_repositories(self.odoo_version)
+
+    def _compute_addons_repositories(self):
+        for module in self.db_settings['modules']:
+            self.addons.append(module['name'])
+            repository = self.find_repository(module['repository'], module['user'])
+            if not repository:
+                self.repositories[module['repository']] = {'name': module['repository'], 'user': module['user']}
+
+    def find_repository(self, repository, user):
+        if repository in self.repositories:
+            if self.repositories[repository].get('user') == user:
+                return self.repositories[repository]
+        return False
+
+    def add_addon_db_settings(self, addon, user, repository, db_name=''):
+        self.db_settings['modules'].append({'name': addon, 'user': user, 'repository': repository})
+        self.save_database_settings(db_name)
+
+    def load_database_settings(self, db_name=''):
+        self.db_settings = settings.get_setting('github modules %s' % (db_name or 'odoo_%s' % self.version))
+        if not self.db_settings:
+            self.db_settings = {'modules': [{'name': 'web_environment_ribbon', 'user': 'OCA', 'repository': 'web'}]}
+
+    def save_database_settings(self, db_name=''):
+        setting_name = 'github modules %s' % (db_name or 'odoo_%s' % self.version)
+        self.db_settings = settings.save_setting(setting_name, self.db_settings)
 
     def check_github_rate_limit(self):
         rate_limit = self.github.get_rate_limit()
@@ -188,17 +223,19 @@ class GithubModules:
     def clone_github_repositories(self, version):
         if not os.path.isdir('github_addons'):
             os.mkdir('github_addons')
-        for repo in self.repositories:
-            github_user_path = 'github_addons/%s' % repo['github_user']
+        for repo_name in self.repositories:
+            repo = self.repositories[repo_name]
+            github_user_path = 'github_addons/%s' % repo['user']
             if not os.path.isdir(github_user_path):
                 os.mkdir(github_user_path)
             if repo.get('url', False):
                 url = repo['url']
             else:
                 try:
-                    repo_dict = self.github_modules[repo['github_user']]['repositories'][repo['name']]
+                    repo_dict = self.github_modules[repo['user']]['repositories'][repo['name']]
                     url = repo_dict['html_url']
                 except Exception as e:
+                    print(e)
                     continue
 
             repo_name = url.split('/')[-1].split('.')[0]
