@@ -5457,7 +5457,8 @@
             "8.0",
             "9.0",
             "10.0",
-            "12.0"
+            "12.0",
+            "14.0"
         ]
     },
     {
@@ -9166,7 +9167,8 @@
         "user": "OCA",
         "versions": [
             "8.0",
-            "12.0"
+            "12.0",
+            "14.0"
         ]
     },
     {
@@ -16378,7 +16380,8 @@
         "user": "OCA",
         "versions": [
             "8.0",
-            "10.0"
+            "10.0",
+            "14.0"
         ]
     },
     {
@@ -17408,7 +17411,8 @@
             "10.0",
             "11.0",
             "12.0",
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -18792,7 +18796,8 @@
             "10.0",
             "11.0",
             "12.0",
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -30466,7 +30471,8 @@
             "10.0",
             "11.0",
             "12.0",
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -31054,7 +31060,8 @@
             "10.0",
             "11.0",
             "12.0",
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -34450,7 +34457,8 @@
         "summary": "\n        This module allows to fill in a delivery note that will be displayed\n        on delivery report",
         "user": "OCA",
         "versions": [
-            "10.0"
+            "10.0",
+            "14.0"
         ]
     },
     {
@@ -36704,7 +36712,8 @@
         "user": "OCA",
         "versions": [
             "11.0",
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -41755,7 +41764,8 @@
         "user": "OCA",
         "versions": [
             "12.0",
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -41768,7 +41778,8 @@
         "user": "OCA",
         "versions": [
             "12.0",
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -42710,7 +42721,8 @@
         "user": "OCA",
         "versions": [
             "12.0",
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -44966,7 +44978,8 @@
         "summary": "Comunicazione liquidazione IVA ed esportazione file xmlconforme alle specifiche dell'Agenzia delle Entrate",
         "user": "OCA",
         "versions": [
-            "12.0"
+            "12.0",
+            "14.0"
         ]
     },
     {
@@ -50500,7 +50513,8 @@
         "summary": "Implements Coverage Days.",
         "user": "OCA",
         "versions": [
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -50512,7 +50526,8 @@
         "summary": "Run DDMRP Buffer Calculation as jobs",
         "user": "OCA",
         "versions": [
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -50524,7 +50539,8 @@
         "summary": "DDMRP integration with packaging",
         "user": "OCA",
         "versions": [
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -50560,7 +50576,8 @@
         "summary": "Ensures that the limits of storage are never surpassed",
         "user": "OCA",
         "versions": [
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -50572,7 +50589,8 @@
         "summary": "Allows to force a route to be used when procuring from Stock Buffers",
         "user": "OCA",
         "versions": [
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -51568,7 +51586,8 @@
         "summary": "Remove partner timezone default value and display on form",
         "user": "OCA",
         "versions": [
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -52209,7 +52228,8 @@
         "summary": "Base model to handle time windows",
         "user": "OCA",
         "versions": [
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -52866,7 +52886,8 @@
         "summary": "Use dimensions on packages",
         "user": "OCA",
         "versions": [
-            "13.0"
+            "13.0",
+            "14.0"
         ]
     },
     {
@@ -53569,6 +53590,18 @@
         ]
     },
     {
+        "author": "Akretion, Odoo Community Association (OCA)",
+        "category": "French Localization",
+        "display_name": "Rapport RUP",
+        "name": "l10n_fr_hr_rup",
+        "repository": "l10n-france",
+        "summary": " French fields and report for Registre Unique du Personnel ",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
         "author": "Openforce di Camilli Alessandro, Odoo Community Association (OCA)",
         "category": "Localization/Italy",
         "display_name": "ITA - Codici carica",
@@ -53692,9 +53725,21 @@
         "author": "Open Source Integrators, Odoo Community Association (OCA)",
         "category": "Manufacturing",
         "display_name": "Manufacturing Materials Analytic Costs",
-        "name": "mrp_analytic_cost_material",
+        "name": "mrp_analytic_cost",
         "repository": "manufacture",
-        "summary": "Track raw material costs as Analytic Items during the     manufacturing process",
+        "summary": "Track manufacturing costs in real time, using Analytic Items",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
+        "author": "Akretion,Odoo Community Association (OCA)",
+        "category": "Manufacturing",
+        "display_name": "MRP Restrict Lot",
+        "name": "mrp_restrict_lot",
+        "repository": "manufacture",
+        "summary": "",
         "user": "OCA",
         "versions": [
             "14.0"
@@ -53731,6 +53776,30 @@
         "name": "account_financial_report_operating_unit",
         "repository": "operating-unit",
         "summary": "Introduces Operating Unit (OU) in financial reports",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
+        "author": "ForgeFlow S.L., Odoo Community Association (OCA)",
+        "category": "Invoicing",
+        "display_name": "Contract Operating Unit",
+        "name": "contract_operating_unit",
+        "repository": "operating-unit",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
+        "author": "Ecosoft,Odoo Community Association (OCA)",
+        "category": "Generic",
+        "display_name": "Access all Operating Units",
+        "name": "operating_unit_access_all",
+        "repository": "operating-unit",
+        "summary": "",
         "user": "OCA",
         "versions": [
             "14.0"
@@ -53857,6 +53926,18 @@
         ]
     },
     {
+        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+        "category": "",
+        "display_name": "Product Category Product Link",
+        "name": "product_category_product_link",
+        "repository": "product-attribute",
+        "summary": "\n        Allows to get products from a category",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
         "author": "Camptocamp, Odoo Community Association (OCA)",
         "category": "Others",
         "display_name": "Product seasonality",
@@ -53894,6 +53975,18 @@
     },
     {
         "author": "Pledra, Odoo Community Association (OCA)",
+        "category": "Generic Modules/Purchase",
+        "display_name": "Product Configurator Purchase",
+        "name": "product_configurator_purchase",
+        "repository": "product-configurator",
+        "summary": "Product configuration interface for Purchase",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
+        "author": "Pledra, Odoo Community Association (OCA)",
         "category": "Generic Modules/Sale",
         "display_name": "Product Configurator Sale",
         "name": "product_configurator_sale",
@@ -53918,11 +54011,35 @@
     },
     {
         "author": "Pledra, Odoo Community Association (OCA)",
+        "category": "Generic Modules/Stock",
+        "display_name": "Product Configurator for Stock",
+        "name": "product_configurator_stock",
+        "repository": "product-configurator",
+        "summary": "Product configuration interface module for Stock",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
+        "author": "Pledra, Odoo Community Association (OCA)",
         "category": "website",
         "display_name": "Website Product Configurator",
         "name": "website_product_configurator",
         "repository": "product-configurator",
         "summary": "Configure products in e-shop",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
+        "author": "Pledra, Odoo Community Association (OCA)",
+        "category": "Website",
+        "display_name": "Website Configurator Manufacturing",
+        "name": "website_product_configurator_mrp",
+        "repository": "product-configurator",
+        "summary": "Website integration of MRP",
         "user": "OCA",
         "versions": [
             "14.0"
@@ -54161,6 +54278,18 @@
         "category": "Warehouse",
         "display_name": "Stock Free Quantity",
         "name": "stock_free_quantity",
+        "repository": "stock-logistics-warehouse",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "14.0"
+        ]
+    },
+    {
+        "author": "Ecosoft,Odoo Community Association (OCA)",
+        "category": "Usability",
+        "display_name": "Stock Picking Cancel Confirm",
+        "name": "stock_picking_cancel_confirm",
         "repository": "stock-logistics-warehouse",
         "summary": "",
         "user": "OCA",
