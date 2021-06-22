@@ -27,6 +27,9 @@ class DialogAddons(QtWidgets.QDialog):
         self.ui = ui_dialog_addons.Ui_DialogAddons()
         self.ui.setupUi(self)
         self.setupUi()
+        self.installed_modules = []
+        self.install_icon = svg_icon.get_svg_icon("/ui/img/install.svg")
+        self.trash_icon = svg_icon.get_svg_icon("/ui/img/trash.svg")
 
 
     def show(self):
@@ -61,10 +64,12 @@ class DialogAddons(QtWidgets.QDialog):
         super(DialogAddons, self).retranslateUi(dialog)
 
     def init_combo_categories(self):
+        self.ui.combo_category.clear()
         for category in self.categories:
             self.ui.combo_category.addItem(category, category)
 
     def init_combo_users(self):
+        self.ui.combo_user.clear()
         for user in self.users:
             self.ui.combo_user.addItem(user, user)
 
@@ -87,6 +92,12 @@ class DialogAddons(QtWidgets.QDialog):
     def current_version_changed(self):
         version = self.ui.combo_addons_version.currentData()
         self.gh_modules.set_version(version)
+        if version != 'all':
+            self.gh_modules.load(version)
+            modules = self.gh_modules.db_settings['modules']
+            self.installed_modules = [m['name'] for m in modules]
+        else:
+            self.installed_modules = []
         self.compute_current_version_addons(version)
         self.search()
 
@@ -150,13 +161,32 @@ class DialogAddons(QtWidgets.QDialog):
             versions = versions_widget.VersionsWidget(versions=addon.versions)
             self.ui.table_addons.setCellWidget(i, 2, versions)
 
-            install_button = QtWidgets.QPushButton('Install')
-            install_button.addon = addon
-            install_button.clicked.connect(self.install_addon)
-            self.ui.table_addons.setCellWidget(i, 3, install_button)
+            if addon.name in self.installed_modules:
+                install_button = QtWidgets.QPushButton('Remove')
+                install_button.setIcon(self.trash_icon)
+                install_button.addon = addon
+                install_button.clicked.connect(self.remove_addon)
+                self.ui.table_addons.setCellWidget(i, 3, install_button)
+            else:
+                install_button = QtWidgets.QPushButton('Install')
+                install_button.setIcon(self.install_icon)
+                install_button.addon = addon
+                install_button.clicked.connect(self.install_addon)
+                self.ui.table_addons.setCellWidget(i, 3, install_button)
         self.ui.table_addons.show()
 
-
     def install_addon(self):
-        addon = self.ui.table_addons.focusWidget().addon
+        install_button = self.ui.table_addons.focusWidget()
+        addon = install_button.addon
         self.gh_modules.add_addon_db_settings(addon.name, addon.user, addon.repository)
+        install_button.setText('Remove')
+        install_button.setIcon(self.trash_icon)
+        install_button.clicked.connect(self.remove_addon)
+
+    def remove_addon(self):
+        install_button = self.ui.table_addons.focusWidget()
+        addon = install_button.addon
+        self.gh_modules.remove_addon_db_settings(addon.name)
+        install_button.setText('Install')
+        install_button.setIcon(self.install_icon)
+        install_button.clicked.connect(self.install_addon)

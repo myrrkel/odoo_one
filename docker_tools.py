@@ -17,12 +17,24 @@ class DockerManager(object):
             ip = container.attrs['NetworkSettings']['Networks']['odoo_one_default']['Gateway']
             return ip
 
+    def get_postgres_ip(self):
+        containers = self.get_postgres_containers()
+        for container in containers:
+            ip = container.attrs['NetworkSettings']['Networks']['odoo_one_default']['Gateway']
+            return ip
+
     def odoo_database_exists(self):
         containers = self.get_postgres_containers()
         for container in containers:
             cmd = 'psql -U odoo -tAc "SELECT 1 FROM pg_database WHERE datname=\'%s\'" template1'
             cmd_res = container.exec_run(cmd % self.odoo_db)
             return bool(cmd_res.output)
+
+    def sql_execute(self, query):
+        containers = self.get_postgres_containers()
+        for container in containers:
+            cmd_res = container.exec_run(query)
+            return cmd_res.output
 
     def create_empty_database(self):
         containers = self.get_postgres_containers()

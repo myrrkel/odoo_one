@@ -16,6 +16,11 @@
             height: 20;
         }
 
+        QMenu {
+            background-color: rgba(178, 146, 169, 255);
+            color: rgba(83, 63, 79, 255);
+        }
+
         QHeaderView {
             background-color: rgba(178, 146, 169, 255);
             color: rgba(83, 63, 79, 255);

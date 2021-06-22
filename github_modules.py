@@ -112,6 +112,13 @@ class GithubModules:
         self.db_settings['modules'].append({'name': addon, 'user': user, 'repository': repository})
         self.save_database_settings(db_name)
 
+    def remove_addon_db_settings(self, addon, db_name=''):
+        for module in self.db_settings['modules']:
+            if module['name'] == addon:
+                self.db_settings['modules'].remove(module)
+
+        self.save_database_settings(db_name)
+
     def load_database_settings(self, db_name=''):
         self.db_settings = settings.get_setting('github modules %s' % (db_name or 'odoo_%s' % self.version))
         if not self.db_settings:
@@ -119,7 +126,7 @@ class GithubModules:
 
     def save_database_settings(self, db_name=''):
         setting_name = 'github modules %s' % (db_name or 'odoo_%s' % self.version)
-        self.db_settings = settings.save_setting(setting_name, self.db_settings)
+        settings.save_setting(setting_name, self.db_settings)
 
     def check_github_rate_limit(self):
         rate_limit = self.github.get_rate_limit()
@@ -221,6 +228,7 @@ class GithubModules:
             self.generate_json_file(version)
 
     def clone_github_repositories(self, version):
+        self.addons_path_list = []
         if not os.path.isdir('github_addons'):
             os.mkdir('github_addons')
         for repo_name in self.repositories:

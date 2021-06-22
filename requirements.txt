@@ -3,3 +3,4 @@ OdooRPC
 PyGithub
 PyQt5
 appdirs
+psycopg2-binary

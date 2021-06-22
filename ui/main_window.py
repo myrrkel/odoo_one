@@ -72,6 +72,13 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         self.checkbox_enterprise.setChecked(bool(settings.get_setting('USE_ENTERPRISE')))
         self.onchange_checkbox_enterprise()
 
+        self.tool_menu = QtWidgets.QMenu(self.main_window)
+        self.action_select_database = QtWidgets.QAction(_translate('MainWindow', 'Select database'))
+        self.tool_menu.addAction(self.action_select_database)
+        self.action_config_database = QtWidgets.QAction(_translate('MainWindow', 'Database configuration'))
+        self.tool_menu.addAction(self.action_config_database)
+        self.push_tools.setMenu(self.tool_menu)
+
         self.line_edit_enterprise_path.setText(settings.get_setting('ENTERPRISE_PATH'))
 
         self.push_button_start.setIcon(svg_icon.get_svg_icon("/ui/img/play.svg"))
