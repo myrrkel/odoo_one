@@ -2,7 +2,7 @@
     "OCA": {
         "repositories": {
             "account-analytic": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Account Analytic Related Addons",
                 "html_url": "https://github.com/OCA/account-analytic",
                 "modules": {
@@ -356,7 +356,7 @@
                         "display_name": "Tax Balance",
                         "name": "account_tax_balance",
                         "summary": "Compute tax balances based on date range",
-                        "version": "9.0.1.2.1"
+                        "version": "9.0.1.2.2"
                     },
                     "customer_activity_statement": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -378,7 +378,7 @@
                 "name": "account-financial-reporting"
             },
             "account-financial-tools": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Accountant Financial Tools and Utils",
                 "html_url": "https://github.com/OCA/account-financial-tools",
                 "modules": {
@@ -730,7 +730,7 @@
                 "name": "account-fiscal-rule"
             },
             "account-invoice-reporting": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Invoicing reports",
                 "html_url": "https://github.com/OCA/account-invoice-reporting",
                 "modules": {
@@ -834,7 +834,7 @@
                 "name": "account-invoice-reporting"
             },
             "account-invoicing": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Invoicing Extension Addons",
                 "html_url": "https://github.com/OCA/account-invoicing",
                 "modules": {
@@ -1138,7 +1138,7 @@
                 "name": "account-invoicing"
             },
             "account-payment": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Project supervised by the Banking PSC",
                 "html_url": "https://github.com/OCA/account-payment",
                 "modules": {
@@ -1242,7 +1242,7 @@
                 "name": "account-payment"
             },
             "account-reconcile": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo account reconciliation modules (statements, data completion...)",
                 "html_url": "https://github.com/OCA/account-reconcile",
                 "modules": {
@@ -1690,7 +1690,7 @@
                 "name": "bank-statement-import"
             },
             "business-requirement": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Business Requirements Management via Odoo",
                 "html_url": "https://github.com/OCA/business-requirement",
                 "modules": {
@@ -1802,7 +1802,7 @@
                 "name": "business-requirement"
             },
             "commission": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Commission Management",
                 "html_url": "https://github.com/OCA/commission",
                 "modules": {
@@ -1834,7 +1834,7 @@
                 "name": "commission"
             },
             "community-data-files": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/community-data-files",
                 "modules": {
@@ -1874,7 +1874,7 @@
                 "name": "community-data-files"
             },
             "connector": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo generic connector framework (jobs queue, asynchronous tasks, channels)",
                 "html_url": "https://github.com/OCA/connector",
                 "modules": {
@@ -2018,7 +2018,7 @@
                 "name": "connector-ecommerce"
             },
             "connector-interfaces": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Generic Connector for ODBC, .CSV,...",
                 "html_url": "https://github.com/OCA/connector-interfaces",
                 "modules": {
@@ -2170,7 +2170,7 @@
                 "name": "connector-sage"
             },
             "connector-telephony": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo modules for telephony integration",
                 "html_url": "https://github.com/OCA/connector-telephony",
                 "modules": {
@@ -2266,7 +2266,7 @@
                 "name": "connector-woocommerce"
             },
             "contract": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/contract",
                 "modules": {
@@ -2338,7 +2338,7 @@
                 "name": "contract"
             },
             "crm": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo CRM, Mail & Newsletter advanced features",
                 "html_url": "https://github.com/OCA/crm",
                 "modules": {
@@ -2562,7 +2562,7 @@
                 "name": "data-protection"
             },
             "delivery-carrier": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Carriers And Deliveries Management",
                 "html_url": "https://github.com/OCA/delivery-carrier",
                 "modules": {
@@ -2722,7 +2722,7 @@
                 "name": "delivery-carrier"
             },
             "donation": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/donation",
                 "modules": {
@@ -2794,7 +2794,7 @@
                 "name": "donation"
             },
             "e-commerce": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo E-Commerce server automation addons",
                 "html_url": "https://github.com/OCA/e-commerce",
                 "modules": {
@@ -2930,7 +2930,7 @@
                 "name": "e-commerce"
             },
             "edi": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/edi",
                 "modules": {
@@ -3106,7 +3106,7 @@
                 "name": "edi"
             },
             "event": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Event Management addons",
                 "html_url": "https://github.com/OCA/event",
                 "modules": {
@@ -3282,7 +3282,7 @@
                 "name": "geospatial"
             },
             "hr": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Human Resources Addons",
                 "html_url": "https://github.com/OCA/hr",
                 "modules": {
@@ -3786,7 +3786,7 @@
                 "name": "hr"
             },
             "intrastat-extrastat": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/intrastat-extrastat",
                 "modules": {
@@ -4058,7 +4058,7 @@
                 "name": "l10n-argentina"
             },
             "l10n-belgium": {
-                "default_branch": "11.0",
+                "default_branch": "12.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/l10n-belgium",
                 "modules": {
@@ -4610,7 +4610,7 @@
                 "name": "l10n-germany"
             },
             "l10n-italy": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Italian localization",
                 "html_url": "https://github.com/OCA/l10n-italy",
                 "modules": {
@@ -4866,7 +4866,7 @@
                 "name": "l10n-morocco"
             },
             "l10n-netherlands": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Dutch Localization",
                 "html_url": "https://github.com/OCA/l10n-netherlands",
                 "modules": {
@@ -5186,7 +5186,7 @@
                 "name": "l10n-spain"
             },
             "l10n-switzerland": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Swiss localization",
                 "html_url": "https://github.com/OCA/l10n-switzerland",
                 "modules": {
@@ -5618,7 +5618,7 @@
                 "name": "management-system"
             },
             "manufacture": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Manufacturing Addons",
                 "html_url": "https://github.com/OCA/manufacture",
                 "modules": {
@@ -5946,7 +5946,7 @@
                 "name": "margin-analysis"
             },
             "mis-builder": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Management Information System reports for Odoo: easily build super fast, beautiful, custom reports such as P&L, Balance Sheets and more.",
                 "html_url": "https://github.com/OCA/mis-builder",
                 "modules": {
@@ -5978,7 +5978,7 @@
                 "name": "mis-builder"
             },
             "multi-company": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/multi-company",
                 "modules": {
@@ -6050,7 +6050,7 @@
                 "name": "multi-company"
             },
             "operating-unit": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Manage Operating Units in Odoo",
                 "html_url": "https://github.com/OCA/operating-unit",
                 "modules": {
@@ -6218,7 +6218,7 @@
                 "name": "operating-unit"
             },
             "partner-contact": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Partner and Contact related addons",
                 "html_url": "https://github.com/OCA/partner-contact",
                 "modules": {
@@ -6642,7 +6642,7 @@
                 "name": "partner-contact"
             },
             "pos": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/pos",
                 "modules": {
@@ -6786,7 +6786,7 @@
                 "name": "pos"
             },
             "product-attribute": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Product Attribute",
                 "html_url": "https://github.com/OCA/product-attribute",
                 "modules": {
@@ -7114,7 +7114,7 @@
                 "name": "product-attribute"
             },
             "product-variant": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/product-variant",
                 "modules": {
@@ -7178,7 +7178,7 @@
                 "name": "product-variant"
             },
             "project": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Project Management and Services Company Addons",
                 "html_url": "https://github.com/OCA/project",
                 "modules": {
@@ -7546,7 +7546,7 @@
                 "name": "purchase-reporting"
             },
             "purchase-workflow": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Purchases, Workflow and Organization",
                 "html_url": "https://github.com/OCA/purchase-workflow",
                 "modules": {
@@ -7962,7 +7962,7 @@
                 "name": "purchase-workflow"
             },
             "report-print-send": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Printing Services and Printer related addons",
                 "html_url": "https://github.com/OCA/report-print-send",
                 "modules": {
@@ -8018,7 +8018,7 @@
                 "name": "report-print-send"
             },
             "reporting-engine": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Alternative Reporting Engine",
                 "html_url": "https://github.com/OCA/reporting-engine",
                 "modules": {
@@ -8818,7 +8818,7 @@
                 "name": "server-auth"
             },
             "server-tools": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Tools for Odoo Administrators to improve some technical features on Odoo.",
                 "html_url": "https://github.com/OCA/server-tools",
                 "modules": {
@@ -10058,7 +10058,7 @@
                 "name": "stock-logistics-transport"
             },
             "stock-logistics-warehouse": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Warehouse Management Addons",
                 "html_url": "https://github.com/OCA/stock-logistics-warehouse",
                 "modules": {
@@ -10450,7 +10450,7 @@
                 "name": "stock-logistics-warehouse"
             },
             "stock-logistics-workflow": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Stock, Workflow and Organization",
                 "html_url": "https://github.com/OCA/stock-logistics-workflow",
                 "modules": {
@@ -11005,7 +11005,7 @@
                 "name": "vertical-abbey"
             },
             "vertical-association": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo addons for membership related tasks",
                 "html_url": "https://github.com/OCA/vertical-association",
                 "modules": {
@@ -11797,7 +11797,7 @@
                 "name": "vertical-travel"
             },
             "web": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo web client UI related addons",
                 "html_url": "https://github.com/OCA/web",
                 "modules": {
@@ -12309,7 +12309,7 @@
                 "name": "webkit-tools"
             },
             "website": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo website builder addons",
                 "html_url": "https://github.com/OCA/website",
                 "modules": {
@@ -12637,7 +12637,7 @@
                 "name": "website"
             },
             "website-cms": {
-                "default_branch": "11.0",
+                "default_branch": "13.0",
                 "description": "CMS features for Odoo website",
                 "html_url": "https://github.com/OCA/website-cms",
                 "modules": {
