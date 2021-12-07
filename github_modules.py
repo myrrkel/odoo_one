@@ -111,6 +111,8 @@ class GithubModules:
         return False
 
     def add_addon_db_settings(self, addon, user, repository, db_name=''):
+        if not self.db_settings:
+            self.db_settings = {'modules': []}
         self.db_settings['modules'].append({'name': addon, 'user': user, 'repository': repository})
         self.save_database_settings(db_name)
 
