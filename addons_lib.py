@@ -27,6 +27,11 @@ class Addon:
     def search_words(self, words):
         return set(words).issubset(self.words_set)
 
+    def get_github_url(self):
+        version = self.versions[-1]
+        url = "https://github.com/%s/%s/tree/%s/%s"
+        return url % (self.user, self.repository, version, self.name)
+
 
 class AddonsLib:
     installed_addons = []

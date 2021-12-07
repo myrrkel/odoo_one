@@ -6,7 +6,7 @@ from ui import versions_widget
 import svg_icon
 import addons_lib
 import github_modules
-
+import subprocess
 import logging
 
 logger = logging.getLogger(__name__)
@@ -57,11 +57,17 @@ class DialogAddons(QtWidgets.QDialog):
         self.ui.combo_user.currentIndexChanged.connect(self.search)
         self.ui.combo_category.currentIndexChanged.connect(self.search)
         self.ui.line_edit_search.editingFinished.connect(self.search)
+        self.ui.table_addons.doubleClicked.connect(self.open_github_page)
 
         self.init_combo_addons_version()
 
     def retranslateUi(self, dialog):
         super(DialogAddons, self).retranslateUi(dialog)
+
+    def open_github_page(self, index):
+        addon = self.ui.table_addons.cellWidget(index.row(), 3).addon
+        subprocess.call(['firefox', addon.get_github_url()],
+                        stdout=subprocess.PIPE, universal_newlines=True)
 
     def init_combo_categories(self):
         self.ui.combo_category.clear()
