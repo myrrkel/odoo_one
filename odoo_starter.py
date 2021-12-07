@@ -56,7 +56,8 @@ class OdooStarter(object):
         oconf.create_odoo_conf_file(self.version, addons_path_list, enterprise=self.enterprise_path != '')
         self.docker_manager.stop_odoo_containers()
         dt.create_compose_file(addons_path_list, version=self.version,
-                               cmd_params='-d %s' % self.odoo_db, enterprise_path=self.enterprise_path)
+                               cmd_params='-d %s' % self.odoo_db, enterprise_path=self.enterprise_path,
+                               network=self.docker_manager.network)
 
         dt.start_compose()
         if not self.docker_manager.odoo_database_exists():
@@ -64,7 +65,8 @@ class OdooStarter(object):
                 self.docker_manager.create_empty_database()
             dt.create_compose_file(addons_path_list, version=self.version,
                                    cmd_params='-d %s -i base' % self.odoo_db,
-                                   enterprise_path=self.enterprise_path)
+                                   enterprise_path=self.enterprise_path,
+                                   network=self.docker_manager.network)
             dt.start_compose()
 
         ip = self.docker_manager.get_odoo_ip()
@@ -73,7 +75,8 @@ class OdooStarter(object):
         orpc = odoo_rpc.OdooRpc(ip, "8069", self.odoo_db, "admin", "admin", self.version)
         admin = orpc.read('res.users', 1)
         orpc.update_addons_list()
-        orpc.install_addon(self.gh_modules.addons[0])
+        if self.gh_modules.addons:
+            orpc.install_addon(self.gh_modules.addons[0])
         self.open_odoo_firefox(url)
 
 

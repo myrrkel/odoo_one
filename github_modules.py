@@ -8,7 +8,7 @@ import re
 
 FILE_NAME = 'github_modules'
 DATA_DIR = './data/'
-ALL_VERSIONS = ['8.0', '9.0', '10.0', '11.0', '12.0', '13.0', '14.0']
+ALL_VERSIONS = ['8.0', '9.0', '10.0', '11.0', '12.0', '13.0', '14.0', '15.0']
 
 def strip_comments(code):
     code = str(code)
@@ -96,6 +96,8 @@ class GithubModules:
         self.clone_github_repositories(self.odoo_version)
 
     def _compute_addons_repositories(self):
+        if not self.db_settings:
+            return
         for module in self.db_settings['modules']:
             self.addons.append(module['name'])
             repository = self.find_repository(module['repository'], module['user'])
@@ -121,8 +123,8 @@ class GithubModules:
 
     def load_database_settings(self, db_name=''):
         self.db_settings = settings.get_setting('github modules %s' % (db_name or 'odoo_%s' % self.version))
-        if not self.db_settings:
-            self.db_settings = {'modules': [{'name': 'web_environment_ribbon', 'user': 'OCA', 'repository': 'web'}]}
+#        if not self.db_settings:
+#            self.db_settings = {'modules': [{'name': 'web_environment_ribbon', 'user': 'OCA', 'repository': 'web'}]}
 
     def save_database_settings(self, db_name=''):
         setting_name = 'github modules %s' % (db_name or 'odoo_%s' % self.version)
@@ -283,6 +285,7 @@ if __name__ == '__main__':
     # if len(sys.argv) > 1:
     #     credential = sys.argv[1]
     #     g = GithubModules(credential)
-    #     versions = ['14.0', '13.0', '12.0']
+    #     # versions = ['15.0', '14.0', '13.0', '12.0']
+    #     versions = ['11.0', '10.0', '9.0', '8.0']
     #     for v in versions:
     #         g.generate_json_file(v)

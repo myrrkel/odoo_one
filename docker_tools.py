@@ -10,17 +10,23 @@ class DockerManager(object):
         self.odoo_version = '%s.0' % version
         self.odoo_db = odoo_db
         self.client = docker.from_env()
+        networks = self.get_networks()
+        if networks:
+            self.network = networks[0].name
+        else:
+            self.network = 'odoo_one_default'
+            create_network(self.network)
 
     def get_odoo_ip(self):
         containers = self.get_odoo_containers()
         for container in containers:
-            ip = container.attrs['NetworkSettings']['Networks']['odoo_one_default']['Gateway']
+            ip = container.attrs['NetworkSettings']['Networks'][self.network]['Gateway']
             return ip
 
     def get_postgres_ip(self):
         containers = self.get_postgres_containers()
         for container in containers:
-            ip = container.attrs['NetworkSettings']['Networks']['odoo_one_default']['Gateway']
+            ip = container.attrs['NetworkSettings']['Networks'][self.network]['Gateway']
             return ip
 
     def odoo_database_exists(self):
@@ -44,6 +50,9 @@ class DockerManager(object):
 
     def get_containers(self, ancestor):
         return self.client.containers.list(filters={'ancestor': ancestor})
+
+    def get_networks(self):
+        return list(filter(lambda n: n.name not in ['none', 'bridge', 'host'], self.client.networks.list()))
 
     def get_postgres_containers(self):
         return self.get_containers('postgres:10')
@@ -107,7 +116,7 @@ def install_compose():
                              stdout=subprocess.PIPE, universal_newlines=True)
 
 
-def create_compose_file(path_list=None, version='14', cmd_params="", enterprise_path=""):
+def create_compose_file(path_list=None, version='14', cmd_params="", enterprise_path="", network=""):
 
     if int(version) >= 10:
         cmd = 'odoo'
@@ -157,13 +166,14 @@ volumes:
 networks:
   default:
     external:
-      name: odoo_one_default
+      name: {network}
 
 """
     compose = compose.format(addons_volumes=addons_volumes,
                              version=version,
                              cmd=cmd,
                              cmd_params=cmd_params,
+                             network=network,
                              )
     f = open("docker-compose.yml", "w+")
     f.write(compose)
@@ -176,7 +186,6 @@ def restart_docker():
 
 def start_compose():
 
-    create_network()
     process = subprocess.run(['docker-compose', 'up', '-d'],
                              stdout=subprocess.PIPE, shell=False)
 
@@ -186,6 +195,6 @@ def stop_compose():
     if process:
         print('stop')
 
-def create_network():
-    process = subprocess.run(['docker', 'network', 'create', 'odoo_one_default', '--subnet=172.19.0.0/16'],
+def create_network(name):
+    process = subprocess.run(['docker', 'network', 'create', name, '--subnet=172.19.0.0/16'],
                              stdout=subprocess.PIPE, universal_newlines=True)

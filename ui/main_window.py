@@ -13,7 +13,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 _translate = QtCore.QCoreApplication.translate
-LAST_VERSION = 14
+LAST_VERSION = 15
 
 
 class StartOdooThread(QThread):

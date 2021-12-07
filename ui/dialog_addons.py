@@ -11,7 +11,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 _translate = QtCore.QCoreApplication.translate
-LAST_VERSION = 14
+LAST_VERSION = 15
 
 
 class DialogAddons(QtWidgets.QDialog):
@@ -94,8 +94,9 @@ class DialogAddons(QtWidgets.QDialog):
         self.gh_modules.set_version(version)
         if version != 'all':
             self.gh_modules.load(version)
-            modules = self.gh_modules.db_settings['modules']
-            self.installed_modules = [m['name'] for m in modules]
+            if self.gh_modules.db_settings:
+                modules = self.gh_modules.db_settings['modules']
+                self.installed_modules = [m['name'] for m in modules]
         else:
             self.installed_modules = []
         self.compute_current_version_addons(version)
