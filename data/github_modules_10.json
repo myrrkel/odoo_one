@@ -2,7 +2,7 @@
     "OCA": {
         "repositories": {
             "account-analytic": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Account Analytic Related Addons",
                 "html_url": "https://github.com/OCA/account-analytic",
                 "modules": {
@@ -484,7 +484,7 @@
                         "display_name": "QWeb Financial Reports",
                         "name": "account_financial_report_qweb",
                         "summary": "OCA Financial Reports",
-                        "version": "10.0.3.1.2"
+                        "version": "10.0.3.1.3"
                     },
                     "account_journal_report_xls": {
                         "author": "Noviat,Odoo Community Association (OCA)",
@@ -530,7 +530,7 @@
                 "name": "account-financial-reporting"
             },
             "account-financial-tools": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Accountant Financial Tools and Utils",
                 "html_url": "https://github.com/OCA/account-financial-tools",
                 "modules": {
@@ -1018,7 +1018,7 @@
                 "name": "account-fiscal-rule"
             },
             "account-invoice-reporting": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Invoicing reports",
                 "html_url": "https://github.com/OCA/account-invoice-reporting",
                 "modules": {
@@ -1122,7 +1122,7 @@
                 "name": "account-invoice-reporting"
             },
             "account-invoicing": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Invoicing Extension Addons",
                 "html_url": "https://github.com/OCA/account-invoicing",
                 "modules": {
@@ -1173,6 +1173,14 @@
                         "name": "account_invoice_customer_ref_unique",
                         "summary": "",
                         "version": "1.0"
+                    },
+                    "account_invoice_date_required": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Account Invoice Date Required",
+                        "name": "account_invoice_date_required",
+                        "summary": "\n        Requires invoice date before validation to avoid Odoo setting 'today'\n        as default if not filled in.",
+                        "version": "10.0.1.1.0"
                     },
                     "account_invoice_fiscal_position_update": {
                         "author": "Julius Network Solutions,Akretion,Odoo Community Association (OCA)",
@@ -1340,7 +1348,7 @@
                         "display_name": "Account Invoice - Supplier Info Update",
                         "name": "account_invoice_supplierinfo_update",
                         "summary": "In the supplier invoice, automatically updates all products whose unit price on the line is different from the supplier price",
-                        "version": "10.0.1.0.1"
+                        "version": "10.0.1.0.2"
                     },
                     "account_invoice_template": {
                         "author": "Agile Business Group,Odoo Community Association (OCA)",
@@ -1458,7 +1466,7 @@
                 "name": "account-invoicing"
             },
             "account-payment": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Project supervised by the Banking PSC",
                 "html_url": "https://github.com/OCA/account-payment",
                 "modules": {
@@ -1650,7 +1658,7 @@
                 "name": "account-payment"
             },
             "account-reconcile": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo account reconciliation modules (statements, data completion...)",
                 "html_url": "https://github.com/OCA/account-reconcile",
                 "modules": {
@@ -1732,7 +1740,7 @@
                         "display_name": "Journal Entry base import",
                         "name": "account_move_base_import",
                         "summary": "",
-                        "version": "10.0.1.1.0"
+                        "version": "10.0.1.1.1"
                     },
                     "account_move_reconcile_helper": {
                         "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
@@ -2044,7 +2052,7 @@
                         "display_name": "Account Payment Order",
                         "name": "account_payment_order",
                         "summary": "",
-                        "version": "10.0.1.6.0"
+                        "version": "10.0.1.7.0"
                     },
                     "account_payment_partner": {
                         "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
@@ -2142,6 +2150,14 @@
                         "summary": "",
                         "version": "8.0.0.3.0"
                     },
+                    "account_bank_statement_import_mt940_nl_mollie": {
+                        "author": "Therp BV,Odoo Community Association (OCA)",
+                        "category": "Banking Addons",
+                        "display_name": "MT940 Bank Statements Import (Mollie)",
+                        "name": "account_bank_statement_import_mt940_nl_mollie",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
                     "account_bank_statement_import_mt940_nl_rabo": {
                         "author": "Odoo Community Association (OCA), Therp BV",
                         "category": "Banking addons",
@@ -2186,7 +2202,7 @@
                 "name": "bank-statement-import"
             },
             "business-requirement": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Business Requirements Management via Odoo",
                 "html_url": "https://github.com/OCA/business-requirement",
                 "modules": {
@@ -2282,7 +2298,7 @@
                 "name": "business-requirement"
             },
             "calendar": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/calendar",
                 "modules": {
@@ -2306,7 +2322,7 @@
                 "name": "calendar"
             },
             "commission": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Commission Management",
                 "html_url": "https://github.com/OCA/commission",
                 "modules": {
@@ -2370,7 +2386,7 @@
                 "name": "commission"
             },
             "community-data-files": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/community-data-files",
                 "modules": {
@@ -2426,7 +2442,7 @@
                 "name": "community-data-files"
             },
             "connector": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo generic connector framework (jobs queue, asynchronous tasks, channels)",
                 "html_url": "https://github.com/OCA/connector",
                 "modules": {
@@ -2452,7 +2468,7 @@
                         "display_name": "Connector",
                         "name": "connector",
                         "summary": "",
-                        "version": "10.0.2.0.0"
+                        "version": "10.0.2.1.1"
                     },
                     "connector_base_product": {
                         "author": "Openerp Connector Core Editors, Odoo Community Association (OCA)",
@@ -2588,13 +2604,13 @@
                         "display_name": "Connector for E-Commerce",
                         "name": "connector_ecommerce",
                         "summary": "",
-                        "version": "10.0.1.1.0"
+                        "version": "10.0.1.1.1"
                     }
                 },
                 "name": "connector-ecommerce"
             },
             "connector-interfaces": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Generic Connector for ODBC, .CSV,...",
                 "html_url": "https://github.com/OCA/connector-interfaces",
                 "modules": {
@@ -2802,7 +2818,7 @@
                 "name": "connector-sage"
             },
             "connector-telephony": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo modules for telephony integration",
                 "html_url": "https://github.com/OCA/connector-telephony",
                 "modules": {
@@ -2914,7 +2930,7 @@
                 "name": "connector-woocommerce"
             },
             "contract": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/contract",
                 "modules": {
@@ -3034,7 +3050,7 @@
                 "name": "contract"
             },
             "crm": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo CRM, Mail & Newsletter advanced features",
                 "html_url": "https://github.com/OCA/crm",
                 "modules": {
@@ -3314,7 +3330,7 @@
                 "name": "data-protection"
             },
             "delivery-carrier": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Carriers And Deliveries Management",
                 "html_url": "https://github.com/OCA/delivery-carrier",
                 "modules": {
@@ -3323,16 +3339,16 @@
                         "category": "Generic Modules/Warehouse",
                         "display_name": "Base Delivery Carrier Files",
                         "name": "base_delivery_carrier_files",
-                        "summary": "",
-                        "version": "1.2.3"
+                        "summary": "Base module for creation of delivery carrier files",
+                        "version": "10.0.1.0.2"
                     },
                     "base_delivery_carrier_files_document": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
                         "category": "Generic Modules/Warehouse",
-                        "display_name": "Base module for picking carrier files creation for document",
+                        "display_name": "Store carrier files as attachments",
                         "name": "base_delivery_carrier_files_document",
-                        "summary": "",
-                        "version": "1.0.1"
+                        "summary": "\nAllow to store carrier files as attachments.\nAuto-install when the module Document and\nBase Delivery Carrier Files are installed.\n    ",
+                        "version": "10.0.1.0.1"
                     },
                     "base_delivery_carrier_label": {
                         "author": "Camptocamp,Akretion,Odoo Community Association (OCA)",
@@ -3340,7 +3356,7 @@
                         "display_name": "Base module for carrier labels",
                         "name": "base_delivery_carrier_label",
                         "summary": "",
-                        "version": "10.0.1.2.0"
+                        "version": "10.0.1.3.1"
                     },
                     "delivery_auto_refresh": {
                         "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -3364,7 +3380,7 @@
                         "display_name": "Delivery Carrier Category",
                         "name": "delivery_carrier_category",
                         "summary": "\n        Adds a category to delivery carriers in order to help users\n        classifying them",
-                        "version": "10.0.1.0.0"
+                        "version": "10.0.1.1.0"
                     },
                     "delivery_carrier_default_tracking_url": {
                         "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -3372,7 +3388,7 @@
                         "display_name": "Delivery Carrier Default Tracking Url",
                         "name": "delivery_carrier_default_tracking_url",
                         "summary": "\n        Adds the default tracking url on delivery carrier",
-                        "version": "10.0.1.0.0"
+                        "version": "10.0.1.1.0"
                     },
                     "delivery_carrier_deposit": {
                         "author": "Akretion,Odoo Community Association (OCA)",
@@ -3380,7 +3396,7 @@
                         "display_name": "Delivery Deposit",
                         "name": "delivery_carrier_deposit",
                         "summary": "Create deposit slips",
-                        "version": "10.0.0.1.2"
+                        "version": "10.0.0.2.0"
                     },
                     "delivery_carrier_file_laposte": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -3395,8 +3411,8 @@
                         "category": "Generic Modules/Warehouse",
                         "display_name": "Delivery Carrier File: TNT",
                         "name": "delivery_carrier_file_tnt",
-                        "summary": "",
-                        "version": "1.0"
+                        "summary": "\nSub-module for Base Delivery Carrier Files.\n\nDefinition of the delivery carrier file for \"TNT Express Shipper\".\n    ",
+                        "version": "10.0.1.0.1"
                     },
                     "delivery_carrier_label_default_webkit": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -3428,7 +3444,7 @@
                         "display_name": "PostLogistics Labels WebService",
                         "name": "delivery_carrier_label_postlogistics",
                         "summary": "Print postlogistics shipping labels",
-                        "version": "10.0.1.0.2"
+                        "version": "10.0.1.2.0"
                     },
                     "delivery_carrier_label_postlogistics_shop_logo": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -3452,7 +3468,7 @@
                         "display_name": "Delivery Drop-off Sites",
                         "name": "delivery_dropoff_site",
                         "summary": "Send goods to sites in which customers come pick up package",
-                        "version": "10.0.1.0.1"
+                        "version": "10.0.1.1.0"
                     },
                     "delivery_multi_destination": {
                         "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -3514,7 +3530,7 @@
                 "name": "delivery-carrier"
             },
             "donation": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/donation",
                 "modules": {
@@ -3586,7 +3602,7 @@
                 "name": "donation"
             },
             "e-commerce": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo E-Commerce server automation addons",
                 "html_url": "https://github.com/OCA/e-commerce",
                 "modules": {
@@ -3612,7 +3628,7 @@
                         "display_name": "Product Multi Links (Template)",
                         "name": "product_template_multi_link",
                         "summary": "",
-                        "version": "10.0.1.0.0"
+                        "version": "10.0.2.1.0"
                     },
                     "website_sale_affiliate": {
                         "author": "LasLabs, Odoo Community Association (OCA)",
@@ -3718,6 +3734,14 @@
                         "summary": "",
                         "version": "9.0.1.0.0"
                     },
+                    "website_sale_product_unavailable": {
+                        "author": "LasLabs, Odoo Community Association (OCA)",
+                        "category": "E-Commerce",
+                        "display_name": "Unavailable Products",
+                        "name": "website_sale_product_unavailable",
+                        "summary": "Adds notion of unavailable products visible in website shop",
+                        "version": "10.0.1.0.0"
+                    },
                     "website_sale_recently_viewed_products": {
                         "author": "MONK Software,Odoo Community Association (OCA)",
                         "category": "Website",
@@ -3786,7 +3810,7 @@
                 "name": "e-commerce"
             },
             "edi": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/edi",
                 "modules": {
@@ -3844,7 +3868,7 @@
                         "display_name": "Account Invoice Import",
                         "name": "account_invoice_import",
                         "summary": "Import supplier invoices/refunds as PDF or XML files",
-                        "version": "10.0.2.0.0"
+                        "version": "10.0.2.0.2"
                     },
                     "account_invoice_import_factur-x": {
                         "author": "Akretion,Odoo Community Association (OCA)",
@@ -4018,7 +4042,7 @@
                 "name": "edi"
             },
             "event": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Event Management addons",
                 "html_url": "https://github.com/OCA/event",
                 "modules": {
@@ -4234,7 +4258,7 @@
                 "name": "geospatial"
             },
             "hr": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Human Resources Addons",
                 "html_url": "https://github.com/OCA/hr",
                 "modules": {
@@ -4874,7 +4898,7 @@
                 "name": "hr"
             },
             "intrastat-extrastat": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/intrastat-extrastat",
                 "modules": {
@@ -4926,12 +4950,28 @@
                 "description": "Odoo Document & Knowledge Management",
                 "html_url": "https://github.com/OCA/knowledge",
                 "modules": {
+                    "attachment_action": {
+                        "author": "Therp BV,Odoo Community Association (OCA)",
+                        "category": "Hidden/Dependency",
+                        "display_name": "Container for attachment actions",
+                        "name": "attachment_action",
+                        "summary": "Base for addons adding buttons to attachments",
+                        "version": "10.0.1.0.0"
+                    },
                     "attachment_attach_non_editable": {
                         "author": "MONK Software, Odoo Community Association (OCA)",
                         "category": "Knowledge",
                         "display_name": "Force enable attachments",
                         "name": "attachment_attach_non_editable",
                         "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "attachment_edit": {
+                        "author": "Therp BV,Odoo Community Association (OCA)",
+                        "category": "Knowledge Management",
+                        "display_name": "Edit attachments",
+                        "name": "attachment_edit",
+                        "summary": "Edit attachments after upload",
                         "version": "10.0.1.0.0"
                     },
                     "attachment_preview": {
@@ -5040,6 +5080,702 @@
                     }
                 },
                 "name": "knowledge"
+            },
+            "l10n-argentina": {
+                "default_branch": "11.0",
+                "description": "Odoo modules for Argentina",
+                "html_url": "https://github.com/OCA/l10n-argentina",
+                "modules": {
+                    "base_vat_ar": {
+                        "author": "E-MIPS,Odoo Community Association (OCA)",
+                        "category": "VAT Modules",
+                        "display_name": "base_vat_ar",
+                        "name": "base_vat_ar",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_account_check": {
+                        "author": "Thymbra/E-MIPS/Eynes,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Account Checks",
+                        "name": "l10n_ar_account_check",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_account_create_check": {
+                        "author": "eynes.com.ar,Odoo Community Association (OCA)",
+                        "category": "Localisation/Argentine",
+                        "display_name": "Checkbook Management",
+                        "name": "l10n_ar_account_create_check",
+                        "summary": "",
+                        "version": "8.0.0.1.0"
+                    },
+                    "l10n_ar_account_payment": {
+                        "author": "E-MIPS,Odoo Community Association (OCA)",
+                        "category": "Own Modules",
+                        "display_name": "Payments for ARGENTINA",
+                        "name": "l10n_ar_account_payment",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_bank_statement": {
+                        "author": "Eynes",
+                        "category": "account",
+                        "display_name": "Bank Statements",
+                        "name": "l10n_ar_bank_statement",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_base_country_state": {
+                        "author": "Gabriel Davini",
+                        "category": "Base Modules",
+                        "display_name": "Base Argentina's States (aka Provinces)",
+                        "name": "l10n_ar_base_country_state",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "l10n_ar_cash_register": {
+                        "author": "Eynes",
+                        "category": "account",
+                        "display_name": "Cash Register",
+                        "name": "l10n_ar_cash_register",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_chart_of_account": {
+                        "author": "E-MIPS / Eynesn,Odoo Community Association (OCA)",
+                        "category": "Localization/Account Charts",
+                        "display_name": "Argentina - Chart of Account",
+                        "name": "l10n_ar_chart_of_account",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_electronic_invoice_storage_rg1361": {
+                        "author": "E-MIPS",
+                        "category": "Localisation/Argentina",
+                        "display_name": "l10n_ar_electronic_invoice_storage_rg1361",
+                        "name": "l10n_ar_electronic_invoice_storage_rg1361",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_perceptions_basic": {
+                        "author": "E-MIPS,Odoo Community Association (OCA)",
+                        "category": "Localisation Modules",
+                        "display_name": "Perceptions for ARGENTINA (Percepciones) - Basic Module",
+                        "name": "l10n_ar_perceptions_basic",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_point_of_sale": {
+                        "author": "E-MIPS/Proyecto Aconcagua,Odoo Community Association (OCA)",
+                        "category": "Aconcagua",
+                        "display_name": "Point of Sale ARGENTINA",
+                        "name": "l10n_ar_point_of_sale",
+                        "summary": "",
+                        "version": "8.0.1.1.0"
+                    },
+                    "l10n_ar_retentions_basic": {
+                        "author": "E-MIPS,Odoo Community Association (OCA)",
+                        "category": "Localisation Modules",
+                        "display_name": "Retentions for ARGENTINA (Retenciones)",
+                        "name": "l10n_ar_retentions_basic",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_sale_order": {
+                        "author": "E-MIPS",
+                        "category": "Argentina Localization",
+                        "display_name": "Sale Order interactive",
+                        "name": "l10n_ar_sale_order",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_tax_reports": {
+                        "author": "E-MIPS",
+                        "category": "Localisation Modules",
+                        "display_name": "Tax Reports for Argentina",
+                        "name": "l10n_ar_tax_reports",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_wsaa": {
+                        "author": "Proyecto Aconcagua",
+                        "category": "Accounting & Finance",
+                        "display_name": "WSAA",
+                        "name": "l10n_ar_wsaa",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ar_wsfe": {
+                        "author": "E-MIPS",
+                        "category": "Argentina Localization",
+                        "display_name": "WSFE (Factura Electronica)",
+                        "name": "l10n_ar_wsfe",
+                        "summary": "",
+                        "version": "8.0.2.0.0"
+                    },
+                    "l10n_ar_wsfe_jasper": {
+                        "author": "E-MIPS",
+                        "category": "Argentina Localization",
+                        "display_name": "l10n_ar_wsfe_jasper",
+                        "name": "l10n_ar_wsfe_jasper",
+                        "summary": "",
+                        "version": "8.0.2.0.0"
+                    },
+                    "l10n_ar_wsfe_perceptions": {
+                        "author": "E-MIPS",
+                        "category": "Own Modules",
+                        "display_name": "WSFE Perceptions",
+                        "name": "l10n_ar_wsfe_perceptions",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    }
+                },
+                "name": "l10n-argentina"
+            },
+            "l10n-belgium": {
+                "default_branch": "12.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/l10n-belgium",
+                "modules": {
+                    "account_bank_statement_import_coda": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Import CODA Bank Statement",
+                        "name": "account_bank_statement_import_coda",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "account_companyweb": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Companyweb",
+                        "name": "account_companyweb",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_be_antibiotic_tax": {
+                        "author": "BCIM sprl, Okia, Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Belgium Antibiotics Taxes",
+                        "name": "l10n_be_antibiotic_tax",
+                        "summary": "Data module to support antibiotics taxes",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_be_apb_tax": {
+                        "author": "BCIM sprl, Okia, Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Belgium APB Taxes",
+                        "name": "l10n_be_apb_tax",
+                        "summary": "Data module to support APB taxes",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_be_eco_tax": {
+                        "author": "ACSONE SA/NV,BCIM sprl, Okia, Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Belgium Eco Taxes",
+                        "name": "l10n_be_eco_tax",
+                        "summary": "Data module to support BEBAT and RECUPEL taxes",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_be_iso20022_pain": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "ISO 20022 PAIN Support for Belgium",
+                        "name": "l10n_be_iso20022_pain",
+                        "summary": "\n        This module adds Belgium-specific support to account_payment_order.",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_be_mis_reports": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "Belgium MIS Builder templates",
+                        "name": "l10n_be_mis_reports",
+                        "summary": "\n        MIS Builder templates for the Belgium P&L,\n        Balance Sheets and VAT Declaration",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_be_partner_kbo_bce": {
+                        "author": "Noviat,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Belgium - KBO/BCE numbers",
+                        "name": "l10n_be_partner_kbo_bce",
+                        "summary": "",
+                        "version": "10.0.1.0.2"
+                    }
+                },
+                "name": "l10n-belgium"
+            },
+            "l10n-brazil": {
+                "default_branch": "12.0",
+                "description": "Localiza\u00e7\u00e3o brasileira oficial do Odoo.",
+                "html_url": "https://github.com/OCA/l10n-brazil",
+                "modules": {
+                    "l10n_br_account": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Account",
+                        "name": "l10n_br_account",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_account_payment_order": {
+                        "author": "KMEE, Odoo Community Association (OCA)",
+                        "category": "Banking addons",
+                        "display_name": "Brazilian Payment Order",
+                        "name": "l10n_br_account_payment_order",
+                        "summary": "",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_br_account_product": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Account Product",
+                        "name": "l10n_br_account_product",
+                        "summary": "Brazilian Localization Account Product",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_account_product_service": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Account Product and Service",
+                        "name": "l10n_br_account_product_service",
+                        "summary": "",
+                        "version": "8.0.2.0.0"
+                    },
+                    "l10n_br_account_service": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Account Service",
+                        "name": "l10n_br_account_service",
+                        "summary": "",
+                        "version": "8.0.2.0.0"
+                    },
+                    "l10n_br_base": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Base",
+                        "name": "l10n_br_base",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_crm": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization CRM",
+                        "name": "l10n_br_crm",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_crm_zip": {
+                        "author": "Fabio Negrini, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Brazilian Localization CRM Zip",
+                        "name": "l10n_br_crm_zip",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_data_account_product": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localisation Data Extension for Product",
+                        "name": "l10n_br_data_account_product",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_br_data_account_service": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Data Account for Service",
+                        "name": "l10n_br_data_account_service",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_br_delivery": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Delivery",
+                        "name": "l10n_br_delivery",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_br_generic": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Brazilian - Generic Accounting",
+                        "name": "l10n_br_generic",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_hr": {
+                        "author": "KMEE, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Brazilian Localization HR",
+                        "name": "l10n_br_hr",
+                        "summary": "",
+                        "version": "10.0.0.0.0"
+                    },
+                    "l10n_br_hr_contract": {
+                        "author": "KMEE Inform\u00e1tica, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization HR Contract",
+                        "name": "l10n_br_hr_contract",
+                        "summary": "",
+                        "version": "10.0.0.0.0"
+                    },
+                    "l10n_br_hr_timesheet_invoice": {
+                        "author": "KMEE",
+                        "category": "Sales Management",
+                        "display_name": "Brazilian Invoice on Timesheets",
+                        "name": "l10n_br_hr_timesheet_invoice",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "l10n_br_purchase": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Purchase",
+                        "name": "l10n_br_purchase",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_resource": {
+                        "author": "KMEE,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "L10n Br Resource",
+                        "name": "l10n_br_resource",
+                        "summary": "\n        This module extend core resource to create important brazilian\n        informations. Define a Brazilian calendar and some tools to compute\n        dates used in financial and payroll modules",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_sale": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Sale",
+                        "name": "l10n_br_sale",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_sale_product": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Sale Product",
+                        "name": "l10n_br_sale_product",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_sale_service": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Sale Service",
+                        "name": "l10n_br_sale_service",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_br_sale_stock": {
+                        "author": "Akretion, ,Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Sales and Warehouse",
+                        "name": "l10n_br_sale_stock",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_stock": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization Warehouse",
+                        "name": "l10n_br_stock",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_stock_account": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization WMS Accounting",
+                        "name": "l10n_br_stock_account",
+                        "summary": "",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_br_stock_account_report": {
+                        "author": "KMEE, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Brazilian Localization WMS Accounting Report",
+                        "name": "l10n_br_stock_account_report",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_br_zip": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Brazilian Localisation ZIP Codes",
+                        "name": "l10n_br_zip",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_br_zip_correios": {
+                        "author": "KMEE, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Address from Brazilian Localization ZIP by Correios",
+                        "name": "l10n_br_zip_correios",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-brazil"
+            },
+            "l10n-canada": {
+                "default_branch": "11.0",
+                "description": "Odoo modules for Canada",
+                "html_url": "https://github.com/OCA/l10n-canada",
+                "modules": {
+                    "account_tax_expense_include_unported": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "Taxes included in expense",
+                        "name": "account_tax_expense_include_unported",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "hr_expense_line_supplier_unported": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Human Resources",
+                        "display_name": "Supplier on expense line",
+                        "name": "hr_expense_line_supplier_unported",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "l10n_ca_account_check_writing": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Canada - Check Writing",
+                        "name": "l10n_ca_account_check_writing",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_ca_hr_payroll": {
+                        "author": "Odoo Canada,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Human Resources",
+                        "display_name": "Canada - Payroll",
+                        "name": "l10n_ca_hr_payroll",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "l10n_ca_hr_payroll_account": {
+                        "author": "Odoo Canada,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Human Resources",
+                        "display_name": "Canada - Payroll Accounting",
+                        "name": "l10n_ca_hr_payroll_account",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "l10n_ca_qc_hr_payroll": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Human Resources",
+                        "display_name": "Canada - Quebec - Payroll",
+                        "name": "l10n_ca_qc_hr_payroll",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "l10n_ca_qc_hr_payroll_account": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Human Resources",
+                        "display_name": "Canada - Quebec - Payroll Accounting",
+                        "name": "l10n_ca_qc_hr_payroll_account",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "res_country_state_translations_canada": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Localisation/Canada",
+                        "display_name": "Canada - Provinces and Territories Translations in French",
+                        "name": "res_country_state_translations_canada",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "res_country_state_translations_us": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Localisation/Canada",
+                        "display_name": "USA - States Translations in French",
+                        "name": "res_country_state_translations_us",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "res_currency_print_on_check": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Display name for currencies",
+                        "name": "res_currency_print_on_check",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "res_partner_attributes_add_BN": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Localisation/Canada",
+                        "display_name": "Business identification Number in Canada (BN/NE)",
+                        "name": "res_partner_attributes_add_BN",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "res_partner_attributes_add_NEQ": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Localisation/Canada",
+                        "display_name": "Quebec Enterprise Number (NEQ)",
+                        "name": "res_partner_attributes_add_NEQ",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "res_partner_attributes_add_SIN": {
+                        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+                        "category": "Localisation/Canada",
+                        "display_name": "Canada Social Insurance Number (SIN/NAS)",
+                        "name": "res_partner_attributes_add_SIN",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    }
+                },
+                "name": "l10n-canada"
+            },
+            "l10n-china": {
+                "default_branch": "12.0",
+                "description": "Chinese localization of Odoo",
+                "html_url": "https://github.com/OCA/l10n-china",
+                "modules": {
+                    "l10n_cn_hr_payroll": {
+                        "author": "Elico Corp, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Chinese - Payroll",
+                        "name": "l10n_cn_hr_payroll",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "website_certificate": {
+                        "author": "Elico Corp, Odoo Community Association (OCA)",
+                        "category": "website",
+                        "display_name": "Website Certificate",
+                        "name": "website_certificate",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-china"
+            },
+            "l10n-croatia": {
+                "default_branch": "10.0",
+                "description": "Odoo Croatian Localization",
+                "html_url": "https://github.com/OCA/l10n-croatia",
+                "modules": {
+                    "l10n_hr_bank": {
+                        "author": "Odoo Community Association (OCA), Davor Bojki\u0107 (DAJ MI 5)",
+                        "category": "Localisation / Croatia",
+                        "display_name": "Croatia - Banking",
+                        "name": "l10n_hr_bank",
+                        "summary": "Croatia Banking localization",
+                        "version": "10.0.0.0.1"
+                    },
+                    "l10n_hr_base_location": {
+                        "author": "Odoo Community Association (OCA), Davor Bojki\u0107 (DAJ MI 5)",
+                        "category": "Localisation / Croatia",
+                        "display_name": "Croatia - Cities",
+                        "name": "l10n_hr_base_location",
+                        "summary": "Adds location data for Croatia - Cities, post offices etc.",
+                        "version": "10.0.0.0.1"
+                    }
+                },
+                "name": "l10n-croatia"
+            },
+            "l10n-ecuador": {
+                "default_branch": "11.0",
+                "description": "Odoo Localization for Ecuador",
+                "html_url": "https://github.com/OCA/l10n-ecuador",
+                "modules": {
+                    "l10n_ec": {
+                        "author": "Fabrica de Software Libre,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Ecuador - NIIF SUPERCIAS",
+                        "name": "l10n_ec",
+                        "summary": "NIIF SUPERCIAS Accounts.",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ec_config": {
+                        "author": "Fabrica de Software Libre,Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Ecuador's localization Install",
+                        "name": "l10n_ec_config",
+                        "summary": "Ecuador's localization config settings",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ec_ote": {
+                        "author": "Fabrica de Software Libre, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "O.T.E. - Ecuador",
+                        "name": "l10n_ec_ote",
+                        "summary": "Ecuador's Geopolitical Information.",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-ecuador"
+            },
+            "l10n-ethiopia": {
+                "default_branch": "11.0",
+                "description": "Ethiopian Localization Project",
+                "html_url": "https://github.com/OCA/l10n-ethiopia",
+                "modules": {
+                    "l10n_et_base": {
+                        "author": "Clear ICT Solutions, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Ethiopia - Base",
+                        "name": "l10n_et_base",
+                        "summary": "Base module localization for Ethiopia",
+                        "version": "8.0.1.0.0"
+                    }
+                },
+                "name": "l10n-ethiopia"
+            },
+            "l10n-finland": {
+                "default_branch": "14.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/l10n-finland",
+                "modules": {
+                    "l10n_fi_banks": {
+                        "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Finnish Banks",
+                        "name": "l10n_fi_banks",
+                        "summary": "Finnish banks and their addresses",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_fi_business_code": {
+                        "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
+                        "category": "CRM",
+                        "display_name": "Partner business code (business id)",
+                        "name": "l10n_fi_business_code",
+                        "summary": "Adds a business code (business id) for partners",
+                        "version": "10.0.1.2.0"
+                    },
+                    "l10n_fi_business_code_validate": {
+                        "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
+                        "category": "CRM",
+                        "display_name": "Partner business code validate",
+                        "name": "l10n_fi_business_code_validate",
+                        "summary": "Adds validation for partner_business_code",
+                        "version": "10.0.1.2.5"
+                    },
+                    "l10n_fi_edicode": {
+                        "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
+                        "category": "CRM",
+                        "display_name": "Partner EDI code",
+                        "name": "l10n_fi_edicode",
+                        "summary": "Adds EDI code field and operators",
+                        "version": "10.0.1.1.2"
+                    },
+                    "l10n_fi_payment_terms": {
+                        "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Finnish Payment Terms",
+                        "name": "l10n_fi_payment_terms",
+                        "summary": "Common Finnish invoice payment terms",
+                        "version": "10.0.1.1.1"
+                    }
+                },
+                "name": "l10n-finland"
             },
             "l10n-france": {
                 "default_branch": "14.0",
@@ -5265,8 +6001,1408 @@
                 },
                 "name": "l10n-france"
             },
-            "maintenance": {
+            "l10n-germany": {
                 "default_branch": "11.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/l10n-germany",
+                "modules": {
+                    "l10n_de_country_states": {
+                        "author": "initOS GmbH & Co. KG, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localisation/Europe",
+                        "display_name": "German Country States",
+                        "name": "l10n_de_country_states",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_de_location_nuts": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localisation/Europe",
+                        "display_name": "NUTS Regions for German",
+                        "name": "l10n_de_location_nuts",
+                        "summary": "NUTS specific options for German",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_de_steuernummer": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localisation/Europe",
+                        "display_name": "German SteuerNummer validation",
+                        "name": "l10n_de_steuernummer",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-germany"
+            },
+            "l10n-italy": {
+                "default_branch": "14.0",
+                "description": "Odoo Italian localization",
+                "html_url": "https://github.com/OCA/l10n-italy",
+                "modules": {
+                    "account_central_journal": {
+                        "author": "ISA S.r.l.,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Account Central Journal",
+                        "name": "account_central_journal",
+                        "summary": "",
+                        "version": "3"
+                    },
+                    "account_invoice_entry_date": {
+                        "author": "Odoo Italian Community,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Account Invoice entry Date",
+                        "name": "account_invoice_entry_date",
+                        "summary": "",
+                        "version": "8.0.0.1.0"
+                    },
+                    "account_invoice_report_ddt_group": {
+                        "author": "Agile Business Group, Apulia Software, Openforce,Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Account invoice report grouped by DDT",
+                        "name": "account_invoice_report_ddt_group",
+                        "summary": "",
+                        "version": "10.0.0.3.2"
+                    },
+                    "account_invoice_sequential_dates": {
+                        "author": "OpenERP Italian Community,Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Check invoice date consistency",
+                        "name": "account_invoice_sequential_dates",
+                        "summary": "",
+                        "version": "0.1"
+                    },
+                    "account_vat_period_end_statement": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA), LinkIt Spa",
+                        "category": "Generic Modules/Accounting",
+                        "display_name": "Period End VAT Statement",
+                        "name": "account_vat_period_end_statement",
+                        "summary": "",
+                        "version": "10.0.1.5.1"
+                    },
+                    "l10n_it_CEE_balance_generic": {
+                        "author": "OpenERP Italian Community,Odoo Community Association (OCA)",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italy - 4th EU Directive - Consolidation Chart of Accounts",
+                        "name": "l10n_it_CEE_balance_generic",
+                        "summary": "",
+                        "version": "0.1"
+                    },
+                    "l10n_it_abicab": {
+                        "author": "Odoo Italia Network, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Base Bank ABI/CAB codes",
+                        "name": "l10n_it_abicab",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_account": {
+                        "author": "Agile Business Group, Abstract, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - Account",
+                        "name": "l10n_it_account",
+                        "summary": "",
+                        "version": "10.0.1.2.4"
+                    },
+                    "l10n_it_account_stamp": {
+                        "author": "Ermanno Gnan, Sergio Corato, Enrico Ganzaroli, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Tax Stamp",
+                        "name": "l10n_it_account_stamp",
+                        "summary": "Tax stamp automatic management",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_it_account_stamp_ddt": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Imposta di bollo - DDT",
+                        "name": "l10n_it_account_stamp_ddt",
+                        "summary": "Modulo ponte tra imposta di bollo e DDT",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_account_stamp_sale": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Imposta di bollo - vendite",
+                        "name": "l10n_it_account_stamp_sale",
+                        "summary": "Modulo ponte tra imposta di bollo e vendite",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_it_account_tax_kind": {
+                        "author": "Odoo Community Association (OCA), Apulia Software s.r.l",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italian Localisation - Natura delle aliquote IVA",
+                        "name": "l10n_it_account_tax_kind",
+                        "summary": "",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_ateco": {
+                        "author": "Abstract,Odoo Community Association (OCA),Odoo Italia Network",
+                        "category": "Localization/Italy",
+                        "display_name": "Ateco codes",
+                        "name": "l10n_it_ateco",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_base_crm": {
+                        "author": "Agile Business Group,Odoo Community Association (OCA)",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italian Localisation - CRM",
+                        "name": "l10n_it_base_crm",
+                        "summary": "",
+                        "version": "0.1"
+                    },
+                    "l10n_it_base_location_geonames_import": {
+                        "author": "Agile Business Group,Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "Base Location Provinces Import",
+                        "name": "l10n_it_base_location_geonames_import",
+                        "summary": "Import base_location entries (provinces) from Geonames",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_bill_of_entry": {
+                        "author": "Agile Business Group,Odoo Community Association (OCA)",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italian Localisation - Bill of Entry",
+                        "name": "l10n_it_bill_of_entry",
+                        "summary": "",
+                        "version": "0.1"
+                    },
+                    "l10n_it_causali_pagamento": {
+                        "author": "Agile Business Group,Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "Italian Localization - Causali pagamento",
+                        "name": "l10n_it_causali_pagamento",
+                        "summary": "Aggiunge la tabella delle causali di pagamento da usare ad esempio nelle ritenute d'acconto",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_central_journal": {
+                        "author": "Dinamiche Aziendali, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Account central journal",
+                        "name": "l10n_it_central_journal",
+                        "summary": "",
+                        "version": "10.0.1.0.2"
+                    },
+                    "l10n_it_codici_carica": {
+                        "author": "Openforce di Camilli Alessandro,Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "Codici Carica",
+                        "name": "l10n_it_codici_carica",
+                        "summary": "Aggiunge la tabella dei codici carica da usare nei dichiarativi fiscali italiani",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_corrispettivi": {
+                        "author": "Odoo Italian Community, Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Italian Localization - Corrispettivi",
+                        "name": "l10n_it_corrispettivi",
+                        "summary": "",
+                        "version": "10.0.1.2.4"
+                    },
+                    "l10n_it_corrispettivi_sale": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Italian Localization - Corrispettivi e ordini di vendita",
+                        "name": "l10n_it_corrispettivi_sale",
+                        "summary": "Modulo per integrare i corrispettivi in odoo con gli ordini di vendita.",
+                        "version": "10.0.1.0.3"
+                    },
+                    "l10n_it_ddt": {
+                        "author": "Davide Corio, Odoo Community Association (OCA),Agile Business Group, Francesco Apruzzese, Openforce di Camilli Alessandro",
+                        "category": "Localization/Italy",
+                        "display_name": "DDT",
+                        "name": "l10n_it_ddt",
+                        "summary": "Documento di Trasporto",
+                        "version": "10.0.1.9.0"
+                    },
+                    "l10n_it_dichiarazione_intento": {
+                        "author": "Francesco Apruzzese, Odoo Community Association (OCA), Sergio Corato, Glauco Prina, Lara Baggio",
+                        "category": "",
+                        "display_name": "ITA - Dichiarazione di intento",
+                        "name": "l10n_it_dichiarazione_intento",
+                        "summary": "Gestione dichiarazioni di intento",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_esigibilita_iva": {
+                        "author": "Openforce di Camilli Alessandro, Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "Esigibilit\u00e0 IVA",
+                        "name": "l10n_it_esigibilita_iva",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_fatturapa": {
+                        "author": "Davide Corio, Agile Business Group, Innoviu, Odoo Italia Network, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Fattura elettronica - Base",
+                        "name": "l10n_it_fatturapa",
+                        "summary": "Fatture elettroniche",
+                        "version": "10.0.3.0.0"
+                    },
+                    "l10n_it_fatturapa_export_zip": {
+                        "author": "Efatto.it di Sergio Corato, Odoo Community Association (OCA)",
+                        "category": "other",
+                        "display_name": "Italian Localization - Fattura elettronica - Export ZIP",
+                        "name": "l10n_it_fatturapa_export_zip",
+                        "summary": "Permette di esportare in uno ZIP diversi file XML di fatture elettroniche",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_fatturapa_in": {
+                        "author": "Agile Business Group, Innoviu, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "ITA - Fattura elettronica - Ricezione",
+                        "name": "l10n_it_fatturapa_in",
+                        "summary": "Ricezione fatture elettroniche",
+                        "version": "10.0.3.0.2"
+                    },
+                    "l10n_it_fatturapa_in_purchase": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - Fattura elettronica - Integrazione acquisti",
+                        "name": "l10n_it_fatturapa_in_purchase",
+                        "summary": "Modulo ponte tra ricezione fatture elettroniche e acquisti",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_fatturapa_in_rc": {
+                        "author": "Efatto.it di Sergio Corato, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "ITA - Fattura elettronica - Reverse charge",
+                        "name": "l10n_it_fatturapa_in_rc",
+                        "summary": "Modulo di collegamento tra e-fattura in acquisto e reverse charge",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_fatturapa_out": {
+                        "author": "Davide Corio, Agile Business Group, Innoviu,Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Fattura elettronica - Emissione",
+                        "name": "l10n_it_fatturapa_out",
+                        "summary": "Emissione fatture elettroniche",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_fatturapa_out_ddt": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - Fattura elettronica - Integrazione DDT",
+                        "name": "l10n_it_fatturapa_out_ddt",
+                        "summary": "Modulo ponte tra emissione fatture elettroniche e DDT",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_fatturapa_out_stamp": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - Fattura elettronica - Integrazione bollo",
+                        "name": "l10n_it_fatturapa_out_stamp",
+                        "summary": "Modulo ponte tra emissione fatture elettroniche e imposta di bollo",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_fatturapa_out_triple_discount": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - Fattura elettronica - Integrazione sconto triplo",
+                        "name": "l10n_it_fatturapa_out_triple_discount",
+                        "summary": "Modulo ponte tra emissione fatture elettroniche e sconto triplo",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_fatturapa_out_wt": {
+                        "author": "Sergio Corato, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - Fattura elettronica - Integrazione ritenuta",
+                        "name": "l10n_it_fatturapa_out_wt",
+                        "summary": "Modulo ponte tra emissione fatture elettroniche e ritenute.",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_fatturapa_pec": {
+                        "author": "Openforce Srls Unipersonale, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Fattura elettronica - Supporto PEC",
+                        "name": "l10n_it_fatturapa_pec",
+                        "summary": "Invio fatture elettroniche tramite PEC",
+                        "version": "10.0.1.9.1"
+                    },
+                    "l10n_it_fiscal_document_type": {
+                        "author": "Link It srl, Odoo Community Association (OCA)",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italian Localization - Tipi di documento fiscale per dichiarativi",
+                        "name": "l10n_it_fiscal_document_type",
+                        "summary": "",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_fiscal_payment_term": {
+                        "author": "Davide Corio, Agile Business Group, Innoviu, Odoo Italia Network, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Fiscal payment term",
+                        "name": "l10n_it_fiscal_payment_term",
+                        "summary": "Electronic invoices payment",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_fiscalcode": {
+                        "author": "Odoo Italia Network, Odoo Community Association (OCA)",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italian Localisation - Fiscal Code",
+                        "name": "l10n_it_fiscalcode",
+                        "summary": "",
+                        "version": "10.0.1.3.0"
+                    },
+                    "l10n_it_fiscalcode_invoice": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Fiscal code in invoice report",
+                        "name": "l10n_it_fiscalcode_invoice",
+                        "summary": "Italian Fiscal Code in invoice PDF",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_intrastat": {
+                        "author": "Openforce, Link IT srl, Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "ITA - Intrastat",
+                        "name": "l10n_it_intrastat",
+                        "summary": "Riclassificazione merci e servizi per dichiarazioni Intrastat",
+                        "version": "10.0.1.0.3"
+                    },
+                    "l10n_it_intrastat_statement": {
+                        "author": "Openforce, Link IT srl, Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "ITA - Dichiarazione Intrastat",
+                        "name": "l10n_it_intrastat_statement",
+                        "summary": "Dichiarazione Intrastat per l'Agenzia delle Dogane",
+                        "version": "10.0.1.1.4"
+                    },
+                    "l10n_it_invoices_data_communication": {
+                        "author": "Openforce di Camilli Alessandro, Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "Italian Localization - Comunicazione dati fatture",
+                        "name": "l10n_it_invoices_data_communication",
+                        "summary": "Comunicazione dati fatture (c.d. \"nuovo spesometro\" o \"esterometro\")",
+                        "version": "10.0.1.1.2"
+                    },
+                    "l10n_it_invoices_data_communication_fatturapa": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - Comunicazione dati fatture - E-fattura integrazione",
+                        "name": "l10n_it_invoices_data_communication_fatturapa",
+                        "summary": "Integrazione fatturazione elettronica e Comunicazione dati fatture (c.d. \"nuovo spesometro\")",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_ipa": {
+                        "author": "KTec S.r.l,Odoo Community Association (OCA),Odoo Italia Network",
+                        "category": "Localisation/Italy",
+                        "display_name": "IPA Code (IndicePA)",
+                        "name": "l10n_it_ipa",
+                        "summary": "",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_location_nuts": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Localisation/Europe",
+                        "display_name": "NUTS Regions for Italy",
+                        "name": "l10n_it_location_nuts",
+                        "summary": "NUTS specific options for Italy",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_it_partially_deductible_vat": {
+                        "author": "OpenERP Italian Community,Odoo Community Association (OCA)",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italy - Partially Deductible VAT",
+                        "name": "l10n_it_partially_deductible_vat",
+                        "summary": "",
+                        "version": "0.1"
+                    },
+                    "l10n_it_pec": {
+                        "author": "Odoo Italia Network,Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Pec Mail",
+                        "name": "l10n_it_pec",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_pos_fatturapa": {
+                        "author": "Roberto Fichera, Odoo Community Association (OCA)",
+                        "category": "Point Of Sale",
+                        "display_name": "ITA - POS - Fattura elettronica",
+                        "name": "l10n_it_pos_fatturapa",
+                        "summary": "Gestione dati fattura elettronica del cliente all'interno dell'interfaccia del POS",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_pos_fiscalcode": {
+                        "author": "Odoo Community Association (OCA)",
+                        "category": "Point Of Sale",
+                        "display_name": "ITA - POS - Codice fiscale",
+                        "name": "l10n_it_pos_fiscalcode",
+                        "summary": "Gestione codice fiscale del cliente all'interno dell'interfaccia del POS",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_prima_nota_cassa": {
+                        "author": "OpenERP Italian Community,Odoo Community Association (OCA)",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italian Localisation - Prima Nota Cassa",
+                        "name": "l10n_it_prima_nota_cassa",
+                        "summary": "",
+                        "version": "0.1"
+                    },
+                    "l10n_it_rea": {
+                        "author": "Agile Business Group, Odoo Italia Network,Odoo Community Association (OCA)",
+                        "category": "Localisation/Italy",
+                        "display_name": "Italian Localization - Registro REA",
+                        "name": "l10n_it_rea",
+                        "summary": "Gestisce i campi del Repertorio Economico Amministrativo",
+                        "version": "10.0.1.1.3"
+                    },
+                    "l10n_it_reverse_charge": {
+                        "author": "Odoo Italia Network,Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Reverse Charge IVA",
+                        "name": "l10n_it_reverse_charge",
+                        "summary": "Reverse Charge for Italy",
+                        "version": "10.0.1.2.3"
+                    },
+                    "l10n_it_riba_commission": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Ricevute bancarie & commissioni",
+                        "name": "l10n_it_riba_commission",
+                        "summary": "Ricevute bancarie & commissioni",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_it_ricevute_bancarie": {
+                        "author": "Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Ricevute Bancarie",
+                        "name": "l10n_it_ricevute_bancarie",
+                        "summary": "",
+                        "version": "10.0.1.3.0"
+                    },
+                    "l10n_it_sdi_channel": {
+                        "author": "Efatto.it di Sergio Corato, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - Fattura elettronica - Canale SdI",
+                        "name": "l10n_it_sdi_channel",
+                        "summary": "Aggiunge il canale di invio/ricezione dei file XML attraverso lo SdI",
+                        "version": "10.0.1.2.0"
+                    },
+                    "l10n_it_split_payment": {
+                        "author": "Abstract, Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Split Payment",
+                        "name": "l10n_it_split_payment",
+                        "summary": "Split Payment",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_it_vat_registries": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA), LinkIt Srl",
+                        "category": "Localization/Italy",
+                        "display_name": "ITA - Registri IVA",
+                        "name": "l10n_it_vat_registries",
+                        "summary": "",
+                        "version": "10.0.1.3.1"
+                    },
+                    "l10n_it_vat_registries_cash_basis": {
+                        "author": "LinkIt Srl, Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Italian Localization - VAT Registries - Cash Basis",
+                        "name": "l10n_it_vat_registries_cash_basis",
+                        "summary": "",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_it_vat_registries_split_payment": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "VAT registries + Split Payment",
+                        "name": "l10n_it_vat_registries_split_payment",
+                        "summary": "Bridge module to make VAT registries work with Split Payment",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_website_portal_fatturapa": {
+                        "author": "Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Fattura elettronica - Portale",
+                        "name": "l10n_it_website_portal_fatturapa",
+                        "summary": "Add fatturapa fields and checks in frontend user's details",
+                        "version": "10.0.1.0.2"
+                    },
+                    "l10n_it_website_portal_fiscalcode": {
+                        "author": "Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "Italian Localization - Website portal fiscalcode",
+                        "name": "l10n_it_website_portal_fiscalcode",
+                        "summary": "Add fiscal code to details of frontend user",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_website_sale_corrispettivi": {
+                        "author": "Agile Business Group,Odoo Community Association (OCA)",
+                        "category": "e-commerce",
+                        "display_name": "Italian localization - Website Sale Corrispettivi",
+                        "name": "l10n_it_website_sale_corrispettivi",
+                        "summary": "",
+                        "version": "10.0.1.1.1"
+                    },
+                    "l10n_it_website_sale_fatturapa": {
+                        "author": "Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "ITA - Fattura Elettronica - eCommerce",
+                        "name": "l10n_it_website_sale_fatturapa",
+                        "summary": "Aggiunge i campi necessari alla fatturazione elettronica nel form del checkout",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_website_sale_fiscalcode": {
+                        "author": "Agile Business Group,Odoo Community Association (OCA)",
+                        "category": "e-commerce",
+                        "display_name": "Website Sale FiscalCode",
+                        "name": "l10n_it_website_sale_fiscalcode",
+                        "summary": "",
+                        "version": "10.0.1.0.2"
+                    },
+                    "l10n_it_withholding_tax": {
+                        "author": "Openforce, Odoo Italia Network, Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "Italian Withholding Tax",
+                        "name": "l10n_it_withholding_tax",
+                        "summary": "",
+                        "version": "10.0.2.0.1"
+                    },
+                    "l10n_it_withholding_tax_causali": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Causali pagamento per ritenute d'acconto",
+                        "name": "l10n_it_withholding_tax_causali",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_it_withholding_tax_payment": {
+                        "author": "Openforce, Odoo Italia Network, Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "Italian Withholding Tax Payment",
+                        "name": "l10n_it_withholding_tax_payment",
+                        "summary": "",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_it_withholding_tax_payment_order": {
+                        "author": "Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "ITA - Ritenuta d'acconto - Ordine di pagamento",
+                        "name": "l10n_it_withholding_tax_payment_order",
+                        "summary": "Modulo ponte tra ritenuta d'acconto e ordine di pagamento",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-italy"
+            },
+            "l10n-luxemburg": {
+                "default_branch": "11.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/l10n-luxemburg",
+                "modules": {
+                    "l10n_lu_mis_reports": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "Luxembourg MIS Builder templates",
+                        "name": "l10n_lu_mis_reports",
+                        "summary": "\n        MIS Report templates for the Luxembourg P&L and Balance Sheets",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_lu_mis_reports_tax": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Luxemburg MIS Builder tax reports",
+                        "name": "l10n_lu_mis_reports_tax",
+                        "summary": "\n        Luxemburg tax reports based on MIS Builder",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-luxemburg"
+            },
+            "l10n-morocco": {
+                "default_branch": "11.0",
+                "description": "Moroccan Localization",
+                "html_url": "https://github.com/OCA/l10n-morocco",
+                "modules": {
+                    "l10n_ma_state": {
+                        "author": "Agora Developpement, Odoo Community Association (OCA)",
+                        "category": "Morocco Localization",
+                        "display_name": "Morocco States (R\u00e9gions)",
+                        "name": "l10n_ma_state",
+                        "summary": "Populate Database with the 12 Moroccan States (R\u00e9gions)",
+                        "version": "9.0.0.1.0"
+                    }
+                },
+                "name": "l10n-morocco"
+            },
+            "l10n-netherlands": {
+                "default_branch": "14.0",
+                "description": "Odoo Dutch Localization",
+                "html_url": "https://github.com/OCA/l10n-netherlands",
+                "modules": {
+                    "l10n_nl_account_tax_unece": {
+                        "author": "Onestein, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "L10n NL Account Tax UNECE",
+                        "name": "l10n_nl_account_tax_unece",
+                        "summary": "Auto-configure UNECE params on Dutch taxes",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_nl_bank": {
+                        "author": "Odoo Experts, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Dutch banks list",
+                        "name": "l10n_nl_bank",
+                        "summary": "Import all Dutch banks with BIC code",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_nl_bsn": {
+                        "author": "Onestein, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Burgerservicenummer (BSN) for Partners",
+                        "name": "l10n_nl_bsn",
+                        "summary": "",
+                        "version": "10.0.0.1.0"
+                    },
+                    "l10n_nl_cbs_export": {
+                        "author": "Odoo Experts, Onestein, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "CBS Export Intrahandel Sale",
+                        "name": "l10n_nl_cbs_export",
+                        "summary": "CBS Export File for Dutch Intrahandel Sale",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_nl_country_states": {
+                        "author": "Therp BV, Odoo Community Association (OCA)",
+                        "category": "Dutch Localization",
+                        "display_name": "l10n_nl_country_states",
+                        "name": "l10n_nl_country_states",
+                        "summary": "",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_nl_dutch_company_type": {
+                        "author": "Therp BV, Odoo Community Association (OCA)",
+                        "category": "Dutch localization",
+                        "display_name": "l10n_nl_dutch_company_type",
+                        "name": "l10n_nl_dutch_company_type",
+                        "summary": "Adds the Dutch company types",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_nl_intrastat": {
+                        "author": "Therp BV, Odoo Community Association (OCA)",
+                        "category": "Localisation/Report Intrastat",
+                        "display_name": "Intra-Community transactions declaration (ICP)",
+                        "name": "l10n_nl_intrastat",
+                        "summary": "Intracom Tax Report for the Netherlands",
+                        "version": "10.0.1.0.2"
+                    },
+                    "l10n_nl_partner_name": {
+                        "author": "Therp BV, Odoo Community Association (OCA)",
+                        "category": "Contact management",
+                        "display_name": "Dutch partner names",
+                        "name": "l10n_nl_partner_name",
+                        "summary": "",
+                        "version": "10.0.1.1.1"
+                    },
+                    "l10n_nl_partner_salutation": {
+                        "author": "Therp BV, Odoo Community Association (OCA)",
+                        "category": "Contact management",
+                        "display_name": "Full salutation for partners, Dutch style",
+                        "name": "l10n_nl_partner_salutation",
+                        "summary": "",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_nl_postcodeapi": {
+                        "author": "Therp BV,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Integration with PostcodeApi.nu",
+                        "name": "l10n_nl_postcodeapi",
+                        "summary": "Autocomplete Dutch addresses using PostcodeApi.nu",
+                        "version": "10.0.0.1.0"
+                    },
+                    "l10n_nl_tax_invoice_basis": {
+                        "author": "Onestein, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "NL Tax Invoice Basis (Factuurstelsel)",
+                        "name": "l10n_nl_tax_invoice_basis",
+                        "summary": "Enable invoice basis on tax according to the Dutch law",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_nl_tax_statement": {
+                        "author": "Onestein, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Netherlands BTW Statement",
+                        "name": "l10n_nl_tax_statement",
+                        "summary": "",
+                        "version": "10.0.1.2.0"
+                    },
+                    "l10n_nl_xaf_auditfile_export": {
+                        "author": "Therp BV, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "XAF auditfile export",
+                        "name": "l10n_nl_xaf_auditfile_export",
+                        "summary": "Export XAF auditfiles for Dutch tax authorities",
+                        "version": "10.0.1.2.0"
+                    }
+                },
+                "name": "l10n-netherlands"
+            },
+            "l10n-slovenia": {
+                "default_branch": "10.0",
+                "description": "Slovenian Localization Project",
+                "html_url": "https://github.com/OCA/l10n-slovenia",
+                "modules": {
+                    "l10n_si_upgraded": {
+                        "author": "Mentis d.o.o., Luxim d.o.o., Odoo Community Association (OCA)",
+                        "category": "Localization/Account Charts",
+                        "display_name": "Slovenian Accounting and Taxes",
+                        "name": "l10n_si_upgraded",
+                        "summary": "Slovenian account chart, taxes and fiscal forms",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-slovenia"
+            },
+            "l10n-spain": {
+                "default_branch": "14.0",
+                "description": "Odoo Spain Localization",
+                "html_url": "https://github.com/OCA/l10n-spain",
+                "modules": {
+                    "account_balance_reporting": {
+                        "author": "Pexego, AvanzOSC, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account balance reporting engine",
+                        "name": "account_balance_reporting",
+                        "summary": "",
+                        "version": "10.0.1.4.0"
+                    },
+                    "account_balance_reporting_xlsx": {
+                        "author": "Spanish Localization Team,Odoo Community Association (OCA)",
+                        "category": "Accounting / Reports",
+                        "display_name": "Account balance reporting to XLSX",
+                        "name": "account_balance_reporting_xlsx",
+                        "summary": "Export Account balance reporting to XLSX",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es": {
+                        "author": "Spanish Localization Team, Odoo Community Association (OCA)",
+                        "category": "Localization/Account Charts",
+                        "display_name": "Planes de cuentas espa\u00f1oles (seg\u00fan PGCE 2008)",
+                        "name": "l10n_es",
+                        "summary": "",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_es_account_asset": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Gesti\u00f3n de activos fijos para Espa\u00f1a",
+                        "name": "l10n_es_account_asset",
+                        "summary": "",
+                        "version": "10.0.1.0.3"
+                    },
+                    "l10n_es_account_balance_report": {
+                        "author": "Pexego, Tecnativa,Zikzakmedia,Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "Informes de cuentas anuales espa\u00f1oles",
+                        "name": "l10n_es_account_balance_report",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_account_bank_statement_import_n43": {
+                        "author": "Spanish Localization Team,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Importaci\u00f3n de extractos bancarios espa\u00f1oles (Norma 43)",
+                        "name": "l10n_es_account_bank_statement_import_n43",
+                        "summary": "",
+                        "version": "10.0.1.1.5"
+                    },
+                    "l10n_es_account_banking_sepa_fsdd": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Banking addons",
+                        "display_name": "Account Banking Sepa - FSDD (Anticipos de cr\u00e9dito)",
+                        "name": "l10n_es_account_banking_sepa_fsdd",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_account_fiscal_year_closing": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "Cierre de ejercicio fiscal para Espa\u00f1a",
+                        "name": "l10n_es_account_fiscal_year_closing",
+                        "summary": "Configuraciones para el asistente de cierre contable seg\u00fan la contabilidad espa\u00f1ola",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_account_group": {
+                        "author": "Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Spanish Account Groups",
+                        "name": "l10n_es_account_group",
+                        "summary": "Account groups for Spanish chart of accounts",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_account_invoice_sequence": {
+                        "author": "Spanish Localization Team, NaN\u00b7Tic, Trey, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Secuencia para facturas separada de la secuencia de asientos",
+                        "name": "l10n_es_account_invoice_sequence",
+                        "summary": "",
+                        "version": "10.0.1.0.3"
+                    },
+                    "l10n_es_aeat": {
+                        "author": "Pexego,Acysos,AvanzOSC,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "AEAT Base",
+                        "name": "l10n_es_aeat",
+                        "summary": "Modulo base para declaraciones de la AEAT",
+                        "version": "10.0.3.0.0"
+                    },
+                    "l10n_es_aeat_mod111": {
+                        "author": "AvanzOSC,RGB Consulting SL,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 111",
+                        "name": "l10n_es_aeat_mod111",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_aeat_mod115": {
+                        "author": "AvanzOSC,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 115",
+                        "name": "l10n_es_aeat_mod115",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_aeat_mod123": {
+                        "author": "Tecnativa, Spanish Localization Team, Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 123",
+                        "name": "l10n_es_aeat_mod123",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_aeat_mod130": {
+                        "author": "Serv. Tecnol. Avanzados - Pedro M. Baeza, Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 130",
+                        "name": "l10n_es_aeat_mod130",
+                        "summary": "",
+                        "version": "8.0.0.8.0"
+                    },
+                    "l10n_es_aeat_mod216": {
+                        "author": "AvanzOSC,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 216",
+                        "name": "l10n_es_aeat_mod216",
+                        "summary": "",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_es_aeat_mod296": {
+                        "author": "Tecnativa,AvanzOSC,Qubiq 2010 S.L,Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 296",
+                        "name": "l10n_es_aeat_mod296",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_aeat_mod303": {
+                        "author": "Guadaltech,AvanzOSC,Tecnativa,Eficent,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "AEAT modelo 303",
+                        "name": "l10n_es_aeat_mod303",
+                        "summary": "",
+                        "version": "10.0.3.0.0"
+                    },
+                    "l10n_es_aeat_mod303_cash_basis": {
+                        "author": "Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "AEAT modelo 303 - Extensi\u00f3n para criterio de caja",
+                        "name": "l10n_es_aeat_mod303_cash_basis",
+                        "summary": "",
+                        "version": "10.0.2.0.0"
+                    },
+                    "l10n_es_aeat_mod347": {
+                        "author": "Tecnativa,PESOL,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "AEAT modelo 347",
+                        "name": "l10n_es_aeat_mod347",
+                        "summary": "",
+                        "version": "10.0.1.1.2"
+                    },
+                    "l10n_es_aeat_mod349": {
+                        "author": "Pexego, Top Consultant, Tecnativa, Eficent, Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "Modelo 349 AEAT",
+                        "name": "l10n_es_aeat_mod349",
+                        "summary": "",
+                        "version": "10.0.2.2.6"
+                    },
+                    "l10n_es_aeat_mod390": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 390",
+                        "name": "l10n_es_aeat_mod390",
+                        "summary": "",
+                        "version": "10.0.3.2.0"
+                    },
+                    "l10n_es_aeat_sii": {
+                        "author": "Acysos S.L.,Diagram,Minorisa,Studio73,FactorLibre,Comunitea,Otherway,Tecnativa,Javi Melendez,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Suministro Inmediato de Informaci\u00f3n en el IVA",
+                        "name": "l10n_es_aeat_sii",
+                        "summary": "",
+                        "version": "10.0.5.0.0"
+                    },
+                    "l10n_es_aeat_sii_cash_basis": {
+                        "author": "Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "SII - Extensi\u00f3n para criterio de caja",
+                        "name": "l10n_es_aeat_sii_cash_basis",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_aeat_sii_invoice_summary": {
+                        "author": "FactorLibre,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Envio de factura simplificada resumen TPV a SII",
+                        "name": "l10n_es_aeat_sii_invoice_summary",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_aeat_vat_prorrate": {
+                        "author": "AvanzOSC, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "AEAT - Prorrata de IVA",
+                        "name": "l10n_es_aeat_vat_prorrate",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_aeat_vat_prorrate_asset": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "AEAT - Prorrata de IVA - Extensi\u00f3n para los activos",
+                        "name": "l10n_es_aeat_vat_prorrate_asset",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_crm_lead_trade_name": {
+                        "author": "Antiun Ingenier\u00eda S.L.,QubiQ 2010,Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Trade name in leads",
+                        "name": "l10n_es_crm_lead_trade_name",
+                        "summary": "Add trade name field to leads",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_dua": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localization/Account Charts",
+                        "display_name": "Importaciones con DUA",
+                        "name": "l10n_es_dua",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_dua_sii": {
+                        "author": "Studio73, Comunitea, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Suministro Inmediato de Informaci\u00f3n de importaciones con DUA",
+                        "name": "l10n_es_dua_sii",
+                        "summary": "",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_es_irnr": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localization/Account Charts",
+                        "display_name": "Retenciones IRNR (No residentes)",
+                        "name": "l10n_es_irnr",
+                        "summary": "Module summary",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_location_nuts": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localisation/Europe",
+                        "display_name": "NUTS Regions for Spain",
+                        "name": "l10n_es_location_nuts",
+                        "summary": "NUTS specific options for Spain",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_mis_report": {
+                        "author": "Eficent,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "Plantillas MIS Builder para informes contables espa\u00f1oles",
+                        "name": "l10n_es_mis_report",
+                        "summary": "\n        Plantillas MIS Builder para informes contables espa\u00f1oles",
+                        "version": "10.0.2.1.1"
+                    },
+                    "l10n_es_partner": {
+                        "author": "ZikZak,Acysos,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Localisation/Europe",
+                        "display_name": "Adaptaci\u00f3n de los clientes, proveedores y bancos para Espa\u00f1a",
+                        "name": "l10n_es_partner",
+                        "summary": "",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_es_partner_mercantil": {
+                        "author": "Spanish Localization Team, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localization/Europe",
+                        "display_name": "Partner Mercantil",
+                        "name": "l10n_es_partner_mercantil",
+                        "summary": "A\u00f1ade los datos del registro mercantil a la empresa",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_payment_order": {
+                        "author": "Acysos, Serv. Tecnol. Avanzados - Pedro M. Baeza,Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "Exportaci\u00f3n de ficheros bancarios CSB 19, 32, 34 y 58",
+                        "name": "l10n_es_payment_order",
+                        "summary": "",
+                        "version": "8.0.1.7.0"
+                    },
+                    "l10n_es_payment_order_confirminet": {
+                        "author": "Serv. Tecnol. Avanzados - Pedro M. Baeza, Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "Exportaci\u00f3n de fichero bancario Confirminet",
+                        "name": "l10n_es_payment_order_confirminet",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_es_pos": {
+                        "author": "Antiun Ingenier\u00eda S.L., Serv. Tecnol. Avanzados - Pedro M. Baeza, Spanish Localization Team, Odoo Community Association (OCA)",
+                        "category": "Point Of Sale",
+                        "display_name": "Punto de venta adaptado a la legislaci\u00f3n espa\u00f1ola",
+                        "name": "l10n_es_pos",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_es_subcontractor_certificate": {
+                        "author": "Domatix,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Certificado de subcontratista",
+                        "name": "l10n_es_subcontractor_certificate",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_es_toponyms": {
+                        "author": "Spanish Localization Team, ZikZakMedia, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localisation/Europe",
+                        "display_name": "Top\u00f3nimos espa\u00f1oles",
+                        "name": "l10n_es_toponyms",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_es_vat_book": {
+                        "author": "PRAXYA, Eficent, Tecnativa, Punt Sistemes, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Libro de IVA",
+                        "name": "l10n_es_vat_book",
+                        "summary": "",
+                        "version": "10.0.4.0.1"
+                    },
+                    "payment_redsys": {
+                        "author": "Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Payment Acquirer",
+                        "display_name": "Redsys Payment Acquirer",
+                        "name": "payment_redsys",
+                        "summary": "Payment Acquirer: Redsys Implementation",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-spain"
+            },
+            "l10n-switzerland": {
+                "default_branch": "14.0",
+                "description": "Odoo Swiss localization",
+                "html_url": "https://github.com/OCA/l10n-switzerland",
+                "modules": {
+                    "l10n_ch_account_reconcile_isr": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Switzerland - ISR account reconcile",
+                        "name": "l10n_ch_account_reconcile_isr",
+                        "summary": "Adds a second automatic reconciliation button, which is based on the isr",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_ch_bank": {
+                        "author": "Camptocamp, brain-tec AG,Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Switzerland - Bank list",
+                        "name": "l10n_ch_bank",
+                        "summary": "Banks names, addresses and BIC codes",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_ch_bank_statement_import_postfinance": {
+                        "author": "Compassion CH, Camptocamp, Odoo Community Association (OCA)",
+                        "category": "Finance",
+                        "display_name": "Swiss bank statements import",
+                        "name": "l10n_ch_bank_statement_import_postfinance",
+                        "summary": "",
+                        "version": "10.0.1.0.4"
+                    },
+                    "l10n_ch_base_bank": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Switzerland - Bank type",
+                        "name": "l10n_ch_base_bank",
+                        "summary": "Types and number validation for swiss electronic pmnt. DTA, ESR",
+                        "version": "10.0.1.3.0"
+                    },
+                    "l10n_ch_credit_control_payment_slip_report": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Switzerland - Printing of dunning ISR",
+                        "name": "l10n_ch_credit_control_payment_slip_report",
+                        "summary": "Print ISR slip related to credit control",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_dta": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Switzerland - Bank Payment File (DTA)",
+                        "name": "l10n_ch_dta",
+                        "summary": "Electronic payment file for Swiss bank (DTA)",
+                        "version": "10.0.1.0.2"
+                    },
+                    "l10n_ch_fds_postfinance": {
+                        "author": "Compassion CH, Odoo Community Association (OCA)",
+                        "category": "Finance",
+                        "display_name": "Swiss Postfinance File Delivery Services",
+                        "name": "l10n_ch_fds_postfinance",
+                        "summary": "Download files and import bank statements from FDS",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_fds_upload_dd": {
+                        "author": "Compassion CH, Odoo Community Association (OCA)",
+                        "category": "Finance",
+                        "display_name": "Swiss Postfinance FDS Direct Debit Upload",
+                        "name": "l10n_ch_fds_upload_dd",
+                        "summary": "Upload Direct Debit files to FDS PostFinance",
+                        "version": "10.0.1.0.1"
+                    },
+                    "l10n_ch_fds_upload_sepa": {
+                        "author": "Compassion CH, Odoo Community Association (OCA)",
+                        "category": "Finance",
+                        "display_name": "Swiss Postfinance FDS SEPA upload",
+                        "name": "l10n_ch_fds_upload_sepa",
+                        "summary": "Upload SEPA files to FDS PostFinance",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_hr_payroll": {
+                        "author": "Open Net S\u00e0rl,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Switzerland - Payroll",
+                        "name": "l10n_ch_hr_payroll",
+                        "summary": "Switzerland Payroll Rules",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_hr_payroll_report": {
+                        "author": "Camptocamp, Odoo Community Association (OCA)",
+                        "category": "Reports",
+                        "display_name": "Switzerland - Payroll Reports",
+                        "name": "l10n_ch_hr_payroll_report",
+                        "summary": "Switzerland Payroll Reports",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_import_cresus": {
+                        "author": "Camptocamp, Open Net S\u00e0rl, Odoo Community Association (OCA)",
+                        "category": "accounting",
+                        "display_name": "Accounting Import Cresus",
+                        "name": "l10n_ch_import_cresus",
+                        "summary": "Allows to import Cr\u00e9sus .txt files containing journal entries into Odoo.",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_import_pain002": {
+                        "author": "Monzione Marco, Odoo Community Association (OCA)",
+                        "category": "Banking addons",
+                        "display_name": "Import pain002",
+                        "name": "l10n_ch_import_pain002",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_import_winbiz": {
+                        "author": "Open Net S\u00e0rl, Camptocamp, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Accounting Import WinBIZ",
+                        "name": "l10n_ch_import_winbiz",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_lsv_dd": {
+                        "author": "brain-tec AG,Compassion,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "LSV and Postfinance Direct Debit file generation",
+                        "name": "l10n_ch_lsv_dd",
+                        "summary": "Create LSV and Direct Debit (postfinance) files",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_ch_pain_base": {
+                        "author": "Akretion,Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Finance",
+                        "display_name": "Switzerland - ISO 20022",
+                        "name": "l10n_ch_pain_base",
+                        "summary": "ISO 20022 base module for Switzerland",
+                        "version": "10.0.1.0.5"
+                    },
+                    "l10n_ch_pain_credit_transfer": {
+                        "author": "Akretion,Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Finance",
+                        "display_name": "Switzerland - PAIN Credit Transfer",
+                        "name": "l10n_ch_pain_credit_transfer",
+                        "summary": "Generate ISO 20022 credit transfert (SEPA and not SEPA)",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_pain_direct_debit": {
+                        "author": "Akretion,Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Finance",
+                        "display_name": "Switzerland - PAIN Direct Debit",
+                        "name": "l10n_ch_pain_direct_debit",
+                        "summary": "Generate ISO 20022 direct debits",
+                        "version": "9.0.1.0.0"
+                    },
+                    "l10n_ch_payment_slip": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Switzerland - Payment Slip (BVR/ESR)",
+                        "name": "l10n_ch_payment_slip",
+                        "summary": "Print ESR/BVR payment slip with your invoices",
+                        "version": "10.0.1.1.6"
+                    },
+                    "l10n_ch_payment_slip_account_statement_base_completion": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Switzerland - BVR/ESR Bank statement Completion",
+                        "name": "l10n_ch_payment_slip_account_statement_base_completion",
+                        "summary": "",
+                        "version": "1.0"
+                    },
+                    "l10n_ch_payment_slip_layouts": {
+                        "author": "Camptocamp, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Payment slip alternate layout(s)",
+                        "name": "l10n_ch_payment_slip_layouts",
+                        "summary": "Add new BVR/ESR payment slip layouts like invoice\n with slip on same document",
+                        "version": "8.0.0.1.0"
+                    },
+                    "l10n_ch_qr_bill": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Switzerland - QR-bill",
+                        "name": "l10n_ch_qr_bill",
+                        "summary": "Print QR-bill for your invoices [Backport from Odoo l10n_ch]",
+                        "version": "10.0.1.2.3"
+                    },
+                    "l10n_ch_qr_bill_transaction_id": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Switzerland - QR-bill - transaction ID",
+                        "name": "l10n_ch_qr_bill_transaction_id",
+                        "summary": "Glue module with base_transaction_id",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_scan_bvr": {
+                        "author": "Camptocamp, Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Others",
+                        "display_name": "Switzerland - Scan ESR/BVR to create invoices",
+                        "name": "l10n_ch_scan_bvr",
+                        "summary": "",
+                        "version": "10.0.1.0.4"
+                    },
+                    "l10n_ch_states": {
+                        "author": "copado MEDIA UG, Odoo Community Association (OCA)",
+                        "category": "Localisation",
+                        "display_name": "Switzerland Country States",
+                        "name": "l10n_ch_states",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_ch_zip": {
+                        "author": "\n        Camptocamp,\n        brain-tec AG,\n        copadoMEDIA UG,\n        Odoo Community Association (OCA)\n    ",
+                        "category": "Localisation",
+                        "display_name": "Switzerland - Postal codes (ZIP) list",
+                        "name": "l10n_ch_zip",
+                        "summary": "Provides all Swiss postal codes for auto-completion",
+                        "version": "10.0.1.0.1"
+                    }
+                },
+                "name": "l10n-switzerland"
+            },
+            "l10n-taiwan": {
+                "default_branch": "11.0",
+                "description": "Taiwanese localization",
+                "html_url": "https://github.com/OCA/l10n-taiwan",
+                "modules": {
+                    "l10n_taiwan": {
+                        "author": "Elico Corp, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "l10n Taiwan",
+                        "name": "l10n_taiwan",
+                        "summary": "This module adds state data for Taiwan Localization.",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-taiwan"
+            },
+            "l10n-thailand": {
+                "default_branch": "14.0",
+                "description": "Thai localization",
+                "html_url": "https://github.com/OCA/l10n-thailand",
+                "modules": {
+                    "l10n_th_address": {
+                        "author": "Ecosoft,Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Partner Address in Thai",
+                        "name": "l10n_th_address",
+                        "summary": "",
+                        "version": "10.0.0.1.0"
+                    }
+                },
+                "name": "l10n-thailand"
+            },
+            "l10n-usa": {
+                "default_branch": "14.0",
+                "description": "US Localization of Odoo",
+                "html_url": "https://github.com/OCA/l10n-usa",
+                "modules": {
+                    "l10n_us_account_profile": {
+                        "author": "Ursa Information Systems, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "US Accounting",
+                        "name": "l10n_us_account_profile",
+                        "summary": "Additional features to manage US accounting in Odoo",
+                        "version": "10.0.0.0.2"
+                    },
+                    "l10n_us_check_writing_address": {
+                        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+                        "category": "Localization/Checks Printing",
+                        "display_name": "US Check Printing with Payee Address",
+                        "name": "l10n_us_check_writing_address",
+                        "summary": "Print US Checks",
+                        "version": "10.0.1.1.0"
+                    },
+                    "l10n_us_form_1099": {
+                        "author": "Ursa Information Systems, Odoo Community Association (OCA)",
+                        "category": "Customers",
+                        "display_name": "l10n_us_form_1099",
+                        "name": "l10n_us_form_1099",
+                        "summary": "Add 1099 field to res.partner that will auto-check supplier",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_us_product": {
+                        "author": "LasLabs, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "USA - Product",
+                        "name": "l10n_us_product",
+                        "summary": "This module allows you to record product weight in ounces and volume in inches cubed.",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_us_product_stock": {
+                        "author": "LasLabs, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "USA - Stock",
+                        "name": "l10n_us_product_stock",
+                        "summary": "This module overrides the product weight and volume to use ounces and cubic inches. It automatically installs if you have l10n_us_product and stock installed.",
+                        "version": "10.0.1.0.0"
+                    },
+                    "l10n_us_uom_profile": {
+                        "author": "LasLabs, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "USA - UoM Profile",
+                        "name": "l10n_us_uom_profile",
+                        "summary": "This module provides a default UoM profile for USA",
+                        "version": "10.0.1.0.0"
+                    }
+                },
+                "name": "l10n-usa"
+            },
+            "maintenance": {
+                "default_branch": "14.0",
                 "description": "Odoo modules for businesses that implies maintenance tasks",
                 "html_url": "https://github.com/OCA/maintenance",
                 "modules": {
@@ -5554,7 +7690,7 @@
                 "name": "management-system"
             },
             "manufacture": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Manufacturing Addons",
                 "html_url": "https://github.com/OCA/manufacture",
                 "modules": {
@@ -5978,7 +8114,7 @@
                 "name": "margin-analysis"
             },
             "mis-builder": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Management Information System reports for Odoo: easily build super fast, beautiful, custom reports such as P&L, Balance Sheets and more.",
                 "html_url": "https://github.com/OCA/mis-builder",
                 "modules": {
@@ -5988,7 +8124,7 @@
                         "display_name": "MIS Builder",
                         "name": "mis_builder",
                         "summary": "\n        Build 'Management Information System' Reports and Dashboards\n    ",
-                        "version": "10.0.3.6.3"
+                        "version": "10.0.3.6.5"
                     },
                     "mis_builder_budget": {
                         "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
@@ -6010,7 +8146,7 @@
                 "name": "mis-builder"
             },
             "multi-company": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/multi-company",
                 "modules": {
@@ -6030,6 +8166,14 @@
                         "summary": "\n        Make account types multi-company aware",
                         "version": "10.0.1.0.0"
                     },
+                    "base_ir_filters_company": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Hidden/Dependency",
+                        "display_name": "Filters by company",
+                        "name": "base_ir_filters_company",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
                     "base_multi_company": {
                         "author": "LasLabs, Tecnativa, Odoo Community Association (OCA)",
                         "category": "base",
@@ -6037,6 +8181,14 @@
                         "name": "base_multi_company",
                         "summary": "Provides a base for adding multi-company support to models.",
                         "version": "10.0.2.0.1"
+                    },
+                    "mail_template_multi_company": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Mail Template Multi Company",
+                        "name": "mail_template_multi_company",
+                        "summary": "",
+                        "version": "10.0.1.0.1"
                     },
                     "partner_multi_company": {
                         "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -6130,7 +8282,7 @@
                 "name": "oca-custom"
             },
             "odoo-pim": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/odoo-pim",
                 "modules": {
@@ -6202,7 +8354,7 @@
                 "name": "odoo-pim"
             },
             "operating-unit": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Manage Operating Units in Odoo",
                 "html_url": "https://github.com/OCA/operating-unit",
                 "modules": {
@@ -6276,7 +8428,7 @@
                         "display_name": "HR Payroll Account Operating Unit",
                         "name": "hr_payroll_account_operating_unit",
                         "summary": "",
-                        "version": "10.0.1.0.0"
+                        "version": "10.0.1.0.1"
                     },
                     "mis_builder_operating_unit": {
                         "author": "Eficent Business and IT Consulting Services S.L., Serpent Consulting Services Pvt. Ltd.,ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -6410,7 +8562,7 @@
                 "name": "operating-unit"
             },
             "partner-contact": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Partner and Contact related addons",
                 "html_url": "https://github.com/OCA/partner-contact",
                 "modules": {
@@ -6524,7 +8676,7 @@
                         "display_name": "Partner Address Version",
                         "name": "partner_address_version",
                         "summary": "",
-                        "version": "10.0.1.0.0"
+                        "version": "10.0.2.0.0"
                     },
                     "partner_affiliate": {
                         "author": "Camptocamp, Tecnativa, Odoo Community Association (OCA)",
@@ -6970,7 +9122,7 @@
                 "name": "partner-contact"
             },
             "pos": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/pos",
                 "modules": {
@@ -7218,7 +9370,7 @@
                 "name": "pos"
             },
             "product-attribute": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Product Attribute",
                 "html_url": "https://github.com/OCA/product-attribute",
                 "modules": {
@@ -7284,7 +9436,7 @@
                         "display_name": "Product Category Image",
                         "name": "product_categ_image",
                         "summary": "Add image on product category",
-                        "version": "10.0.1.0.0"
+                        "version": "10.0.1.0.1"
                     },
                     "product_code_remove": {
                         "author": "Therp BV,Odoo Community Association (OCA)",
@@ -7358,6 +9510,14 @@
                         "summary": "",
                         "version": "1.0"
                     },
+                    "product_exception": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Quality",
+                        "display_name": "Product Exception",
+                        "name": "product_exception",
+                        "summary": "Ensure products are valid against a set of rules",
+                        "version": "10.0.1.0.0"
+                    },
                     "product_gift": {
                         "author": "Akretion,Odoo Community Association (OCA)",
                         "category": "Generic Modules",
@@ -7389,6 +9549,14 @@
                         "name": "product_index",
                         "summary": "",
                         "version": "1.0"
+                    },
+                    "product_life_period": {
+                        "author": "Acsone SA/NV, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Product life period",
+                        "name": "product_life_period",
+                        "summary": "",
+                        "version": "10.0.1.0.1"
                     },
                     "product_listprice_upgrade": {
                         "author": "Tiny",
@@ -7558,6 +9726,14 @@
                         "summary": "\n        Module introducing a state field on product template",
                         "version": "10.0.1.0.0"
                     },
+                    "product_state_history": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Product State History",
+                        "name": "product_state_history",
+                        "summary": "\n        Allows to store product state history for reporting purpose",
+                        "version": "10.0.1.0.1"
+                    },
                     "product_supplierinfo_for_customer": {
                         "author": "AvanzOSC, Tecnativa, Odoo Community Association (OCA)",
                         "category": "Sales Management",
@@ -7618,7 +9794,7 @@
                 "name": "product-attribute"
             },
             "product-variant": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/product-variant",
                 "modules": {
@@ -7722,7 +9898,7 @@
                 "name": "product-variant"
             },
             "project": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Project Management and Services Company Addons",
                 "html_url": "https://github.com/OCA/project",
                 "modules": {
@@ -8122,7 +10298,7 @@
                 "name": "purchase-reporting"
             },
             "purchase-workflow": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Purchases, Workflow and Organization",
                 "html_url": "https://github.com/OCA/purchase-workflow",
                 "modules": {
@@ -8253,6 +10429,14 @@
                         "name": "purchase_delivery_term",
                         "summary": "Delivery term for purchase orders",
                         "version": "0.2"
+                    },
+                    "purchase_deposit": {
+                        "author": "Elico Corp, Ecosoft, Odoo Community Association (OCA)",
+                        "category": "Purchase Management",
+                        "display_name": "Purchase Deposit",
+                        "name": "purchase_deposit",
+                        "summary": "Option to create deposit from purchase order",
+                        "version": "10.0.1.0.0"
                     },
                     "purchase_discount": {
                         "author": "Tiny, Acysos S.L., Tecnativa, ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -8390,6 +10574,14 @@
                         "summary": "",
                         "version": "10.0.1.0.0"
                     },
+                    "purchase_order_line_invoicing": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Purchase Order Line Invoicing",
+                        "name": "purchase_order_line_invoicing",
+                        "summary": "\n        Allows to invoice lines of multiple purchase orders",
+                        "version": "10.0.1.0.0"
+                    },
                     "purchase_order_line_sequence": {
                         "author": "Camptocamp, Eficent, Serpent CS, Odoo Community Association (OCA)",
                         "category": "Purchase Management",
@@ -8492,7 +10684,7 @@
                         "display_name": "Purchase Request to RFQ",
                         "name": "purchase_request_to_rfq",
                         "summary": "",
-                        "version": "10.0.1.1.1"
+                        "version": "10.0.1.1.3"
                     },
                     "purchase_request_to_rfq_order_approved": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -8602,7 +10794,7 @@
                 "name": "purchase-workflow"
             },
             "queue": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Asynchronous Job Queue",
                 "html_url": "https://github.com/OCA/queue",
                 "modules": {
@@ -8612,7 +10804,7 @@
                         "display_name": "Job Queue",
                         "name": "queue_job",
                         "summary": "",
-                        "version": "10.0.1.1.2"
+                        "version": "10.0.1.2.0"
                     },
                     "queue_job_cron": {
                         "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -8642,7 +10834,7 @@
                 "name": "queue"
             },
             "report-print-send": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Printing Services and Printer related addons",
                 "html_url": "https://github.com/OCA/report-print-send",
                 "modules": {
@@ -8690,7 +10882,7 @@
                 "name": "report-print-send"
             },
             "reporting-engine": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Alternative Reporting Engine",
                 "html_url": "https://github.com/OCA/reporting-engine",
                 "modules": {
@@ -8708,7 +10900,7 @@
                         "display_name": "BI SQL Editor",
                         "name": "bi_sql_editor",
                         "summary": "BI Views builder, based on Materialized or Normal SQL Views",
-                        "version": "10.0.1.0.1"
+                        "version": "10.0.1.0.2"
                     },
                     "bi_view_editor": {
                         "author": "Onestein,Odoo Community Association (OCA)",
@@ -8717,6 +10909,14 @@
                         "name": "bi_view_editor",
                         "summary": "Graphical BI views builder for Odoo",
                         "version": "10.0.1.0.2"
+                    },
+                    "report_csv": {
+                        "author": "Creu Blanca,ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "Base report csv",
+                        "name": "report_csv",
+                        "summary": "Base module to create csv report",
+                        "version": "10.0.1.0.0"
                     },
                     "report_py3o": {
                         "author": "XCG Consulting,ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -8818,7 +11018,7 @@
                 "name": "reporting-engine"
             },
             "rest-framework": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/rest-framework",
                 "modules": {
@@ -8828,7 +11028,7 @@
                         "display_name": "Base Rest",
                         "name": "base_rest",
                         "summary": "\n        Develop your own high level REST APIs for Odoo thanks to this addon.\n        ",
-                        "version": "10.0.2.0.3"
+                        "version": "10.0.2.2.0"
                     },
                     "base_rest_demo": {
                         "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
@@ -8837,6 +11037,14 @@
                         "name": "base_rest_demo",
                         "summary": "\n        Demo addon for Base REST",
                         "version": "10.0.2.0.0"
+                    },
+                    "rest_log": {
+                        "author": "Camptocamp, ACSONE, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "REST Log",
+                        "name": "rest_log",
+                        "summary": "Track REST API calls into DB",
+                        "version": "10.0.1.3.1"
                     }
                 },
                 "name": "rest-framework"
@@ -9604,7 +11812,7 @@
                         "display_name": "Sale Procurement Group by Line",
                         "name": "sale_procurement_group_by_line",
                         "summary": "Base module for multiple procurement group by Sale order",
-                        "version": "10.0.1.1.1"
+                        "version": "10.0.1.1.2"
                     },
                     "sale_procurement_group_by_requested_date": {
                         "author": "Eficent , SerpentCS,Odoo Community Association (OCA)",
@@ -9866,7 +12074,7 @@
                 "name": "server-auth"
             },
             "server-tools": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Tools for Odoo Administrators to improve some technical features on Odoo.",
                 "html_url": "https://github.com/OCA/server-tools",
                 "modules": {
@@ -9900,7 +12108,7 @@
                         "display_name": "Authentification - Admin Passkey",
                         "name": "auth_admin_passkey",
                         "summary": "",
-                        "version": "10.0.1.0.2"
+                        "version": "10.0.1.0.3"
                     },
                     "auth_brute_force": {
                         "author": "GRAP, Tecnativa, Odoo Community Association (OCA)",
@@ -10278,6 +12486,14 @@
                         "summary": "",
                         "version": "10.0.1.0.3"
                     },
+                    "base_user_role_company": {
+                        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "User roles by company",
+                        "name": "base_user_role_company",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
                     "base_view_inheritance_extension": {
                         "author": "Therp BV,Odoo Community Association (OCA)",
                         "category": "Hidden/Dependency",
@@ -10404,7 +12620,7 @@
                         "display_name": "Keychain",
                         "name": "keychain",
                         "summary": "Store accounts and credentials",
-                        "version": "10.0.2.0.1"
+                        "version": "10.0.2.0.2"
                     },
                     "language_path_mixin": {
                         "author": "Therp BV,Odoo Community Association (OCA)",
@@ -10417,10 +12633,10 @@
                     "letsencrypt": {
                         "author": "Therp BV,Tecnativa,Odoo Community Association (OCA)",
                         "category": "Hidden/Dependency",
-                        "display_name": "Let's encrypt",
+                        "display_name": "Let's Encrypt",
                         "name": "letsencrypt",
                         "summary": "Request SSL certificates from letsencrypt.org",
-                        "version": "10.0.1.0.0"
+                        "version": "10.0.2.0.0"
                     },
                     "mail_environment": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -10444,7 +12660,7 @@
                         "display_name": "Mass Editing",
                         "name": "mass_editing",
                         "summary": "Mass Editing",
-                        "version": "10.0.2.0.1"
+                        "version": "10.0.2.1.0"
                     },
                     "mass_sorting": {
                         "author": "GRAP,Odoo Community Association (OCA)",
@@ -10500,6 +12716,14 @@
                         "display_name": "Settings - Remove Enterprise Fields",
                         "name": "res_config_settings_enterprise_remove",
                         "summary": "Remove fields in all settings views marked as enterprise",
+                        "version": "10.0.1.0.0"
+                    },
+                    "save_translation_file": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Save translation file",
+                        "name": "save_translation_file",
+                        "summary": "Allows developpers to easily generate i18n files",
                         "version": "10.0.1.0.0"
                     },
                     "scheduler_error_mailer": {
@@ -10572,6 +12796,14 @@
                         "display_name": "Server Environment Ir Config Parameter",
                         "name": "server_environment_ir_config_parameter",
                         "summary": "\n        Override System Parameters from server environment file",
+                        "version": "10.0.1.0.1"
+                    },
+                    "slow_statement_logger": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Slow SQL Statement Logger",
+                        "name": "slow_statement_logger",
+                        "summary": "Log slow SQL statements",
                         "version": "10.0.1.0.1"
                     },
                     "sql_export": {
@@ -10674,7 +12906,7 @@
                 "name": "server-tools"
             },
             "server-ux": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/server-ux",
                 "modules": {
@@ -10764,6 +12996,14 @@
                         "display_name": "Drag & drop emails to Odoo",
                         "name": "mail_drop_target",
                         "summary": "Attach emails to Odoo by dragging them from your desktop",
+                        "version": "10.0.1.0.0"
+                    },
+                    "mail_embed_image": {
+                        "author": "Therp BV,Odoo Community Association (OCA)",
+                        "category": "Social",
+                        "display_name": "Mail Embed Image",
+                        "name": "mail_embed_image",
+                        "summary": "Replace img.src's which start with http with inline cids",
                         "version": "10.0.1.0.0"
                     },
                     "mail_follower_custom_notification": {
@@ -11078,6 +13318,14 @@
                         "summary": "\n        Reimplement barcode field in Product Packagings",
                         "version": "10.0.1.0.0"
                     },
+                    "stock_inventory_barcode": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Inventory, Logistic, Storage",
+                        "display_name": "Barcode Input for Inventories",
+                        "name": "stock_inventory_barcode",
+                        "summary": "Add simple barcode interface on inventories",
+                        "version": "10.0.0.1.0"
+                    },
                     "stock_scanner": {
                         "author": "SYLEAM,ACSONE SA/NV,Odoo Community Association (OCA)",
                         "category": "Generic Modules/Inventory Control",
@@ -11091,6 +13339,14 @@
                         "category": "Generic Modules/Inventory Control",
                         "display_name": "Stock Scanner Inventory",
                         "name": "stock_scanner_inventory",
+                        "summary": "",
+                        "version": "10.0.1.0.0"
+                    },
+                    "stock_scanner_location_info": {
+                        "author": "SYLEAM,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Inventory Control",
+                        "display_name": "Stock Scanner Location Info",
+                        "name": "stock_scanner_location_info",
                         "summary": "",
                         "version": "10.0.1.0.0"
                     },
@@ -11354,7 +13610,7 @@
                 "name": "stock-logistics-transport"
             },
             "stock-logistics-warehouse": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Warehouse Management Addons",
                 "html_url": "https://github.com/OCA/stock-logistics-warehouse",
                 "modules": {
@@ -11850,7 +14106,7 @@
                 "name": "stock-logistics-warehouse"
             },
             "stock-logistics-workflow": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo Stock, Workflow and Organization",
                 "html_url": "https://github.com/OCA/stock-logistics-workflow",
                 "modules": {
@@ -12538,7 +14794,7 @@
                 "name": "vertical-abbey"
             },
             "vertical-association": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo addons for membership related tasks",
                 "html_url": "https://github.com/OCA/vertical-association",
                 "modules": {
@@ -12564,7 +14820,7 @@
                         "display_name": "Membership extension",
                         "name": "membership_extension",
                         "summary": "Improves user experience of membership addon",
-                        "version": "10.0.1.2.1"
+                        "version": "10.0.1.2.2"
                     },
                     "membership_initial_fee": {
                         "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -13506,7 +15762,7 @@
                 "name": "vertical-travel"
             },
             "web": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Odoo web client UI related addons",
                 "html_url": "https://github.com/OCA/web",
                 "modules": {
@@ -14130,7 +16386,7 @@
                 "name": "webkit-tools"
             },
             "website": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo website builder addons",
                 "html_url": "https://github.com/OCA/website",
                 "modules": {
@@ -14434,7 +16690,7 @@
                 "name": "website"
             },
             "website-cms": {
-                "default_branch": "11.0",
+                "default_branch": "13.0",
                 "description": "CMS features for Odoo website",
                 "html_url": "https://github.com/OCA/website-cms",
                 "modules": {
@@ -14498,7 +16754,7 @@
                 "name": "website-cms"
             },
             "wms": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Warehouse Management System for advance logistic with Odoo",
                 "html_url": "https://github.com/OCA/wms",
                 "modules": {
