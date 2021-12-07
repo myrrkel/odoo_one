@@ -101,9 +101,9 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
 
     def onchange_checkbox_enterprise(self):
         if self.checkbox_enterprise.isChecked():
-            self.line_edit_enterprise_path.show()
+            self.line_edit_enterprise_path.setDisabled(False)
         else:
-            self.line_edit_enterprise_path.hide()
+            self.line_edit_enterprise_path.setDisabled(True)
 
     def show_logs(self):
         self.text_log.show()

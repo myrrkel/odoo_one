@@ -30,7 +30,11 @@
             background-color: rgb(132, 92, 122);
             gridline-color: rgb(83, 63, 79);
         }
-                        
+
+        QLineEdit#line_edit_enterprise_path:disabled {
+            color: grey;
+        }
+
         QLabel#label_version {
             color: white;
         }
