@@ -1,4 +1,5 @@
 docker
+docker-compose
 OdooRPC
 PyGithub
 PyQt5
