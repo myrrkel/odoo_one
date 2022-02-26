@@ -2,6 +2,7 @@ import docker
 import shutil
 import subprocess
 import io
+import install_docker
 
 class DockerManager(object):
 
@@ -9,12 +10,14 @@ class DockerManager(object):
         self.version = version
         self.odoo_version = '%s.0' % version
         self.odoo_db = odoo_db
+
         self.client = docker.from_env()
+
+        self.network = 'odoo_one_default'
         networks = self.get_networks()
         if networks:
             self.network = networks[0].name
         else:
-            self.network = 'odoo_one_default'
             create_network(self.network)
 
     def get_odoo_ip(self):
@@ -52,7 +55,13 @@ class DockerManager(object):
         return self.client.containers.list(filters={'ancestor': ancestor})
 
     def get_networks(self):
-        return list(filter(lambda n: n.name not in ['none', 'bridge', 'host'], self.client.networks.list()))
+        try:
+            networks = self.client.networks.list()
+        except AttributeError:
+            create_network(self.network)
+            return []
+
+        return list(filter(lambda n: n.name not in ['none', 'bridge', 'host'], networks))
 
     def get_postgres_containers(self):
         return self.get_containers('postgres:10')
@@ -75,45 +84,6 @@ class DockerManager(object):
         except Exception as e:
             print(e)
             pass
-
-def docker_exists():
-    docker_path = shutil.which("docker")
-    return docker_path is not None
-
-
-def compose_exists():
-    compose_path = shutil.which("docker-compose")
-    return compose_path is not None
-
-
-def install_docker():
-
-    process = subprocess.run(['apt-get', 'install', 'curl'],
-                             stdout=subprocess.PIPE, universal_newlines=True)
-
-    process = subprocess.run(['curl', '-fsSL', 'https://get.docker.com', '-o', 'get-docker.sh'],
-                             stdout=subprocess.PIPE, universal_newlines=True)
-
-    process = subprocess.run(['sh', 'get-docker.sh'],
-                             stdout=subprocess.PIPE, universal_newlines=True)
-
-
-def add_users_in_docker_group():
-    process = subprocess.run(['who'], stdout=subprocess.PIPE, universal_newlines=True)
-    users = process.stdout
-    for user in users.split('\n'):
-        user_name = user.split(' ')[0]
-        if user_name:
-            process = subprocess.run(['usermod', '-aG', 'docker', user_name],
-                                 stdout=subprocess.PIPE, universal_newlines=True)
-            if process.stdout:
-                print(process.stdout)
-
-
-def install_compose():
-
-    process = subprocess.run(['apt-get', 'install', '-y', 'docker-compose'],
-                             stdout=subprocess.PIPE, universal_newlines=True)
 
 
 def create_compose_file(path_list=None, version='14', cmd_params="", enterprise_path="", network=""):
@@ -184,16 +154,29 @@ def restart_docker():
     process = subprocess.Popen(['service', 'docker', 'restart'],
                              stdout=subprocess.PIPE, shell=False)
 
+
+def docker_exists():
+    docker_path = shutil.which("docker")
+    return docker_path is not None
+
+
+def compose_exists():
+    compose_path = shutil.which("docker-compose")
+    return compose_path is not None
+
+
 def start_compose():
 
     process = subprocess.run(['docker-compose', 'up', '-d'],
                              stdout=subprocess.PIPE, shell=False)
+
 
 def stop_compose():
     process = subprocess.run(['docker-compose', 'down'],
                              stdout=subprocess.PIPE, universal_newlines=True)
     if process:
         print('stop')
+
 
 def create_network(name):
     process = subprocess.run(['docker', 'network', 'create', name, '--subnet=172.19.0.0/16'],
