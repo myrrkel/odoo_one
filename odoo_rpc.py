@@ -4,6 +4,22 @@ import urllib.request
 import time
 
 
+def json_rpc(url, method, params):
+    data = {
+        "jsonrpc": "2.0",
+        "method": method,
+        "params": params,
+        "id": random.randint(0, 1000000000),
+    }
+    req = urllib.request.Request(url=url, data=json.dumps(data).encode(), headers={
+        "Content-Type": "application/json",
+    })
+    reply = json.loads(urllib.request.urlopen(req).read().decode('UTF-8'))
+    if reply.get("error"):
+        raise Exception(reply["error"])
+    return reply["result"]
+
+
 class OdooRpc:
 
     def __init__(self, host, port, db, user, password, version):
@@ -20,29 +36,14 @@ class OdooRpc:
 
         self.wait_for_odoo()
 
-    def json_rpc(self, url, method, params):
-        data = {
-            "jsonrpc": "2.0",
-            "method": method,
-            "params": params,
-            "id": random.randint(0, 1000000000),
-        }
-        req = urllib.request.Request(url=url, data=json.dumps(data).encode(), headers={
-            "Content-Type": "application/json",
-        })
-        reply = json.loads(urllib.request.urlopen(req).read().decode('UTF-8'))
-        if reply.get("error"):
-            raise Exception(reply["error"])
-        return reply["result"]
-
     def login(self):
         self.uid = self.call(self.url, "common", "login", self.db, self.user, self.password)
 
     def call(self, url, service, method, *args):
-        return self.json_rpc(url, "call", {"service": service, "method": method, "args": args})
+        return json_rpc(url, "call", {"service": service, "method": method, "args": args})
 
     def call_no_arg(self, url, service, method, *args):
-        return self.json_rpc(url, "call", {"service": service, "method": method})
+        return json_rpc(url, "call", {"service": service, "method": method})
 
     def call_odoo(self, model, function, args=None):
         if args is None:

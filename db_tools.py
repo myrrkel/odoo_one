@@ -1,4 +1,4 @@
-import docker_tools as dt
+import docker_manager
 
 
 class DatabaseManager(object):
@@ -7,7 +7,7 @@ class DatabaseManager(object):
         self.version = version
         self.odoo_version = '%s.0' % version
         self.odoo_db = odoo_db
-        self.docker_manager = docker_manager or dt.DockerManager(version, self.odoo_db)
+        self.docker_manager = docker_manager or docker_manager.DockerManager(version, self.odoo_db)
         self.host = self.docker_manager.get_postgres_ip()
         self.connection = None
 
@@ -21,7 +21,6 @@ class DatabaseManager(object):
             password=pwd)
         if connection:
             self.connection = connection
-
 
     def get_databse_list(self):
         cur = self.connection.cursor()
@@ -46,8 +45,6 @@ class DatabaseManager(object):
             return base_version
         except Exception as e:
             return 0
-
-
 
 
 if __name__ == "__main__":

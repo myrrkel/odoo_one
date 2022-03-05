@@ -2,7 +2,7 @@
 import settings
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui.designer import ui_main_window
-import odoo_starter
+import odoo_manager
 import svg_icon
 from ui import dialog_addons, wait_overlay_widget
 
@@ -28,8 +28,8 @@ class StartOdooThread(QThread):
 
     def run(self):
         try:
-            starter = odoo_starter.OdooStarter(self.version, self.enterprise_path, self.stdout_signal)
-            starter.init('PyCharm')
+            starter = odoo_manager.OdooManager(self.version, self.enterprise_path, self.stdout_signal)
+            starter.init()
         except Exception as e:
             logger.error(e)
             raise e

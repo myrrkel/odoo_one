@@ -1,4 +1,4 @@
-def create_odoo_conf_file(version, path_list=[], enterprise=False):
+def create_odoo_conf_file(version, path_list=[], enterprise=False, db_container='db'):
 
     if int(version) >= 11:
         default_path_list = ["/usr/lib/python3/dist-packages/odoo/addons"]
@@ -12,7 +12,7 @@ def create_odoo_conf_file(version, path_list=[], enterprise=False):
     addons_path = ','.join(path_list)
     config_file = """[options]
 admin_passwd = admin
-db_host = db
+db_host = {db_container}
 db_port = 5432
 db_user = odoo
 db_password = odoo
@@ -21,7 +21,7 @@ without_demo = True
 data_dir = /var/lib/odoo
 addons_path = {path_list}
 """
-    config_file = config_file.format(path_list=addons_path)
+    config_file = config_file.format(path_list=addons_path, db_container=db_container)
     f = open("odoo.conf", "w+")
     f.write(config_file)
     f.close()

@@ -1,14 +1,14 @@
 import subprocess
 import os
 import docker
-import docker_tools as dt
+import docker_manager
 import odoo_conf as oconf
 import odoo_rpc
 import odoorpc
 from github_modules import GithubModules
 
 
-class OdooStarter(object):
+class OdooManager(object):
     gh_modules = GithubModules()
 
     def __init__(self, version=14, enterprise_path="", stdout_signal=None):
@@ -16,31 +16,30 @@ class OdooStarter(object):
         self.enterprise_path = enterprise_path
         self.local_user = os.environ.get("USER")
         self.odoo_version = '%s.0' % version
-        # self.enterprise_path = '../enterprise'
         self.odoo_db = "odoo_%s" % version
         if self.enterprise_path:
             self.odoo_db += '_ee'
-        self.docker_manager = dt.DockerManager(version, self.odoo_db)
+        self.docker_manager = docker_manager.DockerManager(version, self.odoo_db)
         self.stdout_signal = stdout_signal
 
     def start_sudo(self):
         print('Docker need sudo to be installed.')
 
     def open_odoo_firefox(self, url):
-        process = subprocess.call(['firefox',  url],
+        process = subprocess.call(['firefox', url],
                                   stdout=subprocess.PIPE, universal_newlines=True)
 
-    def init(self, name, pull=False):
+    def init(self, pull=False):
 
-        if not dt.docker_exists():
+        if not docker_manager.docker_exists():
             if self.local_user != 'root':
                 self.start_sudo()
                 return False
-            dt.install_docker()
-            dt.add_users_in_docker_group()
+            self.docker_manager.install_docker()
+            self.docker_manager.add_users_in_docker_group()
 
-        if not dt.compose_exists():
-            dt.install_compose()
+        if not docker_manager.compose_exists():
+            self.docker_manager.install_compose()
 
         if pull:
             self.docker_manager.pull_images()
@@ -52,22 +51,24 @@ class OdooStarter(object):
         # addons_path_list = []
         addons_path_list = self.gh_modules.addons_path_list
         addons_path_list.append('extra_addons')
-        dt.stop_compose()
-        oconf.create_odoo_conf_file(self.version, addons_path_list, enterprise=self.enterprise_path != '')
+        docker_manager.stop_compose()
+        oconf.create_odoo_conf_file(self.version, addons_path_list, enterprise=self.enterprise_path != '',
+                                    db_container=self.docker_manager.get_db_container_name())
         self.docker_manager.stop_odoo_containers()
-        dt.create_compose_file(addons_path_list, version=self.version,
-                               cmd_params='-d %s' % self.odoo_db, enterprise_path=self.enterprise_path,
-                               network=self.docker_manager.network)
+        self.docker_manager.create_compose_file(addons_path_list,
+                                                version=self.version,
+                                                cmd_params='-d %s' % self.odoo_db,
+                                                enterprise_path=self.enterprise_path)
 
-        dt.start_compose()
+        docker_manager.start_compose()
         if not self.docker_manager.odoo_database_exists():
             if int(self.version) <= 8:
                 self.docker_manager.create_empty_database()
-            dt.create_compose_file(addons_path_list, version=self.version,
-                                   cmd_params='-d %s -i base' % self.odoo_db,
-                                   enterprise_path=self.enterprise_path,
-                                   network=self.docker_manager.network)
-            dt.start_compose()
+            self.docker_manager.create_compose_file(addons_path_list,
+                                                    version=self.version,
+                                                    cmd_params='-d %s -i base' % self.odoo_db,
+                                                    enterprise_path=self.enterprise_path)
+            docker_manager.start_compose()
 
         ip = self.docker_manager.get_odoo_ip()
         url = "%s:%s/web?db=%s" % (ip, 8069, self.odoo_db)
@@ -81,5 +82,5 @@ class OdooStarter(object):
 
 
 if __name__ == '__main__':
-    starter = OdooStarter(14, '../enterprise')
-    starter.init('PyCharm')
+    starter = OdooManager(14, '../enterprise')
+    starter.init()
