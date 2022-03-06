@@ -8,7 +8,8 @@ import re
 
 FILE_NAME = 'github_modules'
 DATA_DIR = './data/'
-ALL_VERSIONS = ['8.0', '9.0', '10.0', '11.0', '12.0', '13.0', '14.0', '15.0']
+LAST_VERSION = 15
+ALL_VERSIONS = ['%0.1f' % v for v in range(8, LAST_VERSION + 1).__reversed__()]
 
 def strip_comments(code):
     code = str(code)
@@ -287,7 +288,7 @@ if __name__ == '__main__':
     # if len(sys.argv) > 1:
     #     credential = sys.argv[1]
     #     g = GithubModules(credential)
-    #     # versions = ['15.0', '14.0', '13.0', '12.0']
-    #     versions = ['11.0', '10.0', '9.0', '8.0']
+    #     # versions = ALL_VERSIONS[3:]
+    #     versions = ALL_VERSIONS[:3]
     #     for v in versions:
     #         g.generate_json_file(v)

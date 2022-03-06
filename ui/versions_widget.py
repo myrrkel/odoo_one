@@ -61,6 +61,7 @@ class VersionsWidget(QWidget):
     def get_version_color(self, version):
         return self.version_palette[version - 8]
 
+
 if __name__ == "__main__":
 
     class MainWindow(QMainWindow):
