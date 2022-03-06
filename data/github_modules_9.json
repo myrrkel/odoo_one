@@ -202,7 +202,7 @@
                 "name": "account-budgeting"
             },
             "account-closing": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Accountant closing tools",
                 "html_url": "https://github.com/OCA/account-closing",
                 "modules": {
@@ -2538,7 +2538,7 @@
                 "name": "crm"
             },
             "data-protection": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": "Data Protection",
                 "html_url": "https://github.com/OCA/data-protection",
                 "modules": {
@@ -4058,7 +4058,7 @@
                 "name": "l10n-argentina"
             },
             "l10n-belgium": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/l10n-belgium",
                 "modules": {
@@ -4914,7 +4914,7 @@
                 "name": "l10n-netherlands"
             },
             "l10n-spain": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": "Odoo Spain Localization",
                 "html_url": "https://github.com/OCA/l10n-spain",
                 "modules": {
@@ -5946,7 +5946,7 @@
                 "name": "margin-analysis"
             },
             "mis-builder": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": "Management Information System reports for Odoo: easily build super fast, beautiful, custom reports such as P&L, Balance Sheets and more.",
                 "html_url": "https://github.com/OCA/mis-builder",
                 "modules": {
@@ -8090,7 +8090,7 @@
                 "name": "reporting-engine"
             },
             "rma": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo for Return Merchandise Authorization (RMA)",
                 "html_url": "https://github.com/OCA/rma",
                 "modules": {
@@ -8478,6 +8478,14 @@
                         "summary": "Delivery term for sale orders",
                         "version": "0.1"
                     },
+                    "sale_discount_display_amount": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Sale Discount Display Amount",
+                        "name": "sale_discount_display_amount",
+                        "summary": "\n        This addon intends to display the amount of the discount computed on\n        sale_order_line and sale_order level",
+                        "version": "9.0.1.0.1"
+                    },
                     "sale_double_validation": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
                         "category": "category",
@@ -8573,6 +8581,14 @@
                         "name": "sale_order_force_number",
                         "summary": "Force sale orders numeration",
                         "version": "0.1"
+                    },
+                    "sale_order_general_discount": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Sale Order General Discount",
+                        "name": "sale_order_general_discount",
+                        "summary": "General discount per sale order",
+                        "version": "9.0.1.0.1"
                     },
                     "sale_order_line_date": {
                         "author": "OdooMRP team,AvanzOSC,Serv. Tecnol. Avanzados - Pedro M. Baeza,Odoo Community Association (OCA)",
@@ -8757,6 +8773,14 @@
                         "name": "sale_revert_done",
                         "summary": "This module extends the functionality of sales to allow you to set a sales order done back to state 'Sale Order'.",
                         "version": "9.0.1.0.0"
+                    },
+                    "sale_shipping_info_helper": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Sale shipping info helper",
+                        "name": "sale_shipping_info_helper",
+                        "summary": "Add shipping amounts on sale order",
+                        "version": "9.0.1.0.1"
                     },
                     "sale_sourced_by_line": {
                         "author": "Camptocamp,Eficent,SerpentCS,Odoo Community Association (OCA)",
@@ -10853,7 +10877,7 @@
                 "name": "survey"
             },
             "timesheet": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Timesheet Management Addons",
                 "html_url": "https://github.com/OCA/timesheet",
                 "modules": {
@@ -11797,7 +11821,7 @@
                 "name": "vertical-travel"
             },
             "web": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": "Odoo web client UI related addons",
                 "html_url": "https://github.com/OCA/web",
                 "modules": {

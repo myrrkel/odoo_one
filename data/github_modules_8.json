@@ -194,7 +194,7 @@
                 "name": "account-budgeting"
             },
             "account-closing": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Accountant closing tools",
                 "html_url": "https://github.com/OCA/account-closing",
                 "modules": {
@@ -2922,7 +2922,7 @@
                 "name": "crm"
             },
             "data-protection": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": "Data Protection",
                 "html_url": "https://github.com/OCA/data-protection",
                 "modules": {
@@ -4674,7 +4674,7 @@
                 "name": "l10n-argentina"
             },
             "l10n-belgium": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/l10n-belgium",
                 "modules": {
@@ -5162,7 +5162,7 @@
                 "name": "l10n-ethiopia"
             },
             "l10n-finland": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/l10n-finland",
                 "modules": {
@@ -6178,7 +6178,7 @@
                 "name": "l10n-slovenia"
             },
             "l10n-spain": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": "Odoo Spain Localization",
                 "html_url": "https://github.com/OCA/l10n-spain",
                 "modules": {
@@ -6332,7 +6332,15 @@
                         "display_name": "AEAT modelo 303",
                         "name": "l10n_es_aeat_mod303",
                         "summary": "",
-                        "version": "8.0.1.17.1"
+                        "version": "8.0.3.1.0"
+                    },
+                    "l10n_es_aeat_mod303_oss": {
+                        "author": "PESOL,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "AEAT modelo 303 - OSS",
+                        "name": "l10n_es_aeat_mod303_oss",
+                        "summary": "",
+                        "version": "8.0.1.0.0"
                     },
                     "l10n_es_aeat_mod340": {
                         "author": "Spanish Localization Team,Odoo Community Association (OCA), ",
@@ -7370,7 +7378,7 @@
                 "name": "margin-analysis"
             },
             "mis-builder": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": "Management Information System reports for Odoo: easily build super fast, beautiful, custom reports such as P&L, Balance Sheets and more.",
                 "html_url": "https://github.com/OCA/mis-builder",
                 "modules": {
@@ -9466,7 +9474,7 @@
                 "name": "reporting-engine"
             },
             "rma": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo for Return Merchandise Authorization (RMA)",
                 "html_url": "https://github.com/OCA/rma",
                 "modules": {
@@ -9500,7 +9508,7 @@
                         "display_name": "RMA Claim (Product Return Management)",
                         "name": "crm_claim_rma",
                         "summary": "",
-                        "version": "8.0.1.1.1"
+                        "version": "8.0.1.2.0"
                     },
                     "crm_claim_rma_code": {
                         "author": "Vauxoo,Odoo Community Association (OCA)",
@@ -9572,7 +9580,7 @@
                         "display_name": "RMA Stock Location",
                         "name": "crm_rma_stock_location",
                         "summary": "",
-                        "version": "8.0.1.0.0"
+                        "version": "8.0.1.1.0"
                     },
                     "product_warranty": {
                         "author": "Akretion,Odoo Community Association (OCA),Vauxoo",
@@ -12554,7 +12562,7 @@
                 "name": "survey"
             },
             "timesheet": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Odoo Timesheet Management Addons",
                 "html_url": "https://github.com/OCA/timesheet",
                 "modules": {
@@ -13402,7 +13410,7 @@
                 "name": "vertical-travel"
             },
             "web": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": "Odoo web client UI related addons",
                 "html_url": "https://github.com/OCA/web",
                 "modules": {

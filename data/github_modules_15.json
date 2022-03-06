@@ -17,6 +17,86 @@
                 },
                 "name": "OpenUpgrade"
             },
+            "account-analytic": {
+                "default_branch": "14.0",
+                "description": "Odoo Account Analytic Related Addons",
+                "html_url": "https://github.com/OCA/account-analytic",
+                "modules": {
+                    "account_analytic_parent": {
+                        "author": "Matmoz d.o.o., Luxim d.o.o., Deneroteam, ForgeFlow, Tecnativa, CorporateHub, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Analytic Parent",
+                        "name": "account_analytic_parent",
+                        "summary": "\n        This module reintroduces the hierarchy to the analytic accounts.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "procurement_mto_analytic": {
+                        "author": "Tecnativa, VentorTech, Odoo Community Association (OCA)",
+                        "category": "Analytic",
+                        "display_name": "Purchase Analytic (MTO)",
+                        "name": "procurement_mto_analytic",
+                        "summary": "This module sets analytic account in purchase order line from sale order analytic account",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "account-analytic"
+            },
+            "account-closing": {
+                "default_branch": "14.0",
+                "description": "Odoo Accountant closing tools",
+                "html_url": "https://github.com/OCA/account-closing",
+                "modules": {
+                    "account_cutoff_accrual_picking": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Account Cut-off Accrual Picking",
+                        "name": "account_cutoff_accrual_picking",
+                        "summary": "Accrued expense & accrued revenue from pickings",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_cutoff_base": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Cut-off Base",
+                        "name": "account_cutoff_base",
+                        "summary": "Base module for Account Cut-offs",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_invoice_start_end_dates": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Invoice Start End Dates",
+                        "name": "account_invoice_start_end_dates",
+                        "summary": "Adds start/end dates on invoice/move lines",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "account-closing"
+            },
+            "account-financial-reporting": {
+                "default_branch": "13.0",
+                "description": "Financial reports for Odoo",
+                "html_url": "https://github.com/OCA/account-financial-reporting",
+                "modules": {
+                    "account_tax_balance": {
+                        "author": "Agile Business Group, Therp BV, Tecnativa, ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Invoices & Payments",
+                        "display_name": "Tax Balance",
+                        "name": "account_tax_balance",
+                        "summary": "Compute tax balances based on date range",
+                        "version": "15.0.1.0.1"
+                    },
+                    "mis_builder_cash_flow": {
+                        "author": "ADHOC SA, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "MIS Builder Cash Flow",
+                        "name": "mis_builder_cash_flow",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "account-financial-reporting"
+            },
             "account-financial-tools": {
                 "default_branch": "14.0",
                 "description": "Odoo Accountant Financial Tools and Utils",
@@ -28,7 +108,7 @@
                         "display_name": "Account Move Line Purchase Info",
                         "name": "account_move_line_purchase_info",
                         "summary": "Introduces the purchase order line to the journal items",
-                        "version": "15.0.1.0.0"
+                        "version": "15.0.1.0.1"
                     },
                     "account_move_line_sale_info": {
                         "author": "ForgeFlow S.L., Odoo Community Association (OCA)",
@@ -36,6 +116,22 @@
                         "display_name": "Account Move Line Sale Info",
                         "name": "account_move_line_sale_info",
                         "summary": "Introduces the purchase order line to the journal items",
+                        "version": "15.0.1.0.1"
+                    },
+                    "base_vat_optional_vies": {
+                        "author": "Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Optional validation of VAT via VIES",
+                        "name": "base_vat_optional_vies",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "product_category_tax": {
+                        "author": "ForgeFlow S.L., Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Product Category Taxes",
+                        "name": "product_category_tax",
+                        "summary": "Configure taxes in the product category",
                         "version": "15.0.1.0.0"
                     }
                 },
@@ -52,10 +148,242 @@
                         "display_name": "Avalara Avatax Connector",
                         "name": "account_avatax",
                         "summary": "Automatic Tax application using the Avalara Avatax Service",
+                        "version": "15.0.1.0.2"
+                    },
+                    "account_avatax_sale": {
+                        "author": "Open Source Integrators, Fabrice Henrion,Sodexis, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Avalara Avatax Connector for Sales Orders",
+                        "name": "account_avatax_sale",
+                        "summary": "Sales Orders with automatic Tax application using Avatax",
                         "version": "15.0.1.0.0"
+                    },
+                    "account_fiscal_position_partner_type": {
+                        "author": "Sygel Technology,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Fiscal Position Partner Type",
+                        "name": "account_fiscal_position_partner_type",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_eu_oss_oca": {
+                        "author": "Sygel Technology,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "L10n EU OSS OCA",
+                        "name": "l10n_eu_oss_oca",
+                        "summary": "",
+                        "version": "15.0.2.1.1"
                     }
                 },
                 "name": "account-fiscal-rule"
+            },
+            "account-invoicing": {
+                "default_branch": "14.0",
+                "description": "Odoo Invoicing Extension Addons",
+                "html_url": "https://github.com/OCA/account-invoicing",
+                "modules": {
+                    "account_invoice_check_total": {
+                        "author": "Acsone SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Account Invoice Check Total",
+                        "name": "account_invoice_check_total",
+                        "summary": "\n        Check if the verification total is equal to the bill's total",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_invoice_date_due": {
+                        "author": "Vauxoo,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Update Invoice's Due Date",
+                        "name": "account_invoice_date_due",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_invoice_refund_link": {
+                        "author": "Pexego, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Show links between refunds and their originator invoices.",
+                        "name": "account_invoice_refund_link",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_invoice_search_by_reference": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Invoicing",
+                        "display_name": "Account invoice search by reference",
+                        "name": "account_invoice_search_by_reference",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_invoice_tree_currency": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Invoice Tree Currency",
+                        "name": "account_invoice_tree_currency",
+                        "summary": "Show currencies in the invoice tree view",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "account-invoicing"
+            },
+            "account-payment": {
+                "default_branch": "14.0",
+                "description": "Project supervised by the Banking PSC",
+                "html_url": "https://github.com/OCA/account-payment",
+                "modules": {
+                    "account_payment_term_extension": {
+                        "author": "Camptocamp,Tecnativa,Agile Business Group, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Payment Term Extension",
+                        "name": "account_payment_term_extension",
+                        "summary": "Adds rounding, months, weeks and multiple payment days properties on payment term lines",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "account-payment"
+            },
+            "account-reconcile": {
+                "default_branch": "14.0",
+                "description": "Odoo account reconciliation modules (statements, data completion...)",
+                "html_url": "https://github.com/OCA/account-reconcile",
+                "modules": {
+                    "account_reconciliation_widget": {
+                        "author": "Odoo, Ozono Multimedia, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "account_reconciliation_widget",
+                        "name": "account_reconciliation_widget",
+                        "summary": "Account reconciliation widget",
+                        "version": "15.0.1.1.1"
+                    }
+                },
+                "name": "account-reconcile"
+            },
+            "bank-payment": {
+                "default_branch": "14.0",
+                "description": "Odoo Electronic Payment",
+                "html_url": "https://github.com/OCA/bank-payment",
+                "modules": {
+                    "account_payment_mode": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Banking addons",
+                        "display_name": "Account Payment Mode",
+                        "name": "account_payment_mode",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_payment_partner": {
+                        "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Banking addons",
+                        "display_name": "Account Payment Partner",
+                        "name": "account_payment_partner",
+                        "summary": "Adds payment mode on partners and invoices",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "bank-payment"
+            },
+            "bank-statement-import": {
+                "default_branch": "14.0",
+                "description": "Bank Import Addons",
+                "html_url": "https://github.com/OCA/bank-statement-import",
+                "modules": {
+                    "account_statement_import": {
+                        "author": "Odoo SA, Akretion, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Import Statement Files",
+                        "name": "account_statement_import",
+                        "summary": "",
+                        "version": "15.0.2.1.0"
+                    },
+                    "account_statement_import_camt": {
+                        "author": "Therp BV, Odoo Community Association (OCA)",
+                        "category": "Banking addons",
+                        "display_name": "CAMT Format Bank Statements Import",
+                        "name": "account_statement_import_camt",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_statement_import_camt54": {
+                        "author": "camptocamp, Odoo Community Association (OCA)",
+                        "category": "Account",
+                        "display_name": "Bank Account Camt54 Import",
+                        "name": "account_statement_import_camt54",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "bank-statement-import"
+            },
+            "brand": {
+                "default_branch": "14.0",
+                "description": "Manage brands for products and companies",
+                "html_url": "https://github.com/OCA/brand",
+                "modules": {
+                    "product_brand": {
+                        "author": "NetAndCo, Akretion, Prisnet Telecommunications SA, MONK Software, SerpentCS Pvt. Ltd., Tecnativa, Kaushal Prajapati, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Product Brand Manager",
+                        "name": "product_brand",
+                        "summary": "Product Brand Manager",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "brand"
+            },
+            "community-data-files": {
+                "default_branch": "14.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/community-data-files",
+                "modules": {
+                    "account_payment_unece": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Payment UNECE",
+                        "name": "account_payment_unece",
+                        "summary": "UNECE nomenclature for the payment methods",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_tax_unece": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Tax UNECE",
+                        "name": "account_tax_unece",
+                        "summary": "UNECE nomenclature for taxes",
+                        "version": "15.0.1.0.0"
+                    },
+                    "base_bank_from_iban": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Bank from IBAN",
+                        "name": "base_bank_from_iban",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "base_iso3166": {
+                        "author": "Tecnativa, Creu Blanca, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "ISO 3166",
+                        "name": "base_iso3166",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "base_unece": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Base UNECE",
+                        "name": "base_unece",
+                        "summary": "Base module for UNECE code lists",
+                        "version": "15.0.1.0.0"
+                    },
+                    "uom_unece": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Product UoM UNECE",
+                        "name": "uom_unece",
+                        "summary": "UNECE nomenclature for the units of measure",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "community-data-files"
             },
             "connector": {
                 "default_branch": "14.0",
@@ -76,7 +404,7 @@
                         "display_name": "Components Events",
                         "name": "component_event",
                         "summary": "",
-                        "version": "14.0.1.0.2"
+                        "version": "15.0.1.0.0"
                     },
                     "connector": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -84,7 +412,7 @@
                         "display_name": "Connector",
                         "name": "connector",
                         "summary": "",
-                        "version": "14.0.1.1.0"
+                        "version": "15.0.1.0.0"
                     },
                     "connector_base_product": {
                         "author": "Openerp Connector Core Editors, Odoo Community Association (OCA)",
@@ -108,7 +436,7 @@
                         "display_name": "Connector Tests",
                         "name": "test_connector",
                         "summary": "Automated tests for Connector, do not install.",
-                        "version": "14.0.1.0.0"
+                        "version": "15.0.1.0.0"
                     }
                 },
                 "name": "connector"
@@ -123,6 +451,14 @@
                         "category": "Contract Management",
                         "display_name": "Recurring - Contracts Management",
                         "name": "contract",
+                        "summary": "",
+                        "version": "15.0.1.1.1"
+                    },
+                    "contract_sale": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Contract from Sale",
+                        "name": "contract_sale",
                         "summary": "",
                         "version": "15.0.1.0.0"
                     }
@@ -140,7 +476,7 @@
                         "display_name": "Account Financial Risk",
                         "name": "account_financial_risk",
                         "summary": "Manage customer risk",
-                        "version": "15.0.1.0.1"
+                        "version": "15.0.1.2.0"
                     },
                     "sale_financial_risk": {
                         "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -148,7 +484,7 @@
                         "display_name": "Sale Financial Risk",
                         "name": "sale_financial_risk",
                         "summary": "Manage partner risk in sales orders",
-                        "version": "15.0.1.0.0"
+                        "version": "15.0.1.0.2"
                     }
                 },
                 "name": "credit-control"
@@ -158,6 +494,14 @@
                 "description": "Odoo CRM, Mail & Newsletter advanced features",
                 "html_url": "https://github.com/OCA/crm",
                 "modules": {
+                    "crm_industry": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "CRM Industry",
+                        "name": "crm_industry",
+                        "summary": "Link leads/opportunities to industries",
+                        "version": "15.0.1.0.0"
+                    },
                     "crm_lead_code": {
                         "author": "Tecnativa, AvanzOSC, Odoo Community Association (OCA)",
                         "category": "Customer Relationship Management",
@@ -169,11 +513,75 @@
                 },
                 "name": "crm"
             },
+            "currency": {
+                "default_branch": "12.0",
+                "description": " Odoo Currency related Addons (crypto currencies, rate conversion, integrations with third party applications,...)",
+                "html_url": "https://github.com/OCA/currency",
+                "modules": {
+                    "currency_rate_update": {
+                        "author": "Camptocamp, Brainbean Apps, Odoo Community Association (OCA)",
+                        "category": "Financial Management/Configuration",
+                        "display_name": "Currency Rate Update",
+                        "name": "currency_rate_update",
+                        "summary": "Update exchange rates using OCA modules",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "currency"
+            },
+            "ddmrp": {
+                "default_branch": "14.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/ddmrp",
+                "modules": {
+                    "ddmrp": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse",
+                        "display_name": "DDMRP",
+                        "name": "ddmrp",
+                        "summary": "Demand Driven Material Requirements Planning",
+                        "version": "15.0.1.2.2"
+                    },
+                    "ddmrp_cron_actions_as_job": {
+                        "author": "Camptocamp, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "DDMRP Buffer Calculation as job",
+                        "name": "ddmrp_cron_actions_as_job",
+                        "summary": "Run DDMRP Buffer Calculation as jobs",
+                        "version": "15.0.1.0.0"
+                    },
+                    "ddmrp_history": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "DDMRP History",
+                        "name": "ddmrp_history",
+                        "summary": "Allow to store historical data of DDMRP buffers.",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "ddmrp"
+            },
             "edi": {
                 "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/edi",
                 "modules": {
+                    "account_einvoice_generate": {
+                        "author": "Akretion,Onestein,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account e-invoice Generate",
+                        "name": "account_einvoice_generate",
+                        "summary": "Technical module to generate PDF invoices with embedded XML file",
+                        "version": "15.0.1.0.0"
+                    },
+                    "account_invoice_facturx": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Invoicing Management",
+                        "display_name": "Account Invoice Factur-X",
+                        "name": "account_invoice_facturx",
+                        "summary": "Generate Factur-X/ZUGFeRD customer invoices",
+                        "version": "15.0.1.0.0"
+                    },
                     "base_edi": {
                         "author": "ACSONE,Odoo Community Association (OCA)",
                         "category": "",
@@ -181,9 +589,89 @@
                         "name": "base_edi",
                         "summary": "Base module to aggregate EDI features.",
                         "version": "15.0.1.0.0"
+                    },
+                    "base_facturx": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Invoicing Management",
+                        "display_name": "Base Factur-X",
+                        "name": "base_facturx",
+                        "summary": "Base module for Factur-X/ZUGFeRD",
+                        "version": "15.0.1.0.0"
+                    },
+                    "edi_account_oca": {
+                        "author": "Creu Blanca,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Edi Account",
+                        "name": "edi_account_oca",
+                        "summary": "\n        Define EDI Configuration for Account Moves",
+                        "version": "15.0.1.0.0"
+                    },
+                    "edi_exchange_template_oca": {
+                        "author": "ACSONE,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "EDI Exchange Template",
+                        "name": "edi_exchange_template_oca",
+                        "summary": "Allows definition of exchanges via templates.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "edi_oca": {
+                        "author": "ACSONE,Creu Blanca,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "EDI",
+                        "name": "edi_oca",
+                        "summary": "\n    Define backends, exchange types, exchange records,\n    basic automation and views for handling EDI exchanges.\n    ",
+                        "version": "15.0.1.0.1"
+                    },
+                    "edi_webservice_oca": {
+                        "author": "Creu Blanca,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Edi WebService",
+                        "name": "edi_webservice_oca",
+                        "summary": "\n        Defines webservice integration from EDI Exchange records",
+                        "version": "15.0.1.0.0"
+                    },
+                    "webservice": {
+                        "author": "Creu Blanca,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "WebService",
+                        "name": "webservice",
+                        "summary": "\n        Defines webservice abstract definition to be used generally",
+                        "version": "15.0.1.0.0"
                     }
                 },
                 "name": "edi"
+            },
+            "field-service": {
+                "default_branch": "14.0",
+                "description": "Field Service Management",
+                "html_url": "https://github.com/OCA/field-service",
+                "modules": {
+                    "base_territory": {
+                        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Base Territory",
+                        "name": "base_territory",
+                        "summary": "This module allows you to define territories, branches, districts and regions to be used for Field Service operations or Sales.",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "field-service"
+            },
+            "helpdesk": {
+                "default_branch": "14.0",
+                "description": "Odoo modules for managing a HelpDesk system",
+                "html_url": "https://github.com/OCA/helpdesk",
+                "modules": {
+                    "helpdesk_mgmt": {
+                        "author": "AdaptiveCity, C2i Change 2 Improve, Domatix, Factor Libre, SDi Soluciones, Odoo Community Association (OCA)",
+                        "category": "After-Sales",
+                        "display_name": "Helpdesk Management",
+                        "name": "helpdesk_mgmt",
+                        "summary": "\n        Helpdesk",
+                        "version": "15.0.1.3.2"
+                    }
+                },
+                "name": "helpdesk"
             },
             "hr": {
                 "default_branch": "14.0",
@@ -209,8 +697,64 @@
                 },
                 "name": "hr"
             },
-            "l10n-finland": {
+            "hr-expense": {
                 "default_branch": "14.0",
+                "description": "Human Resources Expenses OCA modules for Odoo",
+                "html_url": "https://github.com/OCA/hr-expense",
+                "modules": {
+                    "sale_expense_manual_reinvoice": {
+                        "author": "Camptocamp SA, Odoo Community Association (OCA)",
+                        "category": "Human Resources",
+                        "display_name": "Sale Expense Manual Re-invoice",
+                        "name": "sale_expense_manual_reinvoice",
+                        "summary": "Allow to manually re-invoice expenses",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "hr-expense"
+            },
+            "knowledge": {
+                "default_branch": "13.0",
+                "description": "Odoo Document & Knowledge Management",
+                "html_url": "https://github.com/OCA/knowledge",
+                "modules": {
+                    "knowledge": {
+                        "author": "OpenERP SA,MONK Software, Tecnativa, ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Knowledge",
+                        "display_name": "Knowledge",
+                        "name": "knowledge",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "knowledge"
+            },
+            "l10n-belgium": {
+                "default_branch": "14.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/l10n-belgium",
+                "modules": {
+                    "companyweb_base": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Companyweb",
+                        "name": "companyweb_base",
+                        "summary": "Know who you are dealing with. Enhance Odoo partner data from companyweb.be.",
+                        "version": "15.0.1.0.2"
+                    },
+                    "companyweb_payment_info": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Companyweb Payment Info",
+                        "name": "companyweb_payment_info",
+                        "summary": "Send your customer bill to companyweb",
+                        "version": "15.0.1.0.1"
+                    }
+                },
+                "name": "l10n-belgium"
+            },
+            "l10n-finland": {
+                "default_branch": "15.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/l10n-finland",
                 "modules": {
@@ -220,32 +764,88 @@
                         "display_name": "Partner business code (business id)",
                         "name": "l10n_fi_business_code",
                         "summary": "Adds a business code (business id) for partners",
+                        "version": "15.0.1.1.0"
+                    },
+                    "l10n_fi_edicode": {
+                        "author": "Tawasta, Odoo Community Association (OCA), Avoin.Systems",
+                        "category": "Accounting",
+                        "display_name": "Partner EDI code",
+                        "name": "l10n_fi_edicode",
+                        "summary": "Adds EDI code field and operators",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_fi_sale_refund_payment_reference": {
+                        "author": "Avoin.Systems, Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "Payment References for Sale Refunds",
+                        "name": "l10n_fi_sale_refund_payment_reference",
+                        "summary": "Automatically generate payment references for sale refunds",
                         "version": "15.0.1.0.0"
                     }
                 },
                 "name": "l10n-finland"
+            },
+            "l10n-france": {
+                "default_branch": "14.0",
+                "description": "France Localization for Odoo",
+                "html_url": "https://github.com/OCA/l10n-france",
+                "modules": {
+                    "l10n_fr_account_tax_unece": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "French Localization",
+                        "display_name": "L10n FR Account Tax UNECE",
+                        "name": "l10n_fr_account_tax_unece",
+                        "summary": "Auto-configure UNECE params on French taxes",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_fr_department": {
+                        "author": "GRAP, Akretion, Nicolas JEUDY, Odoo Community Association (OCA)",
+                        "category": "French Localization",
+                        "display_name": "French Departments (D\u00e9partements)",
+                        "name": "l10n_fr_department",
+                        "summary": "Populate Database with French Departments (D\u00e9partements)",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_fr_department_oversea": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "French Localization",
+                        "display_name": "French Overseas Departments (DOM)",
+                        "name": "l10n_fr_department_oversea",
+                        "summary": "Populate Database with overseas French Departments (D\u00e9partements d'outre-mer)",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_fr_ecotaxe": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Localization/Account Taxes",
+                        "display_name": "France Custom Ecotaxe",
+                        "name": "l10n_fr_ecotaxe",
+                        "summary": "Use Ecotaxe in French localisation contexte",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_fr_siret": {
+                        "author": "Num\u00e9rigraphe,Akretion,Odoo Community Association (OCA)",
+                        "category": "French Localization",
+                        "display_name": "French company identity numbers SIRET/SIREN/NIC",
+                        "name": "l10n_fr_siret",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_fr_state": {
+                        "author": "GRAP, Akretion, Nicolas JEUDY, Odoo Community Association (OCA)",
+                        "category": "French Localization",
+                        "display_name": "French States (R\u00e9gions)",
+                        "name": "l10n_fr_state",
+                        "summary": "Populate Database with French States (R\u00e9gions)",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "l10n-france"
             },
             "l10n-romania": {
                 "default_branch": "14.0",
                 "description": "Romanian Localization for Odoo",
                 "html_url": "https://github.com/OCA/l10n-romania",
                 "modules": {
-                    "currency_rate_update_RO_BNR": {
-                        "author": "NextERP Romania,Forest and Biomass Romania,Odoo Community Association (OCA)",
-                        "category": "Financial Management/Configuration",
-                        "display_name": "Currency Rate Update - BNR",
-                        "name": "currency_rate_update_RO_BNR",
-                        "summary": "Currency Rate Update National Bank of Romania service",
-                        "version": "14.0.1.1.0"
-                    },
-                    "l10n_ro_account_period_close": {
-                        "author": "NextERP Romania,Forest and Biomass Romania,Odoo Community Association (OCA)",
-                        "category": "Localization",
-                        "display_name": "Romania - Account Period Closing",
-                        "name": "l10n_ro_account_period_close",
-                        "summary": "Romania - Account Period Closing",
-                        "version": "15.0.1.0.0"
-                    },
                     "l10n_ro_account_report_invoice": {
                         "author": "NextERP Romania,Odoo Community Association (OCA)",
                         "category": "Localization",
@@ -260,7 +860,7 @@
                         "display_name": "Romania - Extended Addresses",
                         "name": "l10n_ro_address_extended",
                         "summary": "Romania - Extended Addresses",
-                        "version": "14.0.1.0.0"
+                        "version": "15.0.1.0.0"
                     },
                     "l10n_ro_city": {
                         "author": "Terrabit,Odoo Community Association (OCA)",
@@ -268,7 +868,7 @@
                         "display_name": "Romania - City",
                         "name": "l10n_ro_city",
                         "summary": "Romania - City",
-                        "version": "15.0.1.0.0"
+                        "version": "15.0.2.1.0"
                     },
                     "l10n_ro_config": {
                         "author": "NextERP Romania,Forest and Biomass Romania,Odoo Community Association (OCA)",
@@ -302,14 +902,6 @@
                         "summary": "Creates a rule for vat and nrc unique for partners.",
                         "version": "15.0.1.1.0"
                     },
-                    "l10n_ro_payment_to_statement": {
-                        "author": "Terrabit,Odoo Community Association (OCA)",
-                        "category": "Accounting",
-                        "display_name": "Romania - Payment to Statement",
-                        "name": "l10n_ro_payment_to_statement",
-                        "summary": "Add payment to cash statement",
-                        "version": "15.0.1.0.2"
-                    },
                     "l10n_ro_stock": {
                         "author": "NextERP Romania,Dorin Hongu,Forest and Biomass Romania,Odoo Community Association (OCA)",
                         "category": "Localization",
@@ -324,14 +916,6 @@
                         "display_name": "Romania - Stock Accounting",
                         "name": "l10n_ro_stock_account",
                         "summary": "Romania - Stock Accounting",
-                        "version": "14.0.1.0.1"
-                    },
-                    "l10n_ro_stock_report": {
-                        "author": "Terrabit,NextERP Romania,Odoo Community Association (OCA)",
-                        "category": "Warehouse",
-                        "display_name": "Romania - Stock Report",
-                        "name": "l10n_ro_stock_report",
-                        "summary": "",
                         "version": "15.0.1.1.0"
                     },
                     "l10n_ro_vat_on_payment": {
@@ -344,6 +928,150 @@
                     }
                 },
                 "name": "l10n-romania"
+            },
+            "l10n-spain": {
+                "default_branch": "15.0",
+                "description": "Odoo Spain Localization",
+                "html_url": "https://github.com/OCA/l10n-spain",
+                "modules": {
+                    "l10n_es_account_statement_import_n43": {
+                        "author": "Spanish Localization Team,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Importaci\u00f3n de extractos bancarios espa\u00f1oles (Norma 43)",
+                        "name": "l10n_es_account_statement_import_n43",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_aeat": {
+                        "author": "Pexego, Acysos S.L., AvanzOSC, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "AEAT Base",
+                        "name": "l10n_es_aeat",
+                        "summary": "Modulo base para declaraciones de la AEAT",
+                        "version": "15.0.1.2.0"
+                    },
+                    "l10n_es_aeat_mod111": {
+                        "author": "AvanzOSC, RGB Consulting SL, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localization/Accounting",
+                        "display_name": "AEAT modelo 111",
+                        "name": "l10n_es_aeat_mod111",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_aeat_mod115": {
+                        "author": "AvanzOSC,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 115",
+                        "name": "l10n_es_aeat_mod115",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_aeat_mod123": {
+                        "author": "Tecnativa, Spanish Localization Team, Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 123",
+                        "name": "l10n_es_aeat_mod123",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_aeat_mod303": {
+                        "author": "Guadaltech,AvanzOSC,Tecnativa,ForgeFlow,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "AEAT modelo 303",
+                        "name": "l10n_es_aeat_mod303",
+                        "summary": "",
+                        "version": "15.0.2.1.0"
+                    },
+                    "l10n_es_aeat_mod347": {
+                        "author": "Tecnativa,PESOL,Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "AEAT modelo 347",
+                        "name": "l10n_es_aeat_mod347",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_aeat_mod349": {
+                        "author": "Tecnativa, ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Localisation/Accounting",
+                        "display_name": "AEAT modelo 349",
+                        "name": "l10n_es_aeat_mod349",
+                        "summary": "",
+                        "version": "15.0.1.0.2"
+                    },
+                    "l10n_es_aeat_partner_check": {
+                        "author": "Acysos S.L., Odoo Community Association (OCA)",
+                        "category": "Accounting",
+                        "display_name": "AEAT - Comprobaci\u00f3n de Calidad de datos identificativos",
+                        "name": "l10n_es_aeat_partner_check",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_aeat_sii_oca": {
+                        "author": "Acysos S.L.,Diagram,Minorisa,Studio73,FactorLibre,Comunitea,Otherway,Tecnativa,Javi Melendez,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Suministro Inmediato de Informaci\u00f3n en el IVA",
+                        "name": "l10n_es_aeat_sii_oca",
+                        "summary": "",
+                        "version": "15.0.1.2.0"
+                    },
+                    "l10n_es_aeat_sii_oss": {
+                        "author": "FactorLibre, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Suministro Inmediato de Informaci\u00f3n en el IVA: OSS",
+                        "name": "l10n_es_aeat_sii_oss",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_dua": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localization/Account Charts",
+                        "display_name": "Importaciones con DUA",
+                        "name": "l10n_es_dua",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_dua_sii": {
+                        "author": "Studio73, Comunitea, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Suministro Inmediato de Informaci\u00f3n de importaciones con DUA",
+                        "name": "l10n_es_dua_sii",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_mis_report": {
+                        "author": "ForgeFlow, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "Plantillas MIS Builder para informes contables espa\u00f1oles",
+                        "name": "l10n_es_mis_report",
+                        "summary": "Plantillas MIS Builder para informes contables espa\u00f1oles",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_partner": {
+                        "author": "ZikZak,Acysos,Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Localisation/Europe",
+                        "display_name": "Adaptaci\u00f3n de los clientes, proveedores y bancos para Espa\u00f1a",
+                        "name": "l10n_es_partner",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_partner_mercantil": {
+                        "author": "Spanish Localization Team, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localization/Europe",
+                        "display_name": "Partner Mercantil",
+                        "name": "l10n_es_partner_mercantil",
+                        "summary": "A\u00f1ade los datos del registro mercantil a la empresa",
+                        "version": "15.0.1.0.0"
+                    },
+                    "l10n_es_toponyms": {
+                        "author": "Spanish Localization Team, ZikZakMedia, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Localization",
+                        "display_name": "Top\u00f3nimos espa\u00f1oles",
+                        "name": "l10n_es_toponyms",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "l10n-spain"
             },
             "l10n-thailand": {
                 "default_branch": "14.0",
@@ -366,13 +1094,29 @@
                 "description": "Odoo modules for businesses that implies maintenance tasks",
                 "html_url": "https://github.com/OCA/maintenance",
                 "modules": {
+                    "base_maintenance": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Maintenance",
+                        "display_name": "Base Maintenance",
+                        "name": "base_maintenance",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "maintenance_equipment_hierarchy": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Equipments, Assets, Internal Hardware, Allocation Tracking",
+                        "display_name": "Maintenance Equipments Hierarchy",
+                        "name": "maintenance_equipment_hierarchy",
+                        "summary": "Manage equipment hierarchy",
+                        "version": "15.0.1.0.1"
+                    },
                     "maintenance_equipment_sequence": {
                         "author": "ForgeFlow S.L.,Odoo Community Association (OCA)",
                         "category": "",
                         "display_name": "Maintenance Equipment Sequence",
                         "name": "maintenance_equipment_sequence",
                         "summary": "\n        Adds sequence to maintenance equipment defined in the equipment's\n        category",
-                        "version": "15.0.1.0.0"
+                        "version": "15.0.1.0.1"
                     },
                     "maintenance_plan": {
                         "author": "Camptocamp SA, ForgeFlow, Odoo Community Association (OCA)",
@@ -380,7 +1124,7 @@
                         "display_name": "Maintenance Plan",
                         "name": "maintenance_plan",
                         "summary": "Extends preventive maintenance planning",
-                        "version": "15.0.1.0.0"
+                        "version": "15.0.1.0.1"
                     },
                     "maintenance_plan_activity": {
                         "author": "ForgeFlow, Odoo Community Association (OCA)",
@@ -406,13 +1150,53 @@
                         "summary": "Adds location field to Bill of Materials and its components.",
                         "version": "15.0.1.0.0"
                     },
+                    "mrp_bom_tracking": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Manufacturing",
+                        "display_name": "MRP BoM Tracking",
+                        "name": "mrp_bom_tracking",
+                        "summary": "Logs any change to a BoM in the chatter",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mrp_multi_level": {
+                        "author": "Ucamco, ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Manufacturing",
+                        "display_name": "MRP Multi Level",
+                        "name": "mrp_multi_level",
+                        "summary": "Adds an MRP Scheduler",
+                        "version": "15.0.1.1.0"
+                    },
+                    "mrp_multi_level_estimate": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Manufacturing",
+                        "display_name": "MRP Multi Level Estimate",
+                        "name": "mrp_multi_level_estimate",
+                        "summary": "Allows to consider demand estimates using MRP multi level.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mrp_planned_order_matrix": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "MRP Planned Order Matrix",
+                        "name": "mrp_planned_order_matrix",
+                        "summary": "Allows to create fixed planned orders on a grid view.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mrp_production_putaway_strategy": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Manufacture",
+                        "display_name": "MRP Production Putaway Strategy",
+                        "name": "mrp_production_putaway_strategy",
+                        "summary": "Applies putaway strategies to manufacturing orders for finished products.",
+                        "version": "15.0.1.0.0"
+                    },
                     "mrp_progress_button": {
                         "author": "Akretion, Odoo Community Association (OCA)",
                         "category": "Manufacturing",
                         "display_name": "Mrp Progress Button",
                         "name": "mrp_progress_button",
                         "summary": "Add a button on MO to make the MO state 'In Progress'",
-                        "version": "15.0.1.0.0"
+                        "version": "15.0.1.1.1"
                     },
                     "mrp_warehouse_calendar": {
                         "author": "ForgeFlow, Odoo Community Association (OCA)",
@@ -425,17 +1209,89 @@
                 },
                 "name": "manufacture"
             },
+            "manufacture-reporting": {
+                "default_branch": "12.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/manufacture-reporting",
+                "modules": {
+                    "mrp_bom_current_stock": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Manufacture",
+                        "display_name": "MRP BoM Current Stock",
+                        "name": "mrp_bom_current_stock",
+                        "summary": "Add a report that explodes the bill of materials and show the stock available in the source location.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mrp_flattened_bom_xlsx": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Manufacturing",
+                        "display_name": "Export Flattened BOM to Excel",
+                        "name": "mrp_flattened_bom_xlsx",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "manufacture-reporting"
+            },
+            "mis-builder": {
+                "default_branch": "15.0",
+                "description": "Management Information System reports for Odoo: easily build super fast, beautiful, custom reports such as P&L, Balance Sheets and more.",
+                "html_url": "https://github.com/OCA/mis-builder",
+                "modules": {
+                    "mis_builder": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "MIS Builder",
+                        "name": "mis_builder",
+                        "summary": "\n        Build 'Management Information System' Reports and Dashboards\n    ",
+                        "version": "15.0.4.0.2"
+                    },
+                    "mis_builder_budget": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "MIS Builder Budget",
+                        "name": "mis_builder_budget",
+                        "summary": "\n        Create budgets for MIS reports",
+                        "version": "15.0.4.0.1"
+                    },
+                    "mis_builder_demo": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "MIS Builder Demo",
+                        "name": "mis_builder_demo",
+                        "summary": "\n        Demo addon for MIS Builder",
+                        "version": "15.0.3.1.1"
+                    }
+                },
+                "name": "mis-builder"
+            },
             "operating-unit": {
                 "default_branch": "14.0",
                 "description": "Manage Operating Units in Odoo",
                 "html_url": "https://github.com/OCA/operating-unit",
                 "modules": {
+                    "analytic_operating_unit": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Analytic Operating Unit",
+                        "name": "analytic_operating_unit",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
                     "operating_unit": {
                         "author": "ForgeFlow, Serpent Consulting Services Pvt. Ltd.,Odoo Community Association (OCA)",
                         "category": "Generic",
                         "display_name": "Operating Unit",
                         "name": "operating_unit",
                         "summary": "An operating unit (OU) is an organizational entity part of a company",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sales_team_operating_unit": {
+                        "author": "ForgeFlow, SerpentCS, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Sales Team Operating Unit",
+                        "name": "sales_team_operating_unit",
+                        "summary": "",
                         "version": "15.0.1.0.0"
                     }
                 },
@@ -476,6 +1332,46 @@
                         "display_name": "Base Location Geonames Import",
                         "name": "base_location_geonames_import",
                         "summary": "Import zip entries from Geonames",
+                        "version": "15.0.1.0.1"
+                    },
+                    "partner_affiliate": {
+                        "author": "Camptocamp, Tecnativa, brain-tec AG, Onestein, Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Partner Affiliates",
+                        "name": "partner_affiliate",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_contact_access_link": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Partner contact access link",
+                        "name": "partner_contact_access_link",
+                        "summary": "Allow to visit the full contact form from a company",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_contact_age_range": {
+                        "author": "Druidoo, Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Contact's Age Range",
+                        "name": "partner_contact_age_range",
+                        "summary": "Age Range for Contact's",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_contact_birthdate": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Contact's birthdate",
+                        "name": "partner_contact_birthdate",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_contact_personal_information_page": {
+                        "author": "Nicolas JEUDY,Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Personal information page for contacts",
+                        "name": "partner_contact_personal_information_page",
+                        "summary": "Add a page to contacts form to put personal information",
                         "version": "15.0.1.0.0"
                     },
                     "partner_fax": {
@@ -484,6 +1380,46 @@
                         "display_name": "Partner fax",
                         "name": "partner_fax",
                         "summary": "Add fax number on partner",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_firstname": {
+                        "author": "Camptocamp, Grupo ESOC Ingenier\u00eda de Servicios, Tecnativa, LasLabs, ACSONE SA/NV, DynApps NV, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "Partner first name and last name",
+                        "name": "partner_firstname",
+                        "summary": "Split first name and last name for non company partners",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_industry_secondary": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Partner Industry Secondary",
+                        "name": "partner_industry_secondary",
+                        "summary": "Add secondary partner industries",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_multi_relation": {
+                        "author": "Therp BV,Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Partner Relations",
+                        "name": "partner_multi_relation",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_phone_secondary": {
+                        "author": "Iv\u00e1n Todorovich, Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Secondary phone number on partners",
+                        "name": "partner_phone_secondary",
+                        "summary": "Adds a secondary phone number on partners",
+                        "version": "15.0.1.0.0"
+                    },
+                    "partner_ref_unique": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Partner unique reference",
+                        "name": "partner_ref_unique",
+                        "summary": "Add an unique constraint to partner ref field",
                         "version": "15.0.1.0.0"
                     }
                 },
@@ -494,6 +1430,54 @@
                 "description": "Odoo Product Attribute",
                 "html_url": "https://github.com/OCA/product-attribute",
                 "modules": {
+                    "product_category_product_link": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Product Category Product Link",
+                        "name": "product_category_product_link",
+                        "summary": "\n        Allows to get products from a category",
+                        "version": "15.0.1.0.0"
+                    },
+                    "product_code_mandatory": {
+                        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Product Code Mandatory",
+                        "name": "product_code_mandatory",
+                        "summary": "Set Product Internal Reference as a required field",
+                        "version": "15.0.1.0.0"
+                    },
+                    "product_code_unique": {
+                        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Unique Product Internal Reference",
+                        "name": "product_code_unique",
+                        "summary": "Set Product Internal Reference as Unique",
+                        "version": "15.0.1.0.0"
+                    },
+                    "product_cost_security": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Product Cost Security",
+                        "name": "product_cost_security",
+                        "summary": "Product cost security restriction view",
+                        "version": "15.0.1.0.0"
+                    },
+                    "product_dimension": {
+                        "author": "brain-tec AG, ADHOC SA, Camptocamp SA, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Product Dimension",
+                        "name": "product_dimension",
+                        "summary": "",
+                        "version": "15.0.1.0.1"
+                    },
+                    "product_state": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Product State",
+                        "name": "product_state",
+                        "summary": "\n        Module introducing a state field on product template",
+                        "version": "15.0.1.1.0"
+                    },
                     "product_supplierinfo_for_customer": {
                         "author": "AvanzOSC, Tecnativa, Odoo Community Association (OCA)",
                         "category": "Sales Management",
@@ -505,11 +1489,83 @@
                 },
                 "name": "product-attribute"
             },
+            "product-variant": {
+                "default_branch": "14.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/product-variant",
+                "modules": {
+                    "product_variant_sale_price": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Product Management",
+                        "display_name": "Product Variant Sale Price",
+                        "name": "product_variant_sale_price",
+                        "summary": "Allows to write fixed prices in product variants",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "product-variant"
+            },
+            "project": {
+                "default_branch": "14.0",
+                "description": "Odoo Project Management and Services Company Addons",
+                "html_url": "https://github.com/OCA/project",
+                "modules": {
+                    "project_list": {
+                        "author": "CorporateHub, Odoo Community Association (OCA)",
+                        "category": "Project",
+                        "display_name": "Projects List View",
+                        "name": "project_list",
+                        "summary": "Projects list view",
+                        "version": "15.0.1.0.0"
+                    },
+                    "project_parent_task_filter": {
+                        "author": "C2i Change 2 improve, Odoo Community Association (OCA)",
+                        "category": "Project",
+                        "display_name": "Project Parent Task Filter",
+                        "name": "project_parent_task_filter",
+                        "summary": "Add a filter to show the parent tasks",
+                        "version": "15.0.1.0.0"
+                    },
+                    "project_task_add_very_high": {
+                        "author": "Onestein, Odoo Community Association (OCA)",
+                        "category": "Project",
+                        "display_name": "Project Task Add Very High",
+                        "name": "project_task_add_very_high",
+                        "summary": "Adds extra options 'High' and 'Very High' on tasks",
+                        "version": "15.0.1.0.0"
+                    },
+                    "project_task_default_stage": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Project",
+                        "display_name": "Project Task Default Stage",
+                        "name": "project_task_default_stage",
+                        "summary": "Recovery default task stages for projects from v8",
+                        "version": "15.0.1.0.0"
+                    },
+                    "project_task_personal_stage_auto_fold": {
+                        "author": "Moduon, Odoo Community Association (OCA)",
+                        "category": "Project",
+                        "display_name": "Project Task Personal Stage auto Fold",
+                        "name": "project_task_personal_stage_auto_fold",
+                        "summary": "Moves task to the first fold personal stage when done",
+                        "version": "15.0.1.0.1"
+                    }
+                },
+                "name": "project"
+            },
             "purchase-workflow": {
                 "default_branch": "14.0",
                 "description": "Odoo Purchases, Workflow and Organization",
                 "html_url": "https://github.com/OCA/purchase-workflow",
                 "modules": {
+                    "product_form_purchase_link": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Product Form Purchase Link",
+                        "name": "product_form_purchase_link",
+                        "summary": "\n        Add an option to display the purchases lines from product",
+                        "version": "15.0.1.0.0"
+                    },
                     "purchase_discount": {
                         "author": "Tiny, Acysos S.L., Tecnativa, ACSONE SA/NV,GRAP,Odoo Community Association (OCA)",
                         "category": "Purchase Management",
@@ -517,6 +1573,22 @@
                         "name": "purchase_discount",
                         "summary": "",
                         "version": "15.0.1.0.1"
+                    },
+                    "purchase_reception_notify": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Purchase Management",
+                        "display_name": "Purchase Reception Notify",
+                        "name": "purchase_reception_notify",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "purchase_request": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Purchase Management",
+                        "display_name": "Purchase Request",
+                        "name": "purchase_request",
+                        "summary": "Use this module to have notification of requirements of materials and/or external services and keep track of such requirements.",
+                        "version": "15.0.1.0.0"
                     }
                 },
                 "name": "purchase-workflow"
@@ -585,6 +1657,118 @@
                 },
                 "name": "queue"
             },
+            "repair": {
+                "default_branch": "15.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/repair",
+                "modules": {
+                    "repair_refurbish": {
+                        "author": "ForgeFlow S.L., Odoo Community Association (OCA)",
+                        "category": "Manufacturing",
+                        "display_name": "MRP Repair Refurbish",
+                        "name": "repair_refurbish",
+                        "summary": "Create refurbished products during repair",
+                        "version": "15.0.1.0.0"
+                    },
+                    "repair_stock_move": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Repair",
+                        "display_name": "Repair Stock Move",
+                        "name": "repair_stock_move",
+                        "summary": "Ongoing Repair Stock Moves Definition in odoo",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "repair"
+            },
+            "reporting-engine": {
+                "default_branch": "14.0",
+                "description": "Odoo Alternative Reporting Engine",
+                "html_url": "https://github.com/OCA/reporting-engine",
+                "modules": {
+                    "bi_sql_editor": {
+                        "author": "GRAP,Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "BI SQL Editor",
+                        "name": "bi_sql_editor",
+                        "summary": "BI Views builder, based on Materialized or Normal SQL Views",
+                        "version": "15.0.1.0.1"
+                    },
+                    "report_qr": {
+                        "author": "Creu Blanca, Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "Web QR Manager",
+                        "name": "report_qr",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "report_qweb_parameter": {
+                        "author": "Creu Blanca, Odoo Community Association (OCA)",
+                        "category": "Technical Settings",
+                        "display_name": "Report QWeb Parameter",
+                        "name": "report_qweb_parameter",
+                        "summary": "\n        Add new parameters for qweb templates in order to reduce field length\n        and check minimal length\n    ",
+                        "version": "15.0.1.0.0"
+                    },
+                    "report_wkhtmltopdf_param": {
+                        "author": "Avoin.Systems, Eficent, Odoo Community Association (OCA)",
+                        "category": "Technical Settings",
+                        "display_name": "Report Wkhtmltopdf Param",
+                        "name": "report_wkhtmltopdf_param",
+                        "summary": "\n        Add new parameters for a paper format to be used by wkhtmltopdf\n        command as arguments.\n    ",
+                        "version": "15.0.1.0.0"
+                    },
+                    "report_xlsx": {
+                        "author": "ACSONE SA/NV,Creu Blanca,Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "Base report xlsx",
+                        "name": "report_xlsx",
+                        "summary": "Base module to create xlsx report",
+                        "version": "15.0.1.0.4"
+                    },
+                    "report_xlsx_helper": {
+                        "author": "Noviat, Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "Report xlsx helpers",
+                        "name": "report_xlsx_helper",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "report_xml": {
+                        "author": "Tecnativa, Odoo Community Association (OCA), Avoin.Systems",
+                        "category": "Reporting",
+                        "display_name": "XML Reports",
+                        "name": "report_xml",
+                        "summary": "Allow to generate XML reports",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sql_export": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Others",
+                        "display_name": "SQL Export",
+                        "name": "sql_export",
+                        "summary": "Export data in csv file with SQL requests",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sql_export_excel": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Generic Modules/Others",
+                        "display_name": "SQL Export Excel",
+                        "name": "sql_export_excel",
+                        "summary": "Allow to export a sql query to an excel file.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sql_request_abstract": {
+                        "author": "GRAP,Akretion,Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "SQL Request Abstract",
+                        "name": "sql_request_abstract",
+                        "summary": "Abstract Model to manage SQL Requests",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "reporting-engine"
+            },
             "rest-framework": {
                 "default_branch": "14.0",
                 "description": null,
@@ -596,7 +1780,7 @@
                         "display_name": "Base Rest",
                         "name": "base_rest",
                         "summary": "\n        Develop your own high level REST APIs for Odoo thanks to this addon.\n        ",
-                        "version": "15.0.1.0.0"
+                        "version": "15.0.1.1.0"
                     },
                     "base_rest_auth_api_key": {
                         "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -620,7 +1804,7 @@
                         "display_name": "REST Authentication Service",
                         "name": "base_rest_auth_user_service",
                         "summary": "Login/logout from session using a REST call",
-                        "version": "14.0.1.0.1"
+                        "version": "15.0.1.0.0"
                     },
                     "base_rest_datamodel": {
                         "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -686,6 +1870,22 @@
                 "description": "Odoo Sales, Workflow and Organization",
                 "html_url": "https://github.com/OCA/sale-workflow",
                 "modules": {
+                    "sale_advance_payment": {
+                        "author": "Comunitea, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Sale Advance Payment",
+                        "name": "sale_advance_payment",
+                        "summary": "Allow to add advance payments on sales and then use them on invoices",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sale_automatic_workflow": {
+                        "author": "Akretion, Camptocamp, Sodexis, Odoo Community Association (OCA)",
+                        "category": "Sales Management",
+                        "display_name": "Sale Automatic Workflow",
+                        "name": "sale_automatic_workflow",
+                        "summary": "",
+                        "version": "15.0.1.0.1"
+                    },
                     "sale_commercial_partner": {
                         "author": "Akretion,Odoo Community Association (OCA)",
                         "category": "Sales",
@@ -694,6 +1894,38 @@
                         "summary": "Add stored related field 'Commercial Entity' on sale orders",
                         "version": "15.0.1.0.1"
                     },
+                    "sale_delivery_state": {
+                        "author": "Akretion, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Sale delivery State",
+                        "name": "sale_delivery_state",
+                        "summary": "Show the delivery state on the sale order",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sale_force_invoiced": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "sale",
+                        "display_name": "Sale Force Invoiced",
+                        "name": "sale_force_invoiced",
+                        "summary": "Allows to force the invoice status of the sales order to Invoiced",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sale_invoice_plan": {
+                        "author": "Ecosoft,Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Sales Invoice Plan",
+                        "name": "sale_invoice_plan",
+                        "summary": "Add to sales order, ability to manage future invoice plan",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sale_order_invoice_amount": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Sale Order Invoice Amount",
+                        "name": "sale_order_invoice_amount",
+                        "summary": "Display the invoiced and uninvoiced total in the sale order",
+                        "version": "15.0.1.0.0"
+                    },
                     "sale_order_line_date": {
                         "author": "OdooMRP team,AvanzOSC,Serv. Tecnol. Avanzados - Pedro M. Baeza,Odoo Community Association (OCA)",
                         "category": "Sale",
@@ -701,6 +1933,46 @@
                         "name": "sale_order_line_date",
                         "summary": "Adds a commitment date to each sale order line.",
                         "version": "15.0.1.0.1"
+                    },
+                    "sale_order_type": {
+                        "author": "Grupo Vermon,AvanzOSC,Tecnativa,Agile Business Group,Niboo,Odoo Community Association (OCA)",
+                        "category": "Sales Management",
+                        "display_name": "Sale Order Type",
+                        "name": "sale_order_type",
+                        "summary": "",
+                        "version": "15.0.2.0.0"
+                    },
+                    "sale_procurement_group_by_line": {
+                        "author": "Camptocamp,ForgeFlow,Serpent Consulting Services Pvt. Ltd.,Odoo Community Association (OCA)",
+                        "category": "Warehouse",
+                        "display_name": "Sale Procurement Group by Line",
+                        "name": "sale_procurement_group_by_line",
+                        "summary": "Base module for multiple procurement group by Sale order",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sale_product_category_menu": {
+                        "author": "Sygel, Odoo Community Association (OCA)",
+                        "category": "Product",
+                        "display_name": "Sale Product Category Menu",
+                        "name": "sale_product_category_menu",
+                        "summary": "Shows 'Product Categories' menu item in Sales",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sale_product_multi_add": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Sale Management",
+                        "display_name": "Sale Product Multi Add",
+                        "name": "sale_product_multi_add",
+                        "summary": "\n        Sale Product Multi Add ",
+                        "version": "15.0.1.0.0"
+                    },
+                    "sale_tier_validation": {
+                        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+                        "category": "Sale",
+                        "display_name": "Sale Tier Validation",
+                        "name": "sale_tier_validation",
+                        "summary": "Extends the functionality of Sale Orders to support a tier validation process.",
+                        "version": "15.0.1.0.0"
                     }
                 },
                 "name": "sale-workflow"
@@ -732,6 +2004,30 @@
                         "display_name": "Auth API key server environment",
                         "name": "auth_api_key_server_env",
                         "summary": "\nConfigure api keys via server env.\n\nThis can be very useful to avoid mixing your keys between your various\nenvironments when restoring databases. All you have to do is to add a new\nsection to your configuration file according to the following convention:\n    ",
+                        "version": "15.0.1.0.0"
+                    },
+                    "auth_jwt": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Auth JWT",
+                        "name": "auth_jwt",
+                        "summary": "\n        JWT bearer token authentication.",
+                        "version": "14.0.1.2.0"
+                    },
+                    "auth_jwt_demo": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Auth JWT Test",
+                        "name": "auth_jwt_demo",
+                        "summary": "\n        Test/demo module for auth_jwt.",
+                        "version": "14.0.1.2.0"
+                    },
+                    "auth_saml": {
+                        "author": "XCG Consulting, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Saml2 Authentication",
+                        "name": "auth_saml",
+                        "summary": "",
                         "version": "15.0.1.0.0"
                     }
                 },
@@ -790,6 +2086,46 @@
                 "description": "Tools for Odoo Administrators to improve some technical features on Odoo.",
                 "html_url": "https://github.com/OCA/server-tools",
                 "modules": {
+                    "base_cron_exclusion": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Base Cron Exclusion",
+                        "name": "base_cron_exclusion",
+                        "summary": "Allow you to select scheduled actions that should not run simultaneously.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "base_view_inheritance_extension": {
+                        "author": "Therp BV,Odoo Community Association (OCA)",
+                        "category": "Hidden/Dependency",
+                        "display_name": "Extended view inheritance",
+                        "name": "base_view_inheritance_extension",
+                        "summary": "Adds more operators for view inheritance",
+                        "version": "15.0.1.0.0"
+                    },
+                    "fetchmail_incoming_log": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Fetchmail Incoming Log",
+                        "name": "fetchmail_incoming_log",
+                        "summary": "Log all messages received, before they start to be processed.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "html_text": {
+                        "author": "Grupo ESOC Ingenier\u00eda de Servicios, Tecnativa, Onestein, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Text from HTML field",
+                        "name": "html_text",
+                        "summary": "Generate excerpts from any HTML field",
+                        "version": "15.0.1.0.0"
+                    },
+                    "module_auto_update": {
+                        "author": "LasLabs, Juan Jos\u00e9 Scaraf\u00eda, Tecnativa, ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "Module Auto Update",
+                        "name": "module_auto_update",
+                        "summary": "Automatically update Odoo modules",
+                        "version": "15.0.1.0.0"
+                    },
                     "upgrade_analysis": {
                         "author": "Therp BV, Opener B.V., GRAP, Odoo Community Association (OCA)",
                         "category": "Migration",
@@ -806,6 +2142,22 @@
                 "description": null,
                 "html_url": "https://github.com/OCA/server-ux",
                 "modules": {
+                    "barcode_action": {
+                        "author": "Creu Blanca, ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "Barcode action launcher",
+                        "name": "barcode_action",
+                        "summary": "Allows to use barcodes as a launcher",
+                        "version": "15.0.1.0.0"
+                    },
+                    "base_menu_visibility_restriction": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "Base Menu Visibility Restriction",
+                        "name": "base_menu_visibility_restriction",
+                        "summary": "Restrict (with groups) menu visibilty",
+                        "version": "15.0.1.0.0"
+                    },
                     "base_technical_features": {
                         "author": "Opener B.V., Odoo Community Association (OCA)",
                         "category": "Usability",
@@ -813,6 +2165,54 @@
                         "name": "base_technical_features",
                         "summary": "Access to technical features without activating debug mode",
                         "version": "15.0.1.1.0"
+                    },
+                    "base_tier_validation": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Base Tier Validation",
+                        "name": "base_tier_validation",
+                        "summary": "Implement a validation process based on tiers.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "date_range": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Uncategorized",
+                        "display_name": "Date Range",
+                        "name": "date_range",
+                        "summary": "Manage all kind of date range",
+                        "version": "15.0.1.0.0"
+                    },
+                    "default_multi_user": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Default Multi User",
+                        "name": "default_multi_user",
+                        "summary": "Allows to share user-defined defaults among several users.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "document_quick_access": {
+                        "author": "Creu Blanca,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Document Quick Access",
+                        "name": "document_quick_access",
+                        "summary": "\n        Document quick access",
+                        "version": "15.0.1.0.0"
+                    },
+                    "filter_multi_user": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Filter Multi User",
+                        "name": "filter_multi_user",
+                        "summary": "Allows to share user-defined filters filters among several users.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mass_editing": {
+                        "author": "Serpent Consulting Services Pvt. Ltd., Tecnativa, GRAP, Iv\u00e1n Todorovich, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Mass Editing",
+                        "name": "mass_editing",
+                        "summary": "Mass Editing",
+                        "version": "15.0.1.0.0"
                     }
                 },
                 "name": "server-ux"
@@ -828,6 +2228,70 @@
                         "display_name": "Mail Activity Board",
                         "name": "mail_activity_board",
                         "summary": "Add Activity Boards",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mail_activity_creator": {
+                        "author": "Creu Blanca,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Mail Activity Creator",
+                        "name": "mail_activity_creator",
+                        "summary": "\n        Show activities creator",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mail_activity_done": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Discuss",
+                        "display_name": "Mail Activity Done",
+                        "name": "mail_activity_done",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mail_activity_partner": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Social Network",
+                        "display_name": "Mail Activity Partner",
+                        "name": "mail_activity_partner",
+                        "summary": "Add Partner to Activities",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mail_activity_team": {
+                        "author": "ForgeFlow, Sodexis, Odoo Community Association (OCA)",
+                        "category": "Social Network",
+                        "display_name": "Mail Activity Team",
+                        "name": "mail_activity_team",
+                        "summary": "Add Teams to Activities",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mail_attach_existing_attachment": {
+                        "author": "ACSONE SA/NV, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Social Network",
+                        "display_name": "Mail Attach Existing Attachment",
+                        "name": "mail_attach_existing_attachment",
+                        "summary": "Adding attachment on the object by sending this one",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mail_debrand": {
+                        "author": "Tecnativa, Eficent, Onestein, Sodexis, Nexterp Romania,\n             Odoo Community Association (OCA)",
+                        "category": "Social Network",
+                        "display_name": "Mail Debrand",
+                        "name": "mail_debrand",
+                        "summary": "Remove Odoo branding in sent emails\n    Removes anchor <a href odoo.com togheder with it's parent\n    ( for powerd by) form all the templates\n    removes any 'odoo' that are in tempalte texts > 20characters\n    ",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mail_outbound_static": {
+                        "author": "brain-tec AG, LasLabs, Adhoc SA, Odoo Community Association (OCA)",
+                        "category": "Discuss",
+                        "display_name": "Mail Outbound Static",
+                        "name": "mail_outbound_static",
+                        "summary": "Allows you to configure the from header for a mail server.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "mail_preview_base": {
+                        "author": "Creu Blanca,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Mail Preview",
+                        "name": "mail_preview_base",
+                        "summary": "\n        Base to add more previewing options",
                         "version": "15.0.1.0.0"
                     }
                 },
@@ -848,6 +2312,30 @@
                     }
                 },
                 "name": "stock-logistics-reporting"
+            },
+            "stock-logistics-transport": {
+                "default_branch": "13.0",
+                "description": "Transport management in Odoo ",
+                "html_url": "https://github.com/OCA/stock-logistics-transport",
+                "modules": {
+                    "stock_location_address": {
+                        "author": "Creu Blanca, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "Stock Location address",
+                        "name": "stock_location_address",
+                        "summary": "Adds an address on locations",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_location_address_purchase": {
+                        "author": "Creu Blanca, Odoo Community Association (OCA)",
+                        "category": "Purchases",
+                        "display_name": "Purchase Location address",
+                        "name": "stock_location_address_purchase",
+                        "summary": "Uses the location address on purchases",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "stock-logistics-transport"
             },
             "stock-logistics-warehouse": {
                 "default_branch": "14.0",
@@ -870,12 +2358,108 @@
                         "summary": "Allows to configure the system to propose automatically new procurement groups during the procurement run.",
                         "version": "15.0.1.0.0"
                     },
+                    "stock_available": {
+                        "author": "Num\u00e9rigraphe, Sodexis, Odoo Community Association (OCA)",
+                        "category": "Warehouse",
+                        "display_name": "Stock available to promise",
+                        "name": "stock_available",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_available_mrp": {
+                        "author": "Num\u00e9rigraphe,Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Consider the production potential is available to promise",
+                        "name": "stock_available_mrp",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_available_unreserved": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "Stock Available Unreserved",
+                        "name": "stock_available_unreserved",
+                        "summary": "Quantity of stock available for immediate use",
+                        "version": "15.0.1.0.0"
+                    },
                     "stock_demand_estimate": {
                         "author": "ForgeFlow, Odoo Community Association (OCA)",
                         "category": "Warehouse",
                         "display_name": "Stock Demand Estimate",
                         "name": "stock_demand_estimate",
                         "summary": "Allows to create demand estimates.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_demand_estimate_matrix": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse",
+                        "display_name": "Stock Demand Estimate Matrix",
+                        "name": "stock_demand_estimate_matrix",
+                        "summary": "Allows to create demand estimates.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_helper": {
+                        "author": "Camptocamp, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Stock Helpers",
+                        "name": "stock_helper",
+                        "summary": "Add methods shared between various stock modules",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_move_location": {
+                        "author": "Julius Network Solutions, BCIM,Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Stock",
+                        "display_name": "Move Stock Location",
+                        "name": "stock_move_location",
+                        "summary": "This module allows to move all stock in a stock location to an other one.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_orderpoint_move_link": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "Stock Orderpoint Move Link",
+                        "name": "stock_orderpoint_move_link",
+                        "summary": "Link Reordering rules to stock moves",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_orderpoint_purchase_link": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "Stock Orderpoint Purchase Link",
+                        "name": "stock_orderpoint_purchase_link",
+                        "summary": "Link Reordering rules to purchase orders",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_orderpoint_uom": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "Stock Orderpoint UoM",
+                        "name": "stock_orderpoint_uom",
+                        "summary": "Allows to create procurement orders in the UoM indicated in the orderpoint",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_packaging_calculator": {
+                        "author": "Camptocamp, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "Stock packaging calculator",
+                        "name": "stock_packaging_calculator",
+                        "summary": "Compute product quantity to pick by packaging",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_quant_manual_assign": {
+                        "author": "AvanzOSC, Tecnativa, ForgeFlow, Fanha Giang, Odoo Community Association (OCA)",
+                        "category": "Warehouse",
+                        "display_name": "Stock - Manual Quant Assignment",
+                        "name": "stock_quant_manual_assign",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "stock_request": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Warehouse Management",
+                        "display_name": "Stock Request",
+                        "name": "stock_request",
+                        "summary": "Internal request for stock",
                         "version": "15.0.1.0.0"
                     },
                     "stock_warehouse_calendar": {
@@ -894,6 +2478,14 @@
                 "description": "Odoo Stock, Workflow and Organization",
                 "html_url": "https://github.com/OCA/stock-logistics-workflow",
                 "modules": {
+                    "stock_no_negative": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Inventory, Logistic, Storage",
+                        "display_name": "Stock Disallow Negative",
+                        "name": "stock_no_negative",
+                        "summary": "Disallow negative stock levels by default",
+                        "version": "15.0.1.0.0"
+                    },
                     "stock_picking_filter_lot": {
                         "author": "Agile Business Group, Odoo Community Association (OCA)",
                         "category": "Warehouse",
@@ -945,17 +2537,65 @@
                 },
                 "name": "stock-logistics-workflow"
             },
-            "web": {
+            "storage": {
                 "default_branch": "14.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/storage",
+                "modules": {
+                    "storage_backend": {
+                        "author": " Akretion, Odoo Community Association (OCA)",
+                        "category": "Storage",
+                        "display_name": "Storage Bakend",
+                        "name": "storage_backend",
+                        "summary": "Implement the concept of Storage with amazon S3, sftp...",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "storage"
+            },
+            "vertical-hotel": {
+                "default_branch": "11.0",
+                "description": "Odoo for Hotel Management",
+                "html_url": "https://github.com/OCA/vertical-hotel",
+                "modules": {
+                    "hotel": {
+                        "author": "Odoo Community Association (OCA), Serpent Consulting                Services Pvt. Ltd., OpenERP SA",
+                        "category": "Hotel Management",
+                        "display_name": "Hotel Management",
+                        "name": "hotel",
+                        "summary": "Hotel Management to Manage Folio and Hotel Configuration",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "vertical-hotel"
+            },
+            "web": {
+                "default_branch": "15.0",
                 "description": "Odoo web client UI related addons",
                 "html_url": "https://github.com/OCA/web",
                 "modules": {
+                    "web_company_color": {
+                        "author": "Alexandre D\u00edaz, Odoo Community Association (OCA)",
+                        "category": "web",
+                        "display_name": "Web Company Color",
+                        "name": "web_company_color",
+                        "summary": "",
+                        "version": "15.0.1.1.0"
+                    },
                     "web_environment_ribbon": {
                         "author": "Francesco OpenCode Apruzzese, Tecnativa, Odoo Community Association (OCA)",
                         "category": "Web",
                         "display_name": "Web Environment Ribbon",
                         "name": "web_environment_ribbon",
                         "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "web_ir_actions_act_multi": {
+                        "author": "Modoolar, CorporateHub, Odoo Community Association (OCA)",
+                        "category": "Web",
+                        "display_name": "Web Actions Multi",
+                        "name": "web_ir_actions_act_multi",
+                        "summary": "Enables triggering of more than one action on ActionManager",
                         "version": "15.0.1.0.0"
                     },
                     "web_m2x_options": {
@@ -974,6 +2614,14 @@
                         "summary": "Adds an interface to manage the \"Create\" and \"Create and Edit\" options for specific models and fields.",
                         "version": "15.0.1.0.0"
                     },
+                    "web_no_bubble": {
+                        "author": "Savoir-faire Linux, Odoo Community Association (OCA)",
+                        "category": "Web",
+                        "display_name": "Web No Bubble",
+                        "name": "web_no_bubble",
+                        "summary": "Remove the bubbles from the web interface",
+                        "version": "15.0.1.0.0"
+                    },
                     "web_refresher": {
                         "author": "Compassion Switzerland, Odoo Community Association (OCA)",
                         "category": "",
@@ -981,6 +2629,46 @@
                         "name": "web_refresher",
                         "summary": "",
                         "version": "15.0.1.0.0"
+                    },
+                    "web_responsive": {
+                        "author": "LasLabs, Tecnativa, ITerra, Odoo Community Association (OCA)",
+                        "category": "Website",
+                        "display_name": "Web Responsive",
+                        "name": "web_responsive",
+                        "summary": "Responsive web client, community-supported",
+                        "version": "15.0.1.0.0"
+                    },
+                    "web_sheet_full_width": {
+                        "author": "Therp BV, Sudokeys, GRAP, M\u00e9tal Sartigan, Odoo Community Association (OCA)",
+                        "category": "Tools",
+                        "display_name": "Web Sheet Full Width",
+                        "name": "web_sheet_full_width",
+                        "summary": "Use the whole available screen width when displaying sheets",
+                        "version": "15.0.1.0.1"
+                    },
+                    "web_widget_bokeh_chart": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Web Widget Bokeh Chart",
+                        "name": "web_widget_bokeh_chart",
+                        "summary": "This widget allows to display charts using Bokeh library.",
+                        "version": "15.0.1.0.0"
+                    },
+                    "web_widget_domain_editor_dialog": {
+                        "author": "Tecnativa,Odoo Community Association (OCA)",
+                        "category": "Web",
+                        "display_name": "Web Widget Domain Editor Dialog",
+                        "name": "web_widget_domain_editor_dialog",
+                        "summary": "Recovers the Domain Editor Dialog functionality",
+                        "version": "15.0.1.0.0"
+                    },
+                    "web_widget_x2many_2d_matrix": {
+                        "author": "Therp BV, Tecnativa, Camptocamp, CorporateHub, Odoo Community Association (OCA)",
+                        "category": "Hidden/Dependency",
+                        "display_name": "2D matrix for x2many fields",
+                        "name": "web_widget_x2many_2d_matrix",
+                        "summary": "Show list fields as a matrix",
+                        "version": "15.0.1.0.1"
                     }
                 },
                 "name": "web"
