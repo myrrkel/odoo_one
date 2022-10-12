@@ -8,7 +8,7 @@ import re
 
 FILE_NAME = 'github_modules'
 DATA_DIR = './data/'
-LAST_VERSION = 15
+LAST_VERSION = 16
 ALL_VERSIONS = ['%0.1f' % v for v in range(8, LAST_VERSION + 1).__reversed__()]
 
 def strip_comments(code):

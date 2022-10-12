@@ -11,7 +11,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 _translate = QtCore.QCoreApplication.translate
-LAST_VERSION = 15
+LAST_VERSION = 16
 
 
 class DialogAddons(QtWidgets.QDialog):
