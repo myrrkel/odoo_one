@@ -2,16 +2,20 @@
 
 The easiest way to start Odoo on your own PC.
 
-### How it works
+### Quick start
 
 Just run:
 
-    python3 odoo_one.py
+    python3.9 odoo_one.py
 
 
 ### Installation
 
-If you need to install docker, run:
+Python modules:
+
+    pip3.9 install -r requirements.txt
+
+If you need to install Docker, run:
 
     sudo python3 install_docker.py
 
