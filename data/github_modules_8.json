@@ -1868,7 +1868,7 @@
                         "display_name": "CAMT Format Bank Statements Import",
                         "name": "account_bank_statement_import_camt",
                         "summary": "Module to import SEPA CAMT.053 Format bank statement files",
-                        "version": "8.0.0.5.0"
+                        "version": "8.0.0.5.1"
                     },
                     "account_bank_statement_import_mt940_base": {
                         "author": "Odoo Community Association (OCA), Therp BV",
@@ -2666,7 +2666,7 @@
                 "name": "contract"
             },
             "crm": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": "Odoo CRM, Mail & Newsletter advanced features",
                 "html_url": "https://github.com/OCA/crm",
                 "modules": {
@@ -2948,7 +2948,7 @@
                         "display_name": "Base Delivery Carrier Files",
                         "name": "base_delivery_carrier_files",
                         "summary": "",
-                        "version": "8.0.1.2.4"
+                        "version": "8.0.1.2.5"
                     },
                     "base_delivery_carrier_files_document": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -2956,7 +2956,7 @@
                         "display_name": "Base module for picking carrier files creation for document",
                         "name": "base_delivery_carrier_files_document",
                         "summary": "",
-                        "version": "1.0.1"
+                        "version": "8.0.1.0.2"
                     },
                     "base_delivery_carrier_label": {
                         "author": "Camptocamp,Akretion,Odoo Community Association (OCA)",
@@ -2972,7 +2972,7 @@
                         "display_name": "Delivery Carrier Business To Customer",
                         "name": "delivery_carrier_b2c",
                         "summary": "",
-                        "version": "8.0.0.2.0"
+                        "version": "8.0.0.2.1"
                     },
                     "delivery_carrier_deposit": {
                         "author": "Akretion,Odoo Community Association (OCA)",
@@ -2980,7 +2980,7 @@
                         "display_name": "Delivery Deposit",
                         "name": "delivery_carrier_deposit",
                         "summary": "Create deposit slips",
-                        "version": "8.0.0.2.1"
+                        "version": "8.0.0.2.2"
                     },
                     "delivery_carrier_file_laposte": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -3020,7 +3020,7 @@
                         "display_name": "Delivery Carrier Label GLS",
                         "name": "delivery_carrier_label_gls",
                         "summary": "GLS carrier label printing",
-                        "version": "8.0.0.1.0"
+                        "version": "8.0.0.1.1"
                     },
                     "delivery_carrier_label_postlogistics": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -3028,7 +3028,7 @@
                         "display_name": "PostLogistics Labels WebService",
                         "name": "delivery_carrier_label_postlogistics",
                         "summary": "",
-                        "version": "8.0.1.1.0"
+                        "version": "8.0.1.1.1"
                     },
                     "delivery_carrier_label_postlogistics_shop_logo": {
                         "author": "Camptocamp,Odoo Community Association (OCA)",
@@ -4722,7 +4722,7 @@
                 "name": "l10n-belgium"
             },
             "l10n-brazil": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Localiza\u00e7\u00e3o brasileira oficial do Odoo.",
                 "html_url": "https://github.com/OCA/l10n-brazil",
                 "modules": {
@@ -5370,7 +5370,7 @@
                 "name": "l10n-france"
             },
             "l10n-germany": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/l10n-germany",
                 "modules": {
@@ -5636,7 +5636,7 @@
                         "display_name": "Italian Localization - Fattura elettronica - Ricezione",
                         "name": "l10n_it_fatturapa_in",
                         "summary": "Electronic invoices reception",
-                        "version": "8.0.2.0.5"
+                        "version": "8.0.2.0.6"
                     },
                     "l10n_it_fatturapa_out": {
                         "author": "Davide Corio, Agile Business Group, Innoviu,Odoo Community Association (OCA)",
@@ -5918,6 +5918,22 @@
                 "description": "Odoo Dutch Localization",
                 "html_url": "https://github.com/OCA/l10n-netherlands",
                 "modules": {
+                    "l10n_nl_account_invoice_ubl": {
+                        "author": "Sunflower IT, Odoo Community Association (OCA)",
+                        "category": "Dutch Localization",
+                        "display_name": "Account Invoice UBL - Netherlands",
+                        "name": "l10n_nl_account_invoice_ubl",
+                        "summary": "Generate UBL invoices in Netherlands-specific UBL dialect (NLCIUS)",
+                        "version": "8.0.1.0.0"
+                    },
+                    "l10n_nl_base_ubl": {
+                        "author": "Onestein, Odoo Community Association (OCA)",
+                        "category": "Dutch Localization",
+                        "display_name": "Base UBL - Netherlands",
+                        "name": "l10n_nl_base_ubl",
+                        "summary": "Base module for Netherlands-specific UBL dialect (NLCIUS)",
+                        "version": "8.0.1.0.0"
+                    },
                     "l10n_nl_bsn": {
                         "author": "ONESTEiN BV,Odoo Community Association (OCA)",
                         "category": "Localization",
@@ -6332,7 +6348,7 @@
                         "display_name": "AEAT modelo 303",
                         "name": "l10n_es_aeat_mod303",
                         "summary": "",
-                        "version": "8.0.3.1.0"
+                        "version": "8.0.3.4.0"
                     },
                     "l10n_es_aeat_mod303_oss": {
                         "author": "PESOL,Odoo Community Association (OCA)",
@@ -7290,7 +7306,7 @@
                 "name": "manufacture-reporting"
             },
             "margin-analysis": {
-                "default_branch": "12.0",
+                "default_branch": "15.0",
                 "description": "Odoo Financial Controlling (margin, costs, ...)",
                 "html_url": "https://github.com/OCA/margin-analysis",
                 "modules": {
@@ -7498,7 +7514,7 @@
                 "name": "multi-company"
             },
             "oca-custom": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Custom Module for OCA Instance",
                 "html_url": "https://github.com/OCA/oca-custom",
                 "modules": {
@@ -7906,7 +7922,7 @@
                 "name": "partner-contact"
             },
             "pos": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/pos",
                 "modules": {
@@ -9706,7 +9722,7 @@
                 "name": "sale-financial"
             },
             "sale-reporting": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/sale-reporting",
                 "modules": {
@@ -11394,7 +11410,7 @@
                 "name": "social"
             },
             "stock-logistics-barcode": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/stock-logistics-barcode",
                 "modules": {
@@ -11514,8 +11530,8 @@
                 "name": "stock-logistics-barcode"
             },
             "stock-logistics-reporting": {
-                "default_branch": "13.0",
-                "description": null,
+                "default_branch": "14.0",
+                "description": "Provides Odoo Logistics reporting modules",
                 "html_url": "https://github.com/OCA/stock-logistics-reporting",
                 "modules": {
                     "stock_analysis": {
@@ -11554,7 +11570,7 @@
                 "name": "stock-logistics-reporting"
             },
             "stock-logistics-tracking": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/stock-logistics-tracking",
                 "modules": {
@@ -11698,7 +11714,7 @@
                 "name": "stock-logistics-tracking"
             },
             "stock-logistics-transport": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Transport management in Odoo ",
                 "html_url": "https://github.com/OCA/stock-logistics-transport",
                 "modules": {
@@ -12522,7 +12538,7 @@
                 "name": "stock-logistics-workflow"
             },
             "survey": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": "Survey addons",
                 "html_url": "https://github.com/OCA/survey",
                 "modules": {
@@ -12954,7 +12970,7 @@
                 "name": "vertical-education"
             },
             "vertical-hotel": {
-                "default_branch": "11.0",
+                "default_branch": "15.0",
                 "description": "Odoo for Hotel Management",
                 "html_url": "https://github.com/OCA/vertical-hotel",
                 "modules": {
