@@ -1970,7 +1970,7 @@
                 "name": "connector-accountedge"
             },
             "connector-cmis": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": "CMIS Connector",
                 "html_url": "https://github.com/OCA/connector-cmis",
                 "modules": {
@@ -2338,7 +2338,7 @@
                 "name": "contract"
             },
             "crm": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": "Odoo CRM, Mail & Newsletter advanced features",
                 "html_url": "https://github.com/OCA/crm",
                 "modules": {
@@ -4122,7 +4122,7 @@
                 "name": "l10n-belgium"
             },
             "l10n-brazil": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": "Localiza\u00e7\u00e3o brasileira oficial do Odoo.",
                 "html_url": "https://github.com/OCA/l10n-brazil",
                 "modules": {
@@ -4594,7 +4594,7 @@
                 "name": "l10n-france"
             },
             "l10n-germany": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/l10n-germany",
                 "modules": {
@@ -5858,7 +5858,7 @@
                 "name": "manufacture-reporting"
             },
             "margin-analysis": {
-                "default_branch": "12.0",
+                "default_branch": "15.0",
                 "description": "Odoo Financial Controlling (margin, costs, ...)",
                 "html_url": "https://github.com/OCA/margin-analysis",
                 "modules": {
@@ -6642,7 +6642,7 @@
                 "name": "partner-contact"
             },
             "pos": {
-                "default_branch": "14.0",
+                "default_branch": "15.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/pos",
                 "modules": {
@@ -8274,7 +8274,7 @@
                 "name": "sale-financial"
             },
             "sale-reporting": {
-                "default_branch": "12.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/sale-reporting",
                 "modules": {
@@ -9690,7 +9690,7 @@
                 "name": "social"
             },
             "stock-logistics-barcode": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/stock-logistics-barcode",
                 "modules": {
@@ -9842,8 +9842,8 @@
                 "name": "stock-logistics-barcode"
             },
             "stock-logistics-reporting": {
-                "default_branch": "13.0",
-                "description": null,
+                "default_branch": "14.0",
+                "description": "Provides Odoo Logistics reporting modules",
                 "html_url": "https://github.com/OCA/stock-logistics-reporting",
                 "modules": {
                     "stock_picking_partner_lang": {
@@ -9874,7 +9874,7 @@
                 "name": "stock-logistics-reporting"
             },
             "stock-logistics-tracking": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/stock-logistics-tracking",
                 "modules": {
@@ -10018,7 +10018,7 @@
                 "name": "stock-logistics-tracking"
             },
             "stock-logistics-transport": {
-                "default_branch": "13.0",
+                "default_branch": "14.0",
                 "description": "Transport management in Odoo ",
                 "html_url": "https://github.com/OCA/stock-logistics-transport",
                 "modules": {
@@ -10845,7 +10845,7 @@
                 "name": "stock-logistics-workflow"
             },
             "survey": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": "Survey addons",
                 "html_url": "https://github.com/OCA/survey",
                 "modules": {
@@ -11365,7 +11365,7 @@
                 "name": "vertical-education"
             },
             "vertical-hotel": {
-                "default_branch": "11.0",
+                "default_branch": "15.0",
                 "description": "Odoo for Hotel Management",
                 "html_url": "https://github.com/OCA/vertical-hotel",
                 "modules": {

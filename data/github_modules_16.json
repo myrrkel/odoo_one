@@ -1,0 +1,385 @@
+{
+    "OCA": {
+        "repositories": {
+            "OpenUpgrade": {
+                "default_branch": "15.0",
+                "description": "Open source upgrade path for Odoo/OpenERP",
+                "html_url": "https://github.com/OCA/OpenUpgrade",
+                "modules": {
+                    "openupgrade_scripts": {
+                        "author": "Odoo Community Association (OCA)",
+                        "category": "Migration",
+                        "display_name": "Openupgrade Scripts",
+                        "name": "openupgrade_scripts",
+                        "summary": "Module that contains all the migrations analysis\n        and scripts for migrate Odoo SA modules.",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "OpenUpgrade"
+            },
+            "brand": {
+                "default_branch": "16.0",
+                "description": "Manage brands for products and companies",
+                "html_url": "https://github.com/OCA/brand",
+                "modules": {
+                    "account_brand": {
+                        "author": "Open Source Integrators,ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Accounting Management",
+                        "display_name": "Account Brand",
+                        "name": "account_brand",
+                        "summary": "Send branded invoices and refunds",
+                        "version": "16.0.1.0.0"
+                    },
+                    "brand": {
+                        "author": "Odoo Community Association (OCA), ACSONE SA/NV",
+                        "category": "",
+                        "display_name": "Brand",
+                        "name": "brand",
+                        "summary": "\n        This is a base addon for brand modules. It adds the brand object and\n        its menu and define an abstract model to be inherited from branded\n        objects",
+                        "version": "16.0.1.0.0"
+                    },
+                    "brand_external_report_layout": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Brand External Report Layout",
+                        "name": "brand_external_report_layout",
+                        "summary": "\n        This module allows you to have a different layout by brand for your\n        external reports.",
+                        "version": "16.0.1.0.0"
+                    },
+                    "sale_brand": {
+                        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+                        "category": "Sales Management",
+                        "display_name": "Sale Brand",
+                        "name": "sale_brand",
+                        "summary": "Send branded sales orders",
+                        "version": "16.0.1.0.1"
+                    }
+                },
+                "name": "brand"
+            },
+            "field-service": {
+                "default_branch": "16.0",
+                "description": "Field Service Management",
+                "html_url": "https://github.com/OCA/field-service",
+                "modules": {
+                    "base_territory": {
+                        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Base Territory",
+                        "name": "base_territory",
+                        "summary": "This module allows you to define territories, branches, districts and regions to be used for Field Service operations or Sales.",
+                        "version": "16.0.1.0.0"
+                    }
+                },
+                "name": "field-service"
+            },
+            "mis-builder": {
+                "default_branch": "15.0",
+                "description": "Management Information System reports for Odoo: easily build super fast, beautiful, custom reports such as P&L, Balance Sheets and more.",
+                "html_url": "https://github.com/OCA/mis-builder",
+                "modules": {
+                    "mis_builder": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Reporting",
+                        "display_name": "MIS Builder",
+                        "name": "mis_builder",
+                        "summary": "\n        Build 'Management Information System' Reports and Dashboards\n    ",
+                        "version": "15.0.4.1.0"
+                    },
+                    "mis_builder_budget": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "MIS Builder Budget",
+                        "name": "mis_builder_budget",
+                        "summary": "\n        Create budgets for MIS reports",
+                        "version": "15.0.4.0.1"
+                    },
+                    "mis_builder_demo": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "MIS Builder Demo",
+                        "name": "mis_builder_demo",
+                        "summary": "\n        Demo addon for MIS Builder",
+                        "version": "15.0.3.1.1"
+                    }
+                },
+                "name": "mis-builder"
+            },
+            "partner-contact": {
+                "default_branch": "14.0",
+                "description": "Odoo Partner and Contact related addons",
+                "html_url": "https://github.com/OCA/partner-contact",
+                "modules": {
+                    "partner_contact_birthdate": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Contact's birthdate",
+                        "name": "partner_contact_birthdate",
+                        "summary": "",
+                        "version": "16.0.1.0.0"
+                    },
+                    "partner_contact_gender": {
+                        "author": "Grupo ESOC, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Contact gender",
+                        "name": "partner_contact_gender",
+                        "summary": "Add gender field to contacts",
+                        "version": "16.0.1.0.0"
+                    },
+                    "partner_contact_lang": {
+                        "author": "Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Sales",
+                        "display_name": "Manage language in contacts",
+                        "name": "partner_contact_lang",
+                        "summary": "",
+                        "version": "16.0.1.0.0"
+                    },
+                    "partner_contact_personal_information_page": {
+                        "author": "Nicolas JEUDY,Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Personal information page for contacts",
+                        "name": "partner_contact_personal_information_page",
+                        "summary": "Add a page to contacts form to put personal information",
+                        "version": "16.0.1.0.1"
+                    },
+                    "partner_firstname": {
+                        "author": "Camptocamp, Grupo ESOC Ingenier\u00eda de Servicios, Tecnativa, LasLabs, ACSONE SA/NV, DynApps NV, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "Partner first name and last name",
+                        "name": "partner_firstname",
+                        "summary": "Split first name and last name for non company partners",
+                        "version": "16.0.1.0.1"
+                    }
+                },
+                "name": "partner-contact"
+            },
+            "queue": {
+                "default_branch": "14.0",
+                "description": "Asynchronous Job Queue",
+                "html_url": "https://github.com/OCA/queue",
+                "modules": {
+                    "base_export_async": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Base Export Async",
+                        "name": "base_export_async",
+                        "summary": "\n        Asynchronous export with job queue\n        ",
+                        "version": "12.0.1.0.0"
+                    },
+                    "base_import_async": {
+                        "author": "Akretion, ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Generic Modules",
+                        "display_name": "Asynchronous Import",
+                        "name": "base_import_async",
+                        "summary": "Import CSV files in the background",
+                        "version": "14.0.1.0.1"
+                    },
+                    "queue_job": {
+                        "author": "Camptocamp,ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Generic Modules",
+                        "display_name": "Job Queue",
+                        "name": "queue_job",
+                        "summary": "",
+                        "version": "16.0.1.0.0"
+                    },
+                    "queue_job_cron": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "Generic Modules",
+                        "display_name": "Scheduled Actions as Queue Jobs",
+                        "name": "queue_job_cron",
+                        "summary": "",
+                        "version": "15.0.1.0.0"
+                    },
+                    "queue_job_cron_jobrunner": {
+                        "author": "Camptocamp SA, Odoo Community Association (OCA)",
+                        "category": "Others",
+                        "display_name": "Queue Job Cron Jobrunner",
+                        "name": "queue_job_cron_jobrunner",
+                        "summary": "Run jobs without a dedicated JobRunner",
+                        "version": "15.0.1.0.0"
+                    },
+                    "queue_job_subscribe": {
+                        "author": "Acsone SA/NV, Odoo Community Association (OCA)",
+                        "category": "Generic Modules",
+                        "display_name": "Queue Job Subscribe",
+                        "name": "queue_job_subscribe",
+                        "summary": "Control which users are subscribed to queue job notifications",
+                        "version": "15.0.1.0.0"
+                    },
+                    "test_base_import_async": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Generic Modules",
+                        "display_name": "Test suite for base_import_async",
+                        "name": "test_base_import_async",
+                        "summary": "Test suite for base_import_async.\n\n    Normally you don't need to install this.\n    ",
+                        "version": "14.0.1.0.1"
+                    },
+                    "test_queue_job": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Generic Modules",
+                        "display_name": "Queue Job Tests",
+                        "name": "test_queue_job",
+                        "summary": "",
+                        "version": "16.0.1.0.0"
+                    }
+                },
+                "name": "queue"
+            },
+            "rest-framework": {
+                "default_branch": "14.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/rest-framework",
+                "modules": {
+                    "base_rest": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Base Rest",
+                        "name": "base_rest",
+                        "summary": "\n        Develop your own high level REST APIs for Odoo thanks to this addon.\n        ",
+                        "version": "15.0.1.2.0"
+                    },
+                    "base_rest_auth_api_key": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Base Rest Auth Api Key",
+                        "name": "base_rest_auth_api_key",
+                        "summary": "\n        Base Rest: Add support for the auth_api_key security policy into the\n        openapi documentation",
+                        "version": "15.0.1.0.0"
+                    },
+                    "base_rest_auth_jwt": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Base Rest Auth Jwt",
+                        "name": "base_rest_auth_jwt",
+                        "summary": "\n        Base Rest: Add support for the auth_jwt security policy into the\n        openapi documentation",
+                        "version": "15.0.1.1.0"
+                    },
+                    "base_rest_auth_user_service": {
+                        "author": "Wakari, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "REST Authentication Service",
+                        "name": "base_rest_auth_user_service",
+                        "summary": "Login/logout from session using a REST call",
+                        "version": "15.0.1.0.1"
+                    },
+                    "base_rest_datamodel": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Base Rest Datamodel",
+                        "name": "base_rest_datamodel",
+                        "summary": "\n        Datamodel binding for base_rest",
+                        "version": "15.0.1.1.0"
+                    },
+                    "base_rest_demo": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Base Rest Demo",
+                        "name": "base_rest_demo",
+                        "summary": "\n        Demo addon for Base REST",
+                        "version": "15.0.1.0.1"
+                    },
+                    "base_rest_pydantic": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Base Rest Datamodel",
+                        "name": "base_rest_pydantic",
+                        "summary": "\n        Pydantic binding for base_rest",
+                        "version": "15.0.4.3.0"
+                    },
+                    "datamodel": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Datamodel",
+                        "name": "datamodel",
+                        "summary": "\n        This addon allows you to define simple data models supporting\n        serialization/deserialization",
+                        "version": "15.0.1.0.1"
+                    },
+                    "extendable": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Extendable",
+                        "name": "extendable",
+                        "summary": "\n        Extendable classes registry loader for Odoo",
+                        "version": "15.0.1.0.1"
+                    },
+                    "graphql_base": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Graphql Base",
+                        "name": "graphql_base",
+                        "summary": "\n        Base GraphQL/GraphiQL controller",
+                        "version": "14.0.1.0.0"
+                    },
+                    "graphql_demo": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "GraphQL Demo",
+                        "name": "graphql_demo",
+                        "summary": "",
+                        "version": "14.0.1.0.0"
+                    },
+                    "model_serializer": {
+                        "author": "Wakari, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Model Serializer",
+                        "name": "model_serializer",
+                        "summary": "Automatically translate Odoo models into Datamodels for (de)serialization",
+                        "version": "15.0.1.2.0"
+                    },
+                    "pydantic": {
+                        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "Pydantic",
+                        "name": "pydantic",
+                        "summary": "\n        Utility addon to ease mapping between Pydantic and Odoo models",
+                        "version": "15.0.1.1.1"
+                    },
+                    "rest_log": {
+                        "author": "Camptocamp, ACSONE, Odoo Community Association (OCA)",
+                        "category": "",
+                        "display_name": "REST Log",
+                        "name": "rest_log",
+                        "summary": "Track REST API calls into DB",
+                        "version": "15.0.1.0.0"
+                    }
+                },
+                "name": "rest-framework"
+            },
+            "search-engine": {
+                "default_branch": "16.0",
+                "description": null,
+                "html_url": "https://github.com/OCA/search-engine",
+                "modules": {
+                    "connector_algolia": {
+                        "author": "Akretion,ACSONE SA/NV,Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Connector",
+                        "display_name": "Algolia Connector",
+                        "name": "connector_algolia",
+                        "summary": "Connector For Algolia Search Engine",
+                        "version": "14.0.2.2.0"
+                    },
+                    "connector_elasticsearch": {
+                        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+                        "category": "Connector",
+                        "display_name": "connector_elasticsearch",
+                        "name": "connector_elasticsearch",
+                        "summary": "Connector For Elasticsearch Search Engine",
+                        "version": "14.0.2.6.0"
+                    },
+                    "connector_search_engine": {
+                        "author": "Akretion,ACSONE SA/NV,Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Generic Modules",
+                        "display_name": "Connector Search Engine",
+                        "name": "connector_search_engine",
+                        "summary": "",
+                        "version": "14.0.2.6.2"
+                    }
+                },
+                "name": "search-engine"
+            }
+        }
+    },
+    "myrrkel": {
+        "repositories": {}
+    }
+}
