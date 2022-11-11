@@ -76,12 +76,18 @@ class GithubModules:
     addons_path_list = []
     github_users = ['OCA', 'myrrkel']
     db_settings = {'modules': []}
+    access_token = ""
+    github = Github()
 
     def __init__(self, access_token=""):
-
-        self.github = Github(access_token)
+        if access_token:
+            self.access_token = access_token
+        self.init_github()
         # For a higher rate limit, provide an access_token:
         # https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+
+    def init_github(self):
+        self.github = Github(self.access_token)
 
     def set_version(self, odoo_version):
         self.version = str(odoo_version).replace('.0', '')

@@ -94,6 +94,8 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         self.tool_menu.addAction(self.action_select_database)
         self.action_config_database = QtWidgets.QAction(_translate('MainWindow', 'Database configuration'))
         self.tool_menu.addAction(self.action_config_database)
+        self.action_update_addons_list = QtWidgets.QAction(_translate('MainWindow', 'Update addons list from Github'))
+        self.tool_menu.addAction(self.action_update_addons_list)
         self.push_tools.setMenu(self.tool_menu)
 
         self.line_edit_enterprise_path.setText(settings.get_setting('ENTERPRISE_PATH'))
@@ -134,14 +136,29 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.starter_thread = StartOdooThread()
         self.log_thread = LogThread(self)
+        self.odoo = odoo_manager.OdooManager(False, '', self.stdout_signal, self)
 
 
     def setupUi(self):
         self.ui.setupUi(self)
         self.ui.push_button_start.clicked.connect(self.start_odoo)
+        self.ui.action_update_addons_list.triggered.connect(self.update_addons_list)
 
     def starter_thread_done(self):
         self.ui.wait_overlay.hide()
+
+    def update_addons_list(self):
+        self.set_odoo_manager()
+        github_access_token = settings.get_setting('github_access_token')
+        if not github_access_token:
+            dialog = QtWidgets.QInputDialog()
+            label = '<html style="font-size:12pt;">GitHub Access Token: %s</html>' % ("&nbsp;" * 30)
+            github_access_token, ok = dialog.getText(self, "GitHub", label, QtWidgets.QLineEdit.Normal, '')
+            if ok and github_access_token:
+                settings.save_setting('github_access_token', github_access_token)
+
+        if github_access_token:
+            self.odoo.update_addons_list(github_access_token)
 
     def print_log(self, to_log):
         is_new_log = self.ui.text_log == ''
@@ -157,15 +174,18 @@ class MainWindow(QMainWindow):
         else:
             sb.setValue(sb_value)
 
-    def start_odoo(self):
-        self.log_thread.quit()
-        self.ui.wait_overlay.show_overlay()
+    def set_odoo_manager(self):
         version = int(self.ui.combo_version.currentText())
         enterprise_path = ""
         if self.ui.checkbox_enterprise.isChecked() and self.ui.line_edit_enterprise_path.text():
             enterprise_path = self.ui.line_edit_enterprise_path.text()
 
         self.odoo = odoo_manager.OdooManager(version, enterprise_path, self.stdout_signal, self)
+
+    def start_odoo(self):
+        self.log_thread.quit()
+        self.ui.wait_overlay.show_overlay()
+        self.set_odoo_manager.version()
         self.starter_thread = StartOdooThread(self)
         self.starter_thread.start()
         self.starter_thread.done.connect(self.starter_thread_done)

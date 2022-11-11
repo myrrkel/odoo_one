@@ -6,6 +6,7 @@ import odoo_conf as oconf
 import odoo_rpc
 import odoorpc
 from github_modules import GithubModules
+from github_modules import generate_all_github_modules_file
 
 
 class OdooManager(object):
@@ -36,6 +37,11 @@ class OdooManager(object):
         else:
             print(msg)
 
+    def update_addons_list(self, access_token):
+        self.gh_modules.access_token = access_token
+        self.gh_modules.init_github()
+        self.gh_modules.generate_json_file(self.odoo_version)
+        generate_all_github_modules_file()
 
     def init(self, pull=False):
         self.print_stdout('Start Odoo...')
