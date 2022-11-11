@@ -4,20 +4,28 @@ import subprocess
 
 
 class DockerManager(object):
+    current_process = None
 
-    def __init__(self, version=14, odoo_db='odoo_14'):
+    def __init__(self, version=14, odoo_db='odoo_14', stdout_signal=None):
         self.version = version
         self.odoo_version = '%s.0' % version
         self.odoo_db = odoo_db
 
         self.client = docker.from_env()
+        self.stdout_signal = stdout_signal
 
         self.network = 'odoo_one_default'
         networks = self.get_networks()
         if networks:
             self.network = networks[0].name
         else:
-            create_network(self.network)
+            self.create_network(self.network)
+
+    def print_stdout(self, msg):
+        if self.stdout_signal:
+            self.stdout_signal.emit(msg)
+        else:
+            print(msg)
 
     def get_odoo_ip(self):
         containers = self.get_odoo_containers()
@@ -57,7 +65,7 @@ class DockerManager(object):
         try:
             networks = self.client.networks.list()
         except AttributeError:
-            create_network(self.network)
+            self.create_network(self.network)
             return []
 
         return list(filter(lambda n: n.name not in ['none', 'bridge', 'host'], networks))
@@ -183,35 +191,23 @@ networks:
            db_volumes=db_volumes,
            db_image=db_image)
 
+    def subprocess_run(self, params):
+        self.current_process = subprocess.run(params, shell=False, capture_output=True, text=True)
 
-def restart_docker():
-    process = subprocess.Popen(['service', 'docker', 'restart'],
-                             stdout=subprocess.PIPE, shell=False)
+    def start_compose(self):
+        self.subprocess_run(['docker-compose', 'up', '-d'])
 
+    def stop_compose(self):
+        self.subprocess_run(['docker-compose', 'down'])
 
-def docker_exists():
-    docker_path = shutil.which("docker")
-    return docker_path is not None
+    def create_network(self, name):
+        self.subprocess_run(['docker', 'network', 'create', name, '--subnet=172.19.0.0/16'])
 
+    def docker_exists(self):
+        docker_path = shutil.which("docker")
+        return docker_path is not None
 
-def compose_exists():
-    compose_path = shutil.which("docker-compose")
-    return compose_path is not None
+    def compose_exists(self):
+        compose_path = shutil.which("docker-compose")
+        return compose_path is not None
 
-
-def start_compose():
-
-    process = subprocess.run(['docker-compose', 'up', '-d'],
-                             stdout=subprocess.PIPE, shell=False)
-
-
-def stop_compose():
-    process = subprocess.run(['docker-compose', 'down'],
-                             stdout=subprocess.PIPE, universal_newlines=True)
-    if process:
-        print('stop')
-
-
-def create_network(name):
-    process = subprocess.run(['docker', 'network', 'create', name, '--subnet=172.19.0.0/16'],
-                             stdout=subprocess.PIPE, universal_newlines=True)

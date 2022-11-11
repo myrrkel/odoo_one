@@ -15,5 +15,10 @@ def save_setting(name, value):
 
 
 def get_setting(name):
-    return settings.value(name)
+    val = settings.value(name)
+    if val == 'true':
+        return True
+    if val == 'false':
+        return False
+    return val
 

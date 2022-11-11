@@ -1,5 +1,6 @@
 
 import settings
+import time
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui.designer import ui_main_window
 import odoo_manager
@@ -19,22 +20,36 @@ LAST_VERSION = 16
 class StartOdooThread(QThread):
 
     done = pyqtSignal(int, name='done')
-    stdout_signal = pyqtSignal(str, name='stdout')
 
-    def __init__(self, parent=None, version=14, enterprise_path=""):
+    def __init__(self, parent=None):
         super().__init__(parent)
-        self.version = version
-        self.enterprise_path = enterprise_path
+        self.parent = parent
 
     def run(self):
         try:
-            starter = odoo_manager.OdooManager(self.version, self.enterprise_path, self.stdout_signal)
-            starter.init()
+            self.parent.odoo.init()
         except Exception as e:
             logger.error(e)
             raise e
         self.done.emit(1)
         self.quit()
+
+
+class LogThread(QThread):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.parent = parent
+
+    def run(self):
+        while True:
+            if self.parent.odoo and self.parent.odoo.docker_manager.current_process:
+                stdout = self.parent.odoo.docker_manager.current_process.stdout
+                if stdout:
+                    self.parent.stdout_signal.emit(stdout)
+            if self.parent.odoo.docker_manager:
+                for container in self.parent.odoo.docker_manager.get_odoo_containers():
+                    self.parent.stdout_signal.emit(container.logs().decode())
+            time.sleep(1)
 
 
 class Ui_MainWindow(ui_main_window.Ui_MainWindow):
@@ -113,6 +128,7 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
 
 
 class MainWindow(QMainWindow):
+    stdout_signal = pyqtSignal(str, name='stdout')
 
     def __init__(self):
         super().__init__()
@@ -128,16 +144,34 @@ class MainWindow(QMainWindow):
     def starter_thread_done(self):
         self.ui.wait_overlay.hide()
 
+    def print_log(self, to_log):
+        is_new_log = self.ui.text_log == ''
+
+        sb = self.ui.text_log.verticalScrollBar()
+        sb_value = sb.value()
+        is_max = sb_value == sb.maximum()
+        if not sb.isSliderDown():
+            self.ui.text_log.setText(to_log)
+
+        if is_max or is_new_log:
+            sb.setValue(sb.maximum())
+        else:
+            sb.setValue(sb_value)
+
     def start_odoo(self):
         self.ui.wait_overlay.show_overlay()
         version = int(self.ui.combo_version.currentText())
         enterprise_path = ""
         if self.ui.checkbox_enterprise.isChecked() and self.ui.line_edit_enterprise_path.text():
             enterprise_path = self.ui.line_edit_enterprise_path.text()
-        self.starter_thread = StartOdooThread(self.ui.wait_overlay, version,  enterprise_path)
 
+        self.odoo = odoo_manager.OdooManager(version, enterprise_path, self.stdout_signal)
+        self.starter_thread = StartOdooThread(self)
         self.starter_thread.start()
         self.starter_thread.done.connect(self.starter_thread_done)
+        self.stdout_signal.connect(self.print_log)
+        log_thread = LogThread(self)
+        log_thread.start()
         settings.save_setting('USE_ENTERPRISE', self.ui.checkbox_enterprise.isChecked())
         settings.save_setting('ENTERPRISE_PATH', self.ui.line_edit_enterprise_path.text())
 

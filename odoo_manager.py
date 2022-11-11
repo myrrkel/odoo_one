@@ -19,7 +19,7 @@ class OdooManager(object):
         self.odoo_db = "odoo_%s" % version
         if self.enterprise_path:
             self.odoo_db += '_ee'
-        self.docker_manager = docker_manager.DockerManager(version, self.odoo_db)
+        self.docker_manager = docker_manager.DockerManager(version, self.odoo_db, stdout_signal)
         self.stdout_signal = stdout_signal
 
     def start_sudo(self):
@@ -29,16 +29,23 @@ class OdooManager(object):
         process = subprocess.call(['firefox', url],
                                   stdout=subprocess.PIPE, universal_newlines=True)
 
-    def init(self, pull=False):
+    def print_stdout(self, msg):
+        if self.stdout_signal:
+            self.stdout_signal.emit(msg)
+        else:
+            print(msg)
 
-        if not docker_manager.docker_exists():
+
+    def init(self, pull=False):
+        self.print_stdout('Start Odoo...')
+        if not self.docker_manager.docker_exists():
             if self.local_user != 'root':
                 self.start_sudo()
                 return False
             self.docker_manager.install_docker()
             self.docker_manager.add_users_in_docker_group()
 
-        if not docker_manager.compose_exists():
+        if not self.docker_manager.compose_exists():
             self.docker_manager.install_compose()
 
         if pull:
@@ -51,7 +58,7 @@ class OdooManager(object):
         # addons_path_list = []
         addons_path_list = self.gh_modules.addons_path_list
         addons_path_list.append('extra_addons')
-        docker_manager.stop_compose()
+        self.docker_manager.stop_compose()
         oconf.create_odoo_conf_file(self.version, addons_path_list, enterprise=self.enterprise_path != '',
                                     db_container=self.docker_manager.get_db_container_name())
         self.docker_manager.stop_odoo_containers()
@@ -60,7 +67,7 @@ class OdooManager(object):
                                                 cmd_params='-d %s' % self.odoo_db,
                                                 enterprise_path=self.enterprise_path)
 
-        docker_manager.start_compose()
+        self.docker_manager.start_compose()
         if not self.docker_manager.odoo_database_exists():
             if int(self.version) <= 8:
                 self.docker_manager.create_empty_database()
@@ -68,7 +75,7 @@ class OdooManager(object):
                                                     version=self.version,
                                                     cmd_params='-d %s -i base' % self.odoo_db,
                                                     enterprise_path=self.enterprise_path)
-            docker_manager.start_compose()
+            self.docker_manager.start_compose()
 
         ip = self.docker_manager.get_odoo_ip()
         url = "%s:%s/web?db=%s" % (ip, 8069, self.odoo_db)
