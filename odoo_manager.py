@@ -11,7 +11,7 @@ from github_modules import GithubModules
 class OdooManager(object):
     gh_modules = GithubModules()
 
-    def __init__(self, version=14, enterprise_path="", stdout_signal=None):
+    def __init__(self, version=14, enterprise_path="", stdout_signal=None, main_window=None):
         self.version = version
         self.enterprise_path = enterprise_path
         self.local_user = os.environ.get("USER")
@@ -21,6 +21,7 @@ class OdooManager(object):
             self.odoo_db += '_ee'
         self.docker_manager = docker_manager.DockerManager(version, self.odoo_db, stdout_signal)
         self.stdout_signal = stdout_signal
+        self.main_window = main_window
 
     def start_sudo(self):
         print('Docker need sudo to be installed.')
@@ -68,6 +69,8 @@ class OdooManager(object):
                                                 enterprise_path=self.enterprise_path)
 
         self.docker_manager.start_compose()
+        if self.main_window:
+            self.main_window.log_thread.start()
         if not self.docker_manager.odoo_database_exists():
             if int(self.version) <= 8:
                 self.docker_manager.create_empty_database()

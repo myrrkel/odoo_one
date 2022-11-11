@@ -27,6 +27,7 @@ class StartOdooThread(QThread):
 
     def run(self):
         try:
+            self.parent.log_thread.terminate()
             self.parent.odoo.init()
         except Exception as e:
             logger.error(e)
@@ -41,6 +42,7 @@ class LogThread(QThread):
         self.parent = parent
 
     def run(self):
+        time.sleep(1)
         while True:
             if self.parent.odoo and self.parent.odoo.docker_manager.current_process:
                 stdout = self.parent.odoo.docker_manager.current_process.stdout
@@ -62,7 +64,9 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         super(Ui_MainWindow, self).setupUi(main_window)
         self.main_window = main_window
         self.init_combo_version()
-        self.wait_overlay = wait_overlay_widget.WaitOverlay(main_window, opacity=50, circle_size=15, nb_dots=9, dot_size=8, color=QtGui.QColor(98, 74, 91))
+        self.wait_overlay = wait_overlay_widget.WaitOverlay(main_window, opacity=0, circle_size=15, nb_dots=9,
+                                                            dot_size=8, color=QtGui.QColor(198, 174, 191))
+        self.wait_overlay.resize(100, 100)
         self.wait_overlay.hide()
 
 
@@ -80,8 +84,6 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         self.text_log.setPalette(palette)
         self.text_log.setObjectName("text_log")
         self.horizontal_layout_log.addWidget(self.text_log)
-        self.text_log.hide()
-
 
         self.checkbox_enterprise.stateChanged.connect(self.onchange_checkbox_enterprise)
         self.checkbox_enterprise.setChecked(bool(settings.get_setting('USE_ENTERPRISE')))
@@ -103,7 +105,6 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         self.push_logs.setIcon(svg_icon.get_svg_icon("/ui/img/bug.svg"))
         self.push_openugrade.setIcon(svg_icon.get_svg_icon("/ui/img/upgrade.svg"))
 
-        self.push_logs.clicked.connect(self.show_logs)
         self.push_addons.clicked.connect(self.show_dialog_addons)
 
     def retranslateUi(self, main_window):
@@ -120,11 +121,9 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         else:
             self.line_edit_enterprise_path.setDisabled(True)
 
-    def show_logs(self):
-        self.text_log.show()
-
     def show_dialog_addons(self):
         self.widget_dialog_addons.show()
+        self.widget_dialog_addons.setWindowState(QtCore.Qt.WindowState.WindowActive)
 
 
 class MainWindow(QMainWindow):
@@ -134,11 +133,11 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.starter_thread = StartOdooThread()
+        self.log_thread = LogThread(self)
 
 
     def setupUi(self):
         self.ui.setupUi(self)
-
         self.ui.push_button_start.clicked.connect(self.start_odoo)
 
     def starter_thread_done(self):
@@ -159,23 +158,22 @@ class MainWindow(QMainWindow):
             sb.setValue(sb_value)
 
     def start_odoo(self):
+        self.log_thread.quit()
         self.ui.wait_overlay.show_overlay()
         version = int(self.ui.combo_version.currentText())
         enterprise_path = ""
         if self.ui.checkbox_enterprise.isChecked() and self.ui.line_edit_enterprise_path.text():
             enterprise_path = self.ui.line_edit_enterprise_path.text()
 
-        self.odoo = odoo_manager.OdooManager(version, enterprise_path, self.stdout_signal)
+        self.odoo = odoo_manager.OdooManager(version, enterprise_path, self.stdout_signal, self)
         self.starter_thread = StartOdooThread(self)
         self.starter_thread.start()
         self.starter_thread.done.connect(self.starter_thread_done)
         self.stdout_signal.connect(self.print_log)
-        log_thread = LogThread(self)
-        log_thread.start()
         settings.save_setting('USE_ENTERPRISE', self.ui.checkbox_enterprise.isChecked())
         settings.save_setting('ENTERPRISE_PATH', self.ui.line_edit_enterprise_path.text())
 
-    def resizeEvent(self, event):
-
-        self.ui.wait_overlay.resize(event.size())
-        event.accept()
+    # def resizeEvent(self, event):
+    #
+    #     self.ui.wait_overlay.resize(event.size())
+    #     event.accept()

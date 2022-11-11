@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>518</width>
-    <height>198</height>
+    <width>544</width>
+    <height>265</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,7 +24,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
      <horstretch>100</horstretch>
      <verstretch>100</verstretch>
     </sizepolicy>
@@ -33,7 +33,7 @@
     <item row="0" column="0">
      <widget class="QWidget" name="verticalWidget" native="true">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -69,7 +69,7 @@
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignVCenter">
           <widget class="QLabel" name="label_title">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -119,6 +119,9 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetFixedSize</enum>
+         </property>
          <item>
           <widget class="QWidget" name="widget" native="true">
            <property name="sizePolicy">
@@ -321,7 +324,25 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontal_layout_log"/>
+        <widget class="QWidget" name="horizontal_layout_log_2" native="true">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <layout class="QHBoxLayout" name="horizontal_layout_log">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -383,7 +404,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Logs</string>
+          <string>Copy Logs</string>
          </property>
         </widget>
        </item>
