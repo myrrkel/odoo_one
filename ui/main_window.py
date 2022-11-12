@@ -142,10 +142,15 @@ class MainWindow(QMainWindow):
     def setupUi(self):
         self.ui.setupUi(self)
         self.ui.push_button_start.clicked.connect(self.start_odoo)
+        self.ui.push_logs.clicked.connect(self.copy_logs)
         self.ui.action_update_addons_list.triggered.connect(self.update_addons_list)
 
     def starter_thread_done(self):
         self.ui.wait_overlay.hide()
+
+    def copy_logs(self):
+        cb = QtWidgets.QApplication.clipboard()
+        cb.setText(self.ui.text_log.toPlainText())
 
     def update_addons_list(self):
         self.set_odoo_manager()
@@ -185,7 +190,7 @@ class MainWindow(QMainWindow):
     def start_odoo(self):
         self.log_thread.quit()
         self.ui.wait_overlay.show_overlay()
-        self.set_odoo_manager.version()
+        self.set_odoo_manager()
         self.starter_thread = StartOdooThread(self)
         self.starter_thread.start()
         self.starter_thread.done.connect(self.starter_thread_done)
