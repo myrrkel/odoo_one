@@ -305,6 +305,26 @@
         ]
     },
     {
+        "author": "Akretion,Odoo Community Association (OCA)",
+        "category": "Accounting & Finance",
+        "display_name": "Account Tax UNECE",
+        "name": "account_tax_unece",
+        "repository": "community-data-files",
+        "summary": "UNECE nomenclature for taxes",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
+        ]
+    },
+    {
         "author": "Tecnativa, Creu Blanca, Odoo Community Association (OCA)",
         "category": "Localization",
         "display_name": "ISO 3166",
@@ -360,6 +380,42 @@
         ]
     },
     {
+        "author": "Camptocamp,Odoo Community Association (OCA)",
+        "category": "Generic Modules",
+        "display_name": "Components",
+        "name": "component",
+        "repository": "connector",
+        "summary": "Add capabilities to register and use decoupled components, as an alternative to model classes",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0"
+        ]
+    },
+    {
+        "author": "Camptocamp,Odoo Community Association (OCA)",
+        "category": "Hidden",
+        "display_name": "Components Tests",
+        "name": "test_component",
+        "repository": "connector",
+        "summary": "Automated tests for Components, do not install.",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0"
+        ]
+    },
+    {
         "author": "Eficent, Tecnativa, Odoo Community Association (OCA)",
         "category": "Data Protection",
         "display_name": "Data Privacy and Protection",
@@ -394,6 +450,22 @@
             "12.0",
             "11.0",
             "10.0"
+        ]
+    },
+    {
+        "author": "Akretion,Odoo Community Association (OCA)",
+        "category": "Delivery",
+        "display_name": "Delivery Carrier Info",
+        "name": "delivery_carrier_info",
+        "repository": "delivery-carrier",
+        "summary": "Add code on carrier",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0"
         ]
     },
     {
@@ -814,6 +886,20 @@
         ]
     },
     {
+        "author": "Marco Calcagni, Gianmarco Conte, Link IT Europe Srl, Odoo Community Association (OCA)",
+        "category": "Localization/Italy",
+        "display_name": "ITA - Documento di trasporto - Base",
+        "name": "l10n_it_delivery_note_base",
+        "repository": "l10n-italy",
+        "summary": "Crea e gestisce tabelle principali per gestire i DDT",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "14.0",
+            "12.0"
+        ]
+    },
+    {
         "author": "Link It srl, Odoo Community Association (OCA)",
         "category": "Localization/Italy",
         "display_name": "ITA - Tipi di documento fiscale per dichiarativi",
@@ -991,6 +1077,23 @@
         "name": "maintenance_equipment_hierarchy",
         "repository": "maintenance",
         "summary": "Manage equipment hierarchy",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0"
+        ]
+    },
+    {
+        "author": "Ucamco, ForgeFlow, Odoo Community Association (OCA)",
+        "category": "Manufacturing",
+        "display_name": "MRP Multi Level",
+        "name": "mrp_multi_level",
+        "repository": "manufacture",
+        "summary": "Adds an MRP Scheduler",
         "user": "OCA",
         "versions": [
             "16.0",
@@ -1268,6 +1371,25 @@
         ]
     },
     {
+        "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
+        "category": "Extra Tools",
+        "display_name": "Partner External Maps",
+        "name": "partner_external_map",
+        "repository": "partner-contact",
+        "summary": "Add Map and Map Routing buttons on partner form to open GMaps, OSM, Bing and others",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0"
+        ]
+    },
+    {
         "author": "Camptocamp, Grupo ESOC Ingenier\u00eda de Servicios, Tecnativa, LasLabs, ACSONE SA/NV, DynApps NV, Odoo Community Association (OCA)",
         "category": "Extra Tools",
         "display_name": "Partner first name and last name",
@@ -1285,6 +1407,25 @@
             "10.0",
             "9.0",
             "8.0"
+        ]
+    },
+    {
+        "author": "Therp BV,Camptocamp,Odoo Community Association (OCA)",
+        "category": "Customer Relationship Management",
+        "display_name": "Partner Relations",
+        "name": "partner_multi_relation",
+        "repository": "partner-contact",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0"
         ]
     },
     {
@@ -4451,25 +4592,6 @@
         ]
     },
     {
-        "author": "Akretion,Odoo Community Association (OCA)",
-        "category": "Accounting & Finance",
-        "display_name": "Account Tax UNECE",
-        "name": "account_tax_unece",
-        "repository": "community-data-files",
-        "summary": "UNECE nomenclature for taxes",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
-        ]
-    },
-    {
         "author": "Tecnativa, Odoo Community Association (OCA)",
         "category": "Localization",
         "display_name": "Bank from IBAN",
@@ -4483,23 +4605,6 @@
             "13.0",
             "12.0",
             "11.0"
-        ]
-    },
-    {
-        "author": "Camptocamp,Odoo Community Association (OCA)",
-        "category": "Generic Modules",
-        "display_name": "Components",
-        "name": "component",
-        "repository": "connector",
-        "summary": "Add capabilities to register and use decoupled components, as an alternative to model classes",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0"
         ]
     },
     {
@@ -4555,23 +4660,6 @@
             "10.0",
             "9.0",
             "8.0"
-        ]
-    },
-    {
-        "author": "Camptocamp,Odoo Community Association (OCA)",
-        "category": "Hidden",
-        "display_name": "Components Tests",
-        "name": "test_component",
-        "repository": "connector",
-        "summary": "Automated tests for Components, do not install.",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0"
         ]
     },
     {
@@ -5285,21 +5373,6 @@
         "versions": [
             "15.0",
             "13.0"
-        ]
-    },
-    {
-        "author": "Akretion,Odoo Community Association (OCA)",
-        "category": "Delivery",
-        "display_name": "Delivery Carrier Info",
-        "name": "delivery_carrier_info",
-        "repository": "delivery-carrier",
-        "summary": "Add code and description on carrier",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0"
         ]
     },
     {
@@ -9008,22 +9081,6 @@
         ]
     },
     {
-        "author": "Ucamco, ForgeFlow, Odoo Community Association (OCA)",
-        "category": "Manufacturing",
-        "display_name": "MRP Multi Level",
-        "name": "mrp_multi_level",
-        "repository": "manufacture",
-        "summary": "Adds an MRP Scheduler",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0"
-        ]
-    },
-    {
         "author": "ForgeFlow, Odoo Community Association (OCA)",
         "category": "Manufacturing",
         "display_name": "MRP Multi Level Estimate",
@@ -9689,24 +9746,6 @@
         ]
     },
     {
-        "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
-        "category": "Extra Tools",
-        "display_name": "Partner External Maps",
-        "name": "partner_external_map",
-        "repository": "partner-contact",
-        "summary": "Add Map and Map Routing buttons on partner form to open GMaps, OSM, Bing and others",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0"
-        ]
-    },
-    {
         "author": "Odoo Community Association (OCA)",
         "category": "Extra Tools",
         "display_name": "Partner fax",
@@ -9750,24 +9789,6 @@
             "15.0",
             "14.0",
             "13.0"
-        ]
-    },
-    {
-        "author": "Therp BV,Camptocamp,Odoo Community Association (OCA)",
-        "category": "Customer Relationship Management",
-        "display_name": "Partner Relations",
-        "name": "partner_multi_relation",
-        "repository": "partner-contact",
-        "summary": "",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0"
         ]
     },
     {
@@ -21844,19 +21865,6 @@
         "name": "l10n_it_delivery_note",
         "repository": "l10n-italy",
         "summary": "Crea, gestisce e fattura i DDT partendo dalle consegne",
-        "user": "OCA",
-        "versions": [
-            "14.0",
-            "12.0"
-        ]
-    },
-    {
-        "author": "Marco Calcagni, Gianmarco Conte, Link IT Europe Srl, Odoo Community Association (OCA)",
-        "category": "Localization/Italy",
-        "display_name": "ITA - Documento di trasporto - Base",
-        "name": "l10n_it_delivery_note_base",
-        "repository": "l10n-italy",
-        "summary": "Crea e gestisce tabelle principali per gestire i DDT",
         "user": "OCA",
         "versions": [
             "14.0",
