@@ -78,6 +78,9 @@ class GithubModules:
     db_settings = {'modules': []}
     access_token = ""
     github = Github()
+    stdout_signal = None
+    print_stdout = None
+    log = ''
 
     def __init__(self, access_token=""):
         if access_token:
@@ -188,7 +191,7 @@ class GithubModules:
         modules = {}
         dirs = [d for d in self.get_dir_contents(repo, '.', ref=branch_ref) if d.type == 'dir' and d.name != 'setup']
         if dirs:
-            print('"%s";"%s";"%s";"%s"' % (
+            self.logger('"%s";"%s";"%s";"%s"' % (
                 repo.name, repo.description, repo.html_url, repo.default_branch))
             for sub_dir in dirs:
                 module_dict = self.get_module_dict(repo, branch_ref, sub_dir)
@@ -285,6 +288,12 @@ class GithubModules:
         if os.path.isdir(repo_name):
             process = subprocess.run(['git', 'pull', '--rebase'], cwd='./' + repo_path,
                                      stdout=subprocess.PIPE, universal_newlines=True)
+
+    def logger(self, text):
+        self.log = '\n'.join([self.log, text]) if self.log else text
+        if self.stdout_signal:
+            self.print_stdout(self.log)
+        print(text)
 
 
 if __name__ == '__main__':

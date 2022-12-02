@@ -23,6 +23,8 @@ class OdooManager(object):
         self.docker_manager = docker_manager.DockerManager(version, self.odoo_db, stdout_signal)
         self.stdout_signal = stdout_signal
         self.main_window = main_window
+        self.gh_modules.stdout_signal = stdout_signal
+        self.gh_modules.print_stdout = self.print_stdout
 
     def start_sudo(self):
         print('Docker need sudo to be installed.')
@@ -38,6 +40,7 @@ class OdooManager(object):
             print(msg)
 
     def update_addons_list(self, access_token):
+        self.print_stdout('Start addons list update...')
         self.gh_modules.access_token = access_token
         self.gh_modules.init_github()
         self.gh_modules.generate_json_file(self.odoo_version)
@@ -75,8 +78,7 @@ class OdooManager(object):
                                                 enterprise_path=self.enterprise_path)
 
         self.docker_manager.start_compose()
-        if self.main_window:
-            self.main_window.log_thread.start()
+
         if not self.docker_manager.odoo_database_exists():
             if int(self.version) <= 8:
                 self.docker_manager.create_empty_database()

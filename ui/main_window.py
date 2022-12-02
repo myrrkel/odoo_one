@@ -20,15 +20,27 @@ LAST_VERSION = 16
 class StartOdooThread(QThread):
 
     done = pyqtSignal(int, name='done')
+    function_name = 'start_odoo'
+    github_access_token = ''
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, function_name=None):
         super().__init__(parent)
         self.parent = parent
+        if function_name:
+            self.function_name = function_name
 
     def run(self):
         try:
-            self.parent.log_thread.terminate()
-            self.parent.odoo.init()
+            if self.function_name == 'start_odoo':
+                self.parent.log_thread.terminate()
+                self.parent.odoo.init()
+            if self.function_name == 'update_addons_list':
+                try:
+                    self.parent.log_thread.mute_odoo = True
+                    self.parent.odoo.update_addons_list(self.github_access_token)
+                    self.parent.log_thread.mute_odoo = False
+                except Exception as err:
+                    self.parent.stdout_signal.emit(str(err))
         except Exception as e:
             logger.error(e)
             raise e
@@ -37,6 +49,8 @@ class StartOdooThread(QThread):
 
 
 class LogThread(QThread):
+    mute_odoo = False
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.parent = parent
@@ -44,6 +58,10 @@ class LogThread(QThread):
     def run(self):
         time.sleep(1)
         while True:
+            if self.mute_odoo:
+                time.sleep(1)
+                continue
+
             if self.parent.odoo and self.parent.odoo.docker_manager.current_process:
                 stdout = self.parent.odoo.docker_manager.current_process.stdout
                 if stdout:
@@ -134,10 +152,12 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
-        self.starter_thread = StartOdooThread()
+        self.starter_thread = StartOdooThread(self)
         self.log_thread = LogThread(self)
+        self.log_thread.start()
         self.odoo = odoo_manager.OdooManager(False, '', self.stdout_signal, self)
 
+        self.stdout_signal.connect(self.print_log)
 
     def setupUi(self):
         self.ui.setupUi(self)
@@ -163,7 +183,9 @@ class MainWindow(QMainWindow):
                 settings.save_setting('github_access_token', github_access_token)
 
         if github_access_token:
-            self.odoo.update_addons_list(github_access_token)
+            self.update_addons_list_thread = StartOdooThread(self, function_name='update_addons_list')
+            self.update_addons_list_thread.github_access_token = github_access_token
+            self.update_addons_list_thread.start()
 
     def print_log(self, to_log):
         is_new_log = self.ui.text_log == ''
@@ -194,7 +216,6 @@ class MainWindow(QMainWindow):
         self.starter_thread = StartOdooThread(self)
         self.starter_thread.start()
         self.starter_thread.done.connect(self.starter_thread_done)
-        self.stdout_signal.connect(self.print_log)
         settings.save_setting('USE_ENTERPRISE', self.ui.checkbox_enterprise.isChecked())
         settings.save_setting('ENTERPRISE_PATH', self.ui.line_edit_enterprise_path.text())
 
