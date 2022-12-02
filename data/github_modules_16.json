@@ -214,6 +214,14 @@
                 "description": null,
                 "html_url": "https://github.com/OCA/community-data-files",
                 "modules": {
+                    "account_tax_unece": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Tax UNECE",
+                        "name": "account_tax_unece",
+                        "summary": "UNECE nomenclature for taxes",
+                        "version": "16.0.1.0.0"
+                    },
                     "base_iso3166": {
                         "author": "Tecnativa, Creu Blanca, Odoo Community Association (OCA)",
                         "category": "Localization",
@@ -240,6 +248,30 @@
                     }
                 },
                 "name": "community-data-files"
+            },
+            "connector": {
+                "default_branch": "14.0",
+                "description": "Odoo generic connector framework (jobs queue, asynchronous tasks, channels)",
+                "html_url": "https://github.com/OCA/connector",
+                "modules": {
+                    "component": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Generic Modules",
+                        "display_name": "Components",
+                        "name": "component",
+                        "summary": "Add capabilities to register and use decoupled components, as an alternative to model classes",
+                        "version": "16.0.1.0.0"
+                    },
+                    "test_component": {
+                        "author": "Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Hidden",
+                        "display_name": "Components Tests",
+                        "name": "test_component",
+                        "summary": "Automated tests for Components, do not install.",
+                        "version": "16.0.1.0.0"
+                    }
+                },
+                "name": "connector"
             },
             "data-protection": {
                 "default_branch": "14.0",
@@ -270,13 +302,21 @@
                 "description": "Odoo Carriers And Deliveries Management",
                 "html_url": "https://github.com/OCA/delivery-carrier",
                 "modules": {
+                    "delivery_carrier_info": {
+                        "author": "Akretion,Odoo Community Association (OCA)",
+                        "category": "Delivery",
+                        "display_name": "Delivery Carrier Info",
+                        "name": "delivery_carrier_info",
+                        "summary": "Add code on carrier",
+                        "version": "16.0.1.0.0"
+                    },
                     "delivery_cttexpress": {
                         "author": "Tecnativa, Odoo Community Association (OCA)",
                         "category": "Delivery",
                         "display_name": "Delivery CTT Express",
                         "name": "delivery_cttexpress",
                         "summary": "Delivery Carrier implementation for CTT Express API",
-                        "version": "16.0.1.0.0"
+                        "version": "16.0.1.0.1"
                     },
                     "delivery_package_number": {
                         "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -534,6 +574,14 @@
                         "summary": "",
                         "version": "16.0.1.0.0"
                     },
+                    "l10n_it_delivery_note_base": {
+                        "author": "Marco Calcagni, Gianmarco Conte, Link IT Europe Srl, Odoo Community Association (OCA)",
+                        "category": "Localization/Italy",
+                        "display_name": "ITA - Documento di trasporto - Base",
+                        "name": "l10n_it_delivery_note_base",
+                        "summary": "Crea e gestisce tabelle principali per gestire i DDT",
+                        "version": "16.0.1.0.0"
+                    },
                     "l10n_it_fiscal_document_type": {
                         "author": "Link It srl, Odoo Community Association (OCA)",
                         "category": "Localization/Italy",
@@ -646,6 +694,14 @@
                 "description": "Odoo Manufacturing Addons",
                 "html_url": "https://github.com/OCA/manufacture",
                 "modules": {
+                    "mrp_multi_level": {
+                        "author": "Ucamco, ForgeFlow, Odoo Community Association (OCA)",
+                        "category": "Manufacturing",
+                        "display_name": "MRP Multi Level",
+                        "name": "mrp_multi_level",
+                        "summary": "Adds an MRP Scheduler",
+                        "version": "16.0.1.0.0"
+                    },
                     "mrp_warehouse_calendar": {
                         "author": "ForgeFlow, Odoo Community Association (OCA)",
                         "category": "Manufacturing",
@@ -774,6 +830,14 @@
                         "summary": "Disable automatic connection to gravatar.com",
                         "version": "16.0.1.0.1"
                     },
+                    "partner_external_map": {
+                        "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
+                        "category": "Extra Tools",
+                        "display_name": "Partner External Maps",
+                        "name": "partner_external_map",
+                        "summary": "Add Map and Map Routing buttons on partner form to open GMaps, OSM, Bing and others",
+                        "version": "16.0.1.0.0"
+                    },
                     "partner_firstname": {
                         "author": "Camptocamp, Grupo ESOC Ingenier\u00eda de Servicios, Tecnativa, LasLabs, ACSONE SA/NV, DynApps NV, Odoo Community Association (OCA)",
                         "category": "Extra Tools",
@@ -781,6 +845,14 @@
                         "name": "partner_firstname",
                         "summary": "Split first name and last name for non company partners",
                         "version": "16.0.1.0.1"
+                    },
+                    "partner_multi_relation": {
+                        "author": "Therp BV,Camptocamp,Odoo Community Association (OCA)",
+                        "category": "Customer Relationship Management",
+                        "display_name": "Partner Relations",
+                        "name": "partner_multi_relation",
+                        "summary": "",
+                        "version": "16.0.1.0.0"
                     },
                     "partner_vat_unique": {
                         "author": "Grant Thornton S.L.P, Odoo Community Association (OCA)",
@@ -868,7 +940,7 @@
                         "display_name": "Product Dimension",
                         "name": "product_dimension",
                         "summary": "",
-                        "version": "16.0.1.0.1"
+                        "version": "16.0.1.1.0"
                     },
                     "product_logistics_uom": {
                         "author": " Akretion, Odoo Community Association (OCA)",
@@ -1060,7 +1132,7 @@
                         "display_name": "Base Comments Templates",
                         "name": "base_comment_template",
                         "summary": "Add conditional mako template to any reporton models that inherits comment.template.",
-                        "version": "16.0.1.0.0"
+                        "version": "16.0.2.0.0"
                     },
                     "report_xml": {
                         "author": "Tecnativa, Odoo Community Association (OCA), Avoin.Systems",
@@ -1388,7 +1460,7 @@
                         "display_name": "Mass Editing",
                         "name": "server_action_mass_edit",
                         "summary": "Mass Editing",
-                        "version": "16.0.2.0.0"
+                        "version": "16.0.2.0.1"
                     }
                 },
                 "name": "server-ux"
