@@ -11,6 +11,7 @@ DATA_DIR = './data/'
 LAST_VERSION = 16
 ALL_VERSIONS = ['%0.1f' % v for v in range(8, LAST_VERSION + 1).__reversed__()]
 
+
 def strip_comments(code):
     code = str(code)
     return re.sub(r'(?m)^ *#.*\n?', '', code)
@@ -67,6 +68,14 @@ def generate_all_github_modules_file():
     write_json_file('github_modules', 'all', modules)
 
 
+def version_to_number(version):
+    return str(version).replace('.0', '')
+
+
+def number_to_version(number_version):
+    return '%s.0' % number_version
+
+
 class GithubModules:
     version = ""
     odoo_version = ""
@@ -93,17 +102,17 @@ class GithubModules:
         self.github = Github(self.access_token)
 
     def set_version(self, odoo_version):
-        self.version = str(odoo_version).replace('.0', '')
-        self.odoo_version = '%s.0' % self.version
+        self.version = version_to_number(odoo_version)
+        self.odoo_version = number_to_version(self.version)
 
-    def load(self, odoo_version):
+    def load(self, odoo_version, clone=False):
         self.addons = []
         self.set_version(odoo_version)
         self.github_modules = load_github_modules(self.version)
         self.load_database_settings()
         self._compute_addons_repositories()
-
-        self.clone_github_repositories(self.odoo_version)
+        if clone:
+            self.clone_github_repositories(self.odoo_version)
 
     def _compute_addons_repositories(self):
         if not self.db_settings:
@@ -270,7 +279,6 @@ class GithubModules:
         if not os.path.isdir(path):
             process = subprocess.run(['git', 'clone', url], cwd='./' + github_user_path,
                                      stdout=subprocess.PIPE, universal_newlines=True)
-
 
     def git_checkout(self, github_user_path, repo_name, version):
         path = github_user_path + "/" + repo_name

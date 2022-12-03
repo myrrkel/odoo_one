@@ -64,9 +64,14 @@ class DialogAddons(QtWidgets.QDialog):
     def retranslateUi(self, dialog):
         super(DialogAddons, self).retranslateUi(dialog)
 
+    def get_current_version(self):
+        return self.ui.combo_addons_version.currentData()
+
     def open_github_page(self, index):
         addon = self.ui.table_addons.cellWidget(index.row(), 3).addon
-        subprocess.call(['firefox', addon.get_github_url()],
+        version = github_modules.number_to_version(self.get_current_version())
+        url = addon.get_github_url(False if version == 'all' else version)
+        subprocess.call(['firefox', url],
                         stdout=subprocess.PIPE, universal_newlines=True)
 
     def init_combo_categories(self):
@@ -96,7 +101,7 @@ class DialogAddons(QtWidgets.QDialog):
         self.show_addons(self.ui.line_edit_search.text())
 
     def current_version_changed(self):
-        version = self.ui.combo_addons_version.currentData()
+        version = self.get_current_version()
         self.gh_modules.set_version(version)
         if version != 'all':
             self.gh_modules.load(version)

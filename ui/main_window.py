@@ -208,6 +208,7 @@ class MainWindow(QMainWindow):
             enterprise_path = self.ui.line_edit_enterprise_path.text()
 
         self.odoo = odoo_manager.OdooManager(version, enterprise_path, self.stdout_signal, self)
+        self.odoo.gh_modules.load(version, clone=True)
 
     def start_odoo(self):
         self.log_thread.quit()
