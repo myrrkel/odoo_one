@@ -1,6 +1,6 @@
 # Odoo One
 
-The easiest way to start Odoo on your own PC.
+The easiest way to start Odoo on your own machine.
 
 ### Quick start
 
@@ -22,6 +22,20 @@ If you need to install Docker, run:
 If Qt is missing:
 
     sudo apt install qt5-default
+
+### Developer tools
+
+Install Qt 5 Designer
+
+    sudo apt-get install qttools5-dev-tools
+
+Open UI File
+
+    /usr/lib/qt5/bin/designer ./file.ui
+
+Convert UI file to Python file
+
+    pyuic4 input.ui -o output.py
 
 ### troubleshoot
 
