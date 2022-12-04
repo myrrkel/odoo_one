@@ -72,7 +72,7 @@ class LogThread(QThread):
                         last_line = logs.splitlines()[-1]
                         if last_line != self.last_line:
                             self.last_line = last_line
-                        self.parent.stdout_signal.emit(container.logs().decode())
+                            self.parent.stdout_signal.emit(container.logs().decode())
             time.sleep(1)
 
 
@@ -225,7 +225,7 @@ class MainWindow(QMainWindow):
         settings.save_setting('USE_ENTERPRISE', self.ui.checkbox_enterprise.isChecked())
         settings.save_setting('ENTERPRISE_PATH', self.ui.line_edit_enterprise_path.text())
 
-    # def resizeEvent(self, event):
-    #
-    #     self.ui.wait_overlay.resize(event.size())
-    #     event.accept()
+    def closeEvent(self, event):
+        self.log_thread.terminate()
+        self.starter_thread.terminate()
+        event.accept()
