@@ -11,15 +11,16 @@ import logging
 
 logger = logging.getLogger(__name__)
 _translate = QtCore.QCoreApplication.translate
-LAST_VERSION = 16
 
 
 class DialogAddons(QtWidgets.QDialog):
     lib_addons = addons_lib.AddonsLib()
-    gh_modules = github_modules.GithubModules()
 
-    def __init__(self):
+    def __init__(self, main_window):
         super().__init__()
+        self.main_window = main_window
+        self.odoo = main_window.odoo
+        self.gh_modules = main_window.odoo.gh_modules
         self.addons = []
         self.categories = []
         self.users = []
@@ -85,11 +86,13 @@ class DialogAddons(QtWidgets.QDialog):
             self.ui.combo_user.addItem(user, user)
 
     def init_combo_addons_version(self):
+        self.init_combo_addons = True
         self.ui.combo_addons_version.addItem('All', 'all')
-        for i in range(8, LAST_VERSION+1):
+        for i in range(8, self.odoo.get_last_version()+1):
             self.ui.combo_addons_version.addItem('%s' % i, i)
 
-        self.ui.combo_addons_version.setCurrentText('%s' % LAST_VERSION)
+        self.ui.combo_addons_version.setCurrentText('%s' % self.odoo.get_last_version())
+        self.init_combo_addons = False
 
     def show_addons_count(self):
         self.ui.label_addons_count.setText('%s community addons' % len(self.addons))
@@ -101,6 +104,8 @@ class DialogAddons(QtWidgets.QDialog):
         self.show_addons(self.ui.line_edit_search.text())
 
     def current_version_changed(self):
+        if self.init_combo_addons:
+            return
         version = self.get_current_version()
         self.gh_modules.set_version(version)
         if version != 'all':

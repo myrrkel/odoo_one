@@ -5,11 +5,10 @@ import time
 import subprocess
 import os
 import re
+import odoo_manager
 
 FILE_NAME = 'github_modules'
 DATA_DIR = './data/'
-LAST_VERSION = 16
-ALL_VERSIONS = ['%0.1f' % v for v in range(8, LAST_VERSION + 1).__reversed__()]
 
 
 def strip_comments(code):
@@ -80,6 +79,7 @@ class GithubModules:
     version = ""
     odoo_version = ""
     github_modules = []
+    github_repositories = {}
     repositories = {}
     addons = []
     addons_path_list = []
@@ -90,8 +90,16 @@ class GithubModules:
     stdout_signal = None
     print_stdout = None
     log = ''
+    need_refresh = True
 
-    def __init__(self, access_token=""):
+    def __init__(self, access_token="", odoo=None):
+        if odoo:
+            self.odoo = odoo
+        else:
+            self.odoo = odoo_manager.OdooManager()
+        last_version = self.odoo.get_last_version()
+        all_versions = self.odoo.get_all_versions()
+
         if access_token:
             self.access_token = access_token
         self.init_github()
@@ -102,17 +110,23 @@ class GithubModules:
         self.github = Github(self.access_token)
 
     def set_version(self, odoo_version):
+        previous_version = self.version
         self.version = version_to_number(odoo_version)
         self.odoo_version = number_to_version(self.version)
+        if self.version != previous_version:
+            self.need_refresh = True
 
-    def load(self, odoo_version, clone=False):
+    def load(self, odoo_version, clone=False, force_refresh=False):
         self.addons = []
         self.set_version(odoo_version)
-        self.github_modules = load_github_modules(self.version)
-        self.load_database_settings()
-        self._compute_addons_repositories()
-        if clone:
-            self.clone_github_repositories(self.odoo_version)
+        if self.need_refresh or force_refresh:
+            self.github_modules = load_github_modules(self.version)
+            self.load_database_settings()
+            self._compute_addons_repositories()
+            self._compute_github_repositories()
+            if clone:
+                self.clone_github_repositories(self.odoo_version)
+            self.need_refresh = False
 
     def _compute_addons_repositories(self):
         if not self.db_settings:
@@ -122,6 +136,13 @@ class GithubModules:
             repository = self.find_repository(module['repository'], module['user'])
             if not repository:
                 self.repositories[module['repository']] = {'name': module['repository'], 'user': module['user']}
+
+    def _compute_github_repositories(self):
+        for user in self.github_modules.keys():
+            for repository_name in self.github_modules[user]['repositories'].keys():
+                repository = {'user': user}
+                repository['name'] = repository_name
+                self.github_repositories[repository_name] = repository
 
     def find_repository(self, repository, user):
         if repository in self.repositories:
@@ -247,7 +268,7 @@ class GithubModules:
         write_json_file(FILE_NAME, version, oca_modules_dict)
 
     def generate_all_json_file(self):
-        for version in ALL_VERSIONS:
+        for version in self.odoo.get_all_versions():
             self.generate_json_file(version)
 
     def clone_github_repositories(self, version):

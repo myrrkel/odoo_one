@@ -14,7 +14,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 _translate = QtCore.QCoreApplication.translate
-LAST_VERSION = 16
 
 
 class StartOdooThread(QThread):
@@ -58,7 +57,7 @@ class LogThread(QThread):
     def run(self):
         time.sleep(1)
         while True:
-            if self.mute_odoo:
+            if self.mute_odoo or not hasattr(self.parent, 'odoo'):
                 time.sleep(1)
                 continue
 
@@ -74,9 +73,11 @@ class LogThread(QThread):
 
 class Ui_MainWindow(ui_main_window.Ui_MainWindow):
 
-    def __init__(self):
+    def __init__(self, main_window):
         super().__init__()
-        self.widget_dialog_addons = dialog_addons.DialogAddons()
+        self.main_window = main_window
+        self.odoo = main_window.odoo
+        self.widget_dialog_addons = dialog_addons.DialogAddons(main_window)
 
     def setupUi(self, main_window):
         super(Ui_MainWindow, self).setupUi(main_window)
@@ -131,9 +132,9 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         super(Ui_MainWindow, self).retranslateUi(main_window)
 
     def init_combo_version(self):
-        for i in range(8, LAST_VERSION+1):
+        for i in range(8, self.odoo.get_last_version()+1):
             self.combo_version.addItem('%s' % i, i)
-        self.combo_version.setCurrentText('%s' % LAST_VERSION)
+        self.combo_version.setCurrentText('%s' % self.odoo.get_last_version())
 
     def onchange_checkbox_enterprise(self):
         if self.checkbox_enterprise.isChecked():
@@ -151,11 +152,11 @@ class MainWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.ui = Ui_MainWindow()
+        self.odoo = odoo_manager.OdooManager(False, '', self.stdout_signal, self)
+        self.ui = Ui_MainWindow(self)
         self.starter_thread = StartOdooThread(self)
         self.log_thread = LogThread(self)
         self.log_thread.start()
-        self.odoo = odoo_manager.OdooManager(False, '', self.stdout_signal, self)
 
         self.stdout_signal.connect(self.print_log)
 
@@ -208,7 +209,6 @@ class MainWindow(QMainWindow):
             enterprise_path = self.ui.line_edit_enterprise_path.text()
 
         self.odoo = odoo_manager.OdooManager(version, enterprise_path, self.stdout_signal, self)
-        self.odoo.gh_modules.load(version, clone=True)
 
     def start_odoo(self):
         self.log_thread.quit()

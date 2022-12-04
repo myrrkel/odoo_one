@@ -4,27 +4,33 @@ import docker
 import docker_manager
 import odoo_conf as oconf
 import odoo_rpc
-import odoorpc
 from github_modules import GithubModules
 from github_modules import generate_all_github_modules_file
 
 
 class OdooManager(object):
-    gh_modules = GithubModules()
 
-    def __init__(self, version=14, enterprise_path="", stdout_signal=None, main_window=None):
-        self.version = version
+    def __init__(self, version=False, enterprise_path="", stdout_signal=None, main_window=None):
+        self.version = version or self.get_last_version()
         self.enterprise_path = enterprise_path
         self.local_user = os.environ.get("USER")
-        self.odoo_version = '%s.0' % version
-        self.odoo_db = "odoo_%s" % version
+        self.odoo_version = '%s.0' % self.version
+        self.odoo_db = "odoo_%s" % self.version
         if self.enterprise_path:
             self.odoo_db += '_ee'
-        self.docker_manager = docker_manager.DockerManager(version, self.odoo_db, stdout_signal)
+        self.docker_manager = docker_manager.DockerManager(self.version, self.odoo_db, stdout_signal)
         self.stdout_signal = stdout_signal
         self.main_window = main_window
+        self.gh_modules = GithubModules(odoo=self)
         self.gh_modules.stdout_signal = stdout_signal
         self.gh_modules.print_stdout = self.print_stdout
+        self.gh_modules.load(self.version, clone=True)
+
+    def get_last_version(self):
+        return 16
+
+    def get_all_versions(self):
+        return ['%0.1f' % v for v in range(8, self.get_last_version() + 1).__reversed__()]
 
     def start_sudo(self):
         print('Docker need sudo to be installed.')
