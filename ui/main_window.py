@@ -31,7 +31,6 @@ class StartOdooThread(QThread):
     def run(self):
         try:
             if self.function_name == 'start_odoo':
-                self.parent.log_thread.terminate()
                 self.parent.odoo.init()
             if self.function_name == 'update_addons_list':
                 try:
@@ -49,6 +48,7 @@ class StartOdooThread(QThread):
 
 class LogThread(QThread):
     mute_odoo = False
+    last_line = ''
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -67,7 +67,12 @@ class LogThread(QThread):
                     self.parent.stdout_signal.emit(stdout)
             if self.parent.odoo.docker_manager:
                 for container in self.parent.odoo.docker_manager.get_odoo_containers():
-                    self.parent.stdout_signal.emit(container.logs().decode())
+                    logs = container.logs().decode()
+                    if logs:
+                        last_line = logs.splitlines()[-1]
+                        if last_line != self.last_line:
+                            self.last_line = last_line
+                        self.parent.stdout_signal.emit(container.logs().decode())
             time.sleep(1)
 
 
