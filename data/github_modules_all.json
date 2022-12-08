@@ -111,6 +111,19 @@
         ]
     },
     {
+        "author": "GRAP, Akretion, Odoo Community Association (OCA)",
+        "category": "Accounting",
+        "display_name": "Account - Missing Menus & Saxon Accounting",
+        "name": "account_usability",
+        "repository": "account-financial-tools",
+        "summary": "Adds missing menu entries for Account module and adds the option to enable Saxon Accounting",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0"
+        ]
+    },
+    {
         "author": "GRAP,Odoo Community Association (OCA)",
         "category": "Accounting",
         "display_name": "Account Fiscal Position - Type",
@@ -221,6 +234,26 @@
         ]
     },
     {
+        "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
+        "category": "Banking addons",
+        "display_name": "Account Payment Partner",
+        "name": "account_payment_partner",
+        "repository": "bank-payment",
+        "summary": "Adds payment mode on partners and invoices",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
+        ]
+    },
+    {
         "author": "Open Source Integrators,ACSONE SA/NV,Odoo Community Association (OCA)",
         "category": "Accounting Management",
         "display_name": "Account Brand",
@@ -302,6 +335,25 @@
             "14.0",
             "13.0",
             "12.0"
+        ]
+    },
+    {
+        "author": "Akretion,Odoo Community Association (OCA)",
+        "category": "Accounting & Finance",
+        "display_name": "Account Payment UNECE",
+        "name": "account_payment_unece",
+        "repository": "community-data-files",
+        "summary": "UNECE nomenclature for the payment methods",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "8.0"
         ]
     },
     {
@@ -450,6 +502,19 @@
             "12.0",
             "11.0",
             "10.0"
+        ]
+    },
+    {
+        "author": "Akretion,Odoo Community Association (OCA)",
+        "category": "Delivery",
+        "display_name": "Delivery Carrier Agency",
+        "name": "delivery_carrier_agency",
+        "repository": "delivery-carrier",
+        "summary": "Add a model for Carrier Agencies",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "14.0"
         ]
     },
     {
@@ -677,6 +742,57 @@
         ]
     },
     {
+        "author": "OpenERP SA, Odoo Community Association (OCA)",
+        "category": "Knowledge Management",
+        "display_name": "Document Page",
+        "name": "document_page",
+        "repository": "knowledge",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
+        ]
+    },
+    {
+        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+        "category": "",
+        "display_name": "Companyweb",
+        "name": "companyweb_base",
+        "repository": "l10n-belgium",
+        "summary": "Know who you are dealing with. Enhance Odoo partner data from companyweb.be.",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0"
+        ]
+    },
+    {
+        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+        "category": "",
+        "display_name": "Companyweb Payment Info",
+        "name": "companyweb_payment_info",
+        "repository": "l10n-belgium",
+        "summary": "Send your customer bill to companyweb",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0"
+        ]
+    },
+    {
         "author": "Akretion,Odoo Community Association (OCA)",
         "category": "Localization",
         "display_name": "Brazilian Localization Base",
@@ -689,6 +805,24 @@
             "15.0",
             "14.0",
             "13.0",
+            "12.0",
+            "10.0",
+            "9.0",
+            "8.0"
+        ]
+    },
+    {
+        "author": "Akretion, Odoo Community Association (OCA)",
+        "category": "Localisation",
+        "display_name": "Brazilian Localization CRM",
+        "name": "l10n_br_crm",
+        "repository": "l10n-brazil",
+        "summary": "Brazilian Localization CRM",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
             "12.0",
             "10.0",
             "9.0",
@@ -1032,6 +1166,24 @@
         ]
     },
     {
+        "author": "Openforce, Odoo Italia Network, Odoo Community Association (OCA)",
+        "category": "Account",
+        "display_name": "ITA - Ritenute d'acconto",
+        "name": "l10n_it_withholding_tax",
+        "repository": "l10n-italy",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "14.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
+        ]
+    },
+    {
         "author": "Spanish Localization Team, Tecnativa, Odoo Community Association (OCA)",
         "category": "Localization/Europe",
         "display_name": "Partner Mercantil",
@@ -1085,6 +1237,26 @@
             "13.0",
             "12.0",
             "11.0"
+        ]
+    },
+    {
+        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
+        "category": "Management System",
+        "display_name": "Management System",
+        "name": "mgmtsystem",
+        "repository": "management-system",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
         ]
     },
     {
@@ -1410,6 +1582,25 @@
         ]
     },
     {
+        "author": "ChriCar Beteiligungs- und Beratungs- GmbH,Tecnativa,Camptocamp,ACSONE SA/NV,LasLabs,Onestein,Odoo Community Association (OCA)",
+        "category": "Customer Relationship Management",
+        "display_name": "Partner Identification Numbers",
+        "name": "partner_identification",
+        "repository": "partner-contact",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
+        ]
+    },
+    {
         "author": "Therp BV,Camptocamp,Odoo Community Association (OCA)",
         "category": "Customer Relationship Management",
         "display_name": "Partner Relations",
@@ -1577,6 +1768,26 @@
         ]
     },
     {
+        "author": "OpenERP SA, Odoo Community Association (OCA)",
+        "category": "Product",
+        "display_name": "Product Manufacturer",
+        "name": "product_manufacturer",
+        "repository": "product-attribute",
+        "summary": "Adds manufacturers and attributes on the product view.",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
+        ]
+    },
+    {
         "author": "Akretion,Guewen Baconnier,Camptocamp,Avanzosc,Sharoon Thomas,Sodexis,Odoo Community Association (OCA)",
         "category": "Product Management",
         "display_name": "Product - Many Categories",
@@ -1627,6 +1838,24 @@
             "10.0",
             "9.0",
             "8.0"
+        ]
+    },
+    {
+        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
+        "category": "Product",
+        "display_name": "Product State",
+        "name": "product_state",
+        "repository": "product-attribute",
+        "summary": "\n        Module introducing a state field on product template",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0"
         ]
     },
     {
@@ -1911,6 +2140,44 @@
             "10.0",
             "9.0",
             "8.0"
+        ]
+    },
+    {
+        "author": "ACSONE SA/NV,Creu Blanca,Odoo Community Association (OCA)",
+        "category": "Reporting",
+        "display_name": "Base report xlsx",
+        "name": "report_xlsx",
+        "repository": "reporting-engine",
+        "summary": "Base module to create xlsx report",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
+        ]
+    },
+    {
+        "author": "Noviat, Odoo Community Association (OCA)",
+        "category": "Reporting",
+        "display_name": "Report xlsx helpers",
+        "name": "report_xlsx_helper",
+        "repository": "reporting-engine",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0"
         ]
     },
     {
@@ -2269,6 +2536,23 @@
         ]
     },
     {
+        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
+        "category": "",
+        "display_name": "Auth Api Key",
+        "name": "auth_api_key",
+        "repository": "server-auth",
+        "summary": "\n        Authenticate http requests from an API key",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "10.0"
+        ]
+    },
+    {
         "author": "ABF OSIELL, Odoo Community Association (OCA)",
         "category": "Tools",
         "display_name": "User roles",
@@ -2376,6 +2660,25 @@
         ]
     },
     {
+        "author": "Camptocamp,Creu Blanca,Odoo Community Association (OCA)",
+        "category": "",
+        "display_name": "Base Fontawesome",
+        "name": "base_fontawesome",
+        "repository": "server-tools",
+        "summary": "Up to date Fontawesome resources.",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0"
+        ]
+    },
+    {
         "author": "Camptocamp, Odoo Community Association (OCA)",
         "category": "Technical Settings",
         "display_name": "Base Many2many Custom Field",
@@ -2388,6 +2691,26 @@
             "14.0",
             "13.0",
             "12.0"
+        ]
+    },
+    {
+        "author": "Therp BV,Odoo Community Association (OCA)",
+        "category": "Hidden/Dependency",
+        "display_name": "Extended view inheritance",
+        "name": "base_view_inheritance_extension",
+        "repository": "server-tools",
+        "summary": "Adds more operators for view inheritance",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
         ]
     },
     {
@@ -2456,6 +2779,23 @@
             "11.0",
             "10.0",
             "9.0"
+        ]
+    },
+    {
+        "author": "Camptocamp,Odoo Community Association (OCA)",
+        "category": "",
+        "display_name": "Multi-Steps Wizards",
+        "name": "multi_step_wizard",
+        "repository": "server-ux",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0"
         ]
     },
     {
@@ -2528,6 +2868,23 @@
         ]
     },
     {
+        "author": "Open Source Integrators, Odoo Community Association (OCA)",
+        "category": "Warehouse Management",
+        "display_name": "Scrap Reason Code",
+        "name": "scrap_reason_code",
+        "repository": "stock-logistics-warehouse",
+        "summary": "Reason code for scrapping",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0"
+        ]
+    },
+    {
         "author": "ForgeFlow, Odoo Community Association (OCA)",
         "category": "Warehouse",
         "display_name": "Stock Demand Estimate",
@@ -2587,6 +2944,21 @@
             "16.0",
             "14.0",
             "13.0"
+        ]
+    },
+    {
+        "author": "Camptocamp, Odoo Community Association (OCA)",
+        "category": "Warehouse Management",
+        "display_name": "Stock Move Common Destination",
+        "name": "stock_move_common_dest",
+        "repository": "stock-logistics-warehouse",
+        "summary": "Adds field for common destination moves",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "14.0",
+            "13.0",
+            "10.0"
         ]
     },
     {
@@ -2761,6 +3133,18 @@
             "16.0",
             "15.0",
             "14.0"
+        ]
+    },
+    {
+        "author": "initOS GmbH, Odoo Community Association (OCA)",
+        "category": "",
+        "display_name": "Dark Mode",
+        "name": "web_dark_mode",
+        "repository": "web",
+        "summary": "Enabled Dark Mode for the Odoo Backend",
+        "user": "OCA",
+        "versions": [
+            "16.0"
         ]
     },
     {
@@ -3491,18 +3875,6 @@
             "11.0",
             "10.0",
             "8.0"
-        ]
-    },
-    {
-        "author": "GRAP, Akretion, Odoo Community Association (OCA)",
-        "category": "Accounting",
-        "display_name": "Account - Missing Menus & Saxon Accounting",
-        "name": "account_usability",
-        "repository": "account-financial-tools",
-        "summary": "Adds missing menu entries for Account module and adds the option to enable Saxon Accounting",
-        "user": "OCA",
-        "versions": [
-            "15.0"
         ]
     },
     {
@@ -4378,25 +4750,6 @@
     {
         "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
         "category": "Banking addons",
-        "display_name": "Account Payment Partner",
-        "name": "account_payment_partner",
-        "repository": "bank-payment",
-        "summary": "Adds payment mode on partners and invoices",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
-        ]
-    },
-    {
-        "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
-        "category": "Banking addons",
         "display_name": "Account Payment Purchase",
         "name": "account_payment_purchase",
         "repository": "bank-payment",
@@ -4570,24 +4923,6 @@
             "11.0",
             "10.0",
             "9.0",
-            "8.0"
-        ]
-    },
-    {
-        "author": "Akretion,Odoo Community Association (OCA)",
-        "category": "Accounting & Finance",
-        "display_name": "Account Payment UNECE",
-        "name": "account_payment_unece",
-        "repository": "community-data-files",
-        "summary": "UNECE nomenclature for the payment methods",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
             "8.0"
         ]
     },
@@ -6979,25 +7314,6 @@
         ]
     },
     {
-        "author": "OpenERP SA, Odoo Community Association (OCA)",
-        "category": "Knowledge Management",
-        "display_name": "Document Page",
-        "name": "document_page",
-        "repository": "knowledge",
-        "summary": "",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
-        ]
-    },
-    {
         "author": "Savoir-faire Linux, Odoo Community Association (OCA)",
         "category": "Knowledge Management",
         "display_name": "Document Page Approval",
@@ -7101,35 +7417,6 @@
         ]
     },
     {
-        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
-        "category": "",
-        "display_name": "Companyweb",
-        "name": "companyweb_base",
-        "repository": "l10n-belgium",
-        "summary": "Know who you are dealing with. Enhance Odoo partner data from companyweb.be.",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0"
-        ]
-    },
-    {
-        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
-        "category": "",
-        "display_name": "Companyweb Payment Info",
-        "name": "companyweb_payment_info",
-        "repository": "l10n-belgium",
-        "summary": "Send your customer bill to companyweb",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0"
-        ]
-    },
-    {
         "author": "Akretion, Odoo Community Association (OCA)",
         "category": "Localisation",
         "display_name": "Brazilian Account Due List",
@@ -7157,23 +7444,6 @@
             "14.0",
             "13.0",
             "12.0"
-        ]
-    },
-    {
-        "author": "Akretion, Odoo Community Association (OCA)",
-        "category": "Localisation",
-        "display_name": "Brazilian Localization CRM",
-        "name": "l10n_br_crm",
-        "repository": "l10n-brazil",
-        "summary": "Brazilian Localization CRM",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "12.0",
-            "10.0",
-            "9.0",
-            "8.0"
         ]
     },
     {
@@ -8792,25 +9062,6 @@
         ]
     },
     {
-        "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
-        "category": "Management System",
-        "display_name": "Management System",
-        "name": "mgmtsystem",
-        "repository": "management-system",
-        "summary": "",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
-        ]
-    },
-    {
         "author": "Savoir-faire Linux, Camptocamp, Odoo Community Association (OCA)",
         "category": "Management System",
         "display_name": "Management System - Action",
@@ -10119,25 +10370,6 @@
         ]
     },
     {
-        "author": "OpenERP SA, Odoo Community Association (OCA)",
-        "category": "Product",
-        "display_name": "Product Manufacturer",
-        "name": "product_manufacturer",
-        "repository": "product-attribute",
-        "summary": "Adds manufacturers and attributes on the product view.",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
-        ]
-    },
-    {
         "author": "Antiun Ingenier\u00eda, Tecnativa, LasLabs, Odoo Community Association (OCA)",
         "category": "Sales Management",
         "display_name": "Multiple Images in Products",
@@ -10266,23 +10498,6 @@
         "name": "product_secondary_unit",
         "repository": "product-attribute",
         "summary": "Set a secondary unit per product",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0"
-        ]
-    },
-    {
-        "author": "ACSONE SA/NV, Odoo Community Association (OCA)",
-        "category": "Product",
-        "display_name": "Product State",
-        "name": "product_state",
-        "repository": "product-attribute",
-        "summary": "\n        Module introducing a state field on product template",
         "user": "OCA",
         "versions": [
             "15.0",
@@ -11442,42 +11657,6 @@
         ]
     },
     {
-        "author": "ACSONE SA/NV,Creu Blanca,Odoo Community Association (OCA)",
-        "category": "Reporting",
-        "display_name": "Base report xlsx",
-        "name": "report_xlsx",
-        "repository": "reporting-engine",
-        "summary": "Base module to create xlsx report",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
-        ]
-    },
-    {
-        "author": "Noviat, Odoo Community Association (OCA)",
-        "category": "Reporting",
-        "display_name": "Report xlsx helpers",
-        "name": "report_xlsx_helper",
-        "repository": "reporting-engine",
-        "summary": "",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0"
-        ]
-    },
-    {
         "author": "Akretion,Odoo Community Association (OCA)",
         "category": "Generic Modules/Others",
         "display_name": "SQL Export Excel",
@@ -12607,22 +12786,6 @@
         ]
     },
     {
-        "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
-        "category": "",
-        "display_name": "Auth Api Key",
-        "name": "auth_api_key",
-        "repository": "server-auth",
-        "summary": "\n        Authenticate http requests from an API key",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "10.0"
-        ]
-    },
-    {
         "author": "Camptcamp,Odoo Community Association (OCA)",
         "category": "",
         "display_name": "Auth API key group",
@@ -12997,24 +13160,6 @@
         ]
     },
     {
-        "author": "Camptocamp,Creu Blanca,Odoo Community Association (OCA)",
-        "category": "",
-        "display_name": "Base Fontawesome",
-        "name": "base_fontawesome",
-        "repository": "server-tools",
-        "summary": "Up to date Fontawesome resources.",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0"
-        ]
-    },
-    {
         "author": "Tecnativa, Antiun Ingenier\u00eda, S.L., Sodexis, LasLabs, Odoo Community Association (OCA)",
         "category": "Tools",
         "display_name": "Multiple images base",
@@ -13095,25 +13240,6 @@
             "15.0",
             "14.0",
             "13.0"
-        ]
-    },
-    {
-        "author": "Therp BV,Odoo Community Association (OCA)",
-        "category": "Hidden/Dependency",
-        "display_name": "Extended view inheritance",
-        "name": "base_view_inheritance_extension",
-        "repository": "server-tools",
-        "summary": "Adds more operators for view inheritance",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
         ]
     },
     {
@@ -13552,22 +13678,6 @@
             "10.0",
             "9.0",
             "8.0"
-        ]
-    },
-    {
-        "author": "Camptocamp,Odoo Community Association (OCA)",
-        "category": "",
-        "display_name": "Multi-Steps Wizards",
-        "name": "multi_step_wizard",
-        "repository": "server-ux",
-        "summary": "",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0"
         ]
     },
     {
@@ -14136,22 +14246,6 @@
             "15.0",
             "13.0",
             "12.0"
-        ]
-    },
-    {
-        "author": "Open Source Integrators, Odoo Community Association (OCA)",
-        "category": "Warehouse Management",
-        "display_name": "Scrap Reason Code",
-        "name": "scrap_reason_code",
-        "repository": "stock-logistics-warehouse",
-        "summary": "Reason code for scrapping",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0"
         ]
     },
     {
@@ -18636,18 +18730,6 @@
         ]
     },
     {
-        "author": "Akretion,Odoo Community Association (OCA)",
-        "category": "Delivery",
-        "display_name": "Delivery Carrier Agency",
-        "name": "delivery_carrier_agency",
-        "repository": "delivery-carrier",
-        "summary": "Add a model for Carrier Agencies",
-        "user": "OCA",
-        "versions": [
-            "14.0"
-        ]
-    },
-    {
         "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
         "category": "Warehouse",
         "display_name": "Delivery Carrier Category",
@@ -22354,23 +22436,6 @@
     },
     {
         "author": "Openforce, Odoo Italia Network, Odoo Community Association (OCA)",
-        "category": "Account",
-        "display_name": "ITA - Ritenute d'acconto",
-        "name": "l10n_it_withholding_tax",
-        "repository": "l10n-italy",
-        "summary": "",
-        "user": "OCA",
-        "versions": [
-            "14.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
-        ]
-    },
-    {
-        "author": "Openforce, Odoo Italia Network, Odoo Community Association (OCA)",
         "category": "Localization/Italy",
         "display_name": "ITA - Ritenuta d'acconto - Pagamenti",
         "name": "l10n_it_withholding_tax_payment",
@@ -24646,24 +24711,6 @@
         "versions": [
             "14.0",
             "12.0",
-            "10.0",
-            "9.0",
-            "8.0"
-        ]
-    },
-    {
-        "author": "ChriCar Beteiligungs- und Beratungs- GmbH,Tecnativa,Camptocamp,ACSONE SA/NV,LasLabs,Onestein,Odoo Community Association (OCA)",
-        "category": "Customer Relationship Management",
-        "display_name": "Partner Identification Numbers",
-        "name": "partner_identification",
-        "repository": "partner-contact",
-        "summary": "",
-        "user": "OCA",
-        "versions": [
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
             "10.0",
             "9.0",
             "8.0"
@@ -30193,20 +30240,6 @@
         "versions": [
             "14.0",
             "13.0"
-        ]
-    },
-    {
-        "author": "Camptocamp, Odoo Community Association (OCA)",
-        "category": "Warehouse Management",
-        "display_name": "Stock Move Common Destination",
-        "name": "stock_move_common_dest",
-        "repository": "stock-logistics-warehouse",
-        "summary": "Adds field for common destination moves",
-        "user": "OCA",
-        "versions": [
-            "14.0",
-            "13.0",
-            "10.0"
         ]
     },
     {
