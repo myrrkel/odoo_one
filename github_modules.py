@@ -46,25 +46,7 @@ def write_repositories(version, repositories):
     write_json_file('repositories', version, repositories)
 
 
-def generate_all_github_modules_file():
-    modules = []
-    for v in ALL_VERSIONS:
-        users = load_github_modules(v)
-        for user in users:
-            for repo in users[user]['repositories']:
-                for module_name in users[user]['repositories'][repo]['modules']:
-                    module = users[user]['repositories'][repo]['modules'][module_name]
-                    module_founds = [m for m in modules if m['name'] == module_name]
-                    if module_founds:
-                        module_founds[0]['versions'].append(v)
-                    else:
-                        module['versions'] = [v]
-                        module.pop('version')
-                        module['repository'] = repo
-                        module['user'] = user
-                        modules.append(module)
 
-    write_json_file('github_modules', 'all', modules)
 
 
 def version_to_number(version):
@@ -270,6 +252,26 @@ class GithubModules:
     def generate_all_json_file(self):
         for version in self.odoo.get_all_versions():
             self.generate_json_file(version)
+
+    def generate_all_github_modules_file(self):
+        modules = []
+        for v in self.odoo.get_all_versions():
+            users = load_github_modules(v)
+            for user in users:
+                for repo in users[user]['repositories']:
+                    for module_name in users[user]['repositories'][repo]['modules']:
+                        module = users[user]['repositories'][repo]['modules'][module_name]
+                        module_founds = [m for m in modules if m['name'] == module_name]
+                        if module_founds:
+                            module_founds[0]['versions'].append(v)
+                        else:
+                            module['versions'] = [v]
+                            module.pop('version')
+                            module['repository'] = repo
+                            module['user'] = user
+                            modules.append(module)
+
+        write_json_file('github_modules', 'all', modules)
 
     def clone_github_repositories(self, version):
         self.addons_path_list = []

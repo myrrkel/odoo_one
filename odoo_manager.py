@@ -5,7 +5,6 @@ import docker_manager
 import odoo_conf as oconf
 import odoo_rpc
 from github_modules import GithubModules
-from github_modules import generate_all_github_modules_file
 
 
 class OdooManager(object):
@@ -50,7 +49,8 @@ class OdooManager(object):
         self.gh_modules.access_token = access_token
         self.gh_modules.init_github()
         self.gh_modules.generate_json_file(self.odoo_version)
-        generate_all_github_modules_file()
+        self.gh_modules.generate_all_github_modules_file()
+        self.print_stdout('Addons list update done.')
 
     def init(self, pull=False):
         self.print_stdout('Start Odoo...')
