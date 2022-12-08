@@ -110,13 +110,16 @@ class DialogAddons(QtWidgets.QDialog):
         self.gh_modules.set_version(version)
         if version != 'all':
             self.gh_modules.load(version)
-            if self.gh_modules.db_settings:
-                modules = self.gh_modules.db_settings['modules']
-                self.installed_modules = [m['name'] for m in modules]
+            self.update_installed_addon_list()
         else:
             self.installed_modules = []
         self.compute_current_version_addons(version)
         self.search()
+
+    def update_installed_addon_list(self):
+        if self.gh_modules.db_settings:
+            modules = self.gh_modules.db_settings['modules']
+            self.installed_modules = [m['name'] for m in modules]
 
     def compute_current_version_addons(self, version_filter='all'):
         if version_filter == 'all':
@@ -127,7 +130,7 @@ class DialogAddons(QtWidgets.QDialog):
 
     def show_addons(self, search_string=''):
         self.ui.table_addons.hide()
-
+        self.update_installed_addon_list()
         addons = self.current_version_addons
         if search_string:
             words = search_string.lower().replace('_', ' ').split(' ')

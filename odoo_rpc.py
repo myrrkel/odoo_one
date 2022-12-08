@@ -32,7 +32,7 @@ class OdooRpc:
         self.password = password
         self.uid = False
         self.url = "http://%s:%s/jsonrpc" % (self.host, self.port)
-        self.addons = []
+        self.addon_list = []
 
         self.wait_for_odoo()
 
@@ -63,18 +63,18 @@ class OdooRpc:
             self.call_odoo('ir.module.module', 'update_list', [])
 
         addons_states = self.call_odoo('ir.module.module', 'search_read', [[('name', '!=', False)], ['name', 'state'], 0, 0, "name"])
-        self.addons = {addon['name']: {'state': addon['state'], 'id': addon['id']} for addon in addons_states}
+        self.addon_list = {addon['name']: {'state': addon['state'], 'id': addon['id']} for addon in addons_states}
 
     def install_addon(self, addon_name):
         if addon_name:
-            addon = self.addons[addon_name]
+            addon = self.addon_list[addon_name]
             if addon.get('state', False) == 'installed':
                 return
             self.call_odoo('ir.module.module', 'button_immediate_install', [addon.get('id')])
 
     def upgrade_addon(self, addon_name):
         if addon_name:
-            addon = self.addons[addon_name]
+            addon = self.addon_list[addon_name]
             self.call_odoo('ir.module.module', 'button_immediate_upgrade', [addon.get('id')])
 
     def wait_for_odoo(self):

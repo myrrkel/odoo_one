@@ -119,10 +119,10 @@ class GithubModules:
     def load(self, odoo_version, clone=False, force_refresh=False):
         self.addons = []
         self.set_version(odoo_version)
+        self.load_database_settings()
+        self._compute_addons_repositories()
         if self.need_refresh or force_refresh:
             self.github_modules = load_github_modules(self.version)
-            self.load_database_settings()
-            self._compute_addons_repositories()
             self._compute_github_repositories()
             if clone:
                 self.clone_github_repositories(self.odoo_version)

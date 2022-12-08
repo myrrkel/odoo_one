@@ -100,8 +100,8 @@ class OdooManager(object):
         orpc = odoo_rpc.OdooRpc(ip, "8069", self.odoo_db, "admin", "admin", self.version)
         admin = orpc.read('res.users', 1)
         orpc.update_addons_list()
-        if self.gh_modules.addons:
-            orpc.install_addon(self.gh_modules.addons[0])
+        for addon in self.gh_modules.addons:
+            orpc.install_addon(addon)
         self.open_odoo_firefox(url)
 
 
