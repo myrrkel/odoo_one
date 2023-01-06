@@ -46,9 +46,6 @@ def write_repositories(version, repositories):
     write_json_file('repositories', version, repositories)
 
 
-
-
-
 def version_to_number(version):
     return str(version).replace('.0', '')
 
@@ -328,13 +325,13 @@ class GithubModules:
 
 
 if __name__ == '__main__':
-    generate_all_github_modules_file()
-
-    # import sys
-    # if len(sys.argv) > 1:
-    #     credential = sys.argv[1]
-    #     g = GithubModules(credential)
-    #     # versions = ALL_VERSIONS[3:]
-    #     versions = ALL_VERSIONS[:3]
-    #     for v in versions:
-    #         g.generate_json_file(v)
+    import sys
+    if len(sys.argv) > 1:
+        credential = sys.argv[1]
+        gh_modules = GithubModules(credential)
+        g = GithubModules(credential)
+        versions = gh_modules.odoo.get_all_versions()
+        versions = versions[:3]
+        for v in versions:
+            g.generate_json_file(v)
+        gh_modules.generate_all_github_modules_file()
