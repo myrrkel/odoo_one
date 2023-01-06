@@ -282,7 +282,7 @@
                 "name": "account-consolidation"
             },
             "account-financial-reporting": {
-                "default_branch": "13.0",
+                "default_branch": "16.0",
                 "description": "Financial reports for Odoo",
                 "html_url": "https://github.com/OCA/account-financial-reporting",
                 "modules": {
@@ -362,7 +362,7 @@
                 "name": "account-financial-reporting"
             },
             "account-financial-tools": {
-                "default_branch": "14.0",
+                "default_branch": "16.0",
                 "description": "Odoo Accountant Financial Tools and Utils",
                 "html_url": "https://github.com/OCA/account-financial-tools",
                 "modules": {
@@ -4354,7 +4354,7 @@
                 "name": "intrastat-extrastat"
             },
             "knowledge": {
-                "default_branch": "13.0",
+                "default_branch": "16.0",
                 "description": "Odoo Document & Knowledge Management",
                 "html_url": "https://github.com/OCA/knowledge",
                 "modules": {
@@ -4522,7 +4522,7 @@
                 "name": "knowledge"
             },
             "l10n-argentina": {
-                "default_branch": "11.0",
+                "default_branch": "14.0",
                 "description": "Odoo modules for Argentina",
                 "html_url": "https://github.com/OCA/l10n-argentina",
                 "modules": {
@@ -4689,7 +4689,7 @@
                     "account_companyweb": {
                         "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
                         "category": "Generic Modules/Accounting",
-                        "display_name": "Companyweb",
+                        "display_name": "Companyweb (8.0 legacy)",
                         "name": "account_companyweb",
                         "summary": "",
                         "version": "8.0.1.0.0"
@@ -6786,7 +6786,7 @@
                 "name": "l10n-usa"
             },
             "management-system": {
-                "default_branch": "13.0",
+                "default_branch": "16.0",
                 "description": "Odoo for Management Systems (ISO, IEC, BS)",
                 "html_url": "https://github.com/OCA/management-system",
                 "modules": {
@@ -7546,7 +7546,7 @@
                 "name": "operating-unit"
             },
             "partner-contact": {
-                "default_branch": "14.0",
+                "default_branch": "16.0",
                 "description": "Odoo Partner and Contact related addons",
                 "html_url": "https://github.com/OCA/partner-contact",
                 "modules": {
@@ -7922,7 +7922,7 @@
                 "name": "partner-contact"
             },
             "pos": {
-                "default_branch": "15.0",
+                "default_branch": "16.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/pos",
                 "modules": {
@@ -9770,7 +9770,7 @@
                 "name": "sale-reporting"
             },
             "sale-workflow": {
-                "default_branch": "14.0",
+                "default_branch": "16.0",
                 "description": "Odoo Sales, Workflow and Organization",
                 "html_url": "https://github.com/OCA/sale-workflow",
                 "modules": {

@@ -242,7 +242,7 @@
                 "name": "account-consolidation"
             },
             "account-financial-reporting": {
-                "default_branch": "13.0",
+                "default_branch": "16.0",
                 "description": "Financial reports for Odoo",
                 "html_url": "https://github.com/OCA/account-financial-reporting",
                 "modules": {
@@ -298,7 +298,7 @@
                 "name": "account-financial-reporting"
             },
             "account-financial-tools": {
-                "default_branch": "14.0",
+                "default_branch": "16.0",
                 "description": "Odoo Accountant Financial Tools and Utils",
                 "html_url": "https://github.com/OCA/account-financial-tools",
                 "modules": {
@@ -829,6 +829,14 @@
                         "name": "account_invoice_supplier_self_invoice",
                         "summary": "",
                         "version": "11.0.2.0.1"
+                    },
+                    "account_invoice_supplier_self_invoice_tax_note": {
+                        "author": "Creu Blanca, Eficent, Odoo Community Association (OCA)",
+                        "category": "Accounting & Finance",
+                        "display_name": "Account Invoice Supplier Self Invoice Tax Note",
+                        "name": "account_invoice_supplier_self_invoice_tax_note",
+                        "summary": "",
+                        "version": "11.0.1.0.0"
                     },
                     "account_invoice_tax_note": {
                         "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -1770,7 +1778,7 @@
                 "name": "connector-interfaces"
             },
             "connector-jira": {
-                "default_branch": "12.0",
+                "default_branch": "15.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/connector-jira",
                 "modules": {
@@ -2242,7 +2250,7 @@
                 "name": "crm"
             },
             "currency": {
-                "default_branch": "12.0",
+                "default_branch": "16.0",
                 "description": " Odoo Currency related Addons (crypto currencies, rate conversion, integrations with third party applications,...)",
                 "html_url": "https://github.com/OCA/currency",
                 "modules": {
@@ -3618,7 +3626,7 @@
                 "name": "iot"
             },
             "knowledge": {
-                "default_branch": "13.0",
+                "default_branch": "16.0",
                 "description": "Odoo Document & Knowledge Management",
                 "html_url": "https://github.com/OCA/knowledge",
                 "modules": {
@@ -4226,7 +4234,7 @@
                 "name": "l10n-italy"
             },
             "l10n-japan": {
-                "default_branch": "13.0",
+                "default_branch": "15.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/l10n-japan",
                 "modules": {
@@ -4748,7 +4756,7 @@
                         "display_name": "Suministro Inmediato de Informaci\u00f3n en el IVA",
                         "name": "l10n_es_aeat_sii",
                         "summary": "",
-                        "version": "11.0.2.7.4"
+                        "version": "11.0.2.8.0"
                     },
                     "l10n_es_aeat_sii_extra_data": {
                         "author": "Trey (www.trey.es), Odoo Community Association (OCA)",
@@ -4892,7 +4900,7 @@
                         "display_name": "TicketBAI - declaraci\u00f3n de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades econ\u00f3micas",
                         "name": "l10n_es_ticketbai",
                         "summary": "",
-                        "version": "11.0.1.4.4"
+                        "version": "11.0.1.4.5"
                     },
                     "l10n_es_ticketbai_api": {
                         "author": "Binovo,Odoo Community Association (OCA)",
@@ -5298,7 +5306,7 @@
                 "name": "maintenance"
             },
             "management-system": {
-                "default_branch": "13.0",
+                "default_branch": "16.0",
                 "description": "Odoo for Management Systems (ISO, IEC, BS)",
                 "html_url": "https://github.com/OCA/management-system",
                 "modules": {
@@ -6098,7 +6106,7 @@
                 "name": "operating-unit"
             },
             "partner-contact": {
-                "default_branch": "14.0",
+                "default_branch": "16.0",
                 "description": "Odoo Partner and Contact related addons",
                 "html_url": "https://github.com/OCA/partner-contact",
                 "modules": {
@@ -6442,7 +6450,7 @@
                 "name": "partner-contact"
             },
             "pos": {
-                "default_branch": "15.0",
+                "default_branch": "16.0",
                 "description": null,
                 "html_url": "https://github.com/OCA/pos",
                 "modules": {
@@ -6452,7 +6460,7 @@
                         "display_name": "POS - Cashier login",
                         "name": "pos_cashier_login",
                         "summary": "Require for cashier to sign in before each sale",
-                        "version": "11.0.0.1.0"
+                        "version": "11.0.0.1.1"
                     },
                     "pos_config_show_accounting": {
                         "author": "Eficent,Odoo Community Association (OCA)",
@@ -6476,7 +6484,7 @@
                         "display_name": "Pos Fix Search Limit",
                         "name": "pos_fix_search_limit",
                         "summary": "Increase search in the PoS",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "pos_lot_selection": {
                         "author": "Tecnativa,Odoo Community Association (OCA)",
@@ -6492,7 +6500,7 @@
                         "display_name": "Loyalty Program",
                         "name": "pos_loyalty",
                         "summary": "",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "pos_margin": {
                         "author": "GRAP,Odoo Community Association (OCA)",
@@ -6500,7 +6508,7 @@
                         "display_name": "POS Margin",
                         "name": "pos_margin",
                         "summary": "Margin on PoS Order",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "pos_order_mgmt": {
                         "author": "GRAP, Tecnativa, Odoo Community Association (OCA)",
@@ -6516,7 +6524,7 @@
                         "display_name": "Point of Sale Order Return",
                         "name": "pos_order_return",
                         "summary": "",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "pos_payment_entries_globalization": {
                         "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
@@ -6524,7 +6532,7 @@
                         "display_name": "POS payment entries globalization",
                         "name": "pos_payment_entries_globalization",
                         "summary": "Globalize POS Payment",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "pos_picking_delayed": {
                         "author": "GRAP, Odoo Community Association (OCA)",
@@ -6532,7 +6540,7 @@
                         "display_name": "Point of Sale - Picking Creation Delayed",
                         "name": "pos_picking_delayed",
                         "summary": "Delay the creation of the picking when PoS order is created",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "pos_price_to_weight": {
                         "author": "La Louve, GRAP, Odoo Community Association (OCA)",
@@ -6540,7 +6548,7 @@
                         "display_name": "Point of Sale - Price to Weight",
                         "name": "pos_price_to_weight",
                         "summary": "Compute weight based on barcodes with prices",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "pos_session_pay_invoice": {
                         "author": "Creu Blanca,Odoo Community Association (OCA)",
@@ -7866,7 +7874,7 @@
                 "name": "sale-reporting"
             },
             "sale-workflow": {
-                "default_branch": "14.0",
+                "default_branch": "16.0",
                 "description": "Odoo Sales, Workflow and Organization",
                 "html_url": "https://github.com/OCA/sale-workflow",
                 "modules": {
@@ -9596,7 +9604,7 @@
                         "display_name": "Account Move Line Product",
                         "name": "account_move_line_product",
                         "summary": "Displays the product in the journal entries and items",
-                        "version": "11.0.1.0.1"
+                        "version": "11.0.1.0.2"
                     },
                     "account_move_line_stock_info": {
                         "author": "Eficent,Odoo Community Association (OCA)",
@@ -9612,7 +9620,7 @@
                         "display_name": "Packaging UOM",
                         "name": "packaging_uom",
                         "summary": "Use uom in package",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "procurement_auto_create_group": {
                         "author": "Eficent,Odoo Community Association (OCA)",
@@ -9668,7 +9676,7 @@
                         "display_name": "Stock available to promise",
                         "name": "stock_available",
                         "summary": "",
-                        "version": "11.0.1.1.0"
+                        "version": "11.0.1.1.1"
                     },
                     "stock_available_global": {
                         "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -9676,7 +9684,7 @@
                         "display_name": "Stock available global (All companies)",
                         "name": "stock_available_global",
                         "summary": "",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "stock_available_immediately": {
                         "author": "Camptocamp,Sodexis,Odoo Community Association (OCA),Sergio D\u00edaz",
@@ -9684,7 +9692,7 @@
                         "display_name": "Ignore planned receptions in quantity available to promise",
                         "name": "stock_available_immediately",
                         "summary": "",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "stock_available_mrp": {
                         "author": "Num\u00e9rigraphe,Odoo Community Association (OCA)",
@@ -9716,7 +9724,7 @@
                         "display_name": "Stock Cycle Count",
                         "name": "stock_cycle_count",
                         "summary": "Adds the capability to schedule cycle counts in a warehouse through different rules defined by the user.",
-                        "version": "11.0.1.0.1"
+                        "version": "11.0.1.0.2"
                     },
                     "stock_demand_estimate": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -9764,7 +9772,7 @@
                         "display_name": "Inventory Lock Down",
                         "name": "stock_inventory_lockdown",
                         "summary": "Lock down stock locations during inventories.",
-                        "version": "11.0.1.0.1"
+                        "version": "11.0.1.0.2"
                     },
                     "stock_inventory_preparation_filter": {
                         "author": "AvanzOSC,Tecnativa,Odoo Community Association (OCA)",
@@ -9772,7 +9780,7 @@
                         "display_name": "Extended Inventory Preparation Filters",
                         "name": "stock_inventory_preparation_filter",
                         "summary": "More filters for inventory adjustments",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "stock_inventory_verification_request": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -9780,7 +9788,7 @@
                         "display_name": "Stock Inventory Verification Request",
                         "name": "stock_inventory_verification_request",
                         "summary": "Adds the capability to request a Slot Verification when a inventory is Pending to Approve",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "stock_inventory_virtual_location": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -9812,7 +9820,7 @@
                         "display_name": "Stock MTS+MTO Rule",
                         "name": "stock_mts_mto_rule",
                         "summary": "Add a MTS+MTO route",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "stock_orderpoint_generator": {
                         "author": "Camptocamp, Tecnativa, Odoo Community Association (OCA)",
@@ -9844,7 +9852,7 @@
                         "display_name": "Stock Orderpoint Move Link",
                         "name": "stock_orderpoint_move_link",
                         "summary": "Link Reordering rules to stock moves",
-                        "version": "11.0.1.1.0"
+                        "version": "11.0.1.1.1"
                     },
                     "stock_orderpoint_mrp_link": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -9900,7 +9908,7 @@
                         "display_name": "Putaway strategy method",
                         "name": "stock_putaway_method",
                         "summary": "Add the putaway strategy method back, removed from the stock module in Odoo 11",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "stock_putaway_product": {
                         "author": "Apertoso N.V., Tecnativa, Camptocamp SA, Odoo Community Association (OCA)",
@@ -9908,7 +9916,7 @@
                         "display_name": "Putaway strategy per product",
                         "name": "stock_putaway_product",
                         "summary": "Set a product location and put-away strategy per product",
-                        "version": "11.0.1.0.2"
+                        "version": "11.0.1.0.3"
                     },
                     "stock_putaway_same_location": {
                         "author": "Camptocamp SA, Odoo Community Association (OCA)",
@@ -9924,7 +9932,7 @@
                         "display_name": "Stock - Manual Quant Assignment",
                         "name": "stock_quant_manual_assign",
                         "summary": "",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "stock_removal_location_by_priority": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -9940,7 +9948,7 @@
                         "display_name": "Stock Request",
                         "name": "stock_request",
                         "summary": "Internal request for stock",
-                        "version": "11.0.3.4.6"
+                        "version": "11.0.3.4.7"
                     },
                     "stock_request_analytic": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -9948,7 +9956,7 @@
                         "display_name": "Stock Request Analytic",
                         "name": "stock_request_analytic",
                         "summary": "Internal request for stock",
-                        "version": "11.0.2.0.2"
+                        "version": "11.0.2.0.3"
                     },
                     "stock_request_employee": {
                         "author": "Creu Blanca,Odoo Community Association (OCA)",
@@ -9972,7 +9980,7 @@
                         "display_name": "Stock Request Purchase",
                         "name": "stock_request_purchase",
                         "summary": "Internal request for stock",
-                        "version": "11.0.2.2.1"
+                        "version": "11.0.2.2.2"
                     },
                     "stock_request_purchase_analytic": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -9980,7 +9988,7 @@
                         "display_name": "Stock Request Purchase Analytic",
                         "name": "stock_request_purchase_analytic",
                         "summary": "Passes the analytic account from the stock request to the purchase order",
-                        "version": "11.0.1.0.1"
+                        "version": "11.0.1.0.2"
                     },
                     "stock_request_tier_validation": {
                         "author": "Eficent, Odoo Community Association (OCA)",
@@ -10004,7 +10012,7 @@
                         "display_name": "Stock Warehouse Calendar",
                         "name": "stock_warehouse_calendar",
                         "summary": "Adds a calendar to the Warehouse",
-                        "version": "11.0.1.0.0"
+                        "version": "11.0.1.0.1"
                     },
                     "stock_warehouse_orderpoint_stock_info": {
                         "author": "OdooMRP team, AvanzOSC, Tecnativa, Odoo Community Association (OCA)",
@@ -10276,7 +10284,7 @@
                         "display_name": "Split picking",
                         "name": "stock_split_picking",
                         "summary": "Split a picking in two not transferred pickings",
-                        "version": "11.0.2.0.0"
+                        "version": "11.0.2.1.0"
                     }
                 },
                 "name": "stock-logistics-workflow"
