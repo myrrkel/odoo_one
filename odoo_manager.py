@@ -1,10 +1,13 @@
-import subprocess
+import logging
 import os
 import docker
 import docker_manager
 import odoo_conf as oconf
 import odoo_rpc
+import subprocess
 from github_modules import GithubModules
+
+logger = logging.getLogger(__name__)
 
 
 class OdooManager(object):
@@ -71,7 +74,6 @@ class OdooManager(object):
         if self.enterprise_path:
             self.gh_modules.git_checkout_enterprise(self.odoo_version, self.enterprise_path)
 
-        # addons_path_list = []
         addons_path_list = self.gh_modules.addons_path_list
         addons_path_list.append('extra_addons')
         self.docker_manager.stop_compose()
@@ -93,10 +95,15 @@ class OdooManager(object):
                                                     cmd_params='-d %s -i base' % self.odoo_db,
                                                     enterprise_path=self.enterprise_path)
             self.docker_manager.start_compose()
+        try:
+            self.wait_and_open()
+        except Exception as err:
+            logger.error(err)
+            pass
 
+    def wait_and_open(self):
         ip = self.docker_manager.get_odoo_ip()
         url = "%s:%s/web?db=%s" % (ip, 8069, self.odoo_db)
-
         orpc = odoo_rpc.OdooRpc(ip, "8069", self.odoo_db, "admin", "admin", self.version)
         admin = orpc.read('res.users', 1)
         orpc.update_addons_list()

@@ -67,12 +67,16 @@ class LogThread(QThread):
                     self.parent.stdout_signal.emit(stdout)
             if self.parent.odoo.docker_manager:
                 for container in self.parent.odoo.docker_manager.get_odoo_containers():
-                    logs = container.logs().decode()
-                    if logs:
-                        last_line = logs.splitlines()[-1]
-                        if last_line != self.last_line:
-                            self.last_line = last_line
-                            self.parent.stdout_signal.emit(container.logs().decode())
+                    try:
+                        logs = container.logs().decode()
+                        if logs:
+                            last_line = logs.splitlines()[-1]
+                            if last_line != self.last_line:
+                                self.last_line = last_line
+                                self.parent.stdout_signal.emit(container.logs().decode())
+                    except Exception as err:
+                        logger.error(err)
+                        pass
             time.sleep(1)
 
 
