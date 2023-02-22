@@ -54,6 +54,24 @@ def number_to_version(number_version):
     return '%s.0' % number_version
 
 
+def print_version_abstract(number_version):
+    users = load_github_modules(number_version)
+    print('Version: %s' % number_version)
+    for user in users:
+        modules = []
+        print('User: %s' % user)
+        repositories = list(users[user]['repositories'].keys())
+        repositories = [r for r in repositories if r not in ['OpenUpgrade']
+                        and (not r.startswith('l10n-') or r == 'l10n-france')]
+        print('Repositories: %s' % repositories)
+        print('Count repositories: %s' % len(repositories))
+        for repository in repositories:
+            modules.extend(users[user]['repositories'][repository]['modules'])
+
+        print('Modules: %s' % modules)
+        print('Count modules: %s' % len(modules))
+
+
 class GithubModules:
     version = ""
     odoo_version = ""
@@ -331,7 +349,10 @@ if __name__ == '__main__':
         gh_modules = GithubModules(credential)
         g = GithubModules(credential)
         versions = gh_modules.odoo.get_all_versions()
-        versions = versions[:3]
+        versions = versions[:1]
         for v in versions:
             g.generate_json_file(v)
         gh_modules.generate_all_github_modules_file()
+
+        for v in versions:
+            print_version_abstract(version_to_number(v))
