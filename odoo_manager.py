@@ -80,6 +80,7 @@ class OdooManager(object):
         oconf.create_odoo_conf_file(self.version, addons_path_list, enterprise=self.enterprise_path != '',
                                     db_container=self.docker_manager.get_db_container_name())
         self.docker_manager.stop_odoo_containers()
+        self.docker_manager.create_docker_file(self.version, self.gh_modules.external_dependencies)
         self.docker_manager.create_compose_file(addons_path_list,
                                                 version=self.version,
                                                 cmd_params='-d %s' % self.odoo_db,
@@ -90,6 +91,7 @@ class OdooManager(object):
         if not self.docker_manager.odoo_database_exists():
             if int(self.version) <= 8:
                 self.docker_manager.create_empty_database()
+            self.docker_manager.create_docker_file(self.version, self.gh_modules.external_dependencies)
             self.docker_manager.create_compose_file(addons_path_list,
                                                     version=self.version,
                                                     cmd_params='-d %s -i base' % self.odoo_db,

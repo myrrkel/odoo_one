@@ -9,6 +9,7 @@ import odoo_manager
 
 FILE_NAME = 'github_modules'
 DATA_DIR = './data/'
+GITHUB_ADDONS_DIR = 'github_addons'
 
 
 def strip_comments(code):
@@ -79,7 +80,9 @@ class GithubModules:
     github_repositories = {}
     repositories = {}
     addons = []
+    modules = []
     addons_path_list = []
+    external_dependencies = []
     github_users = ['OCA', 'myrrkel']
     db_settings = {'modules': []}
     access_token = ""
@@ -128,11 +131,19 @@ class GithubModules:
     def _compute_addons_repositories(self):
         if not self.db_settings:
             return
-        for module in self.db_settings['modules']:
+        self.addons = []
+        self.modules = self.db_settings['modules']
+        self.repositories = {}
+        for module in self.modules:
             self.addons.append(module['name'])
             repository = self.find_repository(module['repository'], module['user'])
             if not repository:
                 self.repositories[module['repository']] = {'name': module['repository'], 'user': module['user']}
+
+            manifest = self.get_local_module_manifest(module['user'],
+                                                      module['repository'],
+                                                      self.odoo_version, module['name'])
+            self.external_dependencies = manifest.get('external_dependencies', [])
 
     def _compute_github_repositories(self):
         for user in self.github_modules.keys():
@@ -191,17 +202,27 @@ class GithubModules:
                 print(e)
         return []
 
-    def get_module_dict(self, repo, branch_ref, module):
-        files = self.get_dir_contents(repo, './%s' % module.name, ref=branch_ref)
+    def get_manifest_name(self, branch_ref):
         if branch_ref in ['8.0', '9.0']:
-            manifest_name = '__openerp__.py'
+            return '__openerp__.py'
         else:
-            manifest_name = '__manifest__.py'
+            return '__manifest__.py'
+
+    def get_local_module_manifest(self, user_name, repo_name, branch_ref, module_name):
+        manifest_name = self.get_manifest_name(branch_ref)
+        manifest_file = os.path.join(GITHUB_ADDONS_DIR, user_name, repo_name, module_name, manifest_name)
+        with open(manifest_file) as f:
+            manifest = f.read()
+            return eval(manifest)
+
+    def get_github_module_manifest(self, repo, branch_ref, module_name):
+        files = self.get_dir_contents(repo, './%s' % module_name, ref=branch_ref)
+        manifest_name = self.get_manifest_name(branch_ref)
         manifest_file = [d for d in files if d.type == 'file' and d.name == manifest_name]
         if manifest_file:
             try:
                 manifest = eval(strip_comments(manifest_file[0].decoded_content.decode('UTF-8')))
-                module_dict = {'name': module.name,
+                module_dict = {'name': module_name,
                                'display_name': manifest.get('name', ''),
                                'summary': manifest.get('summary', ''),
                                'version': manifest.get('version', ''),
@@ -211,7 +232,7 @@ class GithubModules:
                 return module_dict
             except RateLimitExceededException:
                 self.wait_for_rate_limit()
-                return self.get_module_dict(repo, branch_ref, module)
+                return self.get_github_module_manifest(repo, branch_ref, module_name)
         return {}
 
     def get_repository_dict(self, repo, branch_ref):
@@ -221,7 +242,7 @@ class GithubModules:
             self.logger('"%s";"%s";"%s";"%s"' % (
                 repo.name, repo.description, repo.html_url, repo.default_branch))
             for sub_dir in dirs:
-                module_dict = self.get_module_dict(repo, branch_ref, sub_dir)
+                module_dict = self.get_github_module_manifest(repo, branch_ref, sub_dir.name)
                 if module_dict:
                     modules[sub_dir.name] = module_dict
         if modules:
@@ -235,7 +256,7 @@ class GithubModules:
         dirs = [d for d in self.get_dir_contents(repo, '.', ref=branch_ref) if d.type == 'dir' and d.name != 'setup']
         if dirs:
             for sub_dir in dirs:
-                module_dict = self.get_module_dict(repo, branch_ref, sub_dir)
+                module_dict = self.get_github_module_manifest(repo, branch_ref, sub_dir.name)
                 modules.append(module_dict)
         return modules
 
@@ -290,11 +311,11 @@ class GithubModules:
 
     def clone_github_repositories(self, version):
         self.addons_path_list = []
-        if not os.path.isdir('github_addons'):
-            os.mkdir('github_addons')
+        if not os.path.isdir(GITHUB_ADDONS_DIR):
+            os.mkdir(GITHUB_ADDONS_DIR)
         for repo_name in self.repositories:
             repo = self.repositories[repo_name]
-            github_user_path = 'github_addons/%s' % repo['user']
+            github_user_path = os.path.join(GITHUB_ADDONS_DIR, repo['user'])
             if not os.path.isdir(github_user_path):
                 os.mkdir(github_user_path)
             if repo.get('url', False):

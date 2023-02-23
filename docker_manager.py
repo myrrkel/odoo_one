@@ -74,7 +74,7 @@ class DockerManager(object):
         return self.get_containers('postgres:12.4')
 
     def get_odoo_containers(self):
-        return self.get_containers('odoo:%s' % self.odoo_version)
+        return self.get_containers('odoo_one_extra:%s' % self.odoo_version)
 
     def stop_odoo_containers(self):
         containers = self.get_odoo_containers()
@@ -114,6 +114,17 @@ class DockerManager(object):
         db_containers = self.get_postgres_containers()
         return db_containers and db_containers[0].image.tags[0] or 'postgres:12.4'
 
+    def create_docker_file(self, version, external_dependencies):
+        docker_file = f'FROM odoo:{version}.0'
+        docker_file += '\nUSER root'
+        for external_dependency in external_dependencies.get('python', []):
+            docker_file = '\n'.join([docker_file, f'RUN pip install {external_dependency}'])
+        docker_file = docker_file.format(version=version)
+        docker_file += '\nUSER odoo'
+        f = open("Dockerfile", "w+")
+        f.write(docker_file)
+        f.close()
+
     def create_compose_file(self, path_list=None, version='14', cmd_params="", enterprise_path=""):
 
         if int(version) >= 10:
@@ -134,7 +145,8 @@ class DockerManager(object):
         compose = """version: '2'
 services:
   web:
-    image: odoo:{version}.0
+    image: odoo_one_extra:{version}.0
+    build: ./
 {depends}
     ports:
       - "8069:8069"
@@ -195,6 +207,8 @@ networks:
         self.current_process = subprocess.run(params, shell=False, capture_output=True, text=True)
 
     def start_compose(self):
+        self.subprocess_run(['docker-compose', 'build'])
+        # self.subprocess_run(['docker', 'build', '.', '-t', 'odoo_one_extra:16'])
         self.subprocess_run(['docker-compose', 'up', '-d'])
 
     def stop_compose(self):
