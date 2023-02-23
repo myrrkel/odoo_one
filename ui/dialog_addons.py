@@ -70,8 +70,12 @@ class DialogAddons(QtWidgets.QDialog):
 
     def open_github_page(self, index):
         addon = self.ui.table_addons.cellWidget(index.row(), 3).addon
-        version = github_modules.number_to_version(self.get_current_version())
-        url = addon.get_github_url(False if version == 'all' else version)
+        current_version = self.get_current_version()
+        if current_version == 'all':
+            version = addon.versions[0]
+        else:
+            version = github_modules.number_to_version(current_version)
+        url = addon.get_github_url(version)
         subprocess.call(['firefox', url],
                         stdout=subprocess.PIPE, universal_newlines=True)
 
