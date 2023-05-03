@@ -117,8 +117,9 @@ class DockerManager(object):
     def create_docker_file(self, version, external_dependencies):
         docker_file = f'FROM odoo:{version}.0'
         docker_file += '\nUSER root'
-        for external_dependency in external_dependencies.get('python', []):
-            docker_file = '\n'.join([docker_file, f'RUN pip install {external_dependency}'])
+        if external_dependencies:
+            for external_dependency in external_dependencies.get('python', []):
+                docker_file = '\n'.join([docker_file, f'RUN pip install {external_dependency}'])
         docker_file = docker_file.format(version=version)
         docker_file += '\nUSER odoo'
         f = open("Dockerfile", "w+")
