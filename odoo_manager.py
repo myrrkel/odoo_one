@@ -103,15 +103,28 @@ class OdooManager(object):
             logger.error(err)
             pass
 
+    def odoo_ip(self):
+        return self.docker_manager.get_odoo_ip()
+
+    def odoo_base_url(self):
+        ip = self.odoo_ip()
+        return "%s:%s/web" % (ip, docker_manager.DEFAULT_PORT)
+
+    def odoo_start_url(self):
+        return "%s?db=%s" % (self.odoo_base_url(), self.odoo_db)
+
     def wait_and_open(self):
-        ip = self.docker_manager.get_odoo_ip()
-        url = "%s:%s/web?db=%s" % (ip, 8069, self.odoo_db)
-        orpc = odoo_rpc.OdooRpc(ip, "8069", self.odoo_db, "admin", "admin", self.version)
+        orpc = odoo_rpc.OdooRpc(self.odoo_ip(),
+                                docker_manager.DEFAULT_PORT,
+                                self.odoo_db,
+                                "admin",
+                                "admin",
+                                self.version)
         admin = orpc.read('res.users', 1)
         orpc.update_addons_list()
         for addon in self.gh_modules.addons:
             orpc.install_addon(addon)
-        self.open_odoo_firefox(url)
+        self.open_odoo_firefox(self.odoo_start_url())
 
 
 if __name__ == '__main__':

@@ -2,6 +2,8 @@ import docker
 import shutil
 import subprocess
 
+DEFAULT_PORT = 8069
+
 
 class DockerManager(object):
     current_process = None
@@ -150,9 +152,9 @@ services:
     build: ./
 {depends}
     ports:
-      - "8069:8069"
+      - "{port}:{port}"
     expose:
-      - 8069
+      - {port}
     command: {cmd} {cmd_params}
     volumes:
 {odoo_volumes}
@@ -174,6 +176,7 @@ networks:
                                  network=self.network,
                                  depends=depends,
                                  db_service=self.get_compose_db_service(version),
+                                 port=DEFAULT_PORT,
                                  )
         f = open("docker-compose.yml", "w+")
         f.write(compose)
