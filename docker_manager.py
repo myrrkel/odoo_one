@@ -164,9 +164,8 @@ volumes:
   odoo-db-socket:  # For Odoo 8 only
 networks:
   default:
-    external:
-      name: {network}
-    
+    name: {network}
+    external: true
     """
         compose = compose.format(odoo_volumes=odoo_volumes,
                                  version=version,
