@@ -60,8 +60,11 @@ class DockerManager(object):
             cmd_res = container.exec_run('createdb -h 127.0.0.1 -U odoo \'%s\'' % self.odoo_db)
             return bool(cmd_res.output)
 
-    def get_containers(self, ancestor):
-        return self.client.containers.list(filters={'ancestor': ancestor})
+    def get_containers(self, name='', image=''):
+        if name:
+            return self.client.containers.list(filters={'name': name})
+        elif image:
+            return self.client.containers.list(filters={'ancestor': image})
 
     def get_networks(self):
         try:
@@ -73,10 +76,22 @@ class DockerManager(object):
         return list(filter(lambda n: n.name not in ['none', 'bridge', 'host'], networks))
 
     def get_postgres_containers(self):
-        return self.get_containers('postgres:12.4')
+        return self.get_containers(image='postgres:12.4')
 
     def get_odoo_containers(self):
-        return self.get_containers('odoo_one_extra:%s' % self.odoo_version)
+        return self.get_containers(name='odoo_one_web_1')
+
+    def get_odoo_running_version(self):
+        for container in self.get_odoo_containers():
+            return container.image.tags[0].split(':')[1]
+
+    def get_odoo_logs(self):
+        for container in self.get_odoo_containers():
+            try:
+                return container.logs().decode()
+            except Exception as err:
+                pass
+                return ''
 
     def stop_odoo_containers(self):
         containers = self.get_odoo_containers()

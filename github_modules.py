@@ -47,14 +47,6 @@ def write_repositories(version, repositories):
     write_json_file('repositories', version, repositories)
 
 
-def version_to_number(version):
-    return str(version).replace('.0', '')
-
-
-def number_to_version(number_version):
-    return '%s.0' % number_version
-
-
 def print_version_abstract(number_version):
     users = load_github_modules(number_version)
     print('Version: %s' % number_version)
@@ -111,8 +103,8 @@ class GithubModules:
 
     def set_version(self, odoo_version):
         previous_version = self.version
-        self.version = version_to_number(odoo_version)
-        self.odoo_version = number_to_version(self.version)
+        self.version = odoo_manager.version_to_number(odoo_version)
+        self.odoo_version = odoo_manager.number_to_version(self.version)
         if self.version != previous_version:
             self.need_refresh = True
 
@@ -376,4 +368,4 @@ if __name__ == '__main__':
         gh_modules.generate_all_github_modules_file()
 
         for v in versions:
-            print_version_abstract(version_to_number(v))
+            print_version_abstract(odoo_manager.version_to_number(v))

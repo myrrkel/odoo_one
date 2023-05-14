@@ -5,7 +5,7 @@ from ui.designer import ui_addon_title_table_item, ui_dialog_addons
 from ui import versions_widget
 import svg_icon
 import addons_lib
-import github_modules
+import odoo_manager
 import subprocess
 import logging
 
@@ -74,7 +74,7 @@ class DialogAddons(QtWidgets.QDialog):
         if current_version == 'all':
             version = addon.versions[0]
         else:
-            version = github_modules.number_to_version(current_version)
+            version = odoo_manager.number_to_version(current_version)
         url = addon.get_github_url(version)
         subprocess.call(['firefox', url],
                         stdout=subprocess.PIPE, universal_newlines=True)

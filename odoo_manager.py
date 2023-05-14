@@ -10,6 +10,14 @@ from github_modules import GithubModules
 logger = logging.getLogger(__name__)
 
 
+def version_to_number(version):
+    return str(version).replace('.0', '')
+
+
+def number_to_version(number_version):
+    return '%s.0' % number_version
+
+
 class OdooManager(object):
 
     def __init__(self, version=False, enterprise_path="", stdout_signal=None, main_window=None):
@@ -34,6 +42,10 @@ class OdooManager(object):
     def get_all_versions(self):
         return ['%0.1f' % v for v in range(8, self.get_last_version() + 1).__reversed__()]
 
+    def set_version(self, version=''):
+        self.version = int(version)
+        self.odoo_version = number_to_version(self.version)
+
     def start_sudo(self):
         print('Docker need sudo to be installed.')
 
@@ -55,7 +67,7 @@ class OdooManager(object):
         self.gh_modules.generate_all_github_modules_file()
         self.print_stdout('Addons list update done.')
 
-    def init(self, pull=False):
+    def init(self, pull=False, open_in_browser=False):
         self.print_stdout('Start Odoo...')
         if not self.docker_manager.docker_exists():
             if self.local_user != 'root':
@@ -98,7 +110,9 @@ class OdooManager(object):
                                                     enterprise_path=self.enterprise_path)
             self.docker_manager.start_compose()
         try:
-            self.wait_and_open()
+            self.wait_odoo()
+            if open_in_browser:
+                self.open_odoo_firefox(self.odoo_start_url())
         except Exception as err:
             logger.error(err)
             pass
@@ -108,23 +122,41 @@ class OdooManager(object):
 
     def odoo_base_url(self):
         ip = self.odoo_ip()
+        if not ip:
+            logger.info('Restarting Odoo Server...')
+            self.init()
+            return self.odoo_base_url()
+
         return "%s:%s/web" % (ip, docker_manager.DEFAULT_PORT)
 
     def odoo_start_url(self):
         return "%s?db=%s" % (self.odoo_base_url(), self.odoo_db)
 
-    def wait_and_open(self):
-        orpc = odoo_rpc.OdooRpc(self.odoo_ip(),
+    def get_odoo_rpc(self):
+        return odoo_rpc.OdooRpc(self.odoo_ip(),
                                 docker_manager.DEFAULT_PORT,
                                 self.odoo_db,
                                 "admin",
                                 "admin",
                                 self.version)
+
+    def check_running_version(self):
+        return self.docker_manager.get_odoo_running_version() == number_to_version(self.version)
+
+    def wait_odoo(self):
+        orpc = self.get_odoo_rpc()
         admin = orpc.read('res.users', 1)
         orpc.update_addons_list()
         for addon in self.gh_modules.addons:
             orpc.install_addon(addon)
-        self.open_odoo_firefox(self.odoo_start_url())
+
+    def get_logs(self):
+        try:
+            return self.docker_manager.get_odoo_logs()
+        except Exception as err:
+            pass
+            logger.error(err)
+            return ''
 
 
 if __name__ == '__main__':

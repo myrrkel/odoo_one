@@ -21,6 +21,7 @@ class StartOdooThread(QThread):
     done = pyqtSignal(int, name='done')
     function_name = 'start_odoo'
     github_access_token = ''
+    open_in_browser = False
 
     def __init__(self, parent=None, function_name=None):
         super().__init__(parent)
@@ -31,7 +32,7 @@ class StartOdooThread(QThread):
     def run(self):
         try:
             if self.function_name == 'start_odoo':
-                self.parent.odoo.init()
+                self.parent.odoo.init(open_in_browser=self.open_in_browser)
             if self.function_name == 'update_addons_list':
                 try:
                     self.parent.log_thread.mute_odoo = True
@@ -65,18 +66,17 @@ class LogThread(QThread):
                 stdout = self.parent.odoo.docker_manager.current_process.stdout
                 if stdout:
                     self.parent.stdout_signal.emit(stdout)
-            if self.parent.odoo.docker_manager:
-                for container in self.parent.odoo.docker_manager.get_odoo_containers():
-                    try:
-                        logs = container.logs().decode()
-                        if logs:
-                            last_line = logs.splitlines()[-1]
-                            if last_line != self.last_line:
-                                self.last_line = last_line
-                                self.parent.stdout_signal.emit(container.logs().decode())
-                    except Exception as err:
-                        logger.error(err)
-                        pass
+            if self.parent.odoo and self.parent.odoo.docker_manager:
+                try:
+                    logs = self.parent.odoo.get_logs()
+                    if logs:
+                        last_line = logs.splitlines()[-1]
+                        if last_line != self.last_line:
+                            self.last_line = last_line
+                            self.parent.stdout_signal.emit(logs)
+                except Exception as err:
+                    logger.error(err)
+                    pass
             time.sleep(1)
 
 
@@ -118,8 +118,8 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         self.onchange_checkbox_enterprise()
 
         self.tool_menu = QtWidgets.QMenu(self.main_window)
-        self.action_select_database = QtWidgets.QAction(_translate('MainWindow', 'Select database'))
-        self.tool_menu.addAction(self.action_select_database)
+        self.action_database_manager = QtWidgets.QAction(_translate('MainWindow', 'Database Manager'))
+        self.tool_menu.addAction(self.action_database_manager)
         self.action_config_database = QtWidgets.QAction(_translate('MainWindow', 'Database configuration'))
         self.tool_menu.addAction(self.action_config_database)
         self.action_update_addons_list = QtWidgets.QAction(_translate('MainWindow', 'Update addons list from Github'))
@@ -143,7 +143,7 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
     def init_combo_version(self):
         for i in range(8, self.odoo.get_last_version()+1):
             self.combo_version.addItem('%s' % i, i)
-        self.combo_version.setCurrentText('%s' % self.odoo.get_last_version())
+        self.combo_version.setCurrentText(str(self.odoo.get_last_version()))
 
     def onchange_checkbox_enterprise(self):
         if self.checkbox_enterprise.isChecked():
@@ -171,9 +171,10 @@ class MainWindow(QMainWindow):
 
     def setupUi(self):
         self.ui.setupUi(self)
-        self.ui.push_button_start.clicked.connect(self.start_odoo)
+        self.ui.push_button_start.clicked.connect(self.start_and_open_odoo)
         self.ui.push_logs.clicked.connect(self.copy_logs)
         self.ui.action_update_addons_list.triggered.connect(self.update_addons_list)
+        self.ui.action_database_manager.triggered.connect(self.database_manager)
 
     def starter_thread_done(self):
         self.ui.wait_overlay.hide()
@@ -197,6 +198,21 @@ class MainWindow(QMainWindow):
             self.update_addons_list_thread.github_access_token = github_access_token
             self.update_addons_list_thread.start()
 
+    def database_manager(self):
+        try:
+            self.odoo.set_version(self.ui.combo_version.currentData())
+            if not self.odoo.check_running_version():
+                self.start_odoo(open_in_browser=False)
+            try:
+                self.odoo.wait_odoo()
+            except:
+                wait_overlay_widget
+                self.odoo.wait_odoo()
+            self.odoo.open_odoo_firefox('%s/%s' % (self.odoo.odoo_base_url(), 'database/manager'))
+        except Exception as err:
+            pass
+            return True
+
     def print_log(self, to_log):
         is_new_log = self.ui.text_log == ''
 
@@ -219,15 +235,21 @@ class MainWindow(QMainWindow):
 
         self.odoo = odoo_manager.OdooManager(version, enterprise_path, self.stdout_signal, self)
 
-    def start_odoo(self):
+    def start_and_open_odoo(self):
+        self.start_odoo(open_in_browser=True)
+
+    def start_odoo(self, open_in_browser=True):
         self.log_thread.quit()
         self.ui.wait_overlay.show_overlay()
         self.set_odoo_manager()
         self.starter_thread = StartOdooThread(self)
+        self.starter_thread.open_in_browser = open_in_browser
         self.starter_thread.start()
         self.starter_thread.done.connect(self.starter_thread_done)
         settings.save_setting('USE_ENTERPRISE', self.ui.checkbox_enterprise.isChecked())
         settings.save_setting('ENTERPRISE_PATH', self.ui.line_edit_enterprise_path.text())
+        self.log_thread = LogThread(self)
+        self.log_thread.start()
 
     def closeEvent(self, event):
         self.log_thread.terminate()
