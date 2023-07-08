@@ -83,6 +83,7 @@ class GithubModules:
     print_stdout = None
     log = ''
     need_refresh = True
+    need_clone = False
 
     def __init__(self, access_token="", odoo=None):
         if odoo:
@@ -116,7 +117,7 @@ class GithubModules:
         if self.need_refresh or force_refresh:
             self.github_modules = load_github_modules(self.version)
             self._compute_github_repositories()
-            if clone:
+            if self.need_clone or clone:
                 self.clone_github_repositories(self.odoo_version)
             self.need_refresh = False
 
@@ -130,12 +131,21 @@ class GithubModules:
             self.addons.append(module['name'])
             repository = self.find_repository(module['repository'], module['user'])
             if not repository:
-                self.repositories[module['repository']] = {'name': module['repository'], 'user': module['user']}
+                repository = {'name': module['repository'], 'user': module['user']}
+                self.repositories[module['repository']] = repository
+                self.need_refresh = True
 
-            manifest = self.get_local_module_manifest(module['user'],
-                                                      module['repository'],
-                                                      self.odoo_version, module['name'])
-            self.external_dependencies = manifest.get('external_dependencies', [])
+            try:
+                self._compute_external_dependencies(module)
+            except Exception as err:
+                self.logger(str(err))
+                pass
+
+    def _compute_external_dependencies(self, module):
+        manifest = self.get_local_module_manifest(module['user'],
+                                                  module['repository'],
+                                                  self.odoo_version, module['name'])
+        self.external_dependencies = manifest.get('external_dependencies', [])
 
     def _compute_github_repositories(self):
         for user in self.github_modules.keys():
@@ -305,25 +315,28 @@ class GithubModules:
         self.addons_path_list = []
         if not os.path.isdir(GITHUB_ADDONS_DIR):
             os.mkdir(GITHUB_ADDONS_DIR)
-        for repo_name in self.repositories:
-            repo = self.repositories[repo_name]
-            github_user_path = os.path.join(GITHUB_ADDONS_DIR, repo['user'])
-            if not os.path.isdir(github_user_path):
-                os.mkdir(github_user_path)
-            if repo.get('url', False):
-                url = repo['url']
-            else:
-                try:
-                    repo_dict = self.github_modules[repo['user']]['repositories'][repo['name']]
-                    url = repo_dict['html_url']
-                except Exception as e:
-                    print(e)
-                    continue
+        for repository in self.repositories:
+            self.clone_github_repository(self.repositories[repository], version)
 
-            repo_name = url.split('/')[-1].split('.')[0]
-            self.git_clone(url, github_user_path, repo_name)
-            self.git_checkout(github_user_path, repo_name, version)
-            self.addons_path_list.append(github_user_path + "/" + repo_name)
+    def clone_github_repository(self, repository, version):
+        github_user_path = os.path.join(GITHUB_ADDONS_DIR, repository['user'])
+        if not os.path.isdir(github_user_path):
+            os.mkdir(github_user_path)
+        if repository.get('url', False):
+            url = repository['url']
+        else:
+            try:
+                repo_dict = self.github_modules[repository['user']]['repositories'][repository['name']]
+                url = repo_dict['html_url']
+            except Exception as e:
+                print(e)
+                self.need_clone = True
+                return
+
+        repo_name = url.split('/')[-1].split('.')[0]
+        self.git_clone(url, github_user_path, repo_name)
+        self.git_checkout(github_user_path, repo_name, version)
+        self.addons_path_list.append(github_user_path + "/" + repo_name)
 
     def git_clone(self, url, github_user_path, repo_name):
         path = github_user_path + "/" + repo_name
