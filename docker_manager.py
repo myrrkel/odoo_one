@@ -127,6 +127,10 @@ class DockerManager(object):
         db_containers = self.get_postgres_containers()
         return db_containers and db_containers[0].name or 'db'
 
+    def get_db_network(self):
+        db_containers = self.get_postgres_containers()
+        return db_containers and db_containers[0].attrs['HostConfig']['NetworkMode']
+
     def get_db_container_image(self):
         db_containers = self.get_postgres_containers()
         return db_containers and db_containers[0].image.tags[0] or 'postgres:12.4'
@@ -156,6 +160,7 @@ class DockerManager(object):
         odoo_volumes = self.get_odoo_volumes(path_list, version, enterprise_path)
         db_image = self.get_db_container_image()
         db_container = self.get_db_container_name()
+        db_network = self.get_db_network()
         depends = ''
         if db_container == 'db':
             depends = """    depends_on:
@@ -189,7 +194,7 @@ networks:
                                  version=version,
                                  cmd=cmd,
                                  cmd_params=cmd_params,
-                                 network=self.network,
+                                 network=db_network or self.network,
                                  depends=depends,
                                  db_service=self.get_compose_db_service(version),
                                  port=DEFAULT_PORT,
