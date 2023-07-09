@@ -125,6 +125,7 @@ class GithubModules:
         if not self.db_settings:
             return
         self.addons = []
+        self.external_dependencies = []
         self.modules = self.db_settings['modules']
         self.repositories = {}
         for module in self.modules:
@@ -145,7 +146,9 @@ class GithubModules:
         manifest = self.get_local_module_manifest(module['user'],
                                                   module['repository'],
                                                   self.odoo_version, module['name'])
-        self.external_dependencies = manifest.get('external_dependencies', [])
+        external_dependency = manifest.get('external_dependencies', False)
+        if external_dependency:
+            self.external_dependencies.append(external_dependency)
 
     def _compute_github_repositories(self):
         for user in self.github_modules.keys():
