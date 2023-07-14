@@ -1,11 +1,14 @@
 from github import Github, GithubException, RateLimitExceededException
-import settings
 import json
-import time
-import subprocess
+import logging
 import os
 import re
+import settings
+import subprocess
+import time
 import odoo_manager
+
+logger = logging.getLogger(__name__)
 
 FILE_NAME = 'github_modules'
 DATA_DIR = './data/'
@@ -375,13 +378,16 @@ if __name__ == '__main__':
     import sys
     if len(sys.argv) > 1:
         credential = sys.argv[1]
-        gh_modules = GithubModules(credential)
-        g = GithubModules(credential)
-        versions = gh_modules.odoo.get_all_versions()
-        versions = versions[:1]
-        for v in versions:
-            g.generate_json_file(v)
-        gh_modules.generate_all_github_modules_file()
+    else:
+        logger.error('A Github credential is required.')
+        sys.exit(2)
+    gh_modules = GithubModules(credential)
+    g = GithubModules(credential)
+    versions = gh_modules.odoo.get_all_versions()
+    versions = versions[:1]
+    for v in versions:
+        g.generate_json_file(v)
+    gh_modules.generate_all_github_modules_file()
 
-        for v in versions:
-            print_version_abstract(odoo_manager.version_to_number(v))
+    for v in versions:
+        print_version_abstract(odoo_manager.version_to_number(v))
