@@ -28,4 +28,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update Odoo Addons List
-          file_pattern: 'github_modules_*.json'
+          file_pattern: 'data/github_modules_*.json'
