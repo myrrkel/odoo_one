@@ -1,18 +1,34 @@
 from github import Github, GithubException, RateLimitExceededException
+import argparse
 import json
 import logging
 import os
 import re
 import settings
+import sys
 import subprocess
 import time
 import odoo_manager
 
 logger = logging.getLogger(__name__)
+logger.setLevel("INFO")
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.INFO)
+logger.addHandler(handler)
 
 FILE_NAME = 'github_modules'
 DATA_DIR = './data/'
 GITHUB_ADDONS_DIR = 'github_addons'
+
+
+def create_addons_files(credential, versions, repo_to_update):
+    gh_modules = GithubModules(credential)
+    for v in versions:
+        gh_modules.generate_json_file(v, repo_to_update)
+    gh_modules.generate_all_github_modules_file()
+
+    for v in versions:
+        print_version_abstract(odoo_manager.version_to_number(v))
 
 
 def strip_comments(code):
@@ -93,8 +109,6 @@ class GithubModules:
             self.odoo = odoo
         else:
             self.odoo = odoo_manager.OdooManager()
-        last_version = self.odoo.get_last_version()
-        all_versions = self.odoo.get_all_versions()
 
         if access_token:
             self.access_token = access_token
@@ -104,7 +118,8 @@ class GithubModules:
 
     def init_github(self):
         try:
-            self.github = Github(self.access_token)
+            if self.access_token:
+                self.github = Github(self.access_token)
         except Exception as err:
             logger.error(err, exc_info=True)
             pass
@@ -251,8 +266,7 @@ class GithubModules:
         modules = {}
         dirs = [d for d in self.get_dir_contents(repo, '.', ref=branch_ref) if d.type == 'dir' and d.name != 'setup']
         if dirs:
-            self.logger('"%s";"%s";"%s";"%s"' % (
-                repo.name, repo.description, repo.html_url, repo.default_branch))
+            self.logger('"%s";"%s";"%s"' % (repo.name, repo.description, repo.html_url))
             for sub_dir in dirs:
                 module_dict = self.get_github_module_manifest(repo, branch_ref, sub_dir.name)
                 if module_dict:
@@ -274,28 +288,36 @@ class GithubModules:
 
     def generate_mini_json_file(self, version=""):
         branch_ref = version or ""
-        oca_modules_list = []
+        modules_list = []
         for github_user in self.github_users:
             self.wait_for_rate_limit()
             for repo in self.github.get_user(github_user).get_repos():
-                oca_modules_list.extend(self.get_repository_module_list(repo, branch_ref))
-        write_json_file('mini_%s' % FILE_NAME, version, oca_modules_list)
+                modules_list.extend(self.get_repository_module_list(repo, branch_ref))
+        write_json_file('mini_%s' % FILE_NAME, version, modules_list)
 
-    def generate_json_file(self, version=""):
+    def generate_json_file(self, version="", repo_to_update=None):
+        if repo_to_update is None:
+            repo_to_update = []
         branch_ref = version or ""
-        oca_modules_dict = {}
+        modules_dict = load_github_modules(version)
 
         for github_user in self.github_users:
             repositories = {}
             self.wait_for_rate_limit()
             for repo in self.github.get_user(github_user).get_repos():
+                if repo_to_update and repo.name not in repo_to_update:
+                    continue
                 repository_dict = self.get_repository_dict(repo, branch_ref)
                 if repository_dict:
                     repositories[repo.name] = repository_dict
 
-            oca_modules_dict[github_user] = {'repositories': repositories}
+            if github_user not in modules_dict:
+                modules_dict[github_user] = {'repositories': repositories}
+            else:
+                for repo in repositories.keys():
+                    modules_dict[github_user]['repositories'][repo] = repositories[repo]
 
-        write_json_file(FILE_NAME, version, oca_modules_dict)
+        write_json_file(FILE_NAME, version, modules_dict)
 
     def generate_all_json_file(self):
         for version in self.odoo.get_all_versions():
@@ -375,37 +397,41 @@ class GithubModules:
         self.log = '\n'.join([self.log, text]) if self.log else text
         if self.stdout_signal:
             self.print_stdout(self.log)
-        print(text)
+        logger.info(text)
 
 
 if __name__ == '__main__':
-    import sys
-    if len(sys.argv) > 1:
-        credential = sys.argv[1]
-    else:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('credential')
+    parser.add_argument('-r', '--repositories', dest='repositories')
+    parser.add_argument('-v', '--versions', dest='versions')
+    parser.add_argument('-n', '--number', dest='number')
+    try:
+        args = parser.parse_args()
+    except Exception as err:
+        logger.error(err)
+        sys.exit(2)
+
+    gh_modules = GithubModules()
+    versions = gh_modules.odoo.get_all_versions()
+    repo_to_update = []
+
+    if not args.credential:
         logger.error("A Github credential is required.")
         sys.exit(2)
-    gh_modules = GithubModules(credential)
-    g = GithubModules(credential)
-    versions = gh_modules.odoo.get_all_versions()
 
-    if len(sys.argv) == 4:
-        if sys.argv[2] == '-v':
-            if sys.argv[3] == 'all':
-                pass
-            else:
-                versions = [sys.argv[3]]
-        elif sys.argv[2] == '-n':
-            versions = versions[:int(sys.argv[3])]
+    if args.versions:
+        if args.versions == 'all':
+            pass
         else:
-            logger.error("unknown parameter")
-            sys.exit(2)
+            versions = sys.argv[3].split(',')
     else:
         versions = versions[:1]
 
-    for v in versions:
-        g.generate_json_file(v)
-    gh_modules.generate_all_github_modules_file()
+    if args.number:
+        versions = versions[:int(args.number)]
 
-    for v in versions:
-        print_version_abstract(odoo_manager.version_to_number(v))
+    if args.repositories:
+        repo_to_update = args.repositories.split(',')
+
+    create_addons_files(args.credential, versions, repo_to_update)
