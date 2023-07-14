@@ -103,7 +103,11 @@ class GithubModules:
         # https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
 
     def init_github(self):
-        self.github = Github(self.access_token)
+        try:
+            self.github = Github(self.access_token)
+        except Exception as err:
+            logger.error(err, exc_info=True)
+            pass
 
     def set_version(self, odoo_version):
         previous_version = self.version
