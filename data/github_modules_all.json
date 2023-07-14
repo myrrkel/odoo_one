@@ -9799,6 +9799,23 @@
         ]
     },
     {
+        "author": "Alexandre D\u00edaz, Odoo Community Association (OCA)",
+        "category": "web",
+        "display_name": "Web Company Color",
+        "name": "web_company_color",
+        "repository": "web",
+        "summary": "",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "13.0",
+            "12.0"
+        ]
+    },
+    {
         "author": "initOS GmbH, Odoo Community Association (OCA)",
         "category": "",
         "display_name": "Dark Mode",
@@ -10076,6 +10093,25 @@
         ]
     },
     {
+        "author": "ForgeFlow, Odoo Community Association (OCA), Creu Blanca",
+        "category": "Hidden",
+        "display_name": "Web Widget Bokeh Chart",
+        "name": "web_widget_bokeh_chart",
+        "repository": "web",
+        "summary": "This widget allows to display charts using Bokeh library.",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0"
+        ]
+    },
+    {
         "author": "GRAP, Tecnativa, Odoo Community Association (OCA)",
         "category": "web",
         "display_name": "Web Widget Numeric Step",
@@ -10089,6 +10125,40 @@
             "14.0",
             "13.0",
             "12.0"
+        ]
+    },
+    {
+        "author": "LevelPrime srl, Odoo Community Association (OCA)",
+        "category": "Web",
+        "display_name": "Web Widget Plotly",
+        "name": "web_widget_plotly_chart",
+        "repository": "web",
+        "summary": "Allow to draw plotly charts.",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "14.0",
+            "12.0"
+        ]
+    },
+    {
+        "author": "Therp BV, Tecnativa, Camptocamp, CorporateHub, Onestein, Odoo Community Association (OCA)",
+        "category": "Hidden/Dependency",
+        "display_name": "2D matrix for x2many fields",
+        "name": "web_widget_x2many_2d_matrix",
+        "repository": "web",
+        "summary": "Show list fields as a matrix",
+        "user": "OCA",
+        "versions": [
+            "16.0",
+            "15.0",
+            "14.0",
+            "13.0",
+            "12.0",
+            "11.0",
+            "10.0",
+            "9.0",
+            "8.0"
         ]
     },
     {
@@ -24606,22 +24676,6 @@
         ]
     },
     {
-        "author": "Alexandre D\u00edaz, Odoo Community Association (OCA)",
-        "category": "web",
-        "display_name": "Web Company Color",
-        "name": "web_company_color",
-        "repository": "web",
-        "summary": "",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "13.0",
-            "12.0"
-        ]
-    },
-    {
         "author": "Dynapps,Odoo Community Association (OCA)",
         "category": "Tools",
         "display_name": "Show confirmation dialogue before copying records",
@@ -24856,24 +24910,6 @@
         ]
     },
     {
-        "author": "ForgeFlow, Odoo Community Association (OCA)",
-        "category": "Hidden",
-        "display_name": "Web Widget Bokeh Chart",
-        "name": "web_widget_bokeh_chart",
-        "repository": "web",
-        "summary": "This widget allows to display charts using Bokeh library.",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0"
-        ]
-    },
-    {
         "author": "Creu Blanca,Odoo Community Association (OCA)",
         "category": "",
         "display_name": "Web Widget Child Selector",
@@ -25012,25 +25048,6 @@
             "13.0",
             "12.0",
             "11.0"
-        ]
-    },
-    {
-        "author": "Therp BV, Tecnativa, Camptocamp, CorporateHub, Odoo Community Association (OCA)",
-        "category": "Hidden/Dependency",
-        "display_name": "2D matrix for x2many fields",
-        "name": "web_widget_x2many_2d_matrix",
-        "repository": "web",
-        "summary": "Show list fields as a matrix",
-        "user": "OCA",
-        "versions": [
-            "15.0",
-            "14.0",
-            "13.0",
-            "12.0",
-            "11.0",
-            "10.0",
-            "9.0",
-            "8.0"
         ]
     },
     {
@@ -38445,19 +38462,6 @@
         "name": "web_widget_model_viewer",
         "repository": "web",
         "summary": "Easily display interactive 3D models on the web & in AR",
-        "user": "OCA",
-        "versions": [
-            "14.0",
-            "12.0"
-        ]
-    },
-    {
-        "author": "LevelPrime srl, Odoo Community Association (OCA)",
-        "category": "Web",
-        "display_name": "Web Widget Plotly",
-        "name": "web_widget_plotly_chart",
-        "repository": "web",
-        "summary": "Allow to draw plotly charts.",
         "user": "OCA",
         "versions": [
             "14.0",

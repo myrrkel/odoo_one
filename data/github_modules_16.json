@@ -5420,7 +5420,7 @@
                         "display_name": "Advanced search",
                         "name": "web_advanced_search",
                         "summary": "Easier and more powerful searching tools",
-                        "version": "16.0.1.0.1"
+                        "version": "16.0.1.0.2"
                     },
                     "web_chatter_position": {
                         "author": "Hynsys Technologies, Camptocamp, Odoo Community Association (OCA)",
@@ -5429,6 +5429,14 @@
                         "name": "web_chatter_position",
                         "summary": "Add an option to change the chatter position",
                         "version": "16.0.1.0.0"
+                    },
+                    "web_company_color": {
+                        "author": "Alexandre D\u00edaz, Odoo Community Association (OCA)",
+                        "category": "web",
+                        "display_name": "Web Company Color",
+                        "name": "web_company_color",
+                        "summary": "",
+                        "version": "16.0.1.1.0"
                     },
                     "web_dark_mode": {
                         "author": "initOS GmbH, Odoo Community Association (OCA)",
@@ -5452,7 +5460,7 @@
                         "display_name": "Web Domain Field",
                         "name": "web_domain_field",
                         "summary": "\n        Use computed field as domain",
-                        "version": "16.0.1.0.0"
+                        "version": "16.0.1.0.1"
                     },
                     "web_environment_ribbon": {
                         "author": "Francesco OpenCode Apruzzese, Tecnativa, Odoo Community Association (OCA)",
@@ -5508,7 +5516,7 @@
                         "display_name": "Web Responsive",
                         "name": "web_responsive",
                         "summary": "Responsive web client, community-supported",
-                        "version": "16.0.1.1.0"
+                        "version": "16.0.1.1.2"
                     },
                     "web_search_with_and": {
                         "author": "Sandip SCS, Versada UAB, ACSONE SA/NV, Serincloud,\n    Odoo Community Association (OCA)",
@@ -5524,7 +5532,7 @@
                         "display_name": "Web Select All Companies",
                         "name": "web_select_all_companies",
                         "summary": "Allows you to select all companies in one click.",
-                        "version": "16.0.1.0.0"
+                        "version": "16.0.1.0.1"
                     },
                     "web_sheet_full_width": {
                         "author": "Therp BV, Sudokeys, GRAP, M\u00e9tal Sartigan, Odoo Community Association (OCA)",
@@ -5548,7 +5556,7 @@
                         "display_name": "Web timeline",
                         "name": "web_timeline",
                         "summary": "Interactive visualization chart to show events in time",
-                        "version": "16.0.1.0.0"
+                        "version": "16.0.1.0.1"
                     },
                     "web_tree_many2one_clickable": {
                         "author": "Therp BV, Tecnativa, Camptocamp, Onestein, Odoo Community Association (OCA)",
@@ -5558,6 +5566,14 @@
                         "summary": "Open the linked resource when clicking on their name",
                         "version": "16.0.1.0.0"
                     },
+                    "web_widget_bokeh_chart": {
+                        "author": "ForgeFlow, Odoo Community Association (OCA), Creu Blanca",
+                        "category": "Hidden",
+                        "display_name": "Web Widget Bokeh Chart",
+                        "name": "web_widget_bokeh_chart",
+                        "summary": "This widget allows to display charts using Bokeh library.",
+                        "version": "16.0.1.0.1"
+                    },
                     "web_widget_numeric_step": {
                         "author": "GRAP, Tecnativa, Odoo Community Association (OCA)",
                         "category": "web",
@@ -5565,6 +5581,22 @@
                         "name": "web_widget_numeric_step",
                         "summary": "",
                         "version": "16.0.1.0.0"
+                    },
+                    "web_widget_plotly_chart": {
+                        "author": "LevelPrime srl, Odoo Community Association (OCA)",
+                        "category": "Web",
+                        "display_name": "Web Widget Plotly",
+                        "name": "web_widget_plotly_chart",
+                        "summary": "Allow to draw plotly charts.",
+                        "version": "16.0.1.0.0"
+                    },
+                    "web_widget_x2many_2d_matrix": {
+                        "author": "Therp BV, Tecnativa, Camptocamp, CorporateHub, Onestein, Odoo Community Association (OCA)",
+                        "category": "Hidden/Dependency",
+                        "display_name": "2D matrix for x2many fields",
+                        "name": "web_widget_x2many_2d_matrix",
+                        "summary": "Show list fields as a matrix",
+                        "version": "16.0.1.1.0"
                     }
                 },
                 "name": "web"
