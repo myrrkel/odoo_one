@@ -379,12 +379,26 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         credential = sys.argv[1]
     else:
-        logger.error('A Github credential is required.')
+        logger.error("A Github credential is required.")
         sys.exit(2)
     gh_modules = GithubModules(credential)
     g = GithubModules(credential)
     versions = gh_modules.odoo.get_all_versions()
-    versions = versions[:1]
+
+    if len(sys.argv) == 4:
+        if sys.argv[2] == '-v':
+            if sys.argv[3] == 'all':
+                pass
+            else:
+                versions = [sys.argv[3]]
+        elif sys.argv[2] == '-n':
+            versions = versions[:int(sys.argv[3])]
+        else:
+            logger.error("unknown parameter")
+            sys.exit(2)
+    else:
+        versions = versions[:1]
+
     for v in versions:
         g.generate_json_file(v)
     gh_modules.generate_all_github_modules_file()
