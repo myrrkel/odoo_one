@@ -1,5 +1,6 @@
 from github import Github, GithubException, RateLimitExceededException
 import argparse
+from datetime import datetime
 import json
 import logging
 import os
@@ -25,7 +26,9 @@ GITHUB_ADDONS_DIR = 'github_addons'
 def create_addons_files(credential, versions, repo_to_update):
     gh_modules = GithubModules(credential)
     for v in versions:
+        start_time = datetime.now()
         gh_modules.generate_json_file(v, repo_to_update)
+        logger.info("File creation in %0.2f seconds" % (datetime.now() - start_time).total_seconds())
     gh_modules.generate_all_github_modules_file()
 
     for v in versions:
@@ -276,10 +279,12 @@ class GithubModules:
             pass
 
     def get_repository_dict(self, repo, branch_ref):
+        start_time = datetime.now()
+        repo_dict = {}
         modules = {}
+        self.logger('"%s";"%s";"%s"' % (repo.name, repo.description, repo.html_url))
         dirs = self.get_directory_folders(repo, branch_ref)
         if dirs:
-            self.logger('"%s";"%s";"%s"' % (repo.name, repo.description, repo.html_url))
             for sub_dir in dirs:
                 if sub_dir.startswith('.') or sub_dir == 'setup':
                     continue
@@ -289,8 +294,8 @@ class GithubModules:
         if modules:
             repo_dict = {'name': repo.name, 'description': repo.description, 'html_url': repo.html_url,
                          'default_branch': repo.default_branch, 'modules': modules}
-            return repo_dict
-        return {}
+        self.logger("Done in %0.2f seconds" % (datetime.now() - start_time).total_seconds())
+        return repo_dict
 
     def get_repository_module_list(self, repo, branch_ref):
         modules = []
