@@ -4,6 +4,7 @@ import json
 import logging
 import os
 import re
+import requests
 import settings
 import sys
 import subprocess
@@ -243,12 +244,13 @@ class GithubModules:
             return eval(manifest)
 
     def get_github_module_manifest(self, repo, branch_ref, module_name):
-        files = self.get_dir_contents(repo, './%s' % module_name, ref=branch_ref)
         manifest_name = self.get_manifest_name(branch_ref)
-        manifest_file = [d for d in files if d.type == 'file' and d.name == manifest_name]
+        manifest_file = self.get_dir_contents(repo,
+                                              './%s/%s' % (module_name, manifest_name),
+                                              ref=branch_ref)
         if manifest_file:
             try:
-                manifest = eval(strip_comments(manifest_file[0].decoded_content.decode('UTF-8')))
+                manifest = eval(strip_comments(manifest_file.decoded_content.decode('UTF-8')))
                 module_dict = {'name': module_name,
                                'display_name': manifest.get('name', ''),
                                'summary': manifest.get('summary', ''),
@@ -262,15 +264,28 @@ class GithubModules:
                 return self.get_github_module_manifest(repo, branch_ref, module_name)
         return {}
 
+    def get_directory_folders(self, repo, branch_ref):
+        url = repo.trees_url.replace('{/sha}', '/'+branch_ref)
+        try:
+            headers = {'Authorization': 'token ' + self.access_token}
+            response = requests.get(url, headers=headers)
+            data_json = json.loads(response.content)
+            return [d['path'] for d in data_json['tree'] if d['type'] == 'tree' and d['path'][0] != '.']
+        except Exception as err:
+            logger.error(err, exc_info=True)
+            pass
+
     def get_repository_dict(self, repo, branch_ref):
         modules = {}
-        dirs = [d for d in self.get_dir_contents(repo, '.', ref=branch_ref) if d.type == 'dir' and d.name != 'setup']
+        dirs = self.get_directory_folders(repo, branch_ref)
         if dirs:
             self.logger('"%s";"%s";"%s"' % (repo.name, repo.description, repo.html_url))
             for sub_dir in dirs:
-                module_dict = self.get_github_module_manifest(repo, branch_ref, sub_dir.name)
+                if sub_dir.startswith('.') or sub_dir == 'setup':
+                    continue
+                module_dict = self.get_github_module_manifest(repo, branch_ref, sub_dir)
                 if module_dict:
-                    modules[sub_dir.name] = module_dict
+                    modules[sub_dir] = module_dict
         if modules:
             repo_dict = {'name': repo.name, 'description': repo.description, 'html_url': repo.html_url,
                          'default_branch': repo.default_branch, 'modules': modules}
@@ -305,7 +320,7 @@ class GithubModules:
             repositories = {}
             self.wait_for_rate_limit()
             for repo in self.github.get_user(github_user).get_repos():
-                if repo_to_update and repo.name not in repo_to_update:
+                if (repo_to_update and repo.name not in repo_to_update) or repo.name.startswith('.'):
                     continue
                 repository_dict = self.get_repository_dict(repo, branch_ref)
                 if repository_dict:
