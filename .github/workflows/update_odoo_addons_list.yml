@@ -4,6 +4,15 @@ name: Update Odoo Addons List
 
 on:
   workflow_dispatch:
+    inputs:
+      VERSIONS :
+        description: 'Versions'
+        required: false
+        default: '16.0'
+      REPOSITORIES :
+        description: 'Repositories'
+        required: false
+        default: 'web'
 
 permissions:
   contents: write
@@ -23,7 +32,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Generate JSON files
         run: |
-          python github_modules.py ${{ secrets.GITHUB_TOKEN }} -v 16.0 -r web
+          python github_modules.py ${{ secrets.GITHUB_TOKEN }} ${{ inputs.VERSIONS && format(' -v {0}', inputs.VERSIONS) }} ${{ inputs.REPOSITORIES && format(' -r {0}', inputs.REPOSITORIES) }}
       - name: Commit files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
