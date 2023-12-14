@@ -76,9 +76,6 @@ class OdooManager(object):
             self.docker_manager.install_docker()
             self.docker_manager.add_users_in_docker_group()
 
-        if not self.docker_manager.compose_exists():
-            self.docker_manager.install_compose()
-
         if pull:
             self.docker_manager.pull_images()
 

@@ -76,10 +76,10 @@ class DockerManager(object):
         return list(filter(lambda n: n.name not in ['none', 'bridge', 'host'], networks))
 
     def get_postgres_containers(self):
-        return self.get_containers(image='postgres:12.4')
+        return self.get_containers(name='postgres')
 
     def get_odoo_containers(self):
-        return self.get_containers(name='odoo_one_web_1')
+        return self.get_containers(name='odoo_one')
 
     def get_odoo_running_version(self):
         for container in self.get_odoo_containers():
@@ -129,7 +129,8 @@ class DockerManager(object):
 
     def get_db_network(self):
         db_containers = self.get_postgres_containers()
-        return db_containers and db_containers[0].attrs['HostConfig']['NetworkMode']
+        networks = db_containers and db_containers[0].attrs['NetworkSettings']['Networks']
+        return networks and list(networks)[0]
 
     def get_db_container_image(self):
         db_containers = self.get_postgres_containers()
@@ -164,10 +165,11 @@ class DockerManager(object):
         depends = ''
         if db_container == 'db':
             depends = """    depends_on:
-      - {db_container}""".format(db_container=db_container)
+      - {db_container}""".format(db_container=db_image)
 
-        compose = """version: '2'
-services:
+        db_service = self.get_compose_db_service(version) if not db_network else ''
+
+        compose = """services:
   web:
     image: odoo_one_extra:{version}.0
     build: ./
@@ -196,7 +198,7 @@ networks:
                                  cmd_params=cmd_params,
                                  network=db_network or self.network,
                                  depends=depends,
-                                 db_service=self.get_compose_db_service(version),
+                                 db_service=db_service,
                                  port=DEFAULT_PORT,
                                  )
         f = open("docker-compose.yml", "w+")
@@ -205,7 +207,7 @@ networks:
 
     def get_compose_db_service(self, version):
         db_container = self.get_db_container_name()
-        if db_container != 'db':
+        if not db_container:
             return ''
         db_image = self.get_db_container_image()
         volumes = ['postgresql_data:/var/lib/postgresql/data']
@@ -231,12 +233,12 @@ networks:
         self.current_process = subprocess.run(params, shell=False, capture_output=True, text=True)
 
     def start_compose(self):
-        self.subprocess_run(['docker-compose', 'build'])
+        self.subprocess_run(['docker', 'compose', 'build'])
         # self.subprocess_run(['docker', 'build', '.', '-t', 'odoo_one_extra:16'])
-        self.subprocess_run(['docker-compose', 'up', '-d'])
+        self.subprocess_run(['docker', 'compose', 'up', '-d'])
 
     def stop_compose(self):
-        self.subprocess_run(['docker-compose', 'down'])
+        self.subprocess_run(['docker', 'compose', 'down'])
 
     def create_network(self, name):
         self.subprocess_run(['docker', 'network', 'create', name, '--subnet=172.19.0.0/16'])
@@ -244,8 +246,3 @@ networks:
     def docker_exists(self):
         docker_path = shutil.which("docker")
         return docker_path is not None
-
-    def compose_exists(self):
-        compose_path = shutil.which("docker-compose")
-        return compose_path is not None
-

@@ -4,3 +4,4 @@ PyGithub
 PyQt5
 appdirs
 psycopg2-binary
+pyyaml!=6.0.0,!=5.4.0,!=5.4.1
