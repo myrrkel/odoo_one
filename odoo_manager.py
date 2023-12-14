@@ -37,7 +37,7 @@ class OdooManager(object):
         self.gh_modules.load(self.version, clone=True)
 
     def get_last_version(self):
-        return 16
+        return 17
 
     def get_all_versions(self):
         return ['%0.1f' % v for v in range(8, self.get_last_version() + 1).__reversed__()]
