@@ -273,7 +273,10 @@ class GithubModules:
             headers = {'Authorization': 'token ' + self.access_token}
             response = requests.get(url, headers=headers)
             data_json = json.loads(response.content)
-            return [d['path'] for d in data_json['tree'] if d['type'] == 'tree' and d['path'][0] != '.']
+            tree = data_json.get('tree')
+            if not tree:
+                return []
+            return [d['path'] for d in tree if d['type'] == 'tree' and d['path'][0] != '.']
         except Exception as err:
             logger.error(err, exc_info=True)
             pass
@@ -422,7 +425,7 @@ class GithubModules:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('credential')
+    parser.add_argument('-c', '--credential', dest='credential')
     parser.add_argument('-r', '--repositories', dest='repositories')
     parser.add_argument('-v', '--versions', dest='versions')
     parser.add_argument('-n', '--number', dest='number')
@@ -435,16 +438,18 @@ if __name__ == '__main__':
     gh_modules = GithubModules()
     versions = gh_modules.odoo.get_all_versions()
     repo_to_update = []
-
-    if not args.credential:
-        logger.error("A Github credential is required.")
-        sys.exit(2)
+    credential = args.credential
+    if not credential:
+        credential = os.environ.get('GITHUB_CREDENTIAL', '')
+        if not credential:
+            logger.error("A Github credential is required.")
+            sys.exit(2)
 
     if args.versions:
         if args.versions == 'all':
             pass
         else:
-            versions = sys.argv[3].split(',')
+            versions = args.versions.split(',')
     else:
         versions = versions[:1]
 
@@ -454,4 +459,4 @@ if __name__ == '__main__':
     if args.repositories:
         repo_to_update = args.repositories.split(',')
 
-    create_addons_files(args.credential, versions, repo_to_update)
+    create_addons_files(credential, versions, repo_to_update)
