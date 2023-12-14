@@ -1,6 +1,6 @@
 import logging
 import os
-import docker
+import install_docker
 import docker_manager
 import odoo_conf as oconf
 import odoo_rpc
@@ -73,8 +73,8 @@ class OdooManager(object):
             if self.local_user != 'root':
                 self.start_sudo()
                 return False
-            self.docker_manager.install_docker()
-            self.docker_manager.add_users_in_docker_group()
+            install_docker.install_docker()
+            install_docker.add_users_in_docker_group()
 
         if pull:
             self.docker_manager.pull_images()
