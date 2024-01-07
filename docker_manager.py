@@ -1,6 +1,8 @@
 import docker
+import os
 import shutil
 import subprocess
+from github_modules import GITHUB_ADDONS_DIR
 
 DEFAULT_PORT = 8069
 
@@ -137,13 +139,16 @@ class DockerManager(object):
         return db_containers and db_containers[0].image.tags[0] or 'postgres:12.4'
 
     def create_docker_file(self, version, external_dependencies):
+        if not os.path.isdir(GITHUB_ADDONS_DIR):
+            os.mkdir(GITHUB_ADDONS_DIR)
         docker_file = f'FROM odoo:{version}.0'
         docker_file += '\nUSER root'
+        docker_file += f'\nCOPY ./{GITHUB_ADDONS_DIR}/ /opt/{GITHUB_ADDONS_DIR}/'
+        docker_file += f'\nRUN find /opt/{GITHUB_ADDONS_DIR}/ -type f -name "requirements.txt" -exec pip install -r ''{}'' \\;'
         for addon_dependency in external_dependencies:
             external_dependency = addon_dependency.get('python', [])
             for python_dependency in external_dependency:
                 docker_file = '\n'.join([docker_file, f'RUN pip install {python_dependency}'])
-        docker_file = docker_file.format(version=version)
         docker_file += '\nUSER odoo'
         f = open("Dockerfile", "w+")
         f.write(docker_file)
