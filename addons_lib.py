@@ -15,9 +15,9 @@ class Addon:
         self.user = addon_dict['user']
         self.versions = addon_dict['versions']
 
-        self.words_set = set(self.display_name.lower().split(' '))
-        self.words_set.update(set(self.name.lower().split('_')))
-        self.words_set.update(set(self.summary.lower().split(' ')))
+        self.keywords = set(self.display_name.lower().split(' '))
+        self.keywords.update(set(self.name.lower().split('_')))
+        self.keywords.update(set(self.summary.lower().split(' ')))
         self.compute_categories()
 
     def compute_categories(self):
@@ -25,7 +25,12 @@ class Addon:
         self.categories = set([c.strip().title() for c in categories])
 
     def search_words(self, words):
-        return set(words).issubset(self.words_set)
+        if set(words).issubset(self.keywords):
+            return True
+        for word in words:
+            if not [k for k in self.keywords if word in k]:
+                return False
+        return True
 
     def get_github_url(self, version=False):
         if not version:
