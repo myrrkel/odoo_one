@@ -88,6 +88,13 @@ def print_version_abstract(number_version):
         print('Count modules: %s' % len(modules))
 
 
+def get_manifest_name(branch_ref):
+    if branch_ref in ['8.0', '9.0']:
+        return '__openerp__.py'
+    else:
+        return '__manifest__.py'
+
+
 class GithubModules:
     version = ""
     odoo_version = ""
@@ -179,8 +186,7 @@ class GithubModules:
     def _compute_github_repositories(self):
         for user in self.github_modules.keys():
             for repository_name in self.github_modules[user]['repositories'].keys():
-                repository = {'user': user}
-                repository['name'] = repository_name
+                repository = {'user': user, 'name': repository_name}
                 self.github_repositories[repository_name] = repository
 
     def find_repository(self, repository, user):
@@ -204,8 +210,6 @@ class GithubModules:
 
     def load_database_settings(self, db_name=''):
         self.db_settings = settings.get_setting('github modules %s' % (db_name or 'odoo_%s' % self.version))
-#        if not self.db_settings:
-#            self.db_settings = {'modules': [{'name': 'web_environment_ribbon', 'user': 'OCA', 'repository': 'web'}]}
 
     def save_database_settings(self, db_name=''):
         setting_name = 'github modules %s' % (db_name or 'odoo_%s' % self.version)
@@ -233,21 +237,15 @@ class GithubModules:
                 print(e)
         return []
 
-    def get_manifest_name(self, branch_ref):
-        if branch_ref in ['8.0', '9.0']:
-            return '__openerp__.py'
-        else:
-            return '__manifest__.py'
-
     def get_local_module_manifest(self, user_name, repo_name, branch_ref, module_name):
-        manifest_name = self.get_manifest_name(branch_ref)
+        manifest_name = get_manifest_name(branch_ref)
         manifest_file = os.path.join(GITHUB_ADDONS_DIR, user_name, repo_name, module_name, manifest_name)
         with open(manifest_file) as f:
             manifest = f.read()
             return eval(manifest)
 
     def get_github_module_manifest(self, repo, branch_ref, module_name):
-        manifest_name = self.get_manifest_name(branch_ref)
+        manifest_name = get_manifest_name(branch_ref)
         manifest_file = self.get_dir_contents(repo,
                                               './%s/%s' % (module_name, manifest_name),
                                               ref=branch_ref)
@@ -393,28 +391,27 @@ class GithubModules:
         self.git_checkout(github_user_path, repo_name, version)
         self.addons_path_list.append(github_user_path + "/" + repo_name)
 
+    def run_subprocess(self, run_list, cwd=''):
+        process = subprocess.run(run_list, cwd=cwd,
+                                 stdout=subprocess.PIPE, universal_newlines=True)
+
     def git_clone(self, url, github_user_path, repo_name):
         path = github_user_path + "/" + repo_name
         if not os.path.isdir(path):
-            process = subprocess.run(['git', 'clone', url], cwd='./' + github_user_path,
-                                     stdout=subprocess.PIPE, universal_newlines=True)
+            self.run_subprocess(['git', 'clone', url], cwd='./' + github_user_path)
 
     def git_checkout(self, github_user_path, repo_name, version):
         path = github_user_path + "/" + repo_name
         if os.path.isdir(path):
-            process = subprocess.run(['git', 'checkout', version], cwd='./' + path,
-                                     stdout=subprocess.PIPE, universal_newlines=True)
+            self.run_subprocess(['git', 'checkout', version], cwd='./' + path)
 
     def git_checkout_enterprise(self, version, enterprise_path):
-        process = subprocess.run(['git', 'checkout', version], cwd='./' + enterprise_path,
-                                 stdout=subprocess.PIPE, universal_newlines=True)
+        self.run_subprocess(['git', 'checkout', version], cwd='./' + enterprise_path)
 
-    def git_pull(self, html_url, github_user_path):
-        repo_name = html_url.split('/')[-1].split('.')[0]
-        repo_path = '/'.join(github_user_path, repo_name, repo_name)
-        if os.path.isdir(repo_name):
-            process = subprocess.run(['git', 'pull', '--rebase'], cwd='./' + repo_path,
-                                     stdout=subprocess.PIPE, universal_newlines=True)
+    def git_pull(self, github_user_path, repo_name):
+        path = github_user_path + "/" + repo_name
+        if not os.path.isdir(path):
+            self.run_subprocess(['git', 'pull', '--rebase'], cwd='./' + path)
 
     def logger(self, text):
         self.log = '\n'.join([self.log, text]) if self.log else text

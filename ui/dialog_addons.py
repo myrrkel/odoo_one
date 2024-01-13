@@ -32,7 +32,6 @@ class DialogAddons(QtWidgets.QDialog):
         self.install_icon = svg_icon.get_svg_icon("/ui/img/install.svg")
         self.trash_icon = svg_icon.get_svg_icon("/ui/img/trash.svg")
 
-
     def show(self):
         if not self.addons:
             self.addons = self.lib_addons.addons

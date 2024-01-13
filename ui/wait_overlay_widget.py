@@ -58,7 +58,6 @@ class WaitOverlay(QWidget):
         painter.end()
 
     def showEvent(self, event):
-
         event.accept()
 
     def show_overlay(self):
@@ -100,7 +99,6 @@ if __name__ == "__main__":
         def resizeEvent(self, event):
             self.overlay.resize(event.size())
             event.accept()
-
 
 
     app = QApplication(sys.argv)

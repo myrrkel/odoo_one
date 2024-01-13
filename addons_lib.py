@@ -1,6 +1,7 @@
 from github_modules import *
 from operator import itemgetter, attrgetter
 
+
 class Addon:
     categories = set()
 

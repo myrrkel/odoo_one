@@ -205,8 +205,7 @@ class MainWindow(QMainWindow):
                 self.start_odoo(open_in_browser=False)
             try:
                 self.odoo.wait_odoo()
-            except:
-                wait_overlay_widget
+            except Exception as wait_err:
                 self.odoo.wait_odoo()
             self.odoo.open_odoo_firefox('%s/%s' % (self.odoo.odoo_base_url(), 'database/manager'))
         except Exception as err:
