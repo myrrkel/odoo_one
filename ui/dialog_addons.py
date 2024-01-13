@@ -8,6 +8,7 @@ import addons_lib
 import odoo_manager
 import subprocess
 import logging
+import html
 
 logger = logging.getLogger(__name__)
 _translate = QtCore.QCoreApplication.translate
@@ -170,8 +171,9 @@ class DialogAddons(QtWidgets.QDialog):
             self.ui.table_addons.setCellWidget(i, 0, title_addon_widget)
 
             summary_widget = QtWidgets.QLabel()
+            summary_widget.setTextFormat(Qt.PlainText)
             summary_widget.setObjectName("AddonSummary")
-            summary_widget.setText(addon.summary)
+            summary_widget.setText(html.escape(addon.summary))
             size_policy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
             size_policy.setHorizontalStretch(100)
             size_policy.setVerticalStretch(100)

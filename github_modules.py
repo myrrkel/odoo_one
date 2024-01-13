@@ -23,18 +23,6 @@ DATA_DIR = './data/'
 GITHUB_ADDONS_DIR = 'github_addons'
 
 
-def create_addons_files(credential, versions, repo_to_update):
-    gh_modules = GithubModules(credential)
-    for v in versions:
-        start_time = datetime.now()
-        gh_modules.generate_json_file(v, repo_to_update)
-        logger.info("File creation in %0.2f seconds" % (datetime.now() - start_time).total_seconds())
-    gh_modules.generate_all_github_modules_file()
-
-    for v in versions:
-        print_version_abstract(odoo_manager.version_to_number(v))
-
-
 def strip_comments(code):
     code = str(code)
     return re.sub(r'(?m)^ *#.*\n?', '', code)
@@ -421,6 +409,17 @@ class GithubModules:
 
 
 if __name__ == '__main__':
+
+    def create_addons_files(credential, versions, repo_to_update):
+        gh_addons = GithubModules(credential)
+        for v in versions:
+            start_time = datetime.now()
+            gh_addons.generate_json_file(v, repo_to_update)
+            logger.info("File creation in %0.2f seconds" % (datetime.now() - start_time).total_seconds())
+        gh_addons.generate_all_github_modules_file()
+        for v in versions:
+            print_version_abstract(odoo_manager.version_to_number(v))
+
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--credential', dest='credential')
     parser.add_argument('-r', '--repositories', dest='repositories')
