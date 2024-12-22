@@ -54,7 +54,7 @@ class VersionsWidget(QWidget):
         self.setSizePolicy(size_policy)
 
     def init_version_palette(self):
-        n = 10
+        n = 11
         hsv_tuples = [(x * 1.0 / n, 0.6, 0.6) for x in range(n)]
         self.version_palette = list(map(lambda x: colorsys.hsv_to_rgb(*x), hsv_tuples))
 
