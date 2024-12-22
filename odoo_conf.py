@@ -1,3 +1,6 @@
+# Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
+
 def create_odoo_conf_file(version, path_list=[], enterprise=False, db_container='db'):
 
     if int(version) >= 11:

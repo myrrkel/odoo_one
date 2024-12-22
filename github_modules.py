@@ -1,3 +1,5 @@
+# Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
 from github import Github, GithubException, RateLimitExceededException
 import argparse
 from datetime import datetime
@@ -10,7 +12,7 @@ import settings
 import sys
 import subprocess
 import time
-import odoo_manager
+from tools import version_to_number, number_to_version
 
 logger = logging.getLogger(__name__)
 logger.setLevel("INFO")
@@ -107,6 +109,7 @@ class GithubModules:
         if odoo:
             self.odoo = odoo
         else:
+            import odoo_manager
             self.odoo = odoo_manager.OdooManager()
 
         if access_token:
@@ -125,8 +128,8 @@ class GithubModules:
 
     def set_version(self, odoo_version):
         previous_version = self.version
-        self.version = odoo_manager.version_to_number(odoo_version)
-        self.odoo_version = odoo_manager.number_to_version(self.version)
+        self.version = version_to_number(odoo_version)
+        self.odoo_version = number_to_version(self.version)
         if self.version != previous_version:
             self.need_refresh = True
 
@@ -418,7 +421,7 @@ if __name__ == '__main__':
             logger.info("File creation in %0.2f seconds" % (datetime.now() - start_time).total_seconds())
         gh_addons.generate_all_github_modules_file()
         for v in versions:
-            print_version_abstract(odoo_manager.version_to_number(v))
+            print_version_abstract(version_to_number(v))
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--credential', dest='credential')

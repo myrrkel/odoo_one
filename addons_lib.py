@@ -1,9 +1,14 @@
+# Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
 from github_modules import *
 from operator import itemgetter, attrgetter
 
 
 class Addon:
     categories = set()
+    installed = False
+    to_install = False
+    to_remove = False
 
     def __init__(self, addon_dict=None):
 
