@@ -1,10 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-
-from PyQt5 import QtGui, QtSvg
+# Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
+from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
-from PyQt5.QtCore import QFile, QXmlStreamReader, QByteArray, QTextStream
 import os
 
 purple = QtGui.QColor(135, 90, 123)  # html : #875A7B

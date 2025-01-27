@@ -31,9 +31,13 @@
             color: rgba(83, 63, 79, 255);
         }
         
-        QTableWidget {
+        QTableWidget, QTableView {
             background-color: rgb(132, 92, 122);
             gridline-color: rgb(83, 63, 79);
+        }
+
+        VersionsWidget,Ui_AddonTitle,QMessageBox {
+            background-color: rgb(132, 92, 122);
         }
 
         QLineEdit#line_edit_enterprise_path:disabled {
@@ -53,9 +57,15 @@
             margin: 2px;
             font-weight: bold;
         }        
+        QLabel#AddonAuthor {
+            color: rgba(0, 0, 0, 160);
+            margin: 2px;
+            background: transparent;
+        }
         QLabel#AddonSummary {
             color: rgba(0, 0, 0, 160);
             margin: 2px;
+            background: transparent;
         }
         
         VersionLabel {

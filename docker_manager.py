@@ -1,3 +1,5 @@
+# Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
 import docker
 import os
 import shutil
@@ -34,7 +36,7 @@ class DockerManager(object):
     def get_odoo_ip(self):
         containers = self.get_odoo_containers()
         for container in containers:
-            ip = container.attrs['NetworkSettings']['Networks'][self.network]['Gateway']
+            ip = container.attrs['NetworkSettings']['Networks'][self.network]['IPAddress']
             return ip
 
     def get_postgres_ip(self):
@@ -60,6 +62,12 @@ class DockerManager(object):
         containers = self.get_postgres_containers()
         for container in containers:
             cmd_res = container.exec_run('createdb -h 127.0.0.1 -U odoo \'%s\'' % self.odoo_db)
+            return bool(cmd_res.output)
+
+    def drop_database(self):
+        containers = self.get_postgres_containers()
+        for container in containers:
+            cmd_res = container.exec_run('dropdb -f -h 127.0.0.1 -U odoo \'%s\'' % self.odoo_db)
             return bool(cmd_res.output)
 
     def get_containers(self, name='', image=''):

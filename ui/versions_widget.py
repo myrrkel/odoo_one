@@ -3,9 +3,16 @@
 
 import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import colorsys
+
+def version_palette():
+    n = 11
+    hsv_tuples = [(x * 1.0 / n, 0.6, 0.6) for x in range(n)]
+    return list(map(lambda x: colorsys.hsv_to_rgb(*x), hsv_tuples))
+
+VERSION_PALETTE = version_palette()
+
 
 
 class VersionLabel(QLabel):
@@ -33,14 +40,13 @@ class VersionsWidget(QWidget):
     version_palette = []
 
     def __init__(self, parent=None, versions=None):
+        self.versions = versions or []
         QWidget.__init__(self, parent)
         self.h_layout = QHBoxLayout(self)
         self.h_layout.setContentsMargins(2, 0, 0, 0)
         self.h_layout.setSpacing(2)
 
-        self.init_version_palette()
-
-        for version in versions:
+        for version in self.versions:
             version_int = int(version.replace('.0', ''))
             version_widget = VersionLabel(str(version_int))
             color = self.get_version_color(version_int)
@@ -53,13 +59,8 @@ class VersionsWidget(QWidget):
         size_policy.setVerticalStretch(0)
         self.setSizePolicy(size_policy)
 
-    def init_version_palette(self):
-        n = 10
-        hsv_tuples = [(x * 1.0 / n, 0.6, 0.6) for x in range(n)]
-        self.version_palette = list(map(lambda x: colorsys.hsv_to_rgb(*x), hsv_tuples))
-
     def get_version_color(self, version):
-        return self.version_palette[version - 8]
+        return VERSION_PALETTE[version - 8]
 
 
 if __name__ == "__main__":
@@ -74,7 +75,7 @@ if __name__ == "__main__":
             self.editor.setPlainText("This is a test! " * 100)
             layout = QGridLayout(widget)
             layout.addWidget(self.editor)
-            button = VersionsWidget(versions=['10', '11', '13'])
+            button = VersionsWidget(versions=['8.0', '9.0', '10.0', '11.0', '12.0', '13.0', '14.0', '15.0', '16.0', '17.0', '18.0', '19.0', '20.0', '21.0', '22.0', '23.0',  '24.0', '25.0'])
             layout.addWidget(button)
 
             self.setCentralWidget(widget)
