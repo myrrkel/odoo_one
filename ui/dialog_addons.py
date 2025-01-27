@@ -29,10 +29,29 @@ class VersionsDelegate(QStyledItemDelegate):
         versions_widget = VersionsWidget(versions=index.data())
         return versions_widget.sizeHint()
 
+class AddonTitleDelegate(QStyledItemDelegate):
+    def paint(self, painter, option, index):
+        #     ui_title_addon_widget = ui_addon_title_table_item.Ui_AddonTitle()
+        #     ui_title_addon_widget.setupUi(title_addon_widget)
+        #     ui_title_addon_widget.label_addon_display_name.setText(addon.display_name)
+        #     ui_title_addon_widget.label_addon_name.setText(addon.name)
+        addon = index.data()
+        addon_title_widget = ui_addon_title_table_item.Ui_AddonTitle(addon)
+        addon_title_widget.setGeometry(option.rect)
+        painter.save()
+        painter.translate(option.rect.topLeft())
+        addon_title_widget.render(painter)
+        painter.restore()
+
+    def sizeHint(self, option, index):
+        addon_title_widget = ui_addon_title_table_item.Ui_AddonTitle(index.data())
+        return addon_title_widget.sizeHint()
+
 
 class ActionsDelegate(QStyledItemDelegate):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.parent = parent
         self.install_icon = svg_icon.get_svg_icon("/ui/img/install.svg")
         self.remove_icon = svg_icon.get_svg_icon("/ui/img/trash.svg")
 
@@ -42,14 +61,14 @@ class ActionsDelegate(QStyledItemDelegate):
             addon = index.data()
             if addon.installed or addon.to_install:
                 addon.to_remove = True
-                self.remove_addon()
+                self.remove_addon(addon)
                 addon.installed = False
                 addon.to_install = False
 
             else:
                 addon.to_remove = False
                 addon.to_install = True
-                self.install_addon()
+                self.install_addon(addon)
 
         if event.type() == QEvent.MouseButtonDblClick:
             print('Double-Clicked on Item', index.row())
@@ -79,14 +98,17 @@ class ActionsDelegate(QStyledItemDelegate):
         button.render(painter)
         painter.restore()
 
-    # def sizeHint(self, option, index):
-    #     versions_widget = VersionsWidget(versions=index.data())
-    #     return versions_widget.sizeHint()
+    def sizeHint(self, option, index):
+        button = QtWidgets.QPushButton('Install')
+        button.setIcon(self.install_icon)
+        return button.sizeHint()
 
-    def install_addon(self):
+    def install_addon(self, addon):
+        self.parent.gh_modules.add_addon_db_settings(addon.name, addon.user, addon.repository)
         pass
 
-    def remove_addon(self):
+    def remove_addon(self, addon):
+        self.parent.gh_modules.remove_addon_db_settings(addon.name)
         pass
 
 
@@ -94,7 +116,7 @@ class AddonModel(QAbstractTableModel):
     def __init__(self, addons):
         super().__init__()
         self.addons = addons
-        self.column_headers = ["Display Name", "Name", "Summary", "Versions", "Actions", "Actions2"]
+        self.column_headers = ["Addon", "Author", "Summary", "Versions", "Actions"]
 
     def rowCount(self, parent=None):
         return len(self.addons)
@@ -109,10 +131,8 @@ class AddonModel(QAbstractTableModel):
     def data(self, index, role=Qt.DisplayRole):
         addon = self.addons[index.row()]
         if role == Qt.DisplayRole:
-            if index.column() == 0:
-                return addon.display_name
-            elif index.column() == 1:
-                return addon.name
+            if index.column() == 1:
+                return addon.author
             elif index.column() == 2:
                 return addon.summary
             elif index.column() == 3:
@@ -146,6 +166,9 @@ class DialogAddons(QtWidgets.QDialog):
         self.model = AddonModel(self.addons)
         self.ui.table_addons.setModel(self.model)
 
+        self.ui.addon_title_delegate = AddonTitleDelegate()
+        self.ui.table_addons.setItemDelegateForColumn(0, self.ui.addon_title_delegate)
+
         self.ui.versions_delegate = VersionsDelegate()
         self.ui.table_addons.setItemDelegateForColumn(3, self.ui.versions_delegate)
         self.ui.actions_delegate = ActionsDelegate(self)
@@ -156,18 +179,30 @@ class DialogAddons(QtWidgets.QDialog):
         self.ui.table_addons.setColumnWidth(2, 400)
         self.ui.table_addons.setColumnWidth(3, 150)
         self.ui.table_addons.setColumnWidth(4, 150)
+
+        self.show_results_count(len(self.addons))
+        header = self.ui.table_addons.horizontalHeader()
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Interactive)
+        header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
+
+        vertical_header = self.ui.table_addons.verticalHeader()
+        vertical_header.setDefaultSectionSize(40)
+
         self.setupUi()
 
     def show(self):
-        if not self.addons:
-            self.addons = self.lib_addons.addons
-            self.categories = self.lib_addons.categories
-            self.users = self.lib_addons.users
-            self.current_version_changed()
+        # if not self.addons:
+        # self.addons = self.lib_addons.addons
+        self.categories = self.lib_addons.categories
+        self.users = self.lib_addons.users
+        self.current_version_changed()
 
         self.show_addons_count()
-        self.init_combo_categories()
-        self.init_combo_users()
+        # self.init_combo_categories()
+        # self.init_combo_users()
         super(DialogAddons, self).show()
 
     def setupUi(self):
@@ -276,15 +311,15 @@ class DialogAddons(QtWidgets.QDialog):
             addons = [a for a in addons if user == a.user]
 
         self.show_results_count(len(addons))
-        self.ui.table_addons.setColumnWidth(0, 300)
-        self.ui.table_addons.setColumnWidth(1, 400)
-
-        header = self.ui.table_addons.horizontalHeader()
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Interactive)
-        header.setSectionResizeMode(1, QtWidgets.QHeaderView.Interactive)
-        header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
-        header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
+        # header = self.ui.table_addons.horizontalHeader()
+        # header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        # header.setSectionResizeMode(1, QtWidgets.QHeaderView.Interactive)
+        # header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
+        # header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+        # header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
+        #
+        # vertical_header = self.ui.table_addons.verticalHeader()
+        # vertical_header.setDefaultSectionSize(40)
 
         self.ui.table_addons.setModel(AddonModel(addons))
         self.ui.table_addons.show()

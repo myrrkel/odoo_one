@@ -9,35 +9,38 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QWidget
 
 
-class Ui_AddonTitle(object):
-    def setupUi(self, AddonTitle):
-        AddonTitle.setObjectName("AddonTitle")
-        AddonTitle.resize(126, 29)
-        self.verticalLayout = QtWidgets.QVBoxLayout(AddonTitle)
+class Ui_AddonTitle(QWidget):
+
+    def __init__(self, addon=None):
+        self.addon = addon
+        self.display_name = addon.display_name.strip() if addon else ''
+        self.name = addon.name.strip() if addon else ''
+        QWidget.__init__(self)
+
+        self.setObjectName("AddonTitle")
+        self.resize(126, 29)
+        self.verticalLayout = QtWidgets.QVBoxLayout(self)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.label_addon_display_name = QtWidgets.QLabel(AddonTitle)
+        self.label_addon_display_name = QtWidgets.QLabel(self)
         font = QtGui.QFont()
         font.setBold(False)
         font.setWeight(50)
         self.label_addon_display_name.setFont(font)
         self.label_addon_display_name.setObjectName("label_addon_display_name")
+        self.label_addon_display_name.setText(self.display_name)
         self.verticalLayout.addWidget(self.label_addon_display_name)
-        self.label_addon_name = QtWidgets.QLabel(AddonTitle)
+        self.label_addon_name = QtWidgets.QLabel(self)
         font = QtGui.QFont()
         font.setPointSize(8)
         self.label_addon_name.setFont(font)
+        self.label_addon_name.setText(self.name)
         self.label_addon_name.setObjectName("label_addon_name")
         self.verticalLayout.addWidget(self.label_addon_name)
 
-        self.retranslateUi(AddonTitle)
-        QtCore.QMetaObject.connectSlotsByName(AddonTitle)
+        QtCore.QMetaObject.connectSlotsByName(self)
 
-    def retranslateUi(self, AddonTitle):
-        _translate = QtCore.QCoreApplication.translate
-        AddonTitle.setWindowTitle(_translate("AddonTitle", "Form"))
-        self.label_addon_display_name.setText(_translate("AddonTitle", "Addon Display Name"))
-        self.label_addon_name.setText(_translate("AddonTitle", "technical_name"))

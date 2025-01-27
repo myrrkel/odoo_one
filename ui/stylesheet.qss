@@ -36,7 +36,7 @@
             gridline-color: rgb(83, 63, 79);
         }
 
-        VersionsWidget,VersionsDelegate {
+        VersionsWidget,VersionsDelegate,AddonTitleDelegate,Ui_AddonTitle {
             background-color: rgb(132, 92, 122);
         }
 
