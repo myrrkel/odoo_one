@@ -1,7 +1,7 @@
 # Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QStyledItemDelegate, QMainWindow, QApplication
+from PyQt5.QtWidgets import QStyledItemDelegate, QMainWindow, QApplication, QLabel
 from PyQt5.QtCore import Qt, QAbstractTableModel, QEvent
 from ui.designer import ui_addon_title_table_item, ui_dialog_addons
 from ui.versions_widget import VersionsWidget
@@ -10,13 +10,81 @@ import addons_lib
 import odoo_manager
 import subprocess
 import logging
+import html
 
 logger = logging.getLogger(__name__)
 _translate = QtCore.QCoreApplication.translate
 
+class CustomDelegate(QStyledItemDelegate):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.parent = parent
+        self.install_icon = svg_icon.get_svg_icon("/ui/img/install.svg")
+        self.remove_icon = svg_icon.get_svg_icon("/ui/img/trash.svg")
 
-class VersionsDelegate(QStyledItemDelegate):
+    def sizeHint(self, option, index):
+        if index.column() == 0:
+            addon_title_widget = ui_addon_title_table_item.Ui_AddonTitle(index.data())
+            return addon_title_widget.sizeHint()
+        elif index.column() == 3:
+            versions_widget = VersionsWidget(versions=index.data())
+            return versions_widget.sizeHint()
+
     def paint(self, painter, option, index):
+        if index.column() == 0:
+            self.paint_addon_title(painter, option, index)
+        elif index.column() == 1:
+            self.paint_author(painter, option, index)
+        elif index.column() == 2:
+            self.paint_summary(painter, option, index)
+        elif index.column() == 3:
+            self.paint_versions(painter, option, index)
+        elif index.column() == 4:
+            self.paint_actions(painter, option, index)
+
+    def paint_addon_title(self, painter, option, index):
+        addon = index.data()
+        addon_title_widget = ui_addon_title_table_item.Ui_AddonTitle(addon)
+        addon_title_widget.setGeometry(option.rect)
+        column_width = option.rect.width()
+        addon_title_widget.label_addon_display_name.setMaximumWidth(column_width)
+        painter.save()
+        painter.translate(option.rect.topLeft())
+        addon_title_widget.render(painter)
+        painter.restore()
+
+    def paint_author(self, painter, option, index):
+        addon = index.data()
+        author_widget = QtWidgets.QLabel()
+        author_widget.setTextFormat(Qt.PlainText)
+        author_widget.setObjectName("AddonAuthor")
+        author = 'OCA' if addon.user == 'OCA' else html.escape(addon.author)
+        author_widget.setText(author)
+        author_widget.setTextFormat(Qt.RichText)
+        author_widget.setScaledContents(True)
+        author_widget.setWordWrap(True)
+        author_widget.setGeometry(option.rect)
+        painter.save()
+        painter.translate(option.rect.topLeft())
+        author_widget.render(painter)
+        painter.restore()
+
+    def paint_summary(self, painter, option, index):
+        author = index.data()
+        summary_widget = QtWidgets.QLabel()
+        summary_widget.setTextFormat(Qt.PlainText)
+        summary_widget.setObjectName("AddonSummary")
+        summary_widget.setText(html.escape(author))
+        summary_widget.setTextFormat(Qt.RichText)
+        summary_widget.setScaledContents(True)
+        summary_widget.setWordWrap(True)
+        summary_widget.setGeometry(option.rect)
+        painter.save()
+        painter.translate(option.rect.topLeft())
+        summary_widget.render(painter)
+        painter.restore()
+
+    def paint_versions(self, painter, option, index):
         versions = index.data()
         versions_widget = VersionsWidget(versions=versions)
         versions_widget.setGeometry(option.rect)
@@ -25,72 +93,18 @@ class VersionsDelegate(QStyledItemDelegate):
         versions_widget.render(painter)
         painter.restore()
 
-    def sizeHint(self, option, index):
-        versions_widget = VersionsWidget(versions=index.data())
-        return versions_widget.sizeHint()
-
-class AddonTitleDelegate(QStyledItemDelegate):
-    def paint(self, painter, option, index):
-        #     ui_title_addon_widget = ui_addon_title_table_item.Ui_AddonTitle()
-        #     ui_title_addon_widget.setupUi(title_addon_widget)
-        #     ui_title_addon_widget.label_addon_display_name.setText(addon.display_name)
-        #     ui_title_addon_widget.label_addon_name.setText(addon.name)
+    def paint_actions(self, painter, option, index):
         addon = index.data()
-        addon_title_widget = ui_addon_title_table_item.Ui_AddonTitle(addon)
-        addon_title_widget.setGeometry(option.rect)
-        painter.save()
-        painter.translate(option.rect.topLeft())
-        addon_title_widget.render(painter)
-        painter.restore()
-
-    def sizeHint(self, option, index):
-        addon_title_widget = ui_addon_title_table_item.Ui_AddonTitle(index.data())
-        return addon_title_widget.sizeHint()
-
-
-class ActionsDelegate(QStyledItemDelegate):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.parent = parent
-        self.install_icon = svg_icon.get_svg_icon("/ui/img/install.svg")
-        self.remove_icon = svg_icon.get_svg_icon("/ui/img/trash.svg")
-
-    def editorEvent(self, event, model, option, index):
-        if event.type() == QEvent.MouseButtonRelease:
-            print('Clicked on Item', index.row())
-            addon = index.data()
-            if addon.installed or addon.to_install:
-                addon.to_remove = True
-                self.remove_addon(addon)
-                addon.installed = False
-                addon.to_install = False
-
-            else:
-                addon.to_remove = False
-                addon.to_install = True
-                self.install_addon(addon)
-
-        if event.type() == QEvent.MouseButtonDblClick:
-            print('Double-Clicked on Item', index.row())
-            return False
-        return True
-
-    def paint(self, painter, option, index):
-        addon = index.data()
-
-        if not addon.to_install and not addon.installed:
-            title = 'Install'
-            icon = self.install_icon
-            slot = self.install_addon
-        else:
-            title = 'Remove'
-            icon = self.remove_icon
-            slot = self.remove_addon
-
-        button = QtWidgets.QPushButton(title)
+        button = QtWidgets.QPushButton('Install')
         button.addon = addon
-        button.setIcon(icon)
-        button.clicked.connect(lambda checked=False: self.delegateButtonPressed())
+        if addon.installed or addon.to_install:
+            button.setIcon(self.remove_icon)
+            button.setText('Remove')
+            button.clicked.connect(self.remove_addon)
+        else:
+            button.setIcon(self.install_icon)
+            button.setText('Install')
+            button.clicked.connect(self.install_addon)
 
         button.setGeometry(option.rect)
         painter.save()
@@ -98,18 +112,31 @@ class ActionsDelegate(QStyledItemDelegate):
         button.render(painter)
         painter.restore()
 
-    def sizeHint(self, option, index):
-        button = QtWidgets.QPushButton('Install')
-        button.setIcon(self.install_icon)
-        return button.sizeHint()
-
     def install_addon(self, addon):
         self.parent.gh_modules.add_addon_db_settings(addon.name, addon.user, addon.repository)
-        pass
 
     def remove_addon(self, addon):
         self.parent.gh_modules.remove_addon_db_settings(addon.name)
-        pass
+
+    def editorEvent(self, event, model, option, index):
+        if index.column() == 4:
+            if event.type() == QEvent.MouseButtonRelease:
+                print('Clicked on Item', index.row())
+                addon = index.data()
+                if addon.installed or addon.to_install:
+                    addon.to_remove = True
+                    addon.installed = False
+                    addon.to_install = False
+                    self.remove_addon(addon)
+                else:
+                    addon.to_remove = False
+                    addon.to_install = True
+                    self.install_addon(addon)
+
+        if event.type() == QEvent.MouseButtonDblClick:
+            print('Double-Clicked on Item', index.row())
+
+        return True
 
 
 class AddonModel(QAbstractTableModel):
@@ -131,14 +158,10 @@ class AddonModel(QAbstractTableModel):
     def data(self, index, role=Qt.DisplayRole):
         addon = self.addons[index.row()]
         if role == Qt.DisplayRole:
-            if index.column() == 1:
-                return addon.author
-            elif index.column() == 2:
+            if index.column() == 2:
                 return addon.summary
             elif index.column() == 3:
                 return addon.versions
-            elif index.column() == 4:
-                return addon
             else:
                 return addon
 
@@ -165,20 +188,13 @@ class DialogAddons(QtWidgets.QDialog):
 
         self.model = AddonModel(self.addons)
         self.ui.table_addons.setModel(self.model)
-
-        self.ui.addon_title_delegate = AddonTitleDelegate()
-        self.ui.table_addons.setItemDelegateForColumn(0, self.ui.addon_title_delegate)
-
-        self.ui.versions_delegate = VersionsDelegate()
-        self.ui.table_addons.setItemDelegateForColumn(3, self.ui.versions_delegate)
-        self.ui.actions_delegate = ActionsDelegate(self)
-        self.ui.table_addons.setItemDelegateForColumn(4, self.ui.actions_delegate)
+        self.ui.table_addons.setItemDelegate(CustomDelegate(self))
 
         self.ui.table_addons.setColumnWidth(0, 300)
         self.ui.table_addons.setColumnWidth(1, 200)
         self.ui.table_addons.setColumnWidth(2, 400)
         self.ui.table_addons.setColumnWidth(3, 150)
-        self.ui.table_addons.setColumnWidth(4, 150)
+        self.ui.table_addons.setColumnWidth(4, 100)
 
         self.show_results_count(len(self.addons))
         header = self.ui.table_addons.horizontalHeader()
@@ -186,7 +202,7 @@ class DialogAddons(QtWidgets.QDialog):
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.Interactive)
         header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
         header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(4, QtWidgets.QHeaderView.Fixed)
 
         vertical_header = self.ui.table_addons.verticalHeader()
         vertical_header.setDefaultSectionSize(40)
@@ -194,15 +210,15 @@ class DialogAddons(QtWidgets.QDialog):
         self.setupUi()
 
     def show(self):
-        # if not self.addons:
-        # self.addons = self.lib_addons.addons
+        if not self.addons:
+            self.addons = self.lib_addons.addons
         self.categories = self.lib_addons.categories
         self.users = self.lib_addons.users
         self.current_version_changed()
 
         self.show_addons_count()
-        # self.init_combo_categories()
-        # self.init_combo_users()
+        self.init_combo_categories()
+        self.init_combo_users()
         super(DialogAddons, self).show()
 
     def setupUi(self):
@@ -241,14 +257,18 @@ class DialogAddons(QtWidgets.QDialog):
                         stdout=subprocess.PIPE, universal_newlines=True)
 
     def init_combo_categories(self):
+        self.ui.combo_category.blockSignals(True)
         self.ui.combo_category.clear()
         for category in self.categories:
             self.ui.combo_category.addItem(category, category)
+        self.ui.combo_category.blockSignals(False)
 
     def init_combo_users(self):
+        self.ui.combo_category.blockSignals(True)
         self.ui.combo_user.clear()
         for user in self.users:
             self.ui.combo_user.addItem(user, user)
+        self.ui.combo_category.blockSignals(False)
 
     def init_combo_addons_version(self):
         self.init_combo_addons = True

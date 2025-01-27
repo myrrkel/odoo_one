@@ -121,6 +121,8 @@ class Ui_MainWindow(ui_main_window.Ui_MainWindow):
         self.tool_menu = QtWidgets.QMenu(self.main_window)
         self.action_database_manager = QtWidgets.QAction(_translate('MainWindow', 'Database Manager'))
         self.tool_menu.addAction(self.action_database_manager)
+        self.action_drop_database = QtWidgets.QAction(_translate('MainWindow', 'Drop Database'))
+        self.tool_menu.addAction(self.action_drop_database)
         self.action_config_database = QtWidgets.QAction(_translate('MainWindow', 'Database configuration'))
         self.tool_menu.addAction(self.action_config_database)
         self.action_update_addons_list = QtWidgets.QAction(_translate('MainWindow', 'Update addons list from Github'))
@@ -176,6 +178,7 @@ class MainWindow(QMainWindow):
         self.ui.push_logs.clicked.connect(self.copy_logs)
         self.ui.action_update_addons_list.triggered.connect(self.update_addons_list)
         self.ui.action_database_manager.triggered.connect(self.database_manager)
+        self.ui.action_drop_database.triggered.connect(self.drop_database)
 
     def starter_thread_done(self):
         self.ui.wait_overlay.hide()
@@ -212,6 +215,14 @@ class MainWindow(QMainWindow):
         except Exception as err:
             pass
             return True
+
+    def drop_database(self):
+        if self.odoo and self.odoo.docker_manager:
+            msg = 'Are you sure you want to drop the database?\nAll data in %s will be lost.' % self.odoo.odoo_db
+            reply = QtWidgets.QMessageBox.warning(self, 'Drop Database', msg,
+                                                  QtWidgets.QMessageBox.Yes, QtWidgets.QMessageBox.No)
+            if reply == QtWidgets.QMessageBox.Yes:
+                self.odoo.docker_manager.drop_database()
 
     def print_log(self, to_log):
         is_new_log = self.ui.text_log == ''
