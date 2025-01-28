@@ -29,6 +29,8 @@ class CustomDelegate(QStyledItemDelegate):
         elif index.column() == 3:
             versions_widget = VersionsWidget(versions=index.data())
             return versions_widget.sizeHint()
+        else:
+            return super().sizeHint(option, index)
 
     def paint(self, painter, option, index):
         if index.column() == 0:
@@ -48,6 +50,7 @@ class CustomDelegate(QStyledItemDelegate):
         addon_title_widget.setGeometry(option.rect)
         column_width = option.rect.width()
         addon_title_widget.label_addon_display_name.setMaximumWidth(column_width)
+        addon_title_widget.label_addon_name.setMaximumWidth(column_width)
         painter.save()
         painter.translate(option.rect.topLeft())
         addon_title_widget.render(painter)
@@ -190,15 +193,15 @@ class DialogAddons(QtWidgets.QDialog):
         self.ui.table_addons.setModel(self.model)
         self.ui.table_addons.setItemDelegate(CustomDelegate(self))
 
-        self.ui.table_addons.setColumnWidth(0, 300)
-        self.ui.table_addons.setColumnWidth(1, 200)
+        self.ui.table_addons.setColumnWidth(0, 200)
+        self.ui.table_addons.setColumnWidth(1, 100)
         self.ui.table_addons.setColumnWidth(2, 400)
         self.ui.table_addons.setColumnWidth(3, 150)
         self.ui.table_addons.setColumnWidth(4, 100)
 
         self.show_results_count(len(self.addons))
         header = self.ui.table_addons.horizontalHeader()
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Interactive)
         header.setSectionResizeMode(1, QtWidgets.QHeaderView.Interactive)
         header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
         header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
@@ -264,11 +267,11 @@ class DialogAddons(QtWidgets.QDialog):
         self.ui.combo_category.blockSignals(False)
 
     def init_combo_users(self):
-        self.ui.combo_category.blockSignals(True)
+        self.ui.combo_user.blockSignals(True)
         self.ui.combo_user.clear()
         for user in self.users:
             self.ui.combo_user.addItem(user, user)
-        self.ui.combo_category.blockSignals(False)
+        self.ui.combo_user.blockSignals(False)
 
     def init_combo_addons_version(self):
         self.init_combo_addons = True
@@ -331,74 +334,8 @@ class DialogAddons(QtWidgets.QDialog):
             addons = [a for a in addons if user == a.user]
 
         self.show_results_count(len(addons))
-        # header = self.ui.table_addons.horizontalHeader()
-        # header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
-        # header.setSectionResizeMode(1, QtWidgets.QHeaderView.Interactive)
-        # header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
-        # header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
-        # header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
-        #
-        # vertical_header = self.ui.table_addons.verticalHeader()
-        # vertical_header.setDefaultSectionSize(40)
-
         self.ui.table_addons.setModel(AddonModel(addons))
         self.ui.table_addons.show()
-
-    # def insert_row(self, i, addon):
-    #     self.ui.table_addons.insertRow(i)
-    #     self.ui.table_addons.setRowHeight(i, 40)
-    #     title_addon_widget = QtWidgets.QWidget()
-    #     ui_title_addon_widget = ui_addon_title_table_item.Ui_AddonTitle()
-    #     ui_title_addon_widget.setupUi(title_addon_widget)
-    #     ui_title_addon_widget.label_addon_display_name.setText(addon.display_name)
-    #     ui_title_addon_widget.label_addon_name.setText(addon.name)
-    #     self.ui.table_addons.setCellWidget(i, 0, title_addon_widget)
-    #
-    #     summary_widget = QtWidgets.QLabel()
-    #     summary_widget.setTextFormat(Qt.PlainText)
-    #     summary_widget.setObjectName("AddonSummary")
-    #     summary_widget.setText(html.escape(addon.summary))
-    #     size_policy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-    #     size_policy.setHorizontalStretch(100)
-    #     size_policy.setVerticalStretch(100)
-    #     summary_widget.setSizePolicy(size_policy)
-    #     summary_widget.setTextFormat(Qt.RichText)
-    #     summary_widget.setScaledContents(True)
-    #     summary_widget.setWordWrap(True)
-    #     self.ui.table_addons.setCellWidget(i, 1, summary_widget)
-    #
-    #     versions = VersionsWidget(versions=addon.versions)
-    #     self.ui.table_addons.setCellWidget(i, 2, versions)
-    #
-    #     if addon.name in self.installed_modules:
-    #         install_button = QtWidgets.QPushButton('Remove')
-    #         install_button.setIcon(self.trash_icon)
-    #         install_button.addon = addon
-    #         install_button.clicked.connect(self.remove_addon)
-    #         self.ui.table_addons.setCellWidget(i, 3, install_button)
-    #     else:
-    #         install_button = QtWidgets.QPushButton('Install')
-    #         install_button.setIcon(self.install_icon)
-    #         install_button.addon = addon
-    #         install_button.clicked.connect(self.install_addon)
-    #         self.ui.table_addons.setCellWidget(i, 3, install_button)
-
-    # def install_addon(self):
-    #     install_button = self.ui.table_addons.focusWidget()
-    #     addon = install_button.addon
-    #     self.gh_modules.add_addon_db_settings(addon.name, addon.user, addon.repository)
-    #     install_button.setText('Remove')
-    #     install_button.setIcon(self.trash_icon)
-    #     install_button.clicked.connect(self.remove_addon)
-    #
-    # def remove_addon(self):
-    #     install_button = self.ui.table_addons.focusWidget()
-    #     addon = install_button.addon
-    #     self.gh_modules.remove_addon_db_settings(addon.name)
-    #     install_button.setText('Install')
-    #     install_button.setIcon(self.install_icon)
-    #     install_button.clicked.connect(self.install_addon)
-
 
 if __name__ == "__main__":
     import sys

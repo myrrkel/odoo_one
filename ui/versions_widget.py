@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
+# Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import *
@@ -42,18 +41,28 @@ class VersionsWidget(QWidget):
     def __init__(self, parent=None, versions=None):
         self.versions = versions or []
         QWidget.__init__(self, parent)
-        self.h_layout = QHBoxLayout(self)
-        self.h_layout.setContentsMargins(2, 0, 0, 0)
-        self.h_layout.setSpacing(2)
+        self.grid_layout = QGridLayout(self)
+        self.grid_layout.setContentsMargins(2, 0, 0, 0)
+        self.grid_layout.setSpacing(2)
+
+        row = 0
+        column = 0
+        max_columns = 6
 
         for version in self.versions:
             version_int = int(version.replace('.0', ''))
             version_widget = VersionLabel(str(version_int))
             color = self.get_version_color(version_int)
             version_widget.set_background_color(color)
-            self.h_layout.addWidget(version_widget)
+            self.grid_layout.addWidget(version_widget, row, column)
 
-        self.h_layout.addWidget(QWidget())
+            column += 1
+            if column >= max_columns:
+                row += 1
+                column = 0
+
+        self.grid_layout.setColumnStretch(max_columns, 1)
+
         size_policy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         size_policy.setHorizontalStretch(100)
         size_policy.setVerticalStretch(0)
