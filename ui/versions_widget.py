@@ -30,7 +30,7 @@ class VersionLabel(QLabel):
 
     def set_background_color(self, color):
         style_color = 'rgba({r}, {g}, {b}, 255)'.format(r=color[0] * 255, g=color[1] * 255, b=color[2] * 255)
-        stylesheet = 'VersionLabel {background-color: %s;}' % style_color
+        stylesheet = '''VersionLabel{border:1px solid rgba(83, 63, 79, 255); border-radius: 8px; background-color: %s;}''' % style_color
         self.setStyleSheet(stylesheet)
 
 

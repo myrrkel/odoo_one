@@ -1,6 +1,19 @@
 # Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
-from github import Github, GithubException, RateLimitExceededException
+try:
+    from github import Github, GithubException, RateLimitExceededException
+except ImportError:
+    print('Please make sure Git is installed')
+    class Github (object):
+        def __init__(self, access_token=''):
+            pass
+    class GithubException (Exception):
+        def __init__(self, message=''):
+            self.message = message
+    class RateLimitExceededException (Exception):
+        def __init__(self, message=''):
+            self.message = message
+    pass
 import argparse
 from datetime import datetime
 import json
@@ -12,7 +25,7 @@ import settings
 import sys
 import subprocess
 import time
-from tools import version_to_number, number_to_version
+from tools import version_to_number, number_to_version, resource_path
 
 logger = logging.getLogger(__name__)
 logger.setLevel("INFO")
@@ -37,7 +50,8 @@ def get_json_file_name(name, version):
 
 def load_json(name, version):
     try:
-        return json.load(open(get_json_file_name(name, version), "r"))
+        file_path = resource_path(get_json_file_name(name, version))
+        return json.load(open(file_path, "r"))
     except Exception as e:
         return {}
 

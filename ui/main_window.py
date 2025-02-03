@@ -1,6 +1,7 @@
 # Copyright (C) 2024 - Michel Perrocheau (https://github.com/myrrkel).
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
 import settings
+import webbrowser
 import time
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui.designer import ui_main_window
@@ -62,12 +63,16 @@ class LogThread(QThread):
             if self.mute_odoo or not hasattr(self.parent, 'odoo'):
                 time.sleep(1)
                 continue
+            if not self.parent.odoo or not self.parent.odoo.docker_manager:
+                time.sleep(1)
+                continue
 
-            if self.parent.odoo and self.parent.odoo.docker_manager.current_process:
-                stdout = self.parent.odoo.docker_manager.current_process.stdout
+            docker_manager = self.parent.odoo.docker_manager
+            if docker_manager.current_process:
+                stdout = docker_manager.current_process.stdout
                 if stdout:
                     self.parent.stdout_signal.emit(stdout)
-            if self.parent.odoo and self.parent.odoo.docker_manager:
+            if docker_manager:
                 try:
                     logs = self.parent.odoo.get_logs()
                     if logs:
@@ -203,6 +208,8 @@ class MainWindow(QMainWindow):
             self.update_addons_list_thread.start()
 
     def database_manager(self):
+        if not self.odoo.docker_exists():
+            return
         try:
             self.odoo.set_version(self.ui.combo_version.currentData())
             if not self.odoo.check_running_version():
@@ -211,13 +218,13 @@ class MainWindow(QMainWindow):
                 self.odoo.wait_odoo()
             except Exception as wait_err:
                 self.odoo.wait_odoo()
-            self.odoo.open_odoo_firefox('%s/%s' % (self.odoo.odoo_base_url(), 'database/manager'))
+            webbrowser.open('%s/%s' % (self.odoo.odoo_base_url(), 'database/manager'), new=2)
         except Exception as err:
             pass
             return True
 
     def drop_database(self):
-        if self.odoo and self.odoo.docker_manager:
+        if self.odoo and self.odoo.docker_exists():
             msg = 'Are you sure you want to drop the database?\nAll data in %s will be lost.' % self.odoo.odoo_db
             reply = QtWidgets.QMessageBox.warning(self, 'Drop Database', msg,
                                                   QtWidgets.QMessageBox.Yes, QtWidgets.QMessageBox.No)
@@ -250,6 +257,14 @@ class MainWindow(QMainWindow):
         self.start_odoo(open_in_browser=True)
 
     def start_odoo(self, open_in_browser=True):
+        if not self.odoo.docker_exists():
+            dialog = QtWidgets.QMessageBox(self)
+            dialog.setWindowTitle("Error")
+            dialog.setIcon(QtWidgets.QMessageBox.Critical)
+            dialog.setText("<b>Docker is not installed</b>")
+            dialog.setInformativeText('To start Odoo, Docker must be installed. Please install Docker and check the logs for more information.')
+            dialog.setStandardButtons(QtWidgets.QMessageBox.Ok)
+            dialog.exec_()
         self.log_thread.quit()
         self.ui.wait_overlay.show_overlay()
         self.set_odoo_manager()

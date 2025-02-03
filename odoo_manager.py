@@ -2,11 +2,11 @@
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/algpl.html).
 import logging
 import os
+import webbrowser
 import install_docker
 import docker_manager
 import odoo_conf as oconf
 import odoo_rpc
-import subprocess
 from github_modules import GithubModules
 from tools import number_to_version
 
@@ -23,13 +23,28 @@ class OdooManager(object):
         self.odoo_db = "odoo_%s" % self.version
         if self.enterprise_path:
             self.odoo_db += '_ee'
-        self.docker_manager = docker_manager.DockerManager(self.version, self.odoo_db, stdout_signal)
+        try:
+            self.docker_manager = docker_manager.DockerManager(self.version, self.odoo_db, stdout_signal)
+        except Exception as err:
+            logger.error(err, exc_info=True)
+            self.docker_manager = False
         self.stdout_signal = stdout_signal
         self.main_window = main_window
         self.gh_modules = GithubModules(odoo=self)
         self.gh_modules.stdout_signal = stdout_signal
         self.gh_modules.print_stdout = self.print_stdout
         self.gh_modules.load(self.version, clone=True)
+
+    def docker_exists(self):
+        return self.docker_manager and self.docker_manager.client and self.docker_manager.docker_exists()
+
+    def _check_docker(func):
+        def wrapper(self, *args, **kwargs):
+            if not self.docker_exists():
+                return
+            return func(self, *args, **kwargs)
+
+        return wrapper
 
     def get_last_version(self):
         return 18
@@ -43,10 +58,6 @@ class OdooManager(object):
 
     def start_sudo(self):
         print('Docker need sudo to be installed.')
-
-    def open_odoo_firefox(self, url):
-        process = subprocess.call(['firefox', url],
-                                  stdout=subprocess.PIPE, universal_newlines=True)
 
     def print_stdout(self, msg):
         if self.stdout_signal:
@@ -62,6 +73,7 @@ class OdooManager(object):
         self.gh_modules.generate_all_github_modules_file()
         self.print_stdout('Addons list update done.')
 
+    @_check_docker
     def init(self, pull=False, open_in_browser=False):
         self.print_stdout('Start Odoo...')
         if not self.docker_manager.docker_exists():
@@ -70,6 +82,8 @@ class OdooManager(object):
                 return False
             install_docker.install_docker()
             install_docker.add_users_in_docker_group()
+        if not self.docker_manager.client:
+            return False
 
         if pull:
             self.docker_manager.pull_images()
@@ -104,14 +118,16 @@ class OdooManager(object):
         try:
             self.wait_odoo()
             if open_in_browser:
-                self.open_odoo_firefox(self.odoo_start_url())
+                webbrowser.open(self.odoo_start_url(), new=2)
         except Exception as err:
             logger.error(err)
             pass
 
+    @_check_docker
     def odoo_ip(self):
         return self.docker_manager.get_odoo_ip()
 
+    @_check_docker
     def odoo_base_url(self):
         ip = self.odoo_ip()
         if not ip:
@@ -121,9 +137,11 @@ class OdooManager(object):
 
         return "%s:%s/web" % (ip, docker_manager.DEFAULT_PORT)
 
+    @_check_docker
     def odoo_start_url(self):
         return "%s?db=%s" % (self.odoo_base_url(), self.odoo_db)
 
+    @_check_docker
     def get_odoo_rpc(self):
         return odoo_rpc.OdooRpc(self.odoo_ip(),
                                 docker_manager.DEFAULT_PORT,
@@ -132,9 +150,11 @@ class OdooManager(object):
                                 "admin",
                                 self.version)
 
+    @_check_docker
     def check_running_version(self):
         return self.docker_manager.get_odoo_running_version() == number_to_version(self.version)
 
+    @_check_docker
     def wait_odoo(self):
         orpc = self.get_odoo_rpc()
         admin = orpc.read('res.users', 1)
@@ -142,6 +162,7 @@ class OdooManager(object):
         for addon in self.gh_modules.addons:
             orpc.install_addon(addon)
 
+    @_check_docker
     def get_logs(self):
         try:
             return self.docker_manager.get_odoo_logs()

@@ -4,8 +4,8 @@ import docker
 import os
 import shutil
 import subprocess
-from github_modules import GITHUB_ADDONS_DIR
 
+GITHUB_ADDONS_DIR = 'github_addons'
 DEFAULT_PORT = 8069
 
 
@@ -16,8 +16,13 @@ class DockerManager(object):
         self.version = version
         self.odoo_version = '%s.0' % version
         self.odoo_db = odoo_db
+        try:
+            self.client = docker.from_env()
+        except Exception as err:
+            print('Impossible to start Docker client.\nError: %s' % err)
+            self.client = False
+            pass
 
-        self.client = docker.from_env()
         self.stdout_signal = stdout_signal
 
         self.network = 'odoo_one_default'
@@ -27,24 +32,35 @@ class DockerManager(object):
         else:
             self.create_network(self.network)
 
+
+    def _check_client(func):
+        def wrapper(self, *args, **kwargs):
+            if not self.client:
+                return
+            return func(self, *args, **kwargs)
+        return wrapper
+
     def print_stdout(self, msg):
         if self.stdout_signal:
             self.stdout_signal.emit(msg)
         else:
             print(msg)
 
+    @_check_client
     def get_odoo_ip(self):
         containers = self.get_odoo_containers()
         for container in containers:
             ip = container.attrs['NetworkSettings']['Networks'][self.network]['IPAddress']
             return ip
 
+    @_check_client
     def get_postgres_ip(self):
         containers = self.get_postgres_containers()
         for container in containers:
             ip = container.attrs['NetworkSettings']['Networks'][self.network]['Gateway']
             return ip
 
+    @_check_client
     def odoo_database_exists(self):
         containers = self.get_postgres_containers()
         for container in containers:
@@ -52,18 +68,21 @@ class DockerManager(object):
             cmd_res = container.exec_run(cmd % self.odoo_db)
             return bool(cmd_res.output)
 
+    @_check_client
     def sql_execute(self, query):
         containers = self.get_postgres_containers()
         for container in containers:
             cmd_res = container.exec_run(query)
             return cmd_res.output
 
+    @_check_client
     def create_empty_database(self):
         containers = self.get_postgres_containers()
         for container in containers:
             cmd_res = container.exec_run('createdb -h 127.0.0.1 -U odoo \'%s\'' % self.odoo_db)
             return bool(cmd_res.output)
 
+    @_check_client
     def drop_database(self):
         containers = self.get_postgres_containers()
         for container in containers:
@@ -76,6 +95,7 @@ class DockerManager(object):
         elif image:
             return self.client.containers.list(filters={'ancestor': image})
 
+    @_check_client
     def get_networks(self):
         try:
             networks = self.client.networks.list()
@@ -85,16 +105,20 @@ class DockerManager(object):
 
         return list(filter(lambda n: n.name not in ['none', 'bridge', 'host'], networks))
 
+    @_check_client
     def get_postgres_containers(self):
         return self.get_containers(name='postgres')
 
+    @_check_client
     def get_odoo_containers(self):
         return self.get_containers(name='odoo_one')
 
+    @_check_client
     def get_odoo_running_version(self):
         for container in self.get_odoo_containers():
             return container.image.tags[0].split(':')[1]
 
+    @_check_client
     def get_odoo_logs(self):
         for container in self.get_odoo_containers():
             try:
@@ -103,15 +127,18 @@ class DockerManager(object):
                 pass
                 return ''
 
+    @_check_client
     def stop_odoo_containers(self):
         containers = self.get_odoo_containers()
         for container in containers:
             container.stop()
 
+    @_check_client
     def restart_postgres(self):
         for container in self.get_postgres_containers():
             container.restart()
 
+    @_check_client
     def pull_images(self):
         try:
             self.client.images.pull('odoo:%s' % self.odoo_version)
@@ -133,15 +160,18 @@ class DockerManager(object):
         volume_list = [' ' * 6 + '- ' + volume for volume in volumes]
         return '\n'.join(volume_list)
 
+    @_check_client
     def get_db_container_name(self):
         db_containers = self.get_postgres_containers()
         return db_containers and db_containers[0].name or 'db'
 
+    @_check_client
     def get_db_network(self):
         db_containers = self.get_postgres_containers()
         networks = db_containers and db_containers[0].attrs['NetworkSettings']['Networks']
         return networks and list(networks)[0]
 
+    @_check_client
     def get_db_container_image(self):
         db_containers = self.get_postgres_containers()
         return db_containers and db_containers[0].image.tags[0] or 'postgres:12.4'

@@ -8,7 +8,7 @@ from ui.versions_widget import VersionsWidget
 import svg_icon
 import addons_lib
 import odoo_manager
-import subprocess
+import webbrowser
 import logging
 import html
 
@@ -256,8 +256,7 @@ class DialogAddons(QtWidgets.QDialog):
         else:
             version = odoo_manager.number_to_version(current_version)
         url = addon.get_github_url(version)
-        subprocess.call(['firefox', url],
-                        stdout=subprocess.PIPE, universal_newlines=True)
+        webbrowser.open(url)
 
     def init_combo_categories(self):
         self.ui.combo_category.blockSignals(True)

@@ -15,9 +15,25 @@
             color: rgba(135, 90, 123, 255);
         }
 
-        QPushButton,QComboBox {
+        QPushButton {
             background-color: rgba(178, 146, 169, 255);
             color: rgba(135, 90, 123, 255);
+            height: 20;
+        }
+
+
+        /* QComboBox gets the "on" state when the popup is open */
+        QComboBox:editable {
+                background: rgba(135, 90, 123, 255);
+                color: rgba(83, 63, 79, 255);
+        }
+
+        /* QComboBox gets the "on" state when the popup is open */
+        QComboBox QAbstractItemView{
+            background-color:  rgba(135, 90, 123, 255);
+            color: white;
+            selection-background-color: rgba(83, 63, 79, 255);
+            selection-color: rgba(178, 146, 169, 255);
             height: 20;
         }
 

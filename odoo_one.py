@@ -3,9 +3,10 @@
 from ui import main_window
 import logging
 import getopt
-import sys
+from tools import resource_path
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QFile
+import sys
 
 root_logger = logging.getLogger()
 root_logger.setLevel("INFO")
@@ -44,16 +45,25 @@ def main():
     # localeLanguage = QtCore.QLocale.system().name()
     # tr.installTranslators(localeLanguage)
 
-    ui_main = main_window.MainWindow()
-    ui_main.setupUi()
-    ui_main.show()
+    try:
+        ui_main = main_window.MainWindow()
+        ui_main.setupUi()
+        ui_main.show()
+        stylesheet_path = resource_path('ui/stylesheet.qss')
+        stylesheet_file = QFile(stylesheet_path)
+        stylesheet_file.open(QFile.ReadOnly)
+        stylesheet = str(stylesheet_file.readAll(), 'utf-8')
+        app.setStyleSheet(stylesheet)
+        app.exec()
 
-    stylesheet_file = QFile("ui/stylesheet.qss")
-    stylesheet_file.open(QFile.ReadOnly)
-    stylesheet = str(stylesheet_file.readAll(), 'utf-8')
-    app.setStyleSheet(stylesheet)
+    except EnvironmentError as e:
+        dialog = QtWidgets.QMessageBox()
+        dialog.setIcon(QtWidgets.QMessageBox.Critical)
+        dialog.setText("Warning")
+        dialog.setInformativeText(str(e))
+        dialog.exec_()
 
-    app.exec()
+
     sys.exit()
 
 
